@@ -1,8 +1,8 @@
 import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, b as addAttribute } from '../chunks/astro/server_C-3XYY4L.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../chunks/Layout_DwY8VkV0.mjs';
-import { $ as $$Shell, t as tokensFor } from '../chunks/Shell_CIncMGMu.mjs';
-import { s as site, t as templateForNiche, n as nicheLabel, m as metaTitle } from '../chunks/seo_BPZX70DK.mjs';
+import { $ as $$Layout } from '../chunks/Layout_B3ljUlnR.mjs';
+import { $ as $$Shell, t as tokensFor } from '../chunks/Shell_Dn90pO-f.mjs';
+import { s as site, t as templateForNiche, n as nicheLabel, m as metaTitle } from '../chunks/seo_2dtdoyUt.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Index = createComponent(($$result, $$props, $$slots) => {
@@ -27,9 +27,9 @@ Free estimate
     ["Real craftsmanship", `${site.yearsInBusiness}+ years of trade experience on every single job.`],
     ["Local accountability", `We live and work in ${site.city}. Our name is on every job we do.`]
   ].map(([t, d]) => renderTemplate`<div class="text-center"> <h3${addAttribute(`${tk.headingFont} text-white font-bold text-xl mb-3`, "class")}>${t}</h3> <p class="leading-relaxed">${d}</p> </div>`)} </div> </div> </section> ` })} ` })}`;
-}, "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/_reference_site/src/pages/about/index.astro", void 0);
+}, "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/hudson-valley-cabinet-woodworking-inc/src/pages/about/index.astro", void 0);
 
-const $$file = "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/_reference_site/src/pages/about/index.astro";
+const $$file = "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/hudson-valley-cabinet-woodworking-inc/src/pages/about/index.astro";
 const $$url = "/about/";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

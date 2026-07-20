@@ -1,4 +1,4 @@
-import { l as llmsTxt, s as site } from '../chunks/seo_BPZX70DK.mjs';
+import { l as llmsTxt, s as site } from '../chunks/seo_2dtdoyUt.mjs';
 export { renderers } from '../renderers.mjs';
 
 const GET = () => {

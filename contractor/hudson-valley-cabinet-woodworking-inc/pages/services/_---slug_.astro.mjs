@@ -1,8 +1,8 @@
 import { d as createAstro, c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead, b as addAttribute } from '../../chunks/astro/server_C-3XYY4L.mjs';
 import 'piccolore';
-import { $ as $$Layout } from '../../chunks/Layout_DwY8VkV0.mjs';
-import { $ as $$Shell, t as tokensFor } from '../../chunks/Shell_CIncMGMu.mjs';
-import { s as site, t as templateForNiche, n as nicheLabel } from '../../chunks/seo_BPZX70DK.mjs';
+import { $ as $$Layout } from '../../chunks/Layout_B3ljUlnR.mjs';
+import { $ as $$Shell, t as tokensFor } from '../../chunks/Shell_Dn90pO-f.mjs';
+import { s as site, t as templateForNiche, n as nicheLabel } from '../../chunks/seo_2dtdoyUt.mjs';
 export { renderers } from '../../renderers.mjs';
 
 const $$Astro = createAstro("https://example.com");
@@ -38,9 +38,9 @@ Every job is different, so we provide free, no-obligation estimates with upfront
 </p> </div> </div> <!-- Sidebar --> <aside class="space-y-6"> <div${addAttribute(`${tk.darkBg} ${tk.darkText} ${tk.cardRadius} p-7`, "class")}> <div${addAttribute(`${tk.headingFont} text-white font-bold text-xl mb-4`, "class")}>Get a free estimate</div> <p class="text-sm mb-5">Fast response across ${site.city}, ${site.region}.</p> <a${addAttribute(`tel:${site.phone.replace(/[^0-9+]/g, "")}`, "href")}${addAttribute(`block text-center ${tk.accent} ${tk.onAccent} ${tk.buttonRadius} ${tk.accentHover} py-3.5 font-bold transition-colors`, "class")}> ${site.phone} </a> <a href="/#contact"${addAttribute(`block text-center border border-white/25 text-white ${tk.buttonRadius} py-3.5 font-bold mt-3`, "class")}>
 Online request
 </a> </div> <div${addAttribute(`${tk.surface} ${tk.cardRadius} border ${tk.border} p-7`, "class")}> <div${addAttribute(`${tk.headingFont} font-bold text-lg mb-4`, "class")}>Other services</div> <ul class="space-y-3"> ${otherServices.map((s) => renderTemplate`<li><a${addAttribute(`/services/${s.slug}/`, "href")}${addAttribute(`${tk.muted} hover:underline`, "class")}>→ ${s.title}</a></li>`)} <li><a href="/services/" class="font-semibold hover:underline">→ All services</a></li> </ul> </div> </aside> </div> </section> ` })} ` })}`;
-}, "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/_reference_site/src/pages/services/[...slug].astro", void 0);
+}, "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/hudson-valley-cabinet-woodworking-inc/src/pages/services/[...slug].astro", void 0);
 
-const $$file = "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/_reference_site/src/pages/services/[...slug].astro";
+const $$file = "E:/BackusData/Documents/github/website-landlord/astro-sites/generated/hudson-valley-cabinet-woodworking-inc/src/pages/services/[...slug].astro";
 const $$url = "/services/[...slug]/";
 
 const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
