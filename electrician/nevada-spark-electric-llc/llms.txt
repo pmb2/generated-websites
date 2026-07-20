@@ -1,0 +1,34 @@
+# Nevada Spark Electric LLC
+
+> Electrician serving Las Vegas, NV and surrounding areas. Nevada Spark Electric LLC provides quality electrician services in Las Vegas, NV. Licensed, insured, and locally trusted.
+
+## Key Facts
+- Business: Nevada Spark Electric LLC
+- Category: Electrician
+- Location: Serving Las Vegas, NV, Las Vegas, NV
+- Phone: 702-555-0100
+- Email: contact@nevada-spark-electric-llc.com
+- Rating: 4.9/5 from 127 reviews
+- Years in business: 1
+- Jobs completed: 50
+
+## Services
+- [Wiring](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//services/wiring/): Electrical wiring and rewiring for renovations, additions, and repairs.
+- [Panel Upgrade](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//services/panel/): Electrical panel upgrades, replacements, and safety improvements.
+- [Lighting](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//services/lighting/): Interior and exterior lighting installation, repair, and upgrades.
+- [Outlets & Switches](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//services/outlets/): Outlet and switch installation, repair, and GFCI upgrades.
+- [Safety Inspection](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//services/inspection/): Electrical safety inspections and code correction services.
+- [Emergency Electrical](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//services/emergency-electrician/): 24/7 emergency electrical service for urgent issues.
+
+## Frequently Asked Questions
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+
+## Pages
+- [Home](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//)
+- [Services](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//services/)
+- [About](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//about/)
+- [Reviews](https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc//reviews/)
