@@ -3,330 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generated Websites Portal</title>
+<title>Website Landlord | Generated Sites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Inter, system-ui, sans-serif; background: #f8fafc; color: #1e293b; min-height: 100vh; }
-.header { background: linear-gradient(135deg, #0f172a, #1e3a5f); color: white; padding: 3rem 2rem; text-align: center; }
-.header h1 { font-size: 2rem; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-.header p { opacity: 0.8; font-size: 0.95rem; }
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
-.card { background: white; border-radius: 12px; padding: 1rem 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; display: flex; align-items: center; gap: 1rem; transition: all 0.2s; }
-.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: #94a3b8; transform: translateY(-1px); }
-.card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; color: white; flex-shrink: 0; }
-.card-body { flex: 1; min-width: 0; }
-.card-name { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.card-niche { font-size: 0.75rem; color: #64748b; }
-.card a { text-decoration: none; color: #2563eb; font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; }
-.card a:hover { text-decoration: underline; }
-.stats { display: flex; gap: 2rem; justify-content: center; padding: 1.5rem; background: white; border-bottom: 1px solid #e2e8f0; }
-.stat { text-align: center; }
-.stat-num { font-size: 1.5rem; font-weight: 700; color: #0f172a; }
-.stat-label { font-size: 0.8rem; color: #64748b; }
-.footer { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.8rem; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#f5f7fa;color:#1e293b;min-height:100vh}
+.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%);padding:4rem 2rem 3rem;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(212,115,59,0.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(14,165,233,0.1) 0%,transparent 60%);pointer-events:none}
+.hero h1{font-size:2.5rem;font-weight:800;letter-spacing:-0.04em;color:#fff;position:relative;line-height:1.1}
+.hero h1 span{background:linear-gradient(135deg,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#94a3b8;margin-top:0.75rem;font-size:1.05rem;position:relative}
+.stats{display:flex;gap:3rem;justify-content:center;padding:1.5rem 2rem;background:white;border-bottom:1px solid #e2e8f0;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:1.75rem;font-weight:800;color:#0f172a;letter-spacing:-0.03em}
+.stat-label{font-size:0.8rem;color:#64748b;font-weight:500;text-transform:uppercase;letter-spacing:0.05em}
+.controls{max-width:1200px;margin:0 auto;padding:1.5rem 2rem 0;display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center}
+.filter{padding:0.4rem 1rem;border-radius:9999px;border:1px solid #e2e8f0;background:white;font-size:0.8rem;font-weight:500;color:#475569;cursor:pointer;transition:all 0.2s;font-family:inherit}
+.filter:hover{border-color:#94a3b8;background:#f1f5f9}
+.filter.active{background:#0f172a;color:white;border-color:#0f172a}
+.grid{max-width:1200px;margin:0 auto;padding:1.5rem 2rem 3rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem}
+.card{background:white;border-radius:12px;padding:1.25rem;border:1px solid #e2e8f0;transition:all 0.25s cubic-bezier(0.25,0.1,0.25,1);position:relative;display:flex;flex-direction:column;gap:0.5rem}
+.card:hover{box-shadow:0 8px 25px rgba(0,0,0,0.08);border-color:#94a3b8;transform:translateY(-2px)}
+.card-badge{display:inline-block;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:0.2rem 0.6rem;border-radius:6px;width:fit-content;background:#f1f5f9;color:#475569}
+.card h3{font-size:0.95rem;font-weight:600}
+.card h3 a{color:#0f172a;text-decoration:none;transition:color 0.2s}
+.card:hover h3 a{color:#2563eb}
+.card .meta{font-size:0.8rem;color:#64748b}
+.card-btn{font-size:0.8rem;font-weight:600;text-decoration:none;padding:0.25rem 0;border-bottom:1.5px solid;width:fit-content;transition:all 0.2s}
+.card-btn:hover{opacity:0.7;gap:0.25rem}
+.card.hidden{display:none}
+.footer{text-align:center;padding:2rem;color:#94a3b8;font-size:0.8rem;border-top:1px solid #e2e8f0}
+@media(max-width:640px){.hero h1{font-size:1.75rem}.stats{gap:1.5rem}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div class="header">
-  <h1>Generated Websites</h1>
-  <p>Service business sites built with the website-landlord generator</p>
+<div class="hero">
+<h1>Website <span>Landlord</span></h1>
+<p>36 service business sites &middot; Generated 2026-07-20 10:33</p>
 </div>
 <div class="stats">
-  <div class="stat"><div class="stat-num">36</div><div class="stat-label">Total Sites</div></div>
-  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Niches</div></div>
+<div class="stat"><div class="stat-num">36</div><div class="stat-label">Total Sites</div></div>
+<div class="stat"><div class="stat-num">12</div><div class="stat-label">Niches</div></div>
+<div class="stat"><div class="stat-num">36</div><div class="stat-label">Live Pages</div></div>
 </div>
-<div class="container">
-<div class="grid">
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">A</div>
-  <div class="card-body">
-    <div class="card-name">a-a-sewer-drain</div>
-    <div class="card-niche">plumber | Troy, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/a-a-sewer-drain/" target="_blank">Visit &rarr;</a>
+<div class="controls">
+<button class="filter active" data-filter="all">All</button><button class="filter" data-filter="plumber">Plumber</button><button class="filter" data-filter="landscaper">Landscaper</button><button class="filter" data-filter="contractor">Contractor</button><button class="filter" data-filter="painter">Painter</button><button class="filter" data-filter="cleaning-service">Cleaning</button><button class="filter" data-filter="auto-repair-shop">Auto Repair</button><button class="filter" data-filter="concrete-contractor">Concrete</button><button class="filter" data-filter="handyman">Handyman</button><button class="filter" data-filter="tree-service">Tree Service</button><button class="filter" data-filter="kitchen-remodeler">Service</button><button class="filter" data-filter="electrician">Electrician</button><button class="filter" data-filter="roofer">Roofer</button>
 </div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">A</div>
-  <div class="card-body">
-    <div class="card-name">abc-tree-service</div>
-    <div class="card-niche">tree-service | Amsterdam, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/tree-service/abc-tree-service/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">A</div>
-  <div class="card-body">
-    <div class="card-name">allstate-heating-plumbing</div>
-    <div class="card-niche">plumber | Troy, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/allstate-heating-plumbing/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">A</div>
-  <div class="card-body">
-    <div class="card-name">alpha-plumbing-services</div>
-    <div class="card-niche">plumber | Troy, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#2D5A3D">A</div>
-  <div class="card-body">
-    <div class="card-name">artesian-gardens</div>
-    <div class="card-niche">landscaper | Bennington, VT</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/landscaper/artesian-gardens/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">B</div>
-  <div class="card-body">
-    <div class="card-name">beta-plumbing-rooter</div>
-    <div class="card-niche">plumber | Schenectady, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/beta-plumbing-rooter/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">B</div>
-  <div class="card-body">
-    <div class="card-name">bonesteel-auto-truck-center</div>
-    <div class="card-niche">auto-repair-shop | Kingston, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/auto-repair-shop/bonesteel-auto-truck-center/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1C2128">C</div>
-  <div class="card-body">
-    <div class="card-name">ciminos-home-enhancements</div>
-    <div class="card-niche">contractor | Clifton, Park</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/contractor/ciminos-home-enhancements/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">C</div>
-  <div class="card-body">
-    <div class="card-name">concrete-prime</div>
-    <div class="card-niche">concrete-contractor | Clifton, Park</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/concrete-contractor/concrete-prime/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">C</div>
-  <div class="card-body">
-    <div class="card-name">curtis-concrete-direct-llc</div>
-    <div class="card-niche">concrete-contractor | Albany, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/concrete-contractor/curtis-concrete-direct-llc/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">D</div>
-  <div class="card-body">
-    <div class="card-name">dave-and-son-plumbing-and-heat</div>
-    <div class="card-niche">plumber | Schenectady, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/dave-and-son-plumbing-and-heating/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E293B">D</div>
-  <div class="card-body">
-    <div class="card-name">dustins-handyman-services</div>
-    <div class="card-niche">handyman | Glens, Falls</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/handyman/dustins-handyman-services/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1A1A2E">E</div>
-  <div class="card-body">
-    <div class="card-name">east-coast-refinishing</div>
-    <div class="card-niche">painter | Pittsfield, MA</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/painter/east-coast-refinishing/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1C2128">E</div>
-  <div class="card-body">
-    <div class="card-name">easton-dylan-sewer-drain</div>
-    <div class="card-niche">contractor | Your City, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/contractor/easton-dylan-sewer-drain/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1C2128">F</div>
-  <div class="card-body">
-    <div class="card-name">friendly-painters</div>
-    <div class="card-niche">contractor | Your City, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/contractor/friendly-painters/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#2D5A3D">G</div>
-  <div class="card-body">
-    <div class="card-name">green-valley-landscaping</div>
-    <div class="card-niche">landscaper | Albany, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/landscaper/green-valley-landscaping/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1C2128">H</div>
-  <div class="card-body">
-    <div class="card-name">hudson-valley-cabinet-woodwork</div>
-    <div class="card-niche">contractor | Hudson, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/contractor/hudson-valley-cabinet-woodworking-inc/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1C2128">H</div>
-  <div class="card-body">
-    <div class="card-name">hudson-valley-precision-contra</div>
-    <div class="card-niche">contractor | Hudson, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/contractor/hudson-valley-precision-contracting-llc/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">I</div>
-  <div class="card-body">
-    <div class="card-name">intelligent-kitchen</div>
-    <div class="card-niche">kitchen-remodeler | Amsterdam, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/kitchen-remodeler/intelligent-kitchen/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#2D5A3D">K</div>
-  <div class="card-body">
-    <div class="card-name">keene-eye-landscaping-fine-gar</div>
-    <div class="card-niche">landscaper | Pittsfield, MA</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/landscaper/keene-eye-landscaping-fine-gardening/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#2D5A3D">L</div>
-  <div class="card-body">
-    <div class="card-name">lehman-landscape</div>
-    <div class="card-niche">landscaper | Saratoga, Springs</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/landscaper/lehman-landscape/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1A1A2E">L</div>
-  <div class="card-body">
-    <div class="card-name">lewis-drywall-painting</div>
-    <div class="card-niche">painter | Pittsfield, MA</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/painter/lewis-drywall-painting/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">L</div>
-  <div class="card-body">
-    <div class="card-name">linear-plumbing-drain-cleaning</div>
-    <div class="card-niche">plumber | Albany, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/linear-plumbing-drain-cleaning/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E293B">N</div>
-  <div class="card-body">
-    <div class="card-name">nevada-spark-electric-llc</div>
-    <div class="card-niche">electrician | Las Vegas, NV</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#2D5A3D">N</div>
-  <div class="card-body">
-    <div class="card-name">northern-roots-landscape-llc</div>
-    <div class="card-niche">landscaper | Albany, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">Q</div>
-  <div class="card-body">
-    <div class="card-name">quackenbush-haegele</div>
-    <div class="card-niche">plumber | Troy, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E293B">Q</div>
-  <div class="card-body">
-    <div class="card-name">quality-handyman-service-llc</div>
-    <div class="card-niche">handyman | Saratoga, Springs</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/handyman/quality-handyman-service-llc/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">Q</div>
-  <div class="card-body">
-    <div class="card-name">quest-plumbing-heating</div>
-    <div class="card-niche">plumber | Troy, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/quest-plumbing-heating/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1A1A2E">S</div>
-  <div class="card-body">
-    <div class="card-name">shefix-painting-contracting</div>
-    <div class="card-niche">painter | Kingston, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#2D5A3D">S</div>
-  <div class="card-body">
-    <div class="card-name">sullivan-landscape-solutions-l</div>
-    <div class="card-niche">landscaper | Amsterdam, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/landscaper/sullivan-landscape-solutions-llc/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">T</div>
-  <div class="card-body">
-    <div class="card-name">troys-best-plumbing</div>
-    <div class="card-niche">plumber | Troy, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#0F2E33">U</div>
-  <div class="card-body">
-    <div class="card-name">u-scleaning</div>
-    <div class="card-niche">cleaning-service | Pittsfield, MA</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/cleaning-service/u-scleaning/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#0F2E33">V</div>
-  <div class="card-body">
-    <div class="card-name">v-xio-cleaning-services</div>
-    <div class="card-niche">cleaning-service | Amsterdam, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/cleaning-service/v-xio-cleaning-services/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#1E3A5F">V</div>
-  <div class="card-body">
-    <div class="card-name">venezia-motors</div>
-    <div class="card-niche">auto-repair-shop | Kingston, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/auto-repair-shop/venezia-motors/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#0F2E33">V</div>
-  <div class="card-body">
-    <div class="card-name">vip-cleaning-company</div>
-    <div class="card-niche">cleaning-service | Albany, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/cleaning-service/vip-cleaning-company/" target="_blank">Visit &rarr;</a>
-</div>
-<div class="card">
-  <div class="card-icon" style="background:#2D2D2D">W</div>
-  <div class="card-body">
-    <div class="card-name">wb-roofing-siding</div>
-    <div class="card-niche">roofer | Troy, NY</div>
-  </div>
-  <a href="https://pmb2.github.io/generated-websites/roofer/wb-roofing-siding/" target="_blank">Visit &rarr;</a>
-</div>
-</div></div>
-<div class="footer">Generated by website-landlord &middot; pmb2.github.io</div>
+<div class="grid" id="siteGrid"><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/a-a-sewer-drain/">A A Sewer Drain</a></h3>
+    <p class="meta">Troy, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/a-a-sewer-drain/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="tree-service">
+    <div class="card-badge" style="background:#2D5A3D;color:#8B7355">Tree Service</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/tree-service/abc-tree-service/">Abc Tree Service</a></h3>
+    <p class="meta">Amsterdam, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/tree-service/abc-tree-service/" class="card-btn" style="border-color:#8B7355;color:#8B7355">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/allstate-heating-plumbing/">Allstate Heating Plumbing</a></h3>
+    <p class="meta">Troy, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/allstate-heating-plumbing/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services/">Alpha Plumbing Services</a></h3>
+    <p class="meta">Troy, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="landscaper">
+    <div class="card-badge" style="background:#2D5A3D;color:#8B7355">Landscaper</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/landscaper/artesian-gardens/">Artesian Gardens</a></h3>
+    <p class="meta">Bennington, VT</p>
+    <a href="https://pmb2.github.io/generated-websites/landscaper/artesian-gardens/" class="card-btn" style="border-color:#8B7355;color:#8B7355">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/beta-plumbing-rooter/">Beta Plumbing Rooter</a></h3>
+    <p class="meta">Schenectady, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/beta-plumbing-rooter/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="auto-repair-shop">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Auto Repair</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/auto-repair-shop/bonesteel-auto-truck-center/">Bonesteel Auto Truck Center</a></h3>
+    <p class="meta">Kingston, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/auto-repair-shop/bonesteel-auto-truck-center/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="contractor">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Contractor</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/contractor/ciminos-home-enhancements/">Ciminos Home Enhancements</a></h3>
+    <p class="meta">Clifton, Park</p>
+    <a href="https://pmb2.github.io/generated-websites/contractor/ciminos-home-enhancements/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="concrete-contractor">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Concrete</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/concrete-contractor/concrete-prime/">Concrete Prime</a></h3>
+    <p class="meta">Clifton, Park</p>
+    <a href="https://pmb2.github.io/generated-websites/concrete-contractor/concrete-prime/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="concrete-contractor">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Concrete</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/concrete-contractor/curtis-concrete-direct-llc/">Curtis Concrete Direct Llc</a></h3>
+    <p class="meta">Albany, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/concrete-contractor/curtis-concrete-direct-llc/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/dave-and-son-plumbing-and-heating/">Dave And Son Plumbing And Heating</a></h3>
+    <p class="meta">Schenectady, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/dave-and-son-plumbing-and-heating/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="handyman">
+    <div class="card-badge" style="background:#1E293B;color:#F97316">Handyman</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/handyman/dustins-handyman-services/">Dustins Handyman Services</a></h3>
+    <p class="meta">Glens, Falls</p>
+    <a href="https://pmb2.github.io/generated-websites/handyman/dustins-handyman-services/" class="card-btn" style="border-color:#F97316;color:#F97316">Visit Site →</a>
+  </div><div class="card" data-niche="painter">
+    <div class="card-badge" style="background:#1A1A2E;color:#0D9488">Painter</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/painter/east-coast-refinishing/">East Coast Refinishing</a></h3>
+    <p class="meta">Pittsfield, MA</p>
+    <a href="https://pmb2.github.io/generated-websites/painter/east-coast-refinishing/" class="card-btn" style="border-color:#0D9488;color:#0D9488">Visit Site →</a>
+  </div><div class="card" data-niche="contractor">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Contractor</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/contractor/easton-dylan-sewer-drain/">Easton Dylan Sewer Drain</a></h3>
+    <p class="meta">Your City, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/contractor/easton-dylan-sewer-drain/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="contractor">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Contractor</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/contractor/friendly-painters/">Friendly Painters</a></h3>
+    <p class="meta">Your City, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/contractor/friendly-painters/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="landscaper">
+    <div class="card-badge" style="background:#2D5A3D;color:#8B7355">Landscaper</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/landscaper/green-valley-landscaping/">Green Valley Landscaping</a></h3>
+    <p class="meta">Albany, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/landscaper/green-valley-landscaping/" class="card-btn" style="border-color:#8B7355;color:#8B7355">Visit Site →</a>
+  </div><div class="card" data-niche="contractor">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Contractor</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/contractor/hudson-valley-cabinet-woodworking-inc/">Hudson Valley Cabinet Woodworking Inc</a></h3>
+    <p class="meta">Hudson, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/contractor/hudson-valley-cabinet-woodworking-inc/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="contractor">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Contractor</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/contractor/hudson-valley-precision-contracting-llc/">Hudson Valley Precision Contracting Llc</a></h3>
+    <p class="meta">Hudson, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/contractor/hudson-valley-precision-contracting-llc/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="kitchen-remodeler">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Service</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/kitchen-remodeler/intelligent-kitchen/">Intelligent Kitchen</a></h3>
+    <p class="meta">Amsterdam, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/kitchen-remodeler/intelligent-kitchen/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="landscaper">
+    <div class="card-badge" style="background:#2D5A3D;color:#8B7355">Landscaper</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/landscaper/keene-eye-landscaping-fine-gardening/">Keene Eye Landscaping Fine Gardening</a></h3>
+    <p class="meta">Pittsfield, MA</p>
+    <a href="https://pmb2.github.io/generated-websites/landscaper/keene-eye-landscaping-fine-gardening/" class="card-btn" style="border-color:#8B7355;color:#8B7355">Visit Site →</a>
+  </div><div class="card" data-niche="landscaper">
+    <div class="card-badge" style="background:#2D5A3D;color:#8B7355">Landscaper</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/landscaper/lehman-landscape/">Lehman Landscape</a></h3>
+    <p class="meta">Saratoga, Springs</p>
+    <a href="https://pmb2.github.io/generated-websites/landscaper/lehman-landscape/" class="card-btn" style="border-color:#8B7355;color:#8B7355">Visit Site →</a>
+  </div><div class="card" data-niche="painter">
+    <div class="card-badge" style="background:#1A1A2E;color:#0D9488">Painter</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/painter/lewis-drywall-painting/">Lewis Drywall Painting</a></h3>
+    <p class="meta">Pittsfield, MA</p>
+    <a href="https://pmb2.github.io/generated-websites/painter/lewis-drywall-painting/" class="card-btn" style="border-color:#0D9488;color:#0D9488">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/linear-plumbing-drain-cleaning/">Linear Plumbing Drain Cleaning</a></h3>
+    <p class="meta">Albany, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/linear-plumbing-drain-cleaning/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="electrician">
+    <div class="card-badge" style="background:#1E293B;color:#F5D90A">Electrician</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc/">Nevada Spark Electric Llc</a></h3>
+    <p class="meta">Las Vegas, NV</p>
+    <a href="https://pmb2.github.io/generated-websites/electrician/nevada-spark-electric-llc/" class="card-btn" style="border-color:#F5D90A;color:#F5D90A">Visit Site →</a>
+  </div><div class="card" data-niche="landscaper">
+    <div class="card-badge" style="background:#2D5A3D;color:#8B7355">Landscaper</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/">Northern Roots Landscape Llc</a></h3>
+    <p class="meta">Albany, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/" class="card-btn" style="border-color:#8B7355;color:#8B7355">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele/">Quackenbush Haegele</a></h3>
+    <p class="meta">Troy, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="handyman">
+    <div class="card-badge" style="background:#1E293B;color:#F97316">Handyman</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/handyman/quality-handyman-service-llc/">Quality Handyman Service Llc</a></h3>
+    <p class="meta">Saratoga, Springs</p>
+    <a href="https://pmb2.github.io/generated-websites/handyman/quality-handyman-service-llc/" class="card-btn" style="border-color:#F97316;color:#F97316">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/quest-plumbing-heating/">Quest Plumbing Heating</a></h3>
+    <p class="meta">Troy, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/quest-plumbing-heating/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="painter">
+    <div class="card-badge" style="background:#1A1A2E;color:#0D9488">Painter</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting/">Shefix Painting Contracting</a></h3>
+    <p class="meta">Kingston, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting/" class="card-btn" style="border-color:#0D9488;color:#0D9488">Visit Site →</a>
+  </div><div class="card" data-niche="landscaper">
+    <div class="card-badge" style="background:#2D5A3D;color:#8B7355">Landscaper</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/landscaper/sullivan-landscape-solutions-llc/">Sullivan Landscape Solutions Llc</a></h3>
+    <p class="meta">Amsterdam, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/landscaper/sullivan-landscape-solutions-llc/" class="card-btn" style="border-color:#8B7355;color:#8B7355">Visit Site →</a>
+  </div><div class="card" data-niche="plumber">
+    <div class="card-badge" style="background:#1E3A5F;color:#D4733B">Plumber</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing/">Troys Best Plumbing</a></h3>
+    <p class="meta">Troy, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing/" class="card-btn" style="border-color:#D4733B;color:#D4733B">Visit Site →</a>
+  </div><div class="card" data-niche="cleaning-service">
+    <div class="card-badge" style="background:#0F2E33;color:#14B8A6">Cleaning</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/cleaning-service/u-scleaning/">U Scleaning</a></h3>
+    <p class="meta">Pittsfield, MA</p>
+    <a href="https://pmb2.github.io/generated-websites/cleaning-service/u-scleaning/" class="card-btn" style="border-color:#14B8A6;color:#14B8A6">Visit Site →</a>
+  </div><div class="card" data-niche="cleaning-service">
+    <div class="card-badge" style="background:#0F2E33;color:#14B8A6">Cleaning</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/cleaning-service/v-xio-cleaning-services/">V Xio Cleaning Services</a></h3>
+    <p class="meta">Amsterdam, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/cleaning-service/v-xio-cleaning-services/" class="card-btn" style="border-color:#14B8A6;color:#14B8A6">Visit Site →</a>
+  </div><div class="card" data-niche="auto-repair-shop">
+    <div class="card-badge" style="background:#1C2128;color:#F59E0B">Auto Repair</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/auto-repair-shop/venezia-motors/">Venezia Motors</a></h3>
+    <p class="meta">Kingston, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/auto-repair-shop/venezia-motors/" class="card-btn" style="border-color:#F59E0B;color:#F59E0B">Visit Site →</a>
+  </div><div class="card" data-niche="cleaning-service">
+    <div class="card-badge" style="background:#0F2E33;color:#14B8A6">Cleaning</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/cleaning-service/vip-cleaning-company/">Vip Cleaning Company</a></h3>
+    <p class="meta">Albany, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/cleaning-service/vip-cleaning-company/" class="card-btn" style="border-color:#14B8A6;color:#14B8A6">Visit Site →</a>
+  </div><div class="card" data-niche="roofer">
+    <div class="card-badge" style="background:#2D2D2D;color:#B87333">Roofer</div>
+    <h3><a href="https://pmb2.github.io/generated-websites/roofer/wb-roofing-siding/">Wb Roofing Siding</a></h3>
+    <p class="meta">Troy, NY</p>
+    <a href="https://pmb2.github.io/generated-websites/roofer/wb-roofing-siding/" class="card-btn" style="border-color:#B87333;color:#B87333">Visit Site →</a>
+  </div></div>
+<div class="footer">Website Landlord &middot; Generated with Hermes Agent</div>
+<script>
+document.querySelectorAll('.filter').forEach(b=>{
+b.addEventListener('click',()=>{
+document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'))
+b.classList.add('active')
+const f=b.dataset.filter
+document.querySelectorAll('.card').forEach(c=>{
+c.classList.toggle('hidden',f!=='all'&&c.dataset.niche!==f
+)})})})
+</script>
 </body>
 </html>
