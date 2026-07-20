@@ -1,0 +1,34 @@
+# Scroll World Demo
+
+> Plumber serving Albany, NY and surrounding areas. Scroll World Demo provides quality plumber services in Albany, NY. Licensed, insured, and locally trusted.
+
+## Key Facts
+- Business: Scroll World Demo
+- Category: Plumber
+- Location: Serving Albany, NY, Albany, NY
+- Phone: 518-555-SCROLL
+- Email: contact@scroll-world-demo.com
+- Rating: 4.5/5 from 112 reviews
+- Years in business: 6
+- Jobs completed: 407
+
+## Services
+- [Drain Cleaning](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//services/drain-cleaning/): Fast, effective drain cleaning that clears blockages and keeps water flowing.
+- [Pipe Repair](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//services/pipe-repair/): Expert pipe repair for leaks, bursts, and corrosion in homes and businesses.
+- [Water Heater](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//services/water-heater/): Water heater installation, repair, and maintenance for reliable hot water.
+- [Sewer Line](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//services/sewer-line/): Complete sewer line inspection, cleaning, and repair services.
+- [Fixture Install](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//services/fixture-install/): Professional fixture installation for kitchens, bathrooms, and utility spaces.
+- [Emergency Plumbing](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//services/emergency-plumber/): 24/7 emergency plumbing service when you need it most.
+
+## Frequently Asked Questions
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+
+## Pages
+- [Home](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//)
+- [Services](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//services/)
+- [About](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//about/)
+- [Reviews](https://pmb2.github.io/generated-websites/plumber/scroll-world-demo//reviews/)
