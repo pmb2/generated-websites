@@ -1,0 +1,34 @@
+# SheFix Painting & Contracting
+
+> Painter serving Kingston, NY and surrounding areas. SheFix Painting & Contracting provides quality painter services in Kingston, NY. Licensed, insured, and locally trusted.
+
+## Key Facts
+- Business: SheFix Painting & Contracting
+- Category: Painter
+- Location: Serving Kingston, NY, Kingston, NY
+- Phone: +1 845-419-1067
+- Email: contact@shefix-painting-contracting.com
+- Rating: 4.9/5 from 127 reviews
+- Years in business: 1
+- Jobs completed: 50
+
+## Services
+- [Interior Painting](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//services/interior/): Professional interior painting for homes and businesses.
+- [Exterior Painting](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//services/exterior/): Exterior house painting and staining.
+- [Cabinet Painting](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//services/cabinet/): Cabinet refinishing and painting.
+- [Drywall](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//services/drywall/): Drywall repair and installation.
+- [Wallpaper](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//services/wallpaper/): Wallpaper removal and installation.
+- [Deck Staining](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//services/deck/): Deck and fence staining.
+
+## Frequently Asked Questions
+- **Do you offer free estimates?** Yes, we provide free, no-obligation estimates for all painter services.
+- **Are you licensed and insured?** Absolutely. We are fully licensed, bonded, and insured for your protection.
+- **What areas do you serve?** We serve Kingston, NY and surrounding communities.
+- **How quickly can you respond?** We offer same-day and 24/7 emergency service for urgent issues.
+- **Do you guarantee your work?** Yes, we stand behind every job with a 100% satisfaction guarantee.
+
+## Pages
+- [Home](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//)
+- [Services](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//services/)
+- [About](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//about/)
+- [Reviews](https://pmb2.github.io/generated-websites/painter/shefix-painting-contracting//reviews/)
