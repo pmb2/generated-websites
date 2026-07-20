@@ -1,0 +1,34 @@
+# Troys Best Plumbing
+
+> Plumber serving Troy, NY and surrounding areas. Troys Best Plumbing provides quality plumber services in Troy, NY. Licensed, insured, and locally trusted.
+
+## Key Facts
+- Business: Troys Best Plumbing
+- Category: Plumber
+- Location: Serving Troy, NY, Troy, NY
+- Phone: 5185550142
+- Email: contact@troys-best-plumbing.com
+- Rating: 4.9/5 from 127 reviews
+- Years in business: 1
+- Jobs completed: 50
+
+## Services
+- [Drain Cleaning](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//services/drain-cleaning/): Fast, effective drain cleaning that clears blockages and keeps water flowing.
+- [Pipe Repair](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//services/pipe-repair/): Expert pipe repair for leaks, bursts, and corrosion in homes and businesses.
+- [Water Heater](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//services/water-heater/): Water heater installation, repair, and maintenance for reliable hot water.
+- [Sewer Line](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//services/sewer-line/): Complete sewer line inspection, cleaning, and repair services.
+- [Fixture Install](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//services/fixture-install/): Professional fixture installation for kitchens, bathrooms, and utility spaces.
+- [Emergency Plumbing](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//services/emergency-plumber/): 24/7 emergency plumbing service when you need it most.
+
+## Frequently Asked Questions
+- **Do you offer free estimates?** Yes, we provide free, no-obligation estimates for all plumber services.
+- **Are you licensed and insured?** Absolutely. We are fully licensed, bonded, and insured for your protection.
+- **What areas do you serve?** We serve Troy, NY and surrounding communities.
+- **How quickly can you respond?** We offer same-day and 24/7 emergency service for urgent issues.
+- **Do you guarantee your work?** Yes, we stand behind every job with a 100% satisfaction guarantee.
+
+## Pages
+- [Home](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//)
+- [Services](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//services/)
+- [About](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//about/)
+- [Reviews](https://pmb2.github.io/generated-websites/plumber/troys-best-plumbing//reviews/)
