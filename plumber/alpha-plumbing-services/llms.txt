@@ -1,0 +1,34 @@
+# Alpha Plumbing Services
+
+> Plumber serving Troy, NY and surrounding areas. Alpha Plumbing Services provides quality plumber services in Troy, NY. Licensed, insured, and locally trusted.
+
+## Key Facts
+- Business: Alpha Plumbing Services
+- Category: Plumber
+- Location: Serving Troy, NY, Troy, NY
+- Phone: 518-555-0101
+- Email: contact@alpha-plumbing-services.com
+- Rating: 4.5/5 from 26 reviews
+- Years in business: 6
+- Jobs completed: 371
+
+## Services
+- [Drain Cleaning](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//services/drain-cleaning/): Fast, effective drain cleaning that clears blockages and keeps water flowing.
+- [Pipe Repair](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//services/pipe-repair/): Expert pipe repair for leaks, bursts, and corrosion in homes and businesses.
+- [Water Heater](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//services/water-heater/): Water heater installation, repair, and maintenance for reliable hot water.
+- [Sewer Line](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//services/sewer-line/): Complete sewer line inspection, cleaning, and repair services.
+- [Fixture Install](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//services/fixture-install/): Professional fixture installation for kitchens, bathrooms, and utility spaces.
+- [Emergency Plumbing](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//services/emergency-plumber/): 24/7 emergency plumbing service when you need it most.
+
+## Frequently Asked Questions
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+
+## Pages
+- [Home](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//)
+- [Services](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//services/)
+- [About](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//about/)
+- [Reviews](https://pmb2.github.io/generated-websites/plumber/alpha-plumbing-services//reviews/)
