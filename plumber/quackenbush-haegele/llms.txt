@@ -1,0 +1,34 @@
+# Quackenbush & Haegele
+
+> Plumber serving Troy, NY and surrounding areas. Quackenbush & Haegele provides quality plumber services in Troy, NY. Licensed, insured, and locally trusted.
+
+## Key Facts
+- Business: Quackenbush & Haegele
+- Category: Plumber
+- Location: Serving Troy, NY, Troy, NY
+- Phone: +1 518-235-3465
+- Email: contact@quackenbush-haegele.com
+- Rating: 4.6/5 from 10 reviews
+- Years in business: 10
+- Jobs completed: 200
+
+## Services
+- [Drain Cleaning](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//services/drain-cleaning/): Professional drain cleaning services.
+- [Pipe Repair](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//services/pipe-repair/): Professional pipe repair services.
+- [Water Heater](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//services/water-heater/): Professional water heater services.
+- [Sewer Line](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//services/sewer-line/): Professional sewer line services.
+- [Fixture Install](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//services/fixture-install/): Professional fixture install services.
+- [Emergency Plumbing](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//services/emergency-plumbing/): Professional emergency plumbing services.
+
+## Frequently Asked Questions
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+
+## Pages
+- [Home](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//)
+- [Services](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//services/)
+- [About](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//about/)
+- [Reviews](https://pmb2.github.io/generated-websites/plumber/quackenbush-haegele//reviews/)

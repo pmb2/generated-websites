@@ -1,0 +1,34 @@
+# Friendly Painters
+
+> Painter serving Albany, NY and surrounding areas. Friendly Painters provides quality painter services in Albany, NY. Licensed, insured, and locally trusted.
+
+## Key Facts
+- Business: Friendly Painters
+- Category: Painter
+- Location: Serving Albany and Surrounding Areas, Albany, NY
+- Phone: (518) 379-6182
+- Email: contact@friendly-painters.com
+- Rating: 4.6/5 from 16 reviews
+- Years in business: 10
+- Jobs completed: 200
+
+## Services
+- [Interior Painting](https://pmb2.github.io/generated-websites/painter/friendly-painters//services/interior-painting/): Professional interior painting services.
+- [Exterior Painting](https://pmb2.github.io/generated-websites/painter/friendly-painters//services/exterior-painting/): Professional exterior painting services.
+- [Cabinet Painting](https://pmb2.github.io/generated-websites/painter/friendly-painters//services/cabinet-painting/): Professional cabinet painting services.
+- [Deck Staining](https://pmb2.github.io/generated-websites/painter/friendly-painters//services/deck-staining/): Professional deck staining services.
+- [Drywall Repair](https://pmb2.github.io/generated-websites/painter/friendly-painters//services/drywall-repair/): Professional drywall repair services.
+- [Commercial Painting](https://pmb2.github.io/generated-websites/painter/friendly-painters//services/commercial-painting/): Professional commercial painting services.
+
+## Frequently Asked Questions
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+- **undefined** undefined
+
+## Pages
+- [Home](https://pmb2.github.io/generated-websites/painter/friendly-painters//)
+- [Services](https://pmb2.github.io/generated-websites/painter/friendly-painters//services/)
+- [About](https://pmb2.github.io/generated-websites/painter/friendly-painters//about/)
+- [Reviews](https://pmb2.github.io/generated-websites/painter/friendly-painters//reviews/)
