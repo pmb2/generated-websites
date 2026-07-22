@@ -5,21 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><!-- BUSINESS NAME --> Plumbing | When Pipes Burst, We Answer.</title>
 <style>
-:root {
-  --brand: #1a3a5c; --brand-light: #2a5a8c;
-  --accent: #e67e22; --accent-dark: #c96a10;
-  --bg: #ffffff; --bg-alt: #f7f9fc;
-  --ink: #1a1a2e; --ink-light: #5a6a7a;
-  --radius: 10px; --shadow: 0 2px 20px rgba(0,0,0,0.06);
-  --font: 'Segoe UI',system-ui,-apple-system,sans-serif;
-}
+:root { --brand:#1a3a5c; --brand-light:#2a5a8c; --accent:#e67e22; --accent-dark:#c96a10; --bg:#fff; --bg-alt:#f7f9fc; --ink:#1a1a2e; --ink-light:#5a6a7a; --radius:10px; --shadow:0 2px 20px rgba(0,0,0,0.06); --font:'Segoe UI',system-ui,-apple-system,sans-serif; }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body { font-family:var(--font); color:var(--ink); background:var(--bg); line-height:1.6; }
 a { color:var(--accent); text-decoration:none; }
 img { max-width:100%; height:auto; display:block; border-radius:var(--radius); }
 .container { max-width:1100px; margin:0 auto; padding:0 24px; }
-
 nav { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid rgba(0,0,0,0.05); }
 nav .container { display:flex; justify-content:space-between; align-items:center; height:64px; }
 nav .logo { font-size:20px; font-weight:700; color:var(--brand); }
@@ -34,59 +26,56 @@ nav .cta-nav:hover { background:var(--accent-dark) !important; }
   nav .links.open { display:flex; }
   .mobile-toggle { display:block; }
 }
-
-/* HERO */
 .hero { padding-top:64px; min-height:100vh; display:flex; align-items:center; background:linear-gradient(135deg,var(--brand),var(--brand-light)); position:relative; }
 .hero .bg { position:absolute; inset:0; background:url('assets/hero.jpg') center/cover no-repeat; opacity:0.2; }
 .hero .container { position:relative; z-index:1; text-align:center; padding:60px 24px; }
-.hero h1 { font-size:clamp(36px,5vw,60px); color:#fff; font-weight:800; margin-bottom:16px; }
+.hero h1 { font-size:clamp(36px,5vw,60px); color:#fff; font-weight:800; margin-bottom:8px; }
 .hero h1 span { color:var(--accent); }
-.hero .tagline { font-size:clamp(18px,2.2vw,24px); color:rgba(255,255,255,0.9); max-width:600px; margin:0 auto 32px; font-weight:300; }
+.hero .tagline { font-size:clamp(16px,2vw,20px); color:rgba(255,255,255,0.9); max-width:650px; margin:0 auto 24px; font-weight:300; }
 .hero .cta { display:inline-block; background:var(--accent); color:#fff; padding:16px 44px; border-radius:var(--radius); font-size:18px; font-weight:600; transition:0.2s; }
 .hero .cta:hover { background:var(--accent-dark); transform:translateY(-2px); }
-.hero .stars { color:#f1c40f; margin-bottom:12px; font-size:20px; }
-.hero .phone { display:block; font-size:28px; font-weight:700; color:#fff; margin-top:16px; letter-spacing:1px; }
-
+.hero .stars { color:#f1c40f; margin-bottom:12px; font-size:18px; }
+.hero .phone { display:block; font-size:24px; font-weight:700; color:#fff; margin-top:12px; letter-spacing:1px; }
+/* Objection busters grid */
+.ob-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; max-width:700px; margin:20px auto 0; }
+.ob-item { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:12px; }
+.ob-item .q { font-size:12px; opacity:0.6; text-transform:uppercase; letter-spacing:1px; color:#fff; margin-bottom:4px; }
+.ob-item .a { font-size:14px; font-weight:600; color:#fff; }
 section { padding:80px 0; }
 section:nth-child(even) { background:var(--bg-alt); }
 .section-title { text-align:center; margin-bottom:48px; }
 .section-title h2 { font-size:32px; color:var(--brand); margin-bottom:8px; }
 .section-title p { color:var(--ink-light); max-width:500px; margin:0 auto; }
-
 .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
-.service-card { background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); text-align:center; }
+.service-card { background:#fff; border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); text-align:center; border:1px solid rgba(0,0,0,0.03); }
 .service-card .icon { font-size:36px; margin-bottom:12px; }
 .service-card h3 { font-size:18px; margin-bottom:8px; color:var(--brand); }
 .service-card p { font-size:14px; color:var(--ink-light); }
 .service-card .price { font-size:20px; font-weight:700; color:var(--accent); margin-top:12px; }
-
 .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
 .about-grid img { width:100%; min-height:350px; background:var(--bg-alt); object-fit:cover; }
 .about-grid h3 { font-size:24px; color:var(--brand); margin-bottom:12px; }
 .about-grid p { color:var(--ink-light); margin-bottom:16px; }
 @media(max-width:768px){ .about-grid { grid-template-columns:1fr; } }
-
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
 .gallery-grid img { width:100%; aspect-ratio:4/3; object-fit:cover; }
 .gallery-item { position:relative; }
 .gallery-item .label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(0deg,rgba(0,0,0,0.7),transparent); padding:16px; color:#fff; font-size:13px; border-radius:0 0 var(--radius) var(--radius); }
-
 .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
 @media(max-width:768px){ .contact-grid { grid-template-columns:1fr; } }
 .contact-info h3 { font-size:20px; color:var(--brand); margin-bottom:16px; }
 .contact-info p { color:var(--ink-light); margin-bottom:8px; }
 .contact-info .big-phone { font-size:28px; font-weight:700; color:var(--accent); margin:16px 0; }
+.contact-info .testimonial { font-style:italic; color:var(--ink-light); font-size:14px; margin-top:12px; }
 form { display:flex; flex-direction:column; gap:12px; }
 form input,form textarea { padding:14px 16px; border:1px solid #ddd; border-radius:8px; font-size:15px; font-family:var(--font); }
 form input:focus,form textarea:focus { outline:none; border-color:var(--accent); }
 form textarea { resize:vertical; min-height:120px; }
 form button { background:var(--accent); color:#fff; border:none; padding:14px 24px; border-radius:8px; font-size:16px; font-weight:600; cursor:pointer; }
-
 .guarantee { background:linear-gradient(135deg,var(--brand),var(--brand-light)); padding:60px 24px; text-align:center; color:#fff; }
 .guarantee h2 { font-size:28px; margin-bottom:16px; }
 .guarantee p { opacity:0.85; max-width:600px; margin:0 auto 24px; }
 .guarantee .cta { display:inline-block; background:var(--accent); color:#fff; padding:14px 36px; border-radius:var(--radius); font-weight:600; font-size:16px; }
-
 footer { background:var(--brand); color:rgba(255,255,255,0.7); text-align:center; padding:40px 24px; font-size:14px; }
 footer b { color:#fff; }
 .stars { color:#f1c40f; }
@@ -110,38 +99,46 @@ footer b { color:#fff; }
 <section class="hero" id="home">
   <div class="bg"></div>
   <div class="container">
-    <div class="stars">★★★★★</div>
+    <div class="stars">★★★★★ 4.8/5 (150+ Reviews)</div>
     <h1>When Pipes Burst,<br><span>We Answer.</span></h1>
-    <p class="tagline">Emergency service. Same-day availability. No overtime charge.<br>Your home, our promise.</p>
+    <p class="tagline">Emergency service. Same-day availability. No overtime charge. Licensed & insured. <strong>Your home, our promise.</strong></p>
     <a href="tel:+15185551234" class="cta">📞 (518) 555-1234</a>
-    <span class="phone">📱 Call or Text — We're Standing By</span>
+    <span class="phone">📱 Call or Text — We Pick Up 24/7</span>
+    
+    <!-- Objection Busters -->
+    <div class="ob-grid">
+      <div class="ob-item"><div class="q">Worried about cost?</div><div class="a">Free estimate, no hidden fees</div></div>
+      <div class="ob-item"><div class="q">Need it now?</div><div class="a">Same-day service, every time</div></div>
+      <div class="ob-item"><div class="q">Don't know who to trust?</div><div class="a">Licensed, insured, 10+ years</div></div>
+    </div>
   </div>
 </section>
 
 <section id="services">
   <div class="container">
-    <div class="section-title"><h2>Our Services</h2><p>Everything from a dripping faucet to a full re-pipe.</p></div>
+    <div class="section-title"><h2>Full-Service Plumbing</h2><p>From a dripping faucet to a full re-pipe. We do it all. <strong>We show up when we say we will.</strong></p></div>
     <div class="services-grid">
-      <div class="service-card"><div class="icon">🛠️</div><h3>Emergency Repair</h3><p>24/7 for burst pipes, sewage backups, gas leaks.</p><div class="price">Call for estimate</div></div>
-      <div class="service-card"><div class="icon">🔧</div><h3>Drain Cleaning</h3><p>Clogged drains, slow sinks, backed-up toilets.</p><div class="price">Starting at $150</div></div>
-      <div class="service-card"><div class="icon">🔥</div><h3>Water Heater</h3><p>Installation, repair, replacement — tank & tankless.</p><div class="price">Starting at $400</div></div>
-      <div class="service-card"><div class="icon">🚰</div><h3>Pipe Repair</h3><p>Leaks, frozen pipes, repiping — copper, PEX, PVC.</p><div class="price">Call for estimate</div></div>
-      <div class="service-card"><div class="icon">🚽</div><h3>Fixture Install</h3><p>Toilets, faucets, disposals, shower heads.</p><div class="price">Starting at $100</div></div>
-      <div class="service-card"><div class="icon">✅</div><h3>Inspections</h3><p>Home inspection, sewer scope, gas line testing.</p><div class="price">Starting at $200</div></div>
+      <div class="service-card"><div class="icon">🛠️</div><h3>Emergency Repair</h3><p>24/7 for burst pipes, sewage backups, gas leaks. We're there within an hour.</p><div class="price">$0 diagnostic — pay only for the fix</div></div>
+      <div class="service-card"><div class="icon">🔧</div><h3>Drain Cleaning</h3><p>Clogged drains, slow sinks, backed-up toilets. Snaked or jetted, same visit.</p><div class="price">Starting at $150 — flat rate quoted upfront</div></div>
+      <div class="service-card"><div class="icon">🔥</div><h3>Water Heater</h3><p>Installation, repair, replacement — tank & tankless. We match any written quote.</p><div class="price">Starting at $400 — includes removal & haul</div></div>
+      <div class="service-card"><div class="icon">🚰</div><h3>Pipe Repair</h3><p>Leaks, frozen pipes, repiping — copper, PEX, PVC. 2-year warranty on all work.</p><div class="price">Free estimate — we tell you the cost before we start</div></div>
+      <div class="service-card"><div class="icon">🚽</div><h3>Fixture Install</h3><p>Toilets, faucets, disposals, shower heads. Supply it or we bring it — same price.</p><div class="price">Starting at $100 — installed same day</div></div>
+      <div class="service-card"><div class="icon">🔍</div><h3>Home Inspections</h3><p>Sewer scope, gas line testing, full-home plumbing assessment. Great for buyers.</p><div class="price">Starting at $200 — detailed report included</div></div>
     </div>
   </div>
 </section>
 
 <section id="about">
   <div class="container">
-    <div class="section-title"><h2>About Us</h2><p>Family-owned. Locally trusted. Fully licensed & insured.</p></div>
+    <div class="section-title"><h2>Real People. Real Work. Real Guarantee.</h2><p>Not a corporation. Just a local plumber who actually cares.</p></div>
     <div class="about-grid">
       <img src="assets/service.jpg" alt="Professional plumbing work">
       <div>
         <h3>10+ Years Serving the Capital Region</h3>
-        <p>We started this company because the Capital Region deserved better plumbing. No hidden fees, no upselling, no showing up late.</p>
-        <p>Every plumber is background-checked, licensed, and trained on the latest equipment. RIDGID and Milwaukee tools. 100% satisfaction guarantee.</p>
+        <p>I started this company because I was tired of seeing plumbers charge too much and show up late. Every job gets my name on it. Every fix gets a warranty. No upselling, no hidden fees, no excuses.</p>
+        <p>Every plumber on our team is background-checked, licensed, and trained. RIDGID and Milwaukee tools. 100% satisfaction guarantee. <strong>If you're not happy, neither are we.</strong></p>
         <p><b><span class="stars">★★★★★</span> 4.8/5 from 150+ reviews</b></p>
+        <p style="font-style:italic;color:var(--ink-light);">"He showed up on a Sunday at 10pm, fixed the pipe in 45 minutes, and the price was exactly what he quoted. No overtime charge." — Sarah M.</p>
         <a href="tel:+15185551234" class="cta" style="background:var(--accent);color:#fff;padding:12px 28px;border-radius:8px;display:inline-block;margin-top:12px;">📞 Call (518) 555-1234</a>
       </div>
     </div>
@@ -150,36 +147,37 @@ footer b { color:#fff; }
 
 <section id="gallery">
   <div class="container">
-    <div class="section-title"><h2>Our Work</h2><p>Real jobs. Real results. Every project tells a story.</p></div>
+    <div class="section-title"><h2>Our Work</h2><p>Real jobs. Real results. No stock photos — every image is from actual service calls.</p></div>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="assets/result.jpg" alt="Water heater replacement"><div class="label">Water Heater Replacement</div></div>
-      <div class="gallery-item"><img src="assets/hero.jpg" alt="Professional plumbing team"><div class="label">On-Site Professional</div></div>
-      <div class="gallery-item"><img src="assets/hero.jpg" alt="Service truck"><div class="label">Fully Stocked Trucks</div></div>
-      <div class="gallery-item"><img src="assets/lifestyle.jpg" alt="Happy home"><div class="label">Peace of Mind</div></div>
+      <div class="gallery-item"><img src="assets/result.jpg" alt="Water heater replacement"><div class="label">Water Heater — Rusted → New</div></div>
+      <div class="gallery-item"><img src="assets/hero.jpg" alt="Professional plumbing team"><div class="label">On-Site, On Time, On Budget</div></div>
+      <div class="gallery-item"><img src="assets/service.jpg" alt="Service truck"><div class="label">Fully Stocked, Ready to Roll</div></div>
+      <div class="gallery-item"><img src="assets/lifestyle.jpg" alt="Happy home"><div class="label">Peace of Mind — Guaranteed</div></div>
     </div>
   </div>
 </section>
 
 <section id="contact">
   <div class="container">
-    <div class="section-title"><h2>Free Estimate</h2><p>Call, text, or fill this out. We'll reply within 30 minutes.</p></div>
+    <div class="section-title"><h2>Free Estimate — 30 Minute Response</h2><p>Call, text, or fill this out. We're standing by.</p></div>
     <div class="contact-grid">
       <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p>📍 Serving the entire Capital Region</p>
-        <p>🕐 Mon–Sat: 7am–8pm | Sun: Emergencies only</p>
+        <h3>Questions We Always Get Asked</h3>
+        <p><b>How much will it cost?</b><br>We give you the price before we start. No surprises.</p>
+        <p><b>How fast can you get here?</b><br>Same-day. Usually within 1-2 hours. Emergencies faster.</p>
+        <p><b>Are you licensed?</b><br>Absolutely. Fully licensed, insured, and bonded.</p>
+        <p><b>Do you guarantee the work?</b><br>100%. If it breaks, we fix it free.</p>
         <div class="big-phone">📞 (518) 555-1234</div>
         <p>📧 info@yourplumbing.com</p>
-        <p>✅ Licensed & Insured</p>
         <div class="stars" style="font-size:18px;margin:12px 0;">★★★★★</div>
-        <p style="color:var(--ink-light);font-style:italic;">"Showed up on time, fixed it in an hour, price was exactly what they quoted." — Mike S.</p>
+        <div class="testimonial">"Showed up on time, fixed it in an hour, price was exactly what they quoted." — Mike S.</div>
       </div>
       <form>
         <input type="text" placeholder="Full Name" required>
         <input type="tel" placeholder="Phone Number" required>
         <input type="email" placeholder="Email">
-        <textarea placeholder="Tell us about your plumbing issue..."></textarea>
-        <button type="submit">Send Request →</button>
+        <textarea placeholder="What's going on? (burst pipe, clogged drain, water heater, other...)"></textarea>
+        <button type="submit">Get Your Free Estimate →</button>
       </form>
     </div>
   </div>
@@ -188,7 +186,7 @@ footer b { color:#fff; }
 <div class="guarantee">
   <div class="container">
     <h2>🔨 Don't Pay Until You Get a Call</h2>
-    <p>First month free. If you don't book a single job from your new site in 30 days, cancel and owe nothing.</p>
+    <p>First month free. If you don't book a single job from your new site in 30 days, cancel and owe nothing. No risk. No fine print.</p>
     <a href="tel:+15185551234" class="cta">📞 (518) 555-1234</a>
   </div>
 </div>
@@ -197,7 +195,7 @@ footer b { color:#fff; }
   <div class="container">
     <p><b><!-- BUSINESS NAME --> Plumbing</b> — Capital Region's Trusted Plumber</p>
     <p style="margin:8px 0;">📞 (518) 555-1234 | info@yourplumbing.com</p>
-    <p>&copy; 2026 <!-- BUSINESS NAME --> Plumbing. All rights reserved.</p>
+    <p>&copy; 2026 <!-- BUSINESS NAME -->. All rights reserved. <strong>Licensed & Insured</strong></p>
   </div>
 </footer>
 </body>
