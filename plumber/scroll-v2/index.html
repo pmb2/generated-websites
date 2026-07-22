@@ -7,15 +7,16 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0a0f; color:#fff; overflow-x:hidden; }
-
 .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient(135deg,#0a0a0f,#1a1a2e,#0f1a2e); }
-.hero h1 { font-size:clamp(36px,5vw,64px); font-weight:800; margin-bottom:16px; background:linear-gradient(135deg,#fff 40%,#8899aa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.hero .tagline { font-size:clamp(16px,2vw,22px); color:#8899aa; margin-bottom:32px; max-width:600px; }
+.hero h1 { font-size:clamp(36px,5vw,64px); font-weight:800; margin-bottom:8px; background:linear-gradient(135deg,#fff 40%,#8899aa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero .tagline { font-size:clamp(16px,2vw,22px); color:#8899aa; margin-bottom:24px; max-width:600px; }
+.hero .stars { color:#f1c40f; font-size:14px; margin-bottom:8px; }
 .hero .cta { display:inline-block; padding:16px 40px; background:linear-gradient(135deg,#e67e22,#d35400); color:#fff; text-decoration:none; border-radius:8px; font-size:18px; font-weight:600; }
-.hero .phone { display:block; font-size:22px; color:rgba(255,255,255,0.6); margin-top:12px; letter-spacing:1px; }
+.hero .phone { display:block; font-size:20px; color:rgba(255,255,255,0.6); margin-top:12px; }
+.ob-strip { display:flex; justify-content:center; gap:4px; flex-wrap:wrap; max-width:700px; margin:20px auto 0; }
+.ob-strip span { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:8px 14px; font-size:11px; color:rgba(255,255,255,0.7); }
 .scroll-hint { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); font-size:12px; letter-spacing:3px; color:rgba(255,255,255,0.15); animation:bounce 2s infinite; }
 @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
-
 #world { width:100%; }
 .scene-still { width:100%; height:100vh; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
 .scene-still img { width:100%; height:100%; object-fit:cover; }
@@ -23,13 +24,12 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
 .scene-still .overlay .eyebrow { font-size:12px; text-transform:uppercase; letter-spacing:3px; color:#e67e22; margin-bottom:8px; }
 .scene-still .overlay h2 { font-size:36px; margin-bottom:8px; }
 .scene-still .overlay p { font-size:16px; color:#8899aa; max-width:500px; margin-bottom:32px; }
-
 #static-gallery { background:#0f1a2e; padding:80px 24px; }
-#static-gallery h2 { text-align:center; font-size:28px; margin-bottom:40px; color:rgba(255,255,255,0.8); }
+#static-gallery h2 { text-align:center; font-size:28px; margin-bottom:8px; }
+#static-gallery .sub { text-align:center; color:#8899aa; margin-bottom:40px; font-size:14px; }
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
 .gallery-item img { width:100%; border-radius:10px; }
 .gallery-item .caption { color:#8899aa; font-size:13px; text-align:center; margin-top:8px; letter-spacing:1px; text-transform:uppercase; }
-
 .pricing { padding:80px 24px; max-width:1100px; margin:0 auto; }
 .pricing h2 { font-size:36px; text-align:center; margin-bottom:8px; }
 .pricing .subtitle { text-align:center; color:#8899aa; margin-bottom:40px; }
@@ -38,53 +38,53 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
 .card.featured { border-color:#e67e22; background:rgba(230,126,34,0.05); }
 .card h3 { font-size:20px; margin-bottom:8px; }
 .card .price { font-size:36px; font-weight:700; color:#e67e22; margin:16px 0; }
+.card .fine { font-size:13px; color:#8899aa; margin-top:8px; }
 .card ul { list-style:none; text-align:left; margin:16px 0; }
 .card ul li { padding:6px 0; font-size:14px; color:#8899aa; }
 .card ul li::before { content:'✓ '; color:#27ae60; }
-
 .guarantee { background:linear-gradient(135deg,#0a0a0f,#0a1620); padding:80px 24px; text-align:center; }
 .guarantee h2 { font-size:28px; margin-bottom:16px; }
 .guarantee p { color:#8899aa; max-width:600px; margin:0 auto 24px; }
 .guarantee .cta { background:linear-gradient(135deg,#e67e22,#d35400); color:#fff; padding:14px 36px; border-radius:8px; text-decoration:none; font-weight:600; display:inline-block; }
-
-@media(max-width:768px){
-  .scene-still .overlay { padding:40px 20px; }
-  .scene-still .overlay h2 { font-size:24px; }
-}
+@media(max-width:768px){ .scene-still .overlay { padding:40px 20px; } .scene-still .overlay h2 { font-size:24px; } }
 </style>
 </head>
 <body>
-
 <div class="hero">
   <div>
+    <div class="stars">★★★★★ 4.8/5 — "Saved us at 2am. Fair price. Will call again." — Sarah M.</div>
     <h1>When Pipes Burst,<br>We Answer.</h1>
-    <p class="tagline">Emergency plumbing. Same-day service. No overtime charge.<br>Your home, our promise.</p>
+    <p class="tagline">Emergency plumbing. Same-day. No overtime. Licensed & insured.<br>Your home, our promise.</p>
     <a href="tel:+15185551234" class="cta">📞 Call Now — (518) 555-1234</a>
-    <span class="phone">24/7 Emergency Service</span>
+    <span class="phone">📱 We Pick Up 24/7 — Free Estimate Over the Phone</span>
+    <div class="ob-strip">
+      <span>🎯 Free estimate, no hidden fees</span>
+      <span>⚡ Same-day, always</span>
+      <span>✅ Licensed & insured</span>
+      <span>🛡️ 2-year warranty</span>
+    </div>
   </div>
   <div class="scroll-hint">↓ SCROLL FOR THE STORY ↓</div>
 </div>
-
 <div id="world"></div>
-
 <div id="static-gallery">
-  <h2>The Journey: Emergency → Peace</h2>
+  <h2>The Emergency Timeline</h2>
+  <p class="sub">This is what a real plumbing emergency looks like — and how we fix it.</p>
   <div class="gallery-grid">
     <div class="gallery-item"><img src="assets/scene1-panic.jpg" alt="Emergency"><div class="caption">🌙 PANIC — 2am Burst Pipe</div></div>
     <div class="gallery-item"><img src="assets/scene2-hope.jpg" alt="Response"><div class="caption">🚐 HOPE — Truck Arrives</div></div>
     <div class="gallery-item"><img src="assets/scene3-relief.jpg" alt="Before After"><div class="caption">🔧 RELIEF — Rust to Copper</div></div>
-    <div class="gallery-item"><img src="assets/scene4-peace.jpg" alt="Peace"><div class="caption">☀️ PEACE — Morning Normal</div></div>
+    <div class="gallery-item"><img src="assets/scene4-peace.jpg" alt="Peace"><div class="caption">☀️ PEACE — Morning Safe</div></div>
   </div>
 </div>
-
 <div class="pricing">
-  <h2>Pricing</h2>
-  <p class="subtitle">Your website books calls while you fix pipes.</p>
+  <h2>Pricing That Makes Sense</h2>
+  <p class="subtitle">No hidden fees. No overtime charges. Just honest work at a fair price.</p>
   <div class="cards">
     <div class="card featured">
       <h3>Scroll-World Premium</h3>
       <div class="price">$497 <small>setup</small></div>
-      <p>Immersive scroll-driven site that sells before you pick up the phone.</p>
+      <p>An immersive cinematic website that tells your story and books calls.</p>
       <ul>
         <li>4 cinematic scroll scenes with video</li>
         <li>Mobile-optimized, text-to-call</li>
@@ -92,27 +92,27 @@ body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif
         <li>First month free guarantee</li>
       </ul>
       <p style="color:#e67e22;font-weight:600;">$197/mo hosting & maintenance</p>
+      <p class="fine">100% satisfaction guarantee · Cancel anytime</p>
     </div>
     <div class="card">
       <h3>Standard Site</h3>
       <div class="price">$497 <small>setup</small></div>
-      <p>Clean, professional site for your business.</p>
+      <p>Clean, professional business website. Gets the job done.</p>
       <ul>
         <li>5 pages (Home, Services, About, Contact, Gallery)</li>
         <li>Mobile-friendly design</li>
         <li>Contact form + Google Maps</li>
       </ul>
       <p style="color:#8899aa;font-weight:600;">$197/mo hosting & maintenance</p>
+      <p class="fine">30-day money-back guarantee</p>
     </div>
   </div>
 </div>
-
 <div class="guarantee">
   <h2>🔨 Don't Pay Until You Get a Call</h2>
-  <p>First month free. If you don't book a single job from your new site in 30 days, cancel and owe nothing.</p>
+  <p>First month free. If you don't book a single job from your new site in 30 days, cancel and owe nothing. No risk. No fine print. Real guarantee from real people.</p>
   <a href="tel:+15185551234" class="cta">📞 (518) 555-1234</a>
 </div>
-
 <script src="assets/scrub-engine.js"></script>
 </body>
 </html>
