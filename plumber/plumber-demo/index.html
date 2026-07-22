@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premier Plumbing — When Pipes Burst, We Answer.</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0a0f; color:#fff; overflow-x:hidden; }
+.hero { position:relative; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; text-align:center; }
+.hero h1 { font-size:clamp(32px,5vw,64px); font-weight:800; margin-bottom:16px; background:linear-gradient(135deg,#fff 40%,#8899aa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p { font-size:clamp(16px,2vw,22px); color:#8899aa; margin-bottom:32px; max-width:600px; }
+.hero .cta { display:inline-block; padding:16px 40px; background:linear-gradient(135deg,#e67e22,#d35400); color:#fff; text-decoration:none; border-radius:8px; font-size:18px; font-weight:600; }
+.scroll-hint { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); font-size:12px; letter-spacing:3px; color:rgba(255,255,255,0.2); animation:bounce 2s infinite; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
+
+#world { width:100%; }
+.scene-still { width:100%; height:100vh; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.scene-still img { width:100%; height:100%; object-fit:cover; }
+.scene-still .overlay { position:absolute; inset:0; background:linear-gradient(0deg,rgba(0,0,0,0.6) 0%,transparent 40%); display:flex; flex-direction:column; justify-content:flex-end; padding:80px 40px; }
+.scene-still .overlay h2 { font-size:36px; margin-bottom:8px; }
+.scene-still .overlay p { font-size:16px; color:#8899aa; max-width:500px; margin-bottom:32px; }
+
+.pricing { padding:80px 24px; max-width:1100px; margin:0 auto; }
+.pricing h2 { font-size:36px; text-align:center; margin-bottom:8px; }
+.pricing .subtitle { text-align:center; color:#8899aa; margin-bottom:40px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+.card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:28px; text-align:center; }
+.card.featured { border-color:#e67e22; background:rgba(230,126,34,0.05); }
+.card h3 { font-size:20px; margin-bottom:8px; }
+.card .price { font-size:36px; font-weight:700; color:#e67e22; margin:16px 0; }
+.card .price small { font-size:14px; color:#8899aa; }
+.card p { font-size:14px; color:#8899aa; line-height:1.5; margin-bottom:16px; }
+.card ul { list-style:none; text-align:left; margin:16px 0; }
+.card ul li { padding:6px 0; font-size:14px; color:#8899aa; }
+.card ul li::before { content:'✓ '; color:#27ae60; }
+
+.guarantee { background:linear-gradient(135deg,#0a0a0f,#0a1620); padding:80px 24px; text-align:center; }
+.guarantee h2 { font-size:28px; margin-bottom:16px; }
+.guarantee p { color:#8899aa; max-width:600px; margin:0 auto; }
+
+@media(max-width:768px){
+  .scene-still .overlay { padding:40px 20px; }
+  .scene-still .overlay h2 { font-size:24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero" style="background:linear-gradient(135deg,#0a0a0f,#1a1a2e);">
+  <div>
+    <h1>When Pipes Burst,<br>We Answer.</h1>
+    <p>Emergency plumbing. Same-day service. No overtime charge.<br>Your home, our promise.</p>
+    <a href="tel:+15185551234" class="cta">Call Now — (518) 555-1234</a>
+  </div>
+  <div class="scroll-hint">↓ SCROLL TO SEE THE TRANSFORMATION ↓</div>
+</div>
+
+<!-- Scene containers for scroll-world engine -->
+<div id="world"></div>
+
+<div class="pricing">
+  <h2>Built for Plumbers, Priced for Growth</h2>
+  <p class="subtitle">Your website books calls while you fix pipes.</p>
+  <div class="cards">
+    <div class="card featured">
+      <h3>Scroll-World Premium</h3>
+      <div class="price">$497 <small>setup</small></div>
+      <p>Immersive scroll-driven site that sells before you pick up the phone.</p>
+      <ul>
+        <li>4 cinematic scroll scenes with video</li>
+        <li>Mobile-optimized, text-to-call</li>
+        <li>SEO-optimized for local search</li>
+        <li>First month free guarantee</li>
+      </ul>
+      <p style="color:#e67e22;font-weight:600;">$197/mo hosting & maintenance</p>
+    </div>
+    <div class="card">
+      <h3>Standard Website</h3>
+      <div class="price">$497 <small>setup</small></div>
+      <p>Clean, professional site for your business.</p>
+      <ul>
+        <li>5 pages (Home, Services, About, Contact, Gallery)</li>
+        <li>Mobile-friendly design</li>
+        <li>Contact form + Google Maps</li>
+      </ul>
+      <p style="color:#8899aa;font-weight:600;">$197/mo hosting & maintenance</p>
+    </div>
+  </div>
+</div>
+
+<div class="guarantee">
+  <h2>🔨 Don't Pay Until You Get a Call</h2>
+  <p>First month free. If you don't book a single job from your new site in 30 days, we cancel it and you owe nothing. No risk. No fine print.</p>
+  <div style="margin-top:30px;">
+    <a href="tel:+15185551234" class="hero cta">Call (518) 555-1234</a>
+  </div>
+</div>
+
+<script src="assets/scrub-engine.js"></script>
+<script>
+// Configuration — fill in clip URLs after generation
+const config = {
+  brand: { name: 'Premier Plumbing' },
+  sections: [
+    // Scene 1 - The Call
+    { id:'emergency', still:'assets/scene1-call.png', poster:'assets/poster1.jpg',
+      clip:'assets/scene1-call.mp4', eyebrow:'WHEN DISASTER STRIKES',
+      title:'Midnight. Burst Pipe. No Heat.', 
+      body:'Your basement is flooding, the kids are cold, and every minute counts. We answer — any hour, any day.' },
+    // Scene 2 - The Arrival
+    { id:'arrival', still:'assets/scene2-arrival.png', poster:'assets/poster2.jpg',
+      clip:'assets/scene2-arrival.mp4', eyebrow:'THE RIGHT TOOLS',
+      title:'Professional. Equipped. On Time.',
+      body:'Fully stocked trucks with everything from copper cutters to drain snakes. Same-day service, always.' },
+    // Scene 3 - The Fix (BEFORE/AFTER)
+    { id:'fix', still:'assets/scene3-fix.png', poster:'assets/poster3.jpg',
+      clip:'assets/scene3-fix.mp4', scroll:1.8, linger:0.4,
+      eyebrow:'BEFORE → AFTER',
+      title:'From Rust to Copper.',
+      body:'Old corroded pipes replaced with gleaming copper. Soldered by hand. Guaranteed for years. No mess left behind.' },
+    // Scene 4 - The Peace
+    { id:'peace', still:'assets/scene4-peace.png', poster:'assets/poster4.jpg',
+      clip:'assets/scene4-peace.mp4', eyebrow:'PROBLEM SOLVED',
+      title:'Back to Normal. Back to Life.', 
+      body:'Your home is dry, your family is warm, and the only thing you need to remember is our number.',
+      cta: { label:'Call (518) 555-1234', href:'tel:+15185551234' } }
+  ]
+};
+// Mount when scrub-engine is loaded
+</script>
+
+<div data-sw-seo style="display:none">
+<h1>Premier Plumbing — Emergency Plumbing Services</h1>
+<h2>24/7 Emergency Plumbing in Albany, Troy, Schenectady</h2>
+<p>Burst pipes, clogged drains, water heaters, and more. Same-day service. Call (518) 555-1234.</p>
+<h2>Services</h2>
+<p>Emergency repair, drain cleaning, pipe replacement, water heater installation, and full plumbing services.</p>
+<h2>Contact</h2>
+<p>Call (518) 555-1234 for a free estimate. We serve the entire Capital Region.</p>
+</div>
+</body>
+</html>
