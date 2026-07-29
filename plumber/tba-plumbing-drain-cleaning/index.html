@@ -10,6 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.tba-plumbing-and-drain-cleaning.com">
 <style>
+[data-theme="dark"]{--c3:#111318;--c4:#e2e4ea;--c5:#1a3050;--c6:#181b23}
 :root{--c1:#04903f;--c2:#3590c7;--c3:#fff;--c4:#272727;--c5:#144b76;--c6:#f8f8f8;--mw:1200px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Nunito Sans',Arial,sans-serif;color:var(--c4);background:var(--c3);line-height:1.6;overflow-x:hidden}
@@ -33,6 +34,10 @@ nav a{padding:8px 14px;text-decoration:none;color:var(--c4);font-size:14px;font-
 nav a:hover,nav a.active{color:var(--c5);background:rgba(53,144,199,.08)}
 .nav-cta{background:var(--c5);color:#fff!important;padding:8px 18px;border-radius:4px;font-weight:600}
 .nav-cta:hover{background:#0d3a5a!important}
+.theme-toggle{background:none;border:none;cursor:pointer;padding:6px;color:var(--c4);font-size:18px;line-height:1;display:flex;align-items:center;transition:color .2s;margin-left:2px}
+.theme-toggle:hover{color:var(--c2)}
+[data-theme="dark"] .theme-toggle{color:#e2e4ea}
+[data-theme="dark"] .theme-toggle:hover{color:var(--c2)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
 .hamburger span{display:block;width:28px;height:3px;background:var(--c5);border-radius:2px}
 .hero{background:linear-gradient(135deg,#0a2a3f 0%,var(--c5) 40%,#1a6ba0 100%);color:#fff;padding:100px 0 80px;position:relative;overflow:hidden}
@@ -174,6 +179,7 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
       <a href="#map">Service Area</a>
       <a href="#faq">FAQs</a>
       <a href="#contact" class="nav-cta">Request a Quote</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Dark/Light mode">&#9681;</button>
     </nav>
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -462,6 +468,10 @@ function rotateCity(){
   },300);
 }
 if(cities.length > 1) setInterval(rotateCity, 4000);
+
+// Dark/Light theme toggle
+(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark')})();
+function toggleTheme(){var h=document.documentElement,hD=h.getAttribute('data-theme')==='dark';hD?(h.removeAttribute('data-theme'),localStorage.setItem('theme','light')):(h.setAttribute('data-theme','dark'),localStorage.setItem('theme','dark'))}
 
 // Hamburger toggle
 document.getElementById('hamburgerBtn')?.addEventListener('click',function(){
