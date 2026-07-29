@@ -457,22 +457,34 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
 </div>
 
 <script>
+try{
 // City name rotation for SEO
 var cities = ["Dallas","Plano","Frisco","Garland","Irving","Arlington","Richardson","Carrollton"];
-var cityIdx = 0;
-var cityEl = document.getElementById('cityDisplay');
+var cityIdx = 0, cityEl = document.getElementById('cityDisplay');
+
 function rotateCity(){
   cityIdx = (cityIdx+1)%cities.length;
-  if(cityEl) cityEl.style.opacity='0';
-  setTimeout(function(){
-    if(cityEl) { cityEl.textContent = cities[cityIdx]; cityEl.style.opacity='1'; }
-  },300);
+  if(cityEl){ cityEl.style.opacity='0';
+    setTimeout(function(){ if(cityEl){ cityEl.textContent = cities[cityIdx]; cityEl.style.opacity='1'; } },300);
+  }
 }
-if(cities.length > 1) setInterval(rotateCity, 4000);
+if(cities.length>1) setInterval(rotateCity,4000);
+}catch(e){console.log('city cycle:',e)}
 
+try{
 // Dark/Light theme toggle
-(function(){var t=localStorage.getItem('theme'),b=document.getElementById('themeToggle');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');if(b)b.innerHTML='&#9728;'}})();
-function toggleTheme(){var h=document.documentElement,hD=h.getAttribute('data-theme')==='dark',b=document.getElementById('themeToggle');hD?(h.removeAttribute('data-theme'),localStorage.setItem('theme','light'),b.innerHTML='&#9681;'):(h.setAttribute('data-theme','dark'),localStorage.setItem('theme','dark'),b.innerHTML='&#9728;')}
+(function(){
+  var t,b=document.getElementById('themeToggle');
+  try{t=localStorage.getItem('theme')}catch(e){}
+  if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');if(b)b.innerHTML='&#9728;'}
+})();
+
+function toggleTheme(){
+  var h=document.documentElement,hD=h.getAttribute('data-theme')==='dark',b=document.getElementById('themeToggle');
+  if(hD){h.removeAttribute('data-theme');try{localStorage.setItem('theme','light')}catch(e){}if(b)b.innerHTML='&#9681;'}
+  else{h.setAttribute('data-theme','dark');try{localStorage.setItem('theme','dark')}catch(e){}if(b)b.innerHTML='&#9728;'}
+}
+}catch(e){console.log('theme:',e)}
 
 // Hamburger toggle
 document.getElementById('hamburgerBtn')?.addEventListener('click',function(){
