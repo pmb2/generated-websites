@@ -36,10 +36,14 @@ nav a:hover,nav a.active{color:var(--c5);background:rgba(53,144,199,.08)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
 .hamburger span{display:block;width:28px;height:3px;background:var(--c5);border-radius:2px}
 .hero{background:linear-gradient(135deg,#0a2a3f 0%,var(--c5) 40%,#1a6ba0 100%);color:#fff;padding:100px 0 80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_043649_a98b5f43-8812-4b42-8896-00b57faffc0b.png') center/cover no-repeat;opacity:.12;z-index:0}
+.hero::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140603_b9a15a14-1087-488e-bcf9-6bc0b49b3acd.png') center/cover no-repeat; opacity:0.1; z-index:0; }
 .hero .container{position:relative;z-index:1;text-align:center}
 .hero h1{font-size:42px;font-weight:700;font-family:Montserrat,sans-serif;margin-bottom:20px;line-height:1.2}
-.hero h1 span{color:#7ec8e3}
+.hero h1 span.accent{color:#7ec8e3}
+.hero .city-cycle{display:inline-block;min-width:220px;text-align:center}
+.hero .city-cycle span{display:inline-block;color:#7ec8e3;font-weight:700;transition:opacity .4s}
+.hero .city-cycle .typing-cursor{display:inline-block;width:3px;height:32px;background:#7ec8e3;margin-left:4px;animation:blink .8s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .hero p{font-size:18px;max-width:750px;margin:0 auto 30px;opacity:.92;line-height:1.7;font-weight:300}
 .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .hero-buttons .btn{display:inline-block;padding:14px 32px;border-radius:6px;text-decoration:none;font-weight:600;font-size:16px;transition:all .3s}
@@ -182,7 +186,7 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="container">
-    <h1>Trusted Plumber Service<br><span>in Dallas</span></h1>
+    <h1>Trusted Plumber Service<br><span class="city-cycle"><span id="cityDisplay">Dallas</span><span class="typing-cursor"></span></span></h1>
     <p>Looking for a trusted local plumber in Dallas and the surrounding DFW Metroplex area? TBA Plumbing & Drain Cleaning provides professional residential and commercial plumber services. Whether you need a repair, maintenance, installation, or emergency assistance, our experienced team delivers reliable solutions with honest pricing and quality workmanship.</p>
     <div class="hero-buttons">
       <a href="tel:(214) 555-0199" class="btn btn-primary">(214) 555-0199</a>
@@ -195,7 +199,7 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
 <section class="about-section" id="about">
   <div class="container">
     <div class="about-wrap" id="aboutContent">
-      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083132_7f0c06e1-7859-4beb-9fdd-9671e49d34f8.png" alt="About us">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140630_6f50d14c-a186-4690-ad3f-21db5e2a6a05.png" alt="About us">
       <div>
         <p class="section-label" style="text-align:left">About Us</p>
         <h3>Locally Owned & Operated in Dallas</h3>
@@ -298,12 +302,12 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
     <h2 class="section-title">Plumber Projects <span>in Dallas</span></h2>
     <p class="section-subtitle">From minor repairs to major installations, see examples of our work across DFW Metroplex.</p>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083125_7d1624aa-800a-4c16-86b7-3b35f27d07d6.png" alt="Service photo 1"></div>
-      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083132_7f0c06e1-7859-4beb-9fdd-9671e49d34f8.png" alt="Service photo 2"></div>
-      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083125_e4ff157a-40ed-41db-b0af-4260ba25a7e8.png" alt="Service photo 3"></div>
-      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083125_067028e0-2023-406b-9eb1-8365b383f702.png" alt="Service photo 4"></div>
-      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083113_c3113ead-7022-4617-80c6-b2faca4457a7.png" alt="Service photo 5"></div>
-      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083110_0ef22c5e-0cdb-428c-83b9-00e80997a36c.png" alt="Service photo 6"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140609_62838acd-cf4d-40bb-ade1-618827d6586d.png" alt="Service photo 1"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140630_6f50d14c-a186-4690-ad3f-21db5e2a6a05.png" alt="Service photo 2"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140638_d8b1f556-a489-450e-98f7-b53d57a8aa5f.png" alt="Service photo 3"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140638_0e9033ba-1a62-46a5-b0ba-3c99bfd0b9a2.png" alt="Service photo 4"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140647_e9359d2c-a455-4374-82f2-c26ab0d39656.png" alt="Service photo 5"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083125_19d1c730-12dd-47db-865f-3383ee276d81.png" alt="Service photo 6"></div>
     </div>
   </div>
 </section>
@@ -454,6 +458,19 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
 </div>
 
 <script>
+// City name rotation for SEO
+var cities = [Dallas","Plano","Frisco","Garland","Irving","Arlington","Richardson","Carrollton];
+var cityIdx = 0;
+var cityEl = document.getElementById('cityDisplay');
+function rotateCity(){
+  cityIdx = (cityIdx+1)%cities.length;
+  if(cityEl) cityEl.style.opacity='0';
+  setTimeout(function(){
+    if(cityEl) { cityEl.textContent = cities[cityIdx]; cityEl.style.opacity='1'; }
+  },300);
+}
+if(cities.length > 1) setInterval(rotateCity, 4000);
+
 // Hamburger toggle
 document.getElementById('hamburgerBtn')?.addEventListener('click',function(){
   document.getElementById('mainNav')?.classList.toggle('open');
