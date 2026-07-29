@@ -10,8 +10,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.tba-plumbing-and-drain-cleaning.com">
 <style>
-[data-theme="dark"]{--c3:#111318;--c4:#e2e4ea;--c5:#1a3050;--c6:#181b23}
 :root{--c1:#04903f;--c2:#3590c7;--c3:#fff;--c4:#272727;--c5:#144b76;--c6:#f8f8f8;--mw:1200px}
+html[data-theme="dark"]{--c3:#111318;--c4:#e2e4ea;--c5:#1a3050;--c6:#181b23}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Nunito Sans',Arial,sans-serif;color:var(--c4);background:var(--c3);line-height:1.6;overflow-x:hidden}
 @font-face{font-family:'Nunito Sans';font-style:normal;font-weight:200 1000;font-display:swap;src:url('https://irp.cdn-website.com/fonts/s/nunitosans/v19/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp7t1R-s.woff2') format('woff2')}
@@ -36,8 +36,8 @@ nav a:hover,nav a.active{color:var(--c5);background:rgba(53,144,199,.08)}
 .nav-cta:hover{background:#0d3a5a!important}
 .theme-toggle{background:none;border:none;cursor:pointer;padding:6px;color:var(--c4);font-size:18px;line-height:1;display:flex;align-items:center;transition:color .2s;margin-left:2px}
 .theme-toggle:hover{color:var(--c2)}
-[data-theme="dark"] .theme-toggle{color:#e2e4ea}
-[data-theme="dark"] .theme-toggle:hover{color:var(--c2)}
+html[data-theme="dark"] .theme-toggle{color:#e2e4ea}
+html[data-theme="dark"] .theme-toggle:hover{color:var(--c2)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
 .hamburger span{display:block;width:28px;height:3px;background:var(--c5);border-radius:2px}
 .hero{color:#fff;padding:100px 0 80px;position:relative;overflow:hidden}
@@ -180,7 +180,7 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
       <a href="#map">Service Area</a>
       <a href="#faq">FAQs</a>
       <a href="#contact" class="nav-cta">Request a Quote</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Dark/Light mode">&#9681;</button>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Dark/Light mode">&#9681;</button>
     </nav>
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -376,7 +376,7 @@ footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
         <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><p>4827 McKinney Ave, Dallas, TX 75205</p></div>
         <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><p>(214) 555-0199</p></div>
         <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><p>info@tbaplumbing.com</p></div>
-        <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><p>Mon-Fri: 7am-7pm | Sat: 8am-4pm | Sun: Emergencies only</p></div>
+        <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><p>Mon-Fri: 7am-7pm | Sat: 8am-4pm</p></div>
       </div>
       <form class="contact-form" action="https://formspree.io/f/xqkrgepq" method="POST">
         <div class="form-row">
@@ -471,8 +471,8 @@ function rotateCity(){
 if(cities.length > 1) setInterval(rotateCity, 4000);
 
 // Dark/Light theme toggle
-(function(){var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark')})();
-function toggleTheme(){var h=document.documentElement,hD=h.getAttribute('data-theme')==='dark';hD?(h.removeAttribute('data-theme'),localStorage.setItem('theme','light')):(h.setAttribute('data-theme','dark'),localStorage.setItem('theme','dark'))}
+(function(){var t=localStorage.getItem('theme'),b=document.getElementById('themeToggle');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');if(b)b.innerHTML='&#9728;'}})();
+function toggleTheme(){var h=document.documentElement,hD=h.getAttribute('data-theme')==='dark',b=document.getElementById('themeToggle');hD?(h.removeAttribute('data-theme'),localStorage.setItem('theme','light'),b.innerHTML='&#9681;'):(h.setAttribute('data-theme','dark'),localStorage.setItem('theme','dark'),b.innerHTML='&#9728;')}
 
 // Hamburger toggle
 document.getElementById('hamburgerBtn')?.addEventListener('click',function(){
