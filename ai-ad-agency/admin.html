@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Ad Agency — Admin Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--text:#f0f0f5;--muted:#8888a0;--accent:#6c5ce7;--accent2:#00cec9;--green:#00b894;--red:#e17055;--radius:12px;--radius-sm:8px}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Header */
+header{padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+header h1{font-size:1.4rem;font-weight:800}
+header h1 span{color:var(--accent)}
+header .stats{display:flex;gap:24px;font-size:13px}
+header .stats .stat{display:flex;align-items:center;gap:6px;color:var(--muted)}
+header .stats .stat strong{color:var(--text);font-size:16px}
+header .actions{display:flex;gap:10px}
+.btn{padding:10px 22px;border-radius:60px;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,92,231,0.3)}
+.btn-secondary{background:var(--bg3);border:1px solid rgba(255,255,255,0.08);color:var(--text)}
+.btn-secondary:hover{background:rgba(255,255,255,0.06);border-color:var(--accent)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-danger:hover{transform:translateY(-2px)}
+.btn-success{background:var(--green);color:#fff}
+
+/* Controls */
+.controls{display:flex;gap:12px;flex-wrap:wrap;padding:20px 0;align-items:center}
+.search-box{flex:1;min-width:200px}
+.search-box input{width:100%;padding:12px 16px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.08);background:var(--bg3);color:var(--text);font-size:13px;font-family:inherit}
+.search-box input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(108,92,231,0.12)}
+.filter-group{display:flex;gap:8px;flex-wrap:wrap}
+.filter-group select{padding:12px 16px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.08);background:var(--bg3);color:var(--text);font-size:13px;font-family:inherit;appearance:none;cursor:pointer}
+.filter-group select:focus{outline:none;border-color:var(--accent)}
+
+/* Table */
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);margin-top:8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{background:var(--bg3)}
+th{padding:14px 16px;text-align:left;font-weight:600;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;cursor:pointer;user-select:none}
+th:hover{color:var(--text)}
+th .sort-arrow{opacity:0.3;margin-left:4px}
+th.active .sort-arrow{opacity:1;color:var(--accent)}
+td{padding:14px 16px;border-top:1px solid rgba(255,255,255,0.04);white-space:nowrap}
+tr:hover td{background:rgba(108,92,231,0.04)}
+tr.unread td{font-weight:600}
+tr.unread td:first-child::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
+.badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600}
+.badge-roofer{background:rgba(108,92,231,0.15);color:#a29bfe}
+.badge-plumber{background:rgba(0,206,201,0.15);color:#81ecec}
+.badge-hvac{background:rgba(253,121,168,0.15);color:#fd79a8}
+.badge-electrician{background:rgba(253,203,110,0.15);color:#fdcb6e}
+.badge-landscaper{background:rgba(85,239,196,0.15);color:#55efc4}
+.badge-default{background:rgba(255,255,255,0.06);color:var(--muted)}
+.actions-cell{display:flex;gap:6px}
+.actions-cell button{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:4px;font-size:13px;transition:all 0.2s ease}
+.actions-cell button:hover{color:var(--text);background:rgba(255,255,255,0.06)}
+
+/* Empty state */
+.empty-state{text-align:center;padding:80px 40px}
+.empty-state .icon{font-size:3rem;margin-bottom:16px}
+.empty-state h3{font-size:1.2rem;margin-bottom:8px}
+.empty-state p{color:var(--muted);font-size:14px;max-width:400px;margin:0 auto}
+
+/* Detail panel */
+.detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.detail-overlay.active{display:flex}
+.detail-panel{background:var(--bg2);border-radius:var(--radius);padding:40px;max-width:500px;width:100%;border:1px solid rgba(255,255,255,0.08);max-height:85vh;overflow-y:auto;position:relative}
+.detail-panel .close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,0.06);color:var(--text);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.detail-panel .close:hover{background:rgba(255,255,255,0.12)}
+.detail-panel h2{font-size:1.3rem;margin-bottom:4px}
+.detail-panel .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+.detail-field{margin-bottom:14px}
+.detail-field label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.detail-field .value{font-size:14px;padding:10px 14px;background:var(--bg3);border-radius:var(--radius-sm);word-break:break-word}
+.detail-field .value.message{white-space:pre-wrap}
+.detail-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;padding:14px 24px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;z-index:2000;transform:translateY(100px);opacity:0;transition:all 0.4s ease}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-success{background:var(--green);color:#fff}
+.toast-info{background:var(--accent);color:#fff}
+
+/* Mobile */
+@media(max-width:768px){
+  header{flex-direction:column;align-items:flex-start}
+  header .actions{width:100%}
+  header .actions .btn{flex:1;justify-content:center}
+  .controls{flex-direction:column}
+  .search-box{width:100%}
+  .detail-panel{padding:24px 20px}
+}
+
+/* Export hint */
+.export-hint{font-size:12px;color:var(--muted);padding:12px 0;text-align:right}
+.export-hint a{color:var(--accent);text-decoration:none;cursor:pointer}
+.export-hint a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>AI Ad Agency <span>Admin</span></h1>
+    <div class="stats">
+      <div class="stat">Total: <strong id="totalCount">0</strong></div>
+      <div class="stat">Unread: <strong id="unreadCount" style="color:var(--accent)">0</strong></div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-success" onclick="exportCSV()">📥 Export CSV</button>
+    <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
+    <button class="btn btn-danger" onclick="clearAll()">🗑 Clear All</button>
+  </div>
+</header>
+
+<div class="container">
+  <div class="controls">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search by name, business, email, city..." oninput="renderTable()">
+    </div>
+    <div class="filter-group">
+      <select id="tradeFilter" onchange="renderTable()">
+        <option value="">All Trades</option>
+        <option>Roofer</option>
+        <option>Plumber</option>
+        <option>HVAC</option>
+        <option>Electrician</option>
+        <option>Landscaper</option>
+        <option>Painter</option>
+        <option>Concrete Contractor</option>
+        <option>Tree Service</option>
+        <option>Cleaning Service</option>
+        <option>Handyman</option>
+        <option>Other</option>
+      </select>
+      <select id="statusFilter" onchange="renderTable()">
+        <option value="">All Status</option>
+        <option value="unread">Unread</option>
+        <option value="read">Read</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-wrap" id="tableWrap">
+    <div class="empty-state" id="emptyState">
+      <div class="icon">📭</div>
+      <h3>No Submissions Yet</h3>
+      <p>Form submissions from the main site will appear here. They sync automatically — no database setup needed.</p>
+    </div>
+    <table id="dataTable" style="display:none">
+      <thead>
+        <tr>
+          <th onclick="sortBy('name')" class="active">Name <span class="sort-arrow">↓</span></th>
+          <th onclick="sortBy('business')">Business <span class="sort-arrow">↓</span></th>
+          <th onclick="sortBy('trade')">Trade <span class="sort-arrow">↓</span></th>
+          <th onclick="sortBy('phone')">Phone <span class="sort-arrow">↓</span></th>
+          <th onclick="sortBy('email')">Email <span class="sort-arrow">↓</span></th>
+          <th onclick="sortBy('city')">City <span class="sort-arrow">↓</span></th>
+          <th onclick="sortBy('timestamp')">Date <span class="sort-arrow">↓</span></th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <div class="export-hint">
+    <span>💡 Data is stored locally. <a onclick="downloadJSON()">Download raw JSON backup</a></span>
+  </div>
+</div>
+
+<!-- Detail Panel -->
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-panel" id="detailPanel">
+    <button class="close" onclick="closeDetail()">✕</button>
+    <h2 id="detailName"></h2>
+    <div class="sub" id="detailSub"></div>
+    <div id="detailFields"></div>
+    <div class="detail-actions">
+      <button class="btn btn-success" onclick="markRead(currentDetailId)">✓ Mark as Read</button>
+      <button class="btn btn-danger" onclick="deleteSubmission(currentDetailId)">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let submissions = [];
+let sortKey = 'timestamp';
+let sortAsc = false;
+let currentDetailId = null;
+
+function loadData() {
+  // Try localStorage first (where the main site saves)
+  try {
+    const local = JSON.parse(localStorage.getItem('aiad_submissions') || '[]');
+    submissions = local;
+  } catch(_) {}
+
+  // Also try to fetch from a server-side JSON file if it exists
+  fetch('submissions.json').then(r => {
+    if (!r.ok) throw new Error('no file');
+    return r.json();
+  }).then(remote => {
+    if (Array.isArray(remote)) {
+      // Merge remote with local, deduplicate by ID
+      const idSet = new Set(submissions.map(s => s.id));
+      remote.forEach(s => { if (!idSet.has(s.id)) { submissions.push(s); idSet.add(s.id); } });
+      saveLocal();
+      renderTable();
+    }
+  }).catch(() => {
+    // No remote file — that's fine, we're in static mode
+    renderTable();
+  });
+
+  renderTable();
+}
+
+function saveLocal() {
+  try { localStorage.setItem('aiad_submissions', JSON.stringify(submissions)); } catch(_) {}
+}
+
+function renderTable() {
+  const search = (document.getElementById('searchInput').value || '').toLowerCase();
+  const tradeFilter = document.getElementById('tradeFilter').value;
+  const statusFilter = document.getElementById('statusFilter').value;
+
+  let filtered = submissions.filter(s => {
+    if (search && !s.name?.toLowerCase().includes(search) && !s.business?.toLowerCase().includes(search)
+        && !s.email?.toLowerCase().includes(search) && !s.city?.toLowerCase().includes(search)) return false;
+    if (tradeFilter && s.trade !== tradeFilter) return false;
+    if (statusFilter === 'unread' && s.read) return false;
+    if (statusFilter === 'read' && !s.read) return false;
+    return true;
+  });
+
+  // Sort
+  filtered.sort((a, b) => {
+    let va = a[sortKey] || '', vb = b[sortKey] || '';
+    if (sortKey === 'timestamp') { va = new Date(va).getTime(); vb = new Date(vb).getTime(); }
+    else { va = va.toString().toLowerCase(); vb = vb.toString().toLowerCase(); }
+    return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+  });
+
+  // Update counts
+  document.getElementById('totalCount').textContent = submissions.length;
+  document.getElementById('unreadCount').textContent = submissions.filter(s => !s.read).length;
+
+  // Update column sorts
+  document.querySelectorAll('th').forEach(th => th.classList.remove('active'));
+  const activeTh = Array.from(document.querySelectorAll('th')).find(th => th.textContent.includes(sortKey === 'name' ? 'Name' : sortKey.charAt(0).toUpperCase() + sortKey.slice(1)));
+  if (activeTh) activeTh.classList.add('active');
+
+  const tbody = document.getElementById('tableBody');
+  const table = document.getElementById('dataTable');
+  const empty = document.getElementById('emptyState');
+
+  if (filtered.length === 0) {
+    table.style.display = 'none';
+    empty.style.display = 'block';
+    if (submissions.length > 0) {
+      empty.querySelector('h3').textContent = 'No Matching Results';
+      empty.querySelector('p').textContent = 'Try changing your search or filters.';
+    }
+    return;
+  }
+
+  table.style.display = '';
+  empty.style.display = 'none';
+
+  tbody.innerHTML = filtered.map(s => `
+    <tr class="${s.read ? '' : 'unread'}" onclick="openDetail('${s.id}')">
+      <td>${esc(s.name)}</td>
+      <td>${esc(s.business)}</td>
+      <td><span class="badge badge-${(s.trade || '').toLowerCase().replace(/ /g,'') || 'default'}">${esc(s.trade || '—')}</span></td>
+      <td><a href="tel:${esc(s.phone)}" style="color:var(--accent);text-decoration:none" onclick="event.stopPropagation()">${esc(s.phone)}</a></td>
+      <td><a href="mailto:${esc(s.email)}" style="color:var(--accent);text-decoration:none" onclick="event.stopPropagation()">${esc(s.email)}</a></td>
+      <td>${esc(s.city)}</td>
+      <td>${formatDate(s.timestamp)}</td>
+      <td><div class="actions-cell"><button onclick="event.stopPropagation();openDetail('${s.id}')" title="View">👁</button><button onclick="event.stopPropagation();deleteSubmission('${s.id}')" title="Delete" style="color:var(--red)">✕</button></div></td>
+    </tr>
+  `).join('');
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+function formatDate(ts) {
+  if (!ts) return '—';
+  const d = new Date(ts);
+  return d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit'});
+}
+
+function sortBy(key) {
+  if (sortKey === key) sortAsc = !sortAsc;
+  else { sortKey = key; sortAsc = false; }
+  renderTable();
+}
+
+function openDetail(id) {
+  const s = submissions.find(x => x.id === id);
+  if (!s) return;
+  currentDetailId = id;
+  document.getElementById('detailName').textContent = s.name || 'Unknown';
+  document.getElementById('detailSub').textContent = `${s.business || '—'} · ${s.trade || '—'} · ${formatDate(s.timestamp)}`;
+
+  const fields = [
+    {label:'Business', val:s.business},
+    {label:'Trade', val:s.trade},
+    {label:'Phone', val:s.phone, link:'tel:'+s.phone},
+    {label:'Email', val:s.email, link:'mailto:'+s.email},
+    {label:'City', val:s.city},
+    {label:'Message', val:s.message || '(none)', cls:'message'},
+    {label:'Submitted', val:formatDate(s.timestamp)},
+    {label:'Status', val:s.read ? 'Read' : 'Unread'},
+  ];
+
+  document.getElementById('detailFields').innerHTML = fields.map(f => `
+    <div class="detail-field">
+      <label>${f.label}</label>
+      <div class="value ${f.cls||''}">${f.link ? `<a href="${f.link}" style="color:var(--accent);text-decoration:none">${esc(f.val)}</a>` : esc(f.val)}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('detailOverlay').classList.add('active');
+}
+
+function closeDetail() { document.getElementById('detailOverlay').classList.remove('active'); currentDetailId = null; }
+document.getElementById('detailOverlay').addEventListener('click', e => { if(e.target === e.currentTarget) closeDetail(); });
+
+function markRead(id) {
+  const s = submissions.find(x => x.id === id);
+  if (s) { s.read = true; saveLocal(); renderTable(); closeDetail(); showToast('Marked as read', 'success'); }
+}
+
+function deleteSubmission(id) {
+  if (!confirm('Delete this submission permanently?')) return;
+  submissions = submissions.filter(x => x.id !== id);
+  saveLocal(); renderTable(); closeDetail(); showToast('Deleted', 'success');
+}
+
+function clearAll() {
+  if (!confirm('Delete ALL submissions? This cannot be undone.')) return;
+  submissions = []; saveLocal(); renderTable(); showToast('All submissions cleared', 'info');
+}
+
+function refreshData() { loadData(); showToast('Refreshed', 'info'); }
+
+function exportCSV() {
+  if (submissions.length === 0) { showToast('No data to export', 'info'); return; }
+  const headers = ['Name','Business','Trade','Phone','Email','City','Message','Timestamp','Status'];
+  const rows = submissions.map(s => [
+    csv(s.name), csv(s.business), csv(s.trade), csv(s.phone), csv(s.email),
+    csv(s.city), csv(s.message), csv(s.timestamp), s.read ? 'Read' : 'Unread'
+  ]);
+  const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+  downloadFile(csvContent, 'aiad-submissions.csv', 'text/csv');
+  showToast('CSV downloaded', 'success');
+}
+
+function downloadJSON() {
+  if (submissions.length === 0) { showToast('No data', 'info'); return; }
+  downloadFile(JSON.stringify(submissions, null, 2), 'aiad-submissions.json', 'application/json');
+  showToast('JSON backup downloaded', 'success');
+}
+
+function csv(s) { const v = (s || '').toString().replace(/"/g,'""'); return `"${v}"`; }
+
+function downloadFile(content, filename, mime) {
+  const blob = new Blob([content], {type: mime});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 500);
+}
+
+function showToast(msg, type) {
+  const t = document.createElement('div');
+  t.className = `toast toast-${type}`;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 500); }, 2500);
+}
+
+// Keyboard shortcut
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeDetail();
+});
+
+// Load on start
+loadData();
+</script>
+</body>
+</html>
