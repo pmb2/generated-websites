@@ -1,400 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Ad Agency — Admin Panel</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>AI Ad Agency — Lead Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a26;--text:#f0f0f5;--muted:#8888a0;--accent:#6c5ce7;--accent2:#00cec9;--green:#00b894;--red:#e17055;--radius:12px;--radius-sm:8px}
-body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
+:root{--c1:#04903f;--c2:#3490c7;--c3:#fff;--c4:#272727;--c5:#1a3050;--c6:#f8f8f8}
+html[data-theme="dark"]{--c3:#111318;--c4:#e2e4ea;--c5:#1a3050;--c6:#181b23}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--c6);color:var(--c4);line-height:1.6;min-height:100vh}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
-
-/* Header */
-header{padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-header h1{font-size:1.4rem;font-weight:800}
-header h1 span{color:var(--accent)}
-header .stats{display:flex;gap:24px;font-size:13px}
-header .stats .stat{display:flex;align-items:center;gap:6px;color:var(--muted)}
-header .stats .stat strong{color:var(--text);font-size:16px}
-header .actions{display:flex;gap:10px}
-.btn{padding:10px 22px;border-radius:60px;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,92,231,0.3)}
-.btn-secondary{background:var(--bg3);border:1px solid rgba(255,255,255,0.08);color:var(--text)}
-.btn-secondary:hover{background:rgba(255,255,255,0.06);border-color:var(--accent)}
-.btn-danger{background:var(--red);color:#fff}
-.btn-danger:hover{transform:translateY(-2px)}
-.btn-success{background:var(--green);color:#fff}
-
-/* Controls */
-.controls{display:flex;gap:12px;flex-wrap:wrap;padding:20px 0;align-items:center}
-.search-box{flex:1;min-width:200px}
-.search-box input{width:100%;padding:12px 16px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.08);background:var(--bg3);color:var(--text);font-size:13px;font-family:inherit}
-.search-box input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(108,92,231,0.12)}
-.filter-group{display:flex;gap:8px;flex-wrap:wrap}
-.filter-group select{padding:12px 16px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.08);background:var(--bg3);color:var(--text);font-size:13px;font-family:inherit;appearance:none;cursor:pointer}
-.filter-group select:focus{outline:none;border-color:var(--accent)}
-
-/* Table */
-.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.05);margin-top:8px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-thead{background:var(--bg3)}
-th{padding:14px 16px;text-align:left;font-weight:600;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap;cursor:pointer;user-select:none}
-th:hover{color:var(--text)}
-th .sort-arrow{opacity:0.3;margin-left:4px}
-th.active .sort-arrow{opacity:1;color:var(--accent)}
-td{padding:14px 16px;border-top:1px solid rgba(255,255,255,0.04);white-space:nowrap}
-tr:hover td{background:rgba(108,92,231,0.04)}
-tr.unread td{font-weight:600}
-tr.unread td:first-child::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
-.badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600}
-.badge-roofer{background:rgba(108,92,231,0.15);color:#a29bfe}
-.badge-plumber{background:rgba(0,206,201,0.15);color:#81ecec}
-.badge-hvac{background:rgba(253,121,168,0.15);color:#fd79a8}
-.badge-electrician{background:rgba(253,203,110,0.15);color:#fdcb6e}
-.badge-landscaper{background:rgba(85,239,196,0.15);color:#55efc4}
-.badge-default{background:rgba(255,255,255,0.06);color:var(--muted)}
-.actions-cell{display:flex;gap:6px}
-.actions-cell button{background:none;border:none;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:4px;font-size:13px;transition:all 0.2s ease}
-.actions-cell button:hover{color:var(--text);background:rgba(255,255,255,0.06)}
-
-/* Empty state */
-.empty-state{text-align:center;padding:80px 40px}
+header{padding:24px 0;background:var(--c3);border-bottom:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+html[data-theme="dark"] header{border-bottom-color:rgba(255,255,255,.06)}
+header h1{font-size:1.3rem;font-weight:800}
+header h1 span{color:var(--c1)}
+header .stats{display:flex;gap:20px;font-size:13px}
+header .stats .stat{display:flex;align-items:center;gap:5px;color:#666}
+header .stats .stat strong{color:var(--c4);font-size:15px}
+.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:20px 0}
+.controls input,.controls select{padding:9px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;background:var(--c3);color:var(--c4)}
+.controls input:focus,.controls select:focus{border-color:var(--c2);outline:none}
+.controls .btn{padding:9px 18px;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-primary{background:var(--c1);color:#fff}
+.btn-primary:hover{background:#027a34}
+.btn-secondary{background:var(--c3);color:var(--c4);border:1px solid #ddd}
+.btn-secondary:hover{background:var(--c6)}
+.btn-danger{background:#e74c3c;color:#fff}
+.btn-danger:hover{background:#c0392b}
+.btn-warning{background:#f39c12;color:#fff}
+.btn-warning:hover{background:#d68910}
+.lead-count{font-size:14px;color:#666;margin-left:auto}
+table{width:100%;border-collapse:collapse;background:var(--c3);border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+html[data-theme="dark"] table{box-shadow:0 2px 12px rgba(0,0,0,.2)}
+th{padding:14px 16px;text-align:left;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#666;background:var(--c6);cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:var(--c2)}
+th .sort{display:inline-block;margin-left:4px;opacity:.3}
+th.active .sort{opacity:1;color:var(--c2)}
+td{padding:14px 16px;font-size:14px;border-top:1px solid rgba(0,0,0,.04);vertical-align:middle}
+html[data-theme="dark"] td{border-top-color:rgba(255,255,255,.04)}
+tr:hover td{background:rgba(53,144,199,.04)}
+.empty-state{text-align:center;padding:80px 20px;color:#999}
 .empty-state .icon{font-size:3rem;margin-bottom:16px}
-.empty-state h3{font-size:1.2rem;margin-bottom:8px}
-.empty-state p{color:var(--muted);font-size:14px;max-width:400px;margin:0 auto}
-
-/* Detail panel */
-.detail-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
-.detail-overlay.active{display:flex}
-.detail-panel{background:var(--bg2);border-radius:var(--radius);padding:40px;max-width:500px;width:100%;border:1px solid rgba(255,255,255,0.08);max-height:85vh;overflow-y:auto;position:relative}
-.detail-panel .close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,0.06);color:var(--text);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
-.detail-panel .close:hover{background:rgba(255,255,255,0.12)}
-.detail-panel h2{font-size:1.3rem;margin-bottom:4px}
-.detail-panel .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
-.detail-field{margin-bottom:14px}
-.detail-field label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
-.detail-field .value{font-size:14px;padding:10px 14px;background:var(--bg3);border-radius:var(--radius-sm);word-break:break-word}
-.detail-field .value.message{white-space:pre-wrap}
-.detail-actions{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
-
-/* Toast */
-.toast{position:fixed;bottom:24px;right:24px;padding:14px 24px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;z-index:2000;transform:translateY(100px);opacity:0;transition:all 0.4s ease}
-.toast.show{transform:translateY(0);opacity:1}
-.toast-success{background:var(--green);color:#fff}
-.toast-info{background:var(--accent);color:#fff}
-
-/* Mobile */
-@media(max-width:768px){
-  header{flex-direction:column;align-items:flex-start}
-  header .actions{width:100%}
-  header .actions .btn{flex:1;justify-content:center}
-  .controls{flex-direction:column}
-  .search-box{width:100%}
-  .detail-panel{padding:24px 20px}
-}
-
-/* Export hint */
-.export-hint{font-size:12px;color:var(--muted);padding:12px 0;text-align:right}
-.export-hint a{color:var(--accent);text-decoration:none;cursor:pointer}
-.export-hint a:hover{text-decoration:underline}
+.empty-state h3{font-size:18px;margin-bottom:8px;color:var(--c4)}
+.badge{padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;display:inline-block}
+.badge-new{background:rgba(4,144,63,.12);color:var(--c1)}
+.badge-contacted{background:rgba(52,144,199,.12);color:var(--c2)}
+.actions{display:flex;gap:6px}
+.actions button{padding:5px 10px;border:none;border-radius:4px;font-size:12px;cursor:pointer;transition:all .2s;font-family:inherit;font-weight:500}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--c3);border-radius:12px;padding:32px;max-width:500px;width:100%;max-height:80vh;overflow-y:auto}
+.modal .close{float:right;background:none;border:none;font-size:22px;cursor:pointer;color:var(--c4);line-height:1}
+.modal h2{font-size:20px;font-weight:700;margin-bottom:4px}
+.modal .label{font-size:12px;text-transform:uppercase;font-weight:700;color:#999;letter-spacing:.5px;margin-top:16px;margin-bottom:4px}
+.modal .value{font-size:15px}
+.toast{position:fixed;bottom:24px;right:24px;padding:14px 24px;border-radius:8px;font-size:14px;font-weight:600;z-index:2000;opacity:0;transform:translateY(20px);transition:all .4s;background:var(--c1);color:#fff}
+.toast.show{opacity:1;transform:translateY(0)}
+.theme-toggle{background:none;border:none;cursor:pointer;padding:6px;color:var(--c4);font-size:18px;line-height:1;transition:color .2s}
+.theme-toggle:hover{color:var(--c2)}
+@media(max-width:768px){table,thead,tbody,th,td,tr{display:block}thead{display:none}td{padding:10px 14px;border-top:none}td::before{content:attr(data-label);display:block;font-size:11px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:4px}tr{border-bottom:1px solid rgba(0,0,0,.06);padding:8px 0}}
 </style>
 </head>
 <body>
-
 <header>
-  <div>
-    <h1>AI Ad Agency <span>Admin</span></h1>
-    <div class="stats">
-      <div class="stat">Total: <strong id="totalCount">0</strong></div>
-      <div class="stat">Unread: <strong id="unreadCount" style="color:var(--accent)">0</strong></div>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:1200px;margin:0 auto;padding:0 24px">
+    <div>
+      <h1>📋 AI Ad Agency <span>Leads</span></h1>
+      <div style="font-size:13px;color:#666;margin-top:2px">Free sample requests from your selling page</div>
     </div>
-  </div>
-  <div class="actions">
-    <button class="btn btn-success" onclick="exportCSV()">📥 Export CSV</button>
-    <button class="btn btn-secondary" onclick="refreshData()">🔄 Refresh</button>
-    <button class="btn btn-danger" onclick="clearAll()">🗑 Clear All</button>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div class="stats">
+        <span class="stat">Total: <strong id="totalCount">0</strong></span>
+        <span class="stat">New: <strong id="newCount" style="color:var(--c1)">0</strong></span>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">☀️</button>
+    </div>
   </div>
 </header>
-
 <div class="container">
   <div class="controls">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search by name, business, email, city..." oninput="renderTable()">
-    </div>
-    <div class="filter-group">
-      <select id="tradeFilter" onchange="renderTable()">
-        <option value="">All Trades</option>
-        <option>Roofer</option>
-        <option>Plumber</option>
-        <option>HVAC</option>
-        <option>Electrician</option>
-        <option>Landscaper</option>
-        <option>Painter</option>
-        <option>Concrete Contractor</option>
-        <option>Tree Service</option>
-        <option>Cleaning Service</option>
-        <option>Handyman</option>
-        <option>Other</option>
-      </select>
-      <select id="statusFilter" onchange="renderTable()">
-        <option value="">All Status</option>
-        <option value="unread">Unread</option>
-        <option value="read">Read</option>
-      </select>
-    </div>
+    <input type="text" id="searchInput" placeholder="🔍 Search by name, business, city..." oninput="renderTable()">
+    <select id="filterNiche" onchange="renderTable()"><option value="">All Niches</option><option>Roofing</option><option>Plumbing</option><option>HVAC</option><option>Electrical</option><option>Landscaping</option><option>Painting</option></select>
+    <select id="filterStatus" onchange="renderTable()"><option value="">All Status</option><option value="new">New</option><option value="contacted">Contacted</option></select>
+    <button class="btn btn-secondary" onclick="exportCSV()">📥 Export CSV</button>
+    <button class="btn btn-secondary" onclick="backupJSON()">💾 Backup JSON</button>
+    <button class="btn btn-danger" onclick="clearAll()">🗑️ Clear All</button>
+    <span class="lead-count" id="leadCount">0 leads</span>
   </div>
-
-  <div class="table-wrap" id="tableWrap">
-    <div class="empty-state" id="emptyState">
-      <div class="icon">📭</div>
-      <h3>No Submissions Yet</h3>
-      <p>Form submissions from the main site will appear here. They sync automatically — no database setup needed.</p>
-    </div>
-    <table id="dataTable" style="display:none">
-      <thead>
-        <tr>
-          <th onclick="sortBy('name')" class="active">Name <span class="sort-arrow">↓</span></th>
-          <th onclick="sortBy('business')">Business <span class="sort-arrow">↓</span></th>
-          <th onclick="sortBy('trade')">Trade <span class="sort-arrow">↓</span></th>
-          <th onclick="sortBy('phone')">Phone <span class="sort-arrow">↓</span></th>
-          <th onclick="sortBy('email')">Email <span class="sort-arrow">↓</span></th>
-          <th onclick="sortBy('city')">City <span class="sort-arrow">↓</span></th>
-          <th onclick="sortBy('timestamp')">Date <span class="sort-arrow">↓</span></th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="tableBody"></tbody>
-    </table>
-  </div>
-
-  <div class="export-hint">
-    <span>💡 Data is stored locally. <a onclick="downloadJSON()">Download raw JSON backup</a></span>
+  <table>
+    <thead>
+      <tr>
+        <th onclick="sortBy('timestamp')" id="th-timestamp">Date <span class="sort">▼</span></th>
+        <th onclick="sortBy('name')" id="th-name">Name <span class="sort">▼</span></th>
+        <th onclick="sortBy('business')" id="th-business">Business <span class="sort">▼</span></th>
+        <th onclick="sortBy('city')" id="th-city">City <span class="sort">▼</span></th>
+        <th onclick="sortBy('niche')" id="th-niche">Niche <span class="sort">▼</span></th>
+        <th onclick="sortBy('email')" id="th-email">Contact <span class="sort">▼</span></th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  <div class="empty-state" id="emptyState">
+    <div class="icon">📭</div>
+    <h3>No leads yet</h3>
+    <p>When someone fills out the free sample form on your selling page, they'll appear here.</p>
   </div>
 </div>
 
-<!-- Detail Panel -->
-<div class="detail-overlay" id="detailOverlay">
-  <div class="detail-panel" id="detailPanel">
+<!-- Detail Modal -->
+<div class="modal-overlay" id="detailModal" onclick="if(event.target===this)closeDetail()">
+  <div class="modal">
     <button class="close" onclick="closeDetail()">✕</button>
-    <h2 id="detailName"></h2>
-    <div class="sub" id="detailSub"></div>
-    <div id="detailFields"></div>
-    <div class="detail-actions">
-      <button class="btn btn-success" onclick="markRead(currentDetailId)">✓ Mark as Read</button>
-      <button class="btn btn-danger" onclick="deleteSubmission(currentDetailId)">Delete</button>
+    <h2 id="detailName">Lead Details</h2>
+    <div style="margin-top:20px">
+      <div class="label">Email</div><div class="value" id="detailEmail"></div>
+      <div class="label">Phone</div><div class="value" id="detailPhone"></div>
+      <div class="label">Business</div><div class="value" id="detailBusiness"></div>
+      <div class="label">City</div><div class="value" id="detailCity"></div>
+      <div class="label">Niche</div><div class="value" id="detailNiche"></div>
+      <div class="label">Notes</div><div class="value" id="detailNotes"></div>
+      <div class="label">Submitted</div><div class="value" id="detailDate"></div>
+    </div>
+    <div style="margin-top:20px;display:flex;gap:10px">
+      <button class="btn btn-primary" onclick="markContacted()">Mark Contacted</button>
+      <button class="btn btn-danger" onclick="deleteLead()">Delete</button>
     </div>
   </div>
 </div>
+
+<div class="toast" id="toast"></div>
 
 <script>
-let submissions = [];
-let sortKey = 'timestamp';
-let sortAsc = false;
-let currentDetailId = null;
+let leads = JSON.parse(localStorage.getItem('ai_ad_agency_leads') || '[]');
+let sortField = 'timestamp', sortDir = -1;
+let selectedIndex = -1;
 
-function loadData() {
-  // Try localStorage first (where the main site saves)
-  try {
-    const local = JSON.parse(localStorage.getItem('aiad_submissions') || '[]');
-    submissions = local;
-  } catch(_) {}
-
-  // Also try to fetch from a server-side JSON file if it exists
-  fetch('submissions.json').then(r => {
-    if (!r.ok) throw new Error('no file');
-    return r.json();
-  }).then(remote => {
-    if (Array.isArray(remote)) {
-      // Merge remote with local, deduplicate by ID
-      const idSet = new Set(submissions.map(s => s.id));
-      remote.forEach(s => { if (!idSet.has(s.id)) { submissions.push(s); idSet.add(s.id); } });
-      saveLocal();
-      renderTable();
-    }
-  }).catch(() => {
-    // No remote file — that's fine, we're in static mode
-    renderTable();
-  });
-
+function loadLeads(){
+  leads = JSON.parse(localStorage.getItem('ai_ad_agency_leads') || '[]');
   renderTable();
 }
 
-function saveLocal() {
-  try { localStorage.setItem('aiad_submissions', JSON.stringify(submissions)); } catch(_) {}
-}
-
-function renderTable() {
+function renderTable(){
   const search = (document.getElementById('searchInput').value || '').toLowerCase();
-  const tradeFilter = document.getElementById('tradeFilter').value;
-  const statusFilter = document.getElementById('statusFilter').value;
-
-  let filtered = submissions.filter(s => {
-    if (search && !s.name?.toLowerCase().includes(search) && !s.business?.toLowerCase().includes(search)
-        && !s.email?.toLowerCase().includes(search) && !s.city?.toLowerCase().includes(search)) return false;
-    if (tradeFilter && s.trade !== tradeFilter) return false;
-    if (statusFilter === 'unread' && s.read) return false;
-    if (statusFilter === 'read' && !s.read) return false;
+  const niche = document.getElementById('filterNiche').value;
+  const status = document.getElementById('filterStatus').value;
+  
+  let filtered = leads.filter(l => {
+    if(search && !(l.name||'').toLowerCase().includes(search) && !(l.business||'').toLowerCase().includes(search) && !(l.city||'').toLowerCase().includes(search)) return false;
+    if(niche && l.niche !== niche) return false;
+    if(status === 'new' && l._contacted) return false;
+    if(status === 'contacted' && !l._contacted) return false;
     return true;
   });
-
-  // Sort
-  filtered.sort((a, b) => {
-    let va = a[sortKey] || '', vb = b[sortKey] || '';
-    if (sortKey === 'timestamp') { va = new Date(va).getTime(); vb = new Date(vb).getTime(); }
-    else { va = va.toString().toLowerCase(); vb = vb.toString().toLowerCase(); }
-    return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+  
+  filtered.sort((a,b) => {
+    let va = a[sortField] || '', vb = b[sortField] || '';
+    if(sortField === 'timestamp') va = new Date(va).getTime() || 0, vb = new Date(vb).getTime() || 0;
+    else {va = va.toString().toLowerCase(); vb = vb.toString().toLowerCase();}
+    return va < vb ? -sortDir : va > vb ? sortDir : 0;
   });
-
-  // Update counts
-  document.getElementById('totalCount').textContent = submissions.length;
-  document.getElementById('unreadCount').textContent = submissions.filter(s => !s.read).length;
-
-  // Update column sorts
-  document.querySelectorAll('th').forEach(th => th.classList.remove('active'));
-  const activeTh = Array.from(document.querySelectorAll('th')).find(th => th.textContent.includes(sortKey === 'name' ? 'Name' : sortKey.charAt(0).toUpperCase() + sortKey.slice(1)));
-  if (activeTh) activeTh.classList.add('active');
-
+  
   const tbody = document.getElementById('tableBody');
-  const table = document.getElementById('dataTable');
   const empty = document.getElementById('emptyState');
-
-  if (filtered.length === 0) {
-    table.style.display = 'none';
+  document.getElementById('totalCount').textContent = leads.length;
+  document.getElementById('newCount').textContent = leads.filter(l => !l._contacted).length;
+  document.getElementById('leadCount').textContent = filtered.length + ' of ' + leads.length + ' leads';
+  
+  if(filtered.length === 0){
+    tbody.innerHTML = '';
     empty.style.display = 'block';
-    if (submissions.length > 0) {
-      empty.querySelector('h3').textContent = 'No Matching Results';
-      empty.querySelector('p').textContent = 'Try changing your search or filters.';
-    }
     return;
   }
-
-  table.style.display = '';
   empty.style.display = 'none';
-
-  tbody.innerHTML = filtered.map(s => `
-    <tr class="${s.read ? '' : 'unread'}" onclick="openDetail('${s.id}')">
-      <td>${esc(s.name)}</td>
-      <td>${esc(s.business)}</td>
-      <td><span class="badge badge-${(s.trade || '').toLowerCase().replace(/ /g,'') || 'default'}">${esc(s.trade || '—')}</span></td>
-      <td><a href="tel:${esc(s.phone)}" style="color:var(--accent);text-decoration:none" onclick="event.stopPropagation()">${esc(s.phone)}</a></td>
-      <td><a href="mailto:${esc(s.email)}" style="color:var(--accent);text-decoration:none" onclick="event.stopPropagation()">${esc(s.email)}</a></td>
-      <td>${esc(s.city)}</td>
-      <td>${formatDate(s.timestamp)}</td>
-      <td><div class="actions-cell"><button onclick="event.stopPropagation();openDetail('${s.id}')" title="View">👁</button><button onclick="event.stopPropagation();deleteSubmission('${s.id}')" title="Delete" style="color:var(--red)">✕</button></div></td>
-    </tr>
-  `).join('');
+  
+  tbody.innerHTML = filtered.map((l,i) => {
+    const realIdx = leads.indexOf(l);
+    const date = l.timestamp ? new Date(l.timestamp).toLocaleDateString() : '—';
+    const statusBadge = l._contacted ? '<span class="badge badge-contacted">📞 Contacted</span>' : '<span class="badge badge-new">🆕 New</span>';
+    return `<tr>
+      <td data-label="Date">${date}</td>
+      <td data-label="Name"><a href="#" onclick="viewLead(${realIdx});return false" style="color:var(--c2);text-decoration:none;font-weight:600">${l.name || '—'}</a></td>
+      <td data-label="Business">${l.business || '—'}</td>
+      <td data-label="City">${l.city || '—'}</td>
+      <td data-label="Niche"><span class="badge badge-new">${l.niche || '—'}</span></td>
+      <td data-label="Contact"><a href="mailto:${l.email}" style="color:var(--c4);text-decoration:none">${l.email}</a></td>
+      <td data-label="Status">${statusBadge}</td>
+      <td data-label="Actions">
+        <div class="actions">
+          <button class="btn btn-primary" onclick="viewLead(${realIdx})" style="padding:4px 10px;font-size:12px">View</button>
+          ${l._contacted ? '' : `<button class="btn btn-warning" onclick="quickContact(${realIdx})" style="padding:4px 10px;font-size:12px">Contacted</button>`}
+          <button class="btn btn-danger" onclick="quickDelete(${realIdx})" style="padding:4px 10px;font-size:12px">Del</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+  
+  // Update sort indicators
+  document.querySelectorAll('th').forEach(th => th.classList.remove('active'));
+  const activeTh = document.getElementById('th-' + sortField);
+  if(activeTh) activeTh.classList.add('active');
 }
 
-function esc(s) { const d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
-
-function formatDate(ts) {
-  if (!ts) return '—';
-  const d = new Date(ts);
-  return d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit'});
-}
-
-function sortBy(key) {
-  if (sortKey === key) sortAsc = !sortAsc;
-  else { sortKey = key; sortAsc = false; }
+function sortBy(field){
+  if(sortField === field) sortDir *= -1;
+  else {sortField = field; sortDir = -1;}
   renderTable();
 }
 
-function openDetail(id) {
-  const s = submissions.find(x => x.id === id);
-  if (!s) return;
-  currentDetailId = id;
-  document.getElementById('detailName').textContent = s.name || 'Unknown';
-  document.getElementById('detailSub').textContent = `${s.business || '—'} · ${s.trade || '—'} · ${formatDate(s.timestamp)}`;
-
-  const fields = [
-    {label:'Business', val:s.business},
-    {label:'Trade', val:s.trade},
-    {label:'Phone', val:s.phone, link:'tel:'+s.phone},
-    {label:'Email', val:s.email, link:'mailto:'+s.email},
-    {label:'City', val:s.city},
-    {label:'Message', val:s.message || '(none)', cls:'message'},
-    {label:'Submitted', val:formatDate(s.timestamp)},
-    {label:'Status', val:s.read ? 'Read' : 'Unread'},
-  ];
-
-  document.getElementById('detailFields').innerHTML = fields.map(f => `
-    <div class="detail-field">
-      <label>${f.label}</label>
-      <div class="value ${f.cls||''}">${f.link ? `<a href="${f.link}" style="color:var(--accent);text-decoration:none">${esc(f.val)}</a>` : esc(f.val)}</div>
-    </div>
-  `).join('');
-
-  document.getElementById('detailOverlay').classList.add('active');
+function viewLead(idx){
+  selectedIndex = idx;
+  const l = leads[idx];
+  if(!l) return;
+  document.getElementById('detailName').textContent = l.name || 'Lead Details';
+  document.getElementById('detailEmail').textContent = l.email || '—';
+  document.getElementById('detailPhone').textContent = l.phone || '—';
+  document.getElementById('detailBusiness').textContent = l.business || '—';
+  document.getElementById('detailCity').textContent = l.city || '—';
+  document.getElementById('detailNiche').textContent = l.niche || '—';
+  document.getElementById('detailNotes').textContent = l.notes || '—';
+  document.getElementById('detailDate').textContent = l.timestamp ? new Date(l.timestamp).toLocaleString() : '—';
+  document.getElementById('detailModal').classList.add('active');
 }
 
-function closeDetail() { document.getElementById('detailOverlay').classList.remove('active'); currentDetailId = null; }
-document.getElementById('detailOverlay').addEventListener('click', e => { if(e.target === e.currentTarget) closeDetail(); });
+function closeDetail(){document.getElementById('detailModal').classList.remove('active')}
 
-function markRead(id) {
-  const s = submissions.find(x => x.id === id);
-  if (s) { s.read = true; saveLocal(); renderTable(); closeDetail(); showToast('Marked as read', 'success'); }
+function markContacted(){
+  if(selectedIndex < 0) return;
+  leads[selectedIndex]._contacted = true;
+  localStorage.setItem('ai_ad_agency_leads', JSON.stringify(leads));
+  closeDetail();
+  renderTable();
+  showToast('✅ Marked as contacted');
 }
 
-function deleteSubmission(id) {
-  if (!confirm('Delete this submission permanently?')) return;
-  submissions = submissions.filter(x => x.id !== id);
-  saveLocal(); renderTable(); closeDetail(); showToast('Deleted', 'success');
+function quickContact(idx){
+  leads[idx]._contacted = true;
+  localStorage.setItem('ai_ad_agency_leads', JSON.stringify(leads));
+  renderTable();
+  showToast('✅ Marked as contacted');
 }
 
-function clearAll() {
-  if (!confirm('Delete ALL submissions? This cannot be undone.')) return;
-  submissions = []; saveLocal(); renderTable(); showToast('All submissions cleared', 'info');
+function deleteLead(){
+  if(selectedIndex < 0 || !confirm('Delete this lead?')) return;
+  leads.splice(selectedIndex, 1);
+  localStorage.setItem('ai_ad_agency_leads', JSON.stringify(leads));
+  closeDetail();
+  renderTable();
+  showToast('🗑️ Lead deleted');
 }
 
-function refreshData() { loadData(); showToast('Refreshed', 'info'); }
-
-function exportCSV() {
-  if (submissions.length === 0) { showToast('No data to export', 'info'); return; }
-  const headers = ['Name','Business','Trade','Phone','Email','City','Message','Timestamp','Status'];
-  const rows = submissions.map(s => [
-    csv(s.name), csv(s.business), csv(s.trade), csv(s.phone), csv(s.email),
-    csv(s.city), csv(s.message), csv(s.timestamp), s.read ? 'Read' : 'Unread'
-  ]);
-  const csvContent = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
-  downloadFile(csvContent, 'aiad-submissions.csv', 'text/csv');
-  showToast('CSV downloaded', 'success');
+function quickDelete(idx){
+  if(!confirm('Delete this lead?')) return;
+  leads.splice(idx, 1);
+  localStorage.setItem('ai_ad_agency_leads', JSON.stringify(leads));
+  renderTable();
+  showToast('🗑️ Lead deleted');
 }
 
-function downloadJSON() {
-  if (submissions.length === 0) { showToast('No data', 'info'); return; }
-  downloadFile(JSON.stringify(submissions, null, 2), 'aiad-submissions.json', 'application/json');
-  showToast('JSON backup downloaded', 'success');
+function clearAll(){
+  if(!confirm('Delete ALL leads? This cannot be undone.')) return;
+  if(!confirm('Are you sure?')) return;
+  leads = [];
+  localStorage.setItem('ai_ad_agency_leads', JSON.stringify(leads));
+  renderTable();
+  showToast('🗑️ All leads cleared');
 }
 
-function csv(s) { const v = (s || '').toString().replace(/"/g,'""'); return `"${v}"`; }
-
-function downloadFile(content, filename, mime) {
-  const blob = new Blob([content], {type: mime});
+function exportCSV(){
+  if(leads.length === 0) return showToast('No leads to export');
+  let csv = 'Name,Business,Email,Phone,City,Niche,Notes,Date,Status\n';
+  leads.forEach(l => {
+    const status = l._contacted ? 'Contacted' : 'New';
+    csv += `"${l.name||''}","${l.business||''}","${l.email||''}","${l.phone||''}","${l.city||''}","${l.niche||''}","${(l.notes||'').replace(/"/g,'""')}","${l.timestamp||''}","${status}"\n`;
+  });
+  const blob = new Blob([csv], {type:'text/csv'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename; document.body.appendChild(a); a.click();
-  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 500);
+  const a = document.createElement('a'); a.href = url; a.download = 'ai-ad-agency-leads.csv'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('📥 CSV downloaded');
 }
 
-function showToast(msg, type) {
-  const t = document.createElement('div');
-  t.className = `toast toast-${type}`;
-  t.textContent = msg;
-  document.body.appendChild(t);
-  requestAnimationFrame(() => t.classList.add('show'));
-  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 500); }, 2500);
+function backupJSON(){
+  const blob = new Blob([JSON.stringify(leads,null,2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'ai-ad-agency-leads-backup.json'; a.click();
+  URL.revokeObjectURL(url);
+  showToast('💾 Backup downloaded');
 }
 
-// Keyboard shortcut
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeDetail();
-});
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
 
-// Load on start
-loadData();
+// Theme toggle
+function toggleTheme(){
+  const html = document.documentElement;
+  const t = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+  document.getElementById('themeBtn').textContent = t === 'dark' ? '🌙' : '☀️';
+}
+const savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+document.getElementById('themeBtn').textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+// Listen for new leads from the selling page (same origin, same browser)
+window.addEventListener('new_lead', function(){ loadLeads(); });
+window.addEventListener('storage', function(){ loadLeads(); });
+loadLeads();
 </script>
 </body>
 </html>
