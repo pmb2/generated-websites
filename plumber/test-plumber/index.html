@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
+<title>Test Plumber | Trusted Plumber Service</title>
+<meta name="description" content="Need a local plumber in Austin? Test Plumber provides professional plumber services, emergency repairs, and more throughout the TX area.">
+<meta property="og:title" content="Test Plumber | Trusted Plumber Service">
+<meta property="og:description" content="Need a local plumber in Austin? Test Plumber provides professional plumber services, emergency repairs, and more throughout the TX area.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.test-plumber.com">
+<style>
+:root{--c1:#04903f;--c2:#3590c7;--c3:#fff;--c4:#272727;--c5:#144b76;--c6:#f8f8f8;--mw:1200px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito Sans',Arial,sans-serif;color:var(--c4);background:var(--c3);line-height:1.6;overflow-x:hidden}
+@font-face{font-family:'Nunito Sans';font-style:normal;font-weight:200 1000;font-display:swap;src:url('https://irp.cdn-website.com/fonts/s/nunitosans/v19/pe0TMImSLYBIv1o4X1M8ce2xCx3yop4tQpF_MeTm0lfGWVpNn64CL7U8upHZIbMV51Q42ptCp7t1R-s.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:100 900;font-display:swap;src:url('https://irp.cdn-website.com/fonts/s/montserrat/v29/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXp-p7K4KLg.woff2') format('woff2')}
+.container{max-width:var(--mw);margin:0 auto;padding:0 20px}
+.top-bar{background:#f0f4f8;padding:8px 0;font-size:14px;border-bottom:1px solid #e0e8f0}
+.top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.top-bar a{color:var(--c5);text-decoration:none;font-weight:600}
+.top-bar .contact-btn{display:inline-block;background:var(--c5);color:#fff;padding:6px 18px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:600;transition:background .3s}
+.top-bar .contact-btn:hover{background:#0d3a5a}
+header{padding:10px 0;background:var(--c3);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+header .container{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{width:50px;height:50px;background:var(--c5);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;font-weight:700;font-family:Montserrat,sans-serif}
+.logo-text{font-family:Montserrat,sans-serif}
+.logo-text h1{font-size:20px;color:var(--c5);font-weight:700;line-height:1.1}
+.logo-text span{font-size:12px;color:var(--c4)}
+nav{display:flex;align-items:center;gap:4px}
+nav a{padding:8px 14px;text-decoration:none;color:var(--c4);font-size:14px;font-weight:500;border-radius:4px;transition:all .2s;cursor:pointer}
+nav a:hover,nav a.active{color:var(--c5);background:rgba(53,144,199,.08)}
+.nav-cta{background:var(--c5);color:#fff!important;padding:8px 18px;border-radius:4px;font-weight:600}
+.nav-cta:hover{background:#0d3a5a!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{display:block;width:28px;height:3px;background:var(--c5);border-radius:2px}
+.hero{background:linear-gradient(135deg,#0a2a3f 0%,var(--c5) 40%,#1a6ba0 100%);color:#fff;padding:100px 0 80px;position:relative;overflow:hidden}
+.hero::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140603_b9a15a14-1087-488e-bcf9-6bc0b49b3acd.png') center/cover no-repeat; opacity:0.1; z-index:0; }
+.hero .container{position:relative;z-index:1;text-align:center}
+.hero h1{font-size:42px;font-weight:700;font-family:Montserrat,sans-serif;margin-bottom:20px;line-height:1.2}
+.hero h1 span.accent{color:#7ec8e3}
+.hero .city-cycle{display:inline-block;min-width:220px;text-align:center}
+.hero .city-cycle span{display:inline-block;color:#7ec8e3;font-weight:700;transition:opacity .4s}
+.hero .city-cycle .typing-cursor{display:inline-block;width:3px;height:32px;background:#7ec8e3;margin-left:4px;animation:blink .8s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero p{font-size:18px;max-width:750px;margin:0 auto 30px;opacity:.92;line-height:1.7;font-weight:300}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-buttons .btn{display:inline-block;padding:14px 32px;border-radius:6px;text-decoration:none;font-weight:600;font-size:16px;transition:all .3s}
+.hero-buttons .btn-primary{background:var(--c1);color:#fff}
+.hero-buttons .btn-primary:hover{background:#027a34;transform:translateY(-2px)}
+.hero-buttons .btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
+.hero-buttons .btn-secondary:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+.section-label{font-family:Montserrat,sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;color:var(--c4);text-align:center;margin-bottom:8px;letter-spacing:1px}
+.section-title{font-family:Montserrat,sans-serif;font-size:32px;font-weight:700;text-align:center;color:var(--c5);margin-bottom:16px}
+.section-title span{color:var(--c4)}
+.section-subtitle{text-align:center;max-width:700px;margin:0 auto 50px;font-size:16px;color:#555;line-height:1.7}
+.services-section{padding:80px 0;background:var(--c3)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px}
+.service-card{background:var(--c6);border-radius:20px;padding:40px 30px;text-align:center;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.05)}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,.1)}
+.service-icon{width:72px;height:72px;margin:0 auto 20px;fill:var(--c5)}
+.service-card h3{font-family:Montserrat,sans-serif;font-size:22px;color:var(--c4);margin-bottom:14px;font-weight:600}
+.service-card p{font-size:14px;color:#666;line-height:1.7;margin-bottom:20px}
+.service-card .learn-more{display:inline-block;color:var(--c2);text-decoration:none;font-weight:600;font-size:14px;transition:color .2s;cursor:pointer}
+.service-card .learn-more:hover{color:var(--c5)}
+.dark-section{background:linear-gradient(135deg,#0d3250 0%,var(--c5) 100%);color:#fff;padding:80px 0}
+.dark-section .section-label,.dark-section .section-title{color:#fff}
+.dark-section .section-title span{color:#7ec8e3}
+.dark-section .section-subtitle{color:rgba(255,255,255,.85)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:40px}
+.why-item{display:flex;align-items:center;gap:14px}
+.why-check{width:22px;height:22px;background:var(--c1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.why-check svg{width:12px;height:12px;fill:#fff}
+.why-item span{font-size:16px;font-weight:500}
+.gallery-section{padding:80px 0;background:var(--c6)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gallery-item{border-radius:12px;overflow:hidden;position:relative;aspect-ratio:4/3;background:#ddd}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.08)}
+.testimonials-section{padding:80px 0;background:var(--c3)}
+.testimonial-card{background:var(--c6);border-radius:16px;padding:36px;max-width:750px;margin:0 auto;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.05)}
+.testimonial-stars{color:#f5a623;font-size:24px;margin-bottom:16px}
+.testimonial-text{font-size:17px;line-height:1.8;color:#444;font-style:italic;margin-bottom:20px}
+.testimonial-author{font-family:Montserrat,sans-serif;font-weight:600;color:var(--c5);font-size:16px}
+.testimonial-nav{display:flex;justify-content:center;gap:10px;margin-top:30px}
+.testimonial-dot{width:12px;height:12px;border-radius:50%;background:#ccc;border:none;cursor:pointer;transition:background .3s}
+.testimonial-dot.active{background:var(--c5)}
+.faq-section{padding:80px 0;background:var(--c6)}
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border-radius:8px;margin-bottom:10px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.faq-question{padding:18px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:15px;color:var(--c4);background:rgba(53,144,199,.06)}
+.faq-question:hover{background:rgba(53,144,199,.12)}
+.faq-arrow{transition:transform .3s;color:var(--c2)}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .3s;padding:0 24px;font-size:14px;color:#666;line-height:1.7}
+.faq-item.open .faq-answer{max-height:200px;padding:16px 24px}
+.contact-section{padding:80px 0;background:var(--c3)}
+.contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+.contact-info h3{font-family:Montserrat,sans-serif;color:var(--c5);margin-bottom:16px}
+.contact-info p{font-size:15px;color:#555;line-height:1.8;margin-bottom:12px}
+.contact-info .info-item{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.contact-info .info-icon{width:20px;height:20px;fill:var(--c2);flex-shrink:0;margin-top:3px}
+.contact-form{background:var(--c6);padding:36px;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,.05)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:14px;font-weight:600;margin-bottom:6px;color:var(--c4)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:1px solid #ddd;border-radius:6px;font-size:14px;font-family:inherit;background:#fff;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:0;border-color:var(--c2)}
+.form-group textarea{resize:vertical;min-height:100px}
+.submit-btn{background:var(--c5);color:#fff;border:none;padding:14px 36px;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;transition:background .3s;width:100%}
+.submit-btn:hover{background:#0d3a5a}
+.map-section{padding:60px 0;background:var(--c6);text-align:center}
+.map-section h2{font-family:Montserrat,sans-serif;color:var(--c5);margin-bottom:8px}
+.map-section p{color:#555;margin-bottom:24px}
+.map-frame{width:100%;height:400px;border-radius:16px;overflow:hidden}
+.map-frame iframe{width:100%;height:100%;border:0}
+footer{background:#0a1f2e;color:rgba(255,255,255,.85);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
+.footer-col h4{font-family:Montserrat,sans-serif;color:#fff;text-transform:uppercase;font-size:16px;margin-bottom:16px;position:relative;padding-bottom:10px}
+.footer-col h4::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;background:var(--c2)}
+.footer-col p{font-size:14px;line-height:1.7;margin-bottom:10px}
+.footer-col a{color:rgba(255,255,255,.7);text-decoration:none;font-size:14px;display:block;margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:13px;color:rgba(255,255,255,.5)}
+@media(max-width:1024px){.contact-wrapper{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){nav{display:none}.hamburger{display:flex}nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;padding:16px;box-shadow:0 8px 20px rgba(0,0,0,.1);gap:4px;z-index:200}.hero h1{font-size:28px}.hero{padding:60px 0 50px}.section-title{font-size:26px}.services-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+@media(max-width:480px){.hero h1{font-size:24px}.hero p{font-size:15px}.service-card{padding:28px 20px}}
+
+/* About section */
+.about-section{padding:80px 0;background:var(--c3)}
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;display:none}
+.about-wrap.open{display:grid}
+.about-wrap img{width:100%;border-radius:16px;min-height:320px;object-fit:cover;background:var(--c6)}
+.about-wrap h3{font-size:24px;font-weight:700;color:var(--c5);margin-bottom:14px}
+.about-wrap p{color:#555;margin-bottom:14px;font-size:15px;line-height:1.7}
+@media(max-width:768px){.about-wrap{grid-template-columns:1fr}}
+
+/* Modal */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-content{background:#fff;border-radius:16px;max-width:600px;width:100%;max-height:80vh;overflow-y:auto;padding:40px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.2)}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:28px;cursor:pointer;color:#999;line-height:1}
+.modal-close:hover{color:#333}
+.modal-content h3{font-family:Montserrat,sans-serif;font-size:24px;color:var(--c5);margin-bottom:12px}
+.modal-content h4{font-family:Montserrat,sans-serif;font-size:16px;color:var(--c4);margin:20px 0 8px;font-weight:600}
+.modal-content p{font-size:15px;color:#555;line-height:1.7;margin-bottom:12px}
+.modal-cta{display:inline-block;background:var(--c5);color:#fff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;margin-top:16px}
+.modal-cta:hover{background:#0d3a5a}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <span>(555) 123-4567 | Serving Austin and the Surrounding Area</span>
+    <a href="#contact" class="contact-btn">Contact Us</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <a href="#home" class="logo">
+      <div class="logo-icon">T</div>
+      <div class="logo-text">
+        <h1>Test Plumber</h1>
+        <span>& Plumber Services</span>
+      </div>
+    </a>
+    <nav id="mainNav">
+      <a href="#home" class="active">Home</a>
+      <a href="#" onclick="toggleAbout()">About</a>
+      <a href="#services">Services</a>
+      <a href="#map">Service Area</a>
+      <a href="#faq">FAQs</a>
+      <a href="#contact" class="nav-cta">Request a Quote</a>
+    </nav>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <h1>Trusted Plumber Service<br><span class="city-cycle"><span id="cityDisplay">Austin</span><span class="typing-cursor"></span></span></h1>
+    <p>Looking for a trusted local plumber in Austin and the surrounding TX area? Test Plumber provides professional residential and commercial plumber services. Whether you need a repair, maintenance, installation, or emergency assistance, our experienced team delivers reliable solutions with honest pricing and quality workmanship.</p>
+    <div class="hero-buttons">
+      <a href="tel:(555) 123-4567" class="btn btn-primary">(555) 123-4567</a>
+      <a href="#contact" class="btn btn-secondary">Request Service</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT (hidden by default, toggled by nav) -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-wrap" id="aboutContent">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140630_6f50d14c-a186-4690-ad3f-21db5e2a6a05.png" alt="About us">
+      <div>
+        <p class="section-label" style="text-align:left">About Us</p>
+        <h3>Locally Owned & Operated in Austin</h3>
+        <p>Test Plumber is a locally owned and operated plumber business serving Austin and the surrounding TX area. We take pride in every job and stand behind our work with a full satisfaction guarantee.</p>
+        <p>Our team is fully licensed, insured, and background-checked. We use professional-grade equipment and quality materials on every job. Call us today for a free estimate and experience the difference of working with a true local professional.</p>
+        <p style="margin-top:16px"><a href="tel:(555) 123-4567" style="background:var(--c5);color:#fff;padding:10px 24px;border-radius:6px;display:inline-block;font-weight:600;font-size:15px">(555) 123-4567</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <p class="section-label">━━ Trusted Plumbers</p>
+    <h2 class="section-title">Local Plumber Services <span>in Austin</span></h2>
+    <p class="section-subtitle">Test Plumber proudly serves homeowners and businesses throughout Austin and the surrounding TX area.</p>
+    <div class="services-grid">
+                  <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 100 100"><path d="M70.172 56.906h-2.457c0.035156-0.30078 0.054687-0.60156 0.054687-0.90234v-8.9297c0-0.30469-0.019531-0.60547-0.054687-0.90234h2.457zm9.8203-10.738h6.0273c5.8945 0 10.699 4.8086 10.699 10.699v21.762l-10.738 0.035156 0.003906-21.758h-5.9922zm-29.301 10.738h-3.8164v4.5078h-10.738v-4.543c0-5.8945 4.8086-10.699 10.699-10.699h3.8516c-0.035156 0.30078-0.054688 0.60156-0.054688 0.90234v8.9297c0.003907 0.30078 0.023438 0.60156 0.058594 0.90234zm-15.488 6.4531h12.605c0.73828 0 1.3359 0.53516 1.3359 1.1875v2.5742c0 0.65234-0.60156 1.1875-1.3359 1.1875h-12.605c-0.73828 0-1.3359-0.53516-1.3359-1.1875v-2.5742c-0.003907-0.65234 0.59766-1.1875 1.3359-1.1875zm22.066-21.637h3.8672c2.582 0 4.6875 2.4023 4.6875 5.3516v8.9297c0 2.9453-2.1055 5.3516-4.6875 5.3516l-3.8672-0.003907c-2.582 0-4.6875-2.4023-4.6875-5.3516l0.003907-8.9258c0-2.9453 2.1055-5.3516 4.6836-5.3516z"/></svg>
+                <h3>Plumbing Services</h3>
+                <p>From minor fixes to full system upgrades, we provide professional fixture installation, repair, pipe repair, water heater replacement, leak detection, and more. We focus on long-term solutions.</p>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 100 100"><path d="m83.332 81.25h2.082c3.4492 0 6.25 2.8008 6.25 6.25s-2.8008 6.25-6.25 6.25h-70.832c-3.4492 0-6.25-2.8008-6.25-6.25s2.8008-6.25 6.25-6.25h2.082v-29.168c0-18.398 14.934-33.332 33.332-33.332 18.398 0 33.332 14.934 33.332 33.332v29.168z"/><path d="m33.332 85.418h33.332v4.168h-33.332z"/><path d="m43.75 50h12.5v4.168h-12.5z"/><path d="m43.75 58.332h12.5v4.168h-12.5z"/></svg>
+                <h3>Emergency & Repair</h3>
+                <p>Plumbing emergencies don't wait. Burst pipes, major leaks, or unexpected failures can happen anytime. We provide 24/7 emergency services with fast, affordable solutions.</p>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 100 100"><path d="m38.43 91.246c1.6211 0.51562 3.3086 0.80859 5.0117 0.87109h0.058594c0.83594 0 1.5273-0.66016 1.5586-1.5039 0.03125-0.85938-0.64062-1.5859-1.5-1.6172-1.4219-0.050782-2.8281-0.29688-4.1797-0.72656-0.82422-0.25781-1.6992 0.19531-1.9609 1.0156-0.26562 0.82031 0.1875 1.6992 1.0117 1.9609z"/><path d="m17.793 42.93h1.1719v30.242c0 13.902 11.312 25.199 25.203 25.199 13.887 0 25.184-11.297 25.184-25.199v-1.1562h1.1719c1.7305 0 3.1211-1.4062 3.1211-3.1211v-4.1523c0-1.7305-1.3906-3.1211-3.1211-3.1211h-1.1719v-5.7109c0-1.6523 1.3438-2.9961 2.9961-2.9961h11.422c0.85938 0 1.5586-0.6875 1.5586-1.5586 0-0.85938-0.70312-1.5586-1.5586-1.5586h-11.426c-3.3711 0-6.1172 2.7461-6.1172 6.1172v5.7109h-9.5938v-5.7109c0-8.6758 7.0547-15.715 15.715-15.715h11.422c0.85938 0 1.5586-0.70312 1.5586-1.5586 0-0.85938-0.70312-1.5586-1.5586-1.5586l-11.426-0.003906c-10.391 0-18.836 8.4414-18.836 18.836v5.7109h-1.1719c-1.7148 0-3.1211 1.3906-3.1211 3.1211v4.1523c0 1.7148 1.4062 3.1211 3.1211 3.1211h1.1719v1.1562c0 5.1641-4.1992 9.3477-9.3477 9.3477-5.1484 0-9.3477-4.1836-9.3477-9.3477v-30.242h1.1719c1.7148 0 3.1211-1.4062 3.1211-3.1211v-4.1523c0-1.7305-1.4062-3.1211-3.1211-3.1211h-1.1719l0.003906-20.52h1.1719c1.7148 0 3.1211-1.4062 3.1211-3.1211v-4.1523c0-1.7148-1.4062-3.1211-3.1211-3.1211h-18.195c-1.7148 0-3.1211 1.4062-3.1211 3.1211v4.1523c0 1.7148 1.4062 3.1211 3.1211 3.1211h1.1719v20.52h-1.1719c-1.7148 0-3.1211 1.3906-3.1211 3.1211v4.1523c0 1.7148 1.4023 3.1172 3.1211 3.1172z"/></svg>
+                <h3>Drain & Sewer</h3>
+                <p>Blocked drains and sewer line issues can lead to slow drains, odors, and backups. Our team provides professional drain cleaning, blockage removal, and sewer inspections.</p>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 100 100"><path d="m55.332 55.547h-3.4766v-2.6758c0-0.97656-0.78125-1.7578-1.7578-1.7578h-6.9922c-0.97656 0-1.7578 0.78125-1.7578 1.7578v2.6758h-8.6719c-4.9219 0-8.9062-3.9844-8.9062-8.9062v-19.863h2.5195c0.97656 0 1.7578-0.78125 1.7578-1.7578v-6.9922c0-0.97656-0.78125-1.7578-1.7578-1.7578h-2.5195v-2.793c0-0.97656-0.78125-1.7578-1.7578-1.7578h-11.387c-0.97656 0-1.7578 0.78125-1.7578 1.7578v2.793h-3.7891c-0.97656 0-1.7578 0.78125-1.7578 1.7578v6.9922c0 0.97656 0.78125 1.7578 1.7578 1.7578h3.7891v19.863c0 13.125 10.684 23.789 23.809 23.789h8.6719v3.6328c0 0.97656 0.78125 1.7578 1.7578 1.7578h6.9922c0.97656 0 1.7578-0.78125 1.7578-1.7578v-3.6328h3.4766c0.97656 0 1.7578-0.78125 1.7578-1.7578v-11.367c0-0.97656-0.78125-1.7578-1.7578-1.7578z"/></svg>
+                <h3>Water Line & Piping</h3>
+                <p>Your plumbing system provides vital convenience and safety. We are experts at water line installation, line repair, repiping, and piping upgrades for reliable water pressure throughout your home.</p>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 100 100"><path d="m98.438 64.062h-0.34375l-1.2656-5.0664c-0.17188-0.69531-0.79688-1.1836-1.5156-1.1836h-6.25c-0.71875 0-1.3438 0.48828-1.5156 1.1836l-1.2656 5.0664h-0.34375c-0.86328 0-1.5625 0.69922-1.5625 1.5625v1.5625h-7.8125c0-0.86328-0.69922-1.5625-1.5625-1.5625h-3.125v-37.5h3.125c0.86328 0 1.5625-0.69922 1.5625-1.5625v-9.375c0-0.86328-0.69922-1.5625-1.5625-1.5625h-3.5625l-2.7695-8.3047c-0.21484-0.64062-0.8125-1.0703-1.4844-1.0703h-31.25c-0.67188 0-1.2695 0.42969-1.4844 1.0703l-2.7695 8.3047h-3.5625c-0.86328 0-1.5625 0.69922-1.5625 1.5625v9.375c0 0.86328 0.69922 1.5625 1.5625 1.5625h3.125v37.5h-3.125c-0.86328 0-1.5625 0.69922-1.5625 1.5625v9.375c0 0.86328 0.69922 1.5625 1.5625 1.5625h3.125v37.5h-3.125c-0.86328 0-1.5625 0.69922-1.5625 1.5625v6.25c0 0.86328 0.69922 1.5625 1.5625 1.5625h56.25c0.86328 0 1.5625-0.69922 1.5625-1.5625v-6.25c0-0.86328-0.69922-1.5625-1.5625-1.5625h-9.375v-6.25h4.6875c0.86328 0 1.5625-0.69922 1.5625-1.5625h7.8125v1.5625c0 0.86328 0.69922 1.5625 1.5625 1.5625h12.5c0.86328 0 1.5625-0.69922 1.5625-1.5625v-12.5c0-0.86328-0.69922-1.5625-1.5625-1.5625z"/></svg>
+                <h3>Water Heater</h3>
+                <p>A properly working water heater is essential for daily comfort. We inspect, repair, maintain, and install tank and tankless water heaters to keep your home comfortable year-round.</p>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 100 100"><path d="M50 10C27.6 10 10 27.6 10 50s17.6 40 40 40 40-17.6 40-40S72.4 10 50 10zm0 70c-16.5 0-30-13.5-30-30s13.5-30 30-30 30 13.5 30 30-13.5 30-30 30z"/><path d="M52.5 30h-5v20l15 10 2.5-4-12.5-8z"/></svg>
+                <h3>Fixture Installation</h3>
+                <p>Toilets, faucets, disposals, and shower heads. Supply your own or we bring it. Professional installation with same-day service available.</p>
+                <a href="#" class="learn-more">Learn More →</a>
+            </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="dark-section">
+  <div class="container">
+    <p class="section-label">━━ Why Choose Us</p>
+    <h2 class="section-title">Why Choose <span>Test Plumber</span></h2>
+    <p class="section-subtitle">Our licensed and experienced plumber professionals are committed to providing safe, code-compliant, and high-quality plumber services for homes and businesses throughout the TX area.</p>
+    <div class="why-grid">
+                  <div class="why-item">
+                <div class="why-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Transparent and honest pricing</span>
+            </div>
+            <div class="why-item">
+                <div class="why-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Prompt and reliable scheduling</span>
+            </div>
+            <div class="why-item">
+                <div class="why-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Licensed and experienced technicians</span>
+            </div>
+            <div class="why-item">
+                <div class="why-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Clean and respectful service</span>
+            </div>
+            <div class="why-item">
+                <div class="why-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Long lasting plumbing solutions</span>
+            </div>
+            <div class="why-item">
+                <div class="why-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                <span>Licensed & insured</span>
+            </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="container">
+    <p class="section-label">━━ Our Work</p>
+    <h2 class="section-title">Plumber Projects <span>in Austin</span></h2>
+    <p class="section-subtitle">From minor repairs to major installations, see examples of our work across TX.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140609_62838acd-cf4d-40bb-ade1-618827d6586d.png" alt="Service photo 1"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140630_6f50d14c-a186-4690-ad3f-21db5e2a6a05.png" alt="Service photo 2"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140638_d8b1f556-a489-450e-98f7-b53d57a8aa5f.png" alt="Service photo 3"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140638_0e9033ba-1a62-46a5-b0ba-3c99bfd0b9a2.png" alt="Service photo 4"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260729_140647_e9359d2c-a455-4374-82f2-c26ab0d39656.png" alt="Service photo 5"></div>
+      <div class="gallery-item"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Go22NtA815gb2uzpXzDXwmZyAy/hf_20260724_083125_19d1c730-12dd-47db-865f-3383ee276d81.png" alt="Service photo 6"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <p class="section-label">━━ What Our Clients Say</p>
+    <h2 class="section-title">Our <span>Testimonials</span></h2>
+    <div class="testimonial-card" id="testimonialCard">
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text" id="testimonialText">We needed an emergency plumber and Test Plumber was very professional and reasonably priced. Other companies quoted us almost double. They were efficient, showed up on time, and got the job done.</p>
+      <p class="testimonial-author" id="testimonialAuthor">— Sarah M., Austin</p>
+    </div>
+    <div class="testimonial-nav" id="testimonialNav">
+      <button class="testimonial-dot active" data-index="0"></button>
+      <button class="testimonial-dot" data-index="1"></button>
+      <button class="testimonial-dot" data-index="2"></button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <p class="section-label">━━ FAQs</p>
+    <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+    <div class="faq-list">
+                  <div class="faq-item">
+                <div class="faq-question">What services do you offer?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">We offer a full range of residential and commercial plumbing services including emergency repairs, drain cleaning, water heater installation and repair, sewer line services, fixture installation, and repiping.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you offer emergency services?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">Yes, we provide 24/7 emergency plumbing services. Call us anytime for burst pipes, major leaks, sewer backups, or any plumbing emergency.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How quickly can you respond?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">We respond within one hour for emergency calls. Standard service appointments are typically scheduled within 24-48 hours.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Are you licensed and insured?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">Yes, we are fully licensed, insured, and bonded. Every technician undergoes a background check and is trained to the highest industry standards.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you provide free estimates?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">Yes, we provide free estimates for all major projects. For emergency repairs, we provide transparent pricing before any work begins.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What areas do you serve?<span class="faq-arrow">▼</span></div>
+                <div class="faq-answer">We serve the entire metro area and surrounding communities.</div>
+            </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <p class="section-label">━━ Contact</p>
+    <h2 class="section-title">Get in <span>Touch</span></h2>
+    <p class="section-subtitle">Call or fill out the form below. We return every inquiry within 30 minutes during business hours.</p>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Test Plumber</h3>
+        <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><p></p></div>
+        <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><p>(555) 123-4567</p></div>
+        <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><p>info@test-plumber.com</p></div>
+        <div class="info-item"><svg class="info-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/><path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg><p></p></div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xqkrgepq" method="POST">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input name="name" type="text" placeholder="Your name" required></div>
+          <div class="form-group"><label>Phone</label><input name="phone" type="tel" placeholder="(555) 555-5555" required></div>
+        </div>
+        <div class="form-group"><label>Email</label><input name="email" type="email" placeholder="your@email.com"></div>
+        <div class="form-group"><label>Service Needed</label><select name="service"><option>Emergency Repair</option><option>Drain Cleaning</option><option>Water Heater</option><option>Pipe Repair</option><option>Fixture Installation</option><option>Other</option></select></div>
+        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Describe what you need help with..."></textarea></div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section" id="map">
+  <div class="container">
+    <h2>Serving Austin and the Surrounding Area</h2>
+    <p>We proudly serve Austin and all surrounding communities in TX.</p>
+    <div class="map-frame">
+      <iframe src="https://maps.google.com/maps?q=Austin%2C+TX&output=embed&z=12" allowfullscreen loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Test Plumber</h4>
+        <p>Test Plumber is a locally owned and operated plumber business serving Austin and the surrounding TX area.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Emergency Repair</a>
+        <a href="#services">Drain Cleaning</a>
+        <a href="#services">Water Heater</a>
+        <a href="#services">Pipe Repair</a>
+        <a href="#services">Fixture Installation</a>
+        <a href="#services">Sewer & Drain</a>
+      </div>
+      <div class="footer-col">
+        <h4>Service Area</h4>
+        <a href="#">Austin</a>
+                <a href="#">Serving All of TX</a>
+
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p></p>
+        <p>(555) 123-4567</p>
+        <p>info@test-plumber.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Test Plumber. All rights reserved. | <a href="#home" style="color:rgba(255,255,255,.4)">Back to top</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- SERVICE DETAIL MODAL -->
+<div class="modal" id="serviceModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3 id="modalTitle">Service</h3>
+    <p id="modalDesc">Description coming soon.</p>
+    <h4>What's Included</h4>
+    <ul id="modalIncludes" style="font-size:15px;color:#555;line-height:1.7;padding-left:20px">
+      <li>Free estimate with no obligation</li>
+      <li>Licensed and insured technicians</li>
+      <li>Same-day service available</li>
+      <li>Satisfaction guaranteed</li>
+    </ul>
+    <a href="tel:(555) 123-4567" class="modal-cta">Call (555) 123-4567</a>
+  </div>
+</div>
+
+<script>
+// City name rotation for SEO
+var cities = [Austin","Round Rock","Cedar Park","Pflugerville","Georgetown","Kyle","Buda];
+var cityIdx = 0;
+var cityEl = document.getElementById('cityDisplay');
+function rotateCity(){
+  cityIdx = (cityIdx+1)%cities.length;
+  if(cityEl) cityEl.style.opacity='0';
+  setTimeout(function(){
+    if(cityEl) { cityEl.textContent = cities[cityIdx]; cityEl.style.opacity='1'; }
+  },300);
+}
+if(cities.length > 1) setInterval(rotateCity, 4000);
+
+// Hamburger toggle
+document.getElementById('hamburgerBtn')?.addEventListener('click',function(){
+  document.getElementById('mainNav')?.classList.toggle('open');
+});
+
+// Close nav on link click
+document.querySelectorAll('#mainNav a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('mainNav')?.classList.remove('open');
+  });
+});
+
+// Scroll-to-section with smooth nav highlight
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var target = this.getAttribute('href');
+    if(target.length > 1 && document.querySelector(target)){
+      e.preventDefault();
+      var el = document.querySelector(target);
+      var offset = 70;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({top:top,behavior:'smooth'});
+    }
+  });
+});
+
+// Active nav highlight on scroll
+function updateActiveNav(){
+  var sections = ['home','services','about','faq','contact','map'];
+  var navLinks = document.querySelectorAll('#mainNav a:not(.nav-cta)');
+  var current = 'home';
+  var scrollPos = window.pageYOffset + 100;
+  sections.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el && el.offsetTop <= scrollPos) current = id;
+  });
+  navLinks.forEach(function(link){
+    link.classList.remove('active');
+    if(link.getAttribute('href') === '#'+current) link.classList.add('active');
+  });
+}
+window.addEventListener('scroll',updateActiveNav);
+
+// About section toggle
+function toggleAbout(){
+  var wrap = document.getElementById('aboutContent');
+  wrap.classList.toggle('open');
+  if(wrap.classList.contains('open')){
+    setTimeout(function(){
+      var top = wrap.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({top:top,behavior:'smooth'});
+    },100);
+  }
+}
+
+// Service modal
+var serviceDetails = [
+  { title:"Plumbing Services", desc:"From minor fixes to full system upgrades, we provide professional fixture installation, repair, pipe repair, water heater replacement, leak detection, and more. Our team focuses on long-term solutions that save you money and prevent future problems.", includes:["Professional fixture installation and repair","Leak detection and water damage prevention","Water heater replacement and service","All work performed to code","Free estimate with no obligation"] },
+  { title:"Emergency & Repair", desc:"Plumbing emergencies don't wait. Burst pipes, major leaks, or unexpected failures can happen anytime. We provide 24/7 emergency services with fast, affordable solutions to protect your home from water damage.", includes:["24/7 emergency response","Burst pipe repair and water shutoff","Major leak detection and repair","Sewage backup cleanup","Arrive within one hour for emergencies"] },
+  { title:"Drain & Sewer", desc:"Blocked drains and sewer line issues can lead to slow drains, odors, and backups. Our team provides professional drain cleaning, blockage removal, and sewer inspections using modern equipment.", includes:["Professional drain cleaning and snaking","Hydro-jetting for tough blockages","Sewer scope inspections with video","Main line cleaning and repair","Trenchless repair options"] },
+  { title:"Water Line & Piping", desc:"Your plumbing system provides vital convenience and safety. We are experts at water line installation, line repair, repiping, and piping upgrades for reliable water pressure throughout your home.", includes:["Water line installation and repair","Full and partial repiping","Copper, PEX, and PVC pipe work","Pressure testing and diagnostics","2-year workmanship warranty"] },
+  { title:"Water Heater", desc:"A properly working water heater is essential for daily comfort. We inspect, repair, maintain, and install tank and tankless water heaters to keep your home comfortable year-round.", includes:["Tank and tankless water heater installation","Water heater repair and maintenance","Annual flushing and inspection","Energy-efficient upgrades","All major brands serviced"] },
+  { title:"Fixture Installation", desc:"Toilets, faucets, disposals, and shower heads. Supply your own or we bring it. Professional installation with same-day service available.", includes:["Toilet installation and repair","Faucet and sink installation","Garbage disposal installation","Shower head and bath fixture installation","Kitchen and bathroom remodeling"] },
+];
+
+function openModal(index){
+  var svc = serviceDetails[index];
+  if(!svc) return;
+  document.getElementById('modalTitle').textContent = svc.title;
+  document.getElementById('modalDesc').textContent = svc.desc;
+  var list = document.getElementById('modalIncludes');
+  list.innerHTML = '';
+  svc.includes.forEach(function(item){
+    var li = document.createElement('li');
+    li.textContent = item;
+    list.appendChild(li);
+  });
+  document.getElementById('serviceModal').classList.add('open');
+}
+
+function closeModal(){
+  document.getElementById('serviceModal').classList.remove('open');
+}
+
+// Close modal on overlay click
+document.getElementById('serviceModal').addEventListener('click',function(e){
+  if(e.target === this) closeModal();
+});
+
+// Close modal with escape key
+document.addEventListener('keydown',function(e){
+  if(e.key === 'Escape') closeModal();
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(q){
+  q.addEventListener('click',function(){
+    this.parentElement.classList.toggle('open');
+  });
+});
+
+// Testimonial carousel
+var testimonies = [
+  { text: "Excellent service! They arrived within the hour and fixed our plumber issue quickly. Fair pricing and great communication throughout.", author: "&mdash; John D., Austin" },
+  { text: "Very professional team. They installed our new water heater and the work was clean, fast, and exactly as quoted. Highly recommend.", author: "&mdash; Maria R., Austin" },
+  { text: "I called at 2am with a burst pipe. They were at my door in 40 minutes and had everything fixed by morning. Lifesavers.", author: "&mdash; Tom S., Austin" },
+];
+var currentT = 0;
+document.querySelectorAll('.testimonial-dot').forEach(function(dot,i){
+  dot.addEventListener('click',function(){
+    document.querySelectorAll('.testimonial-dot').forEach(function(d){d.classList.remove('active')});
+    dot.classList.add('active');
+    document.getElementById('testimonialText').textContent = testimonies[i].text;
+    document.getElementById('testimonialAuthor').innerHTML = testimonies[i].author;
+    currentT = i;
+  });
+});
+setInterval(function(){
+  currentT = (currentT+1)%testimonies.length;
+  var dots = document.querySelectorAll('.testimonial-dot');
+  if(dots[currentT]) dots[currentT].click();
+},7000);
+</script>
+</body>
+</html>
