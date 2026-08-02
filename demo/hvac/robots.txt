@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://capitaldistrictairheat.com/sitemap-index.xml
