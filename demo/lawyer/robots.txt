@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://callahanreed.com/sitemap-index.xml
