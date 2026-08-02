@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://brightsidedentaltroy.com/sitemap-index.xml
