@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pmb2.github.io/generated-websites/demo/kouray-steven-x//sitemap-index.xml
