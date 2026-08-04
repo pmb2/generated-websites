@@ -26,6 +26,18 @@
   .card p { color:var(--muted); font-size:13.5px; }
   .card .go { margin-top:8px; font-size:13px; font-weight:600; color:var(--accent); }
   footer { border-top:1px solid var(--line); padding:24px clamp(20px,5vw,56px); font-size:13px; color:var(--muted); }
+  /* Premium tier cards — purple/gold */
+  .premium-sec { margin-top:56px; }
+  .premium-sec h2 { font-family:"Fraunces",Georgia,serif; font-size:22px; font-weight:600; letter-spacing:-.01em; margin-bottom:4px; }
+  .premium-sec .prem-sub { color:var(--muted); font-size:13.5px; margin-bottom:20px; }
+  .grid.premium { margin-top:0; background:linear-gradient(135deg,#2E1065,#4C1D95 45%,#B45309); border:1px solid rgba(180,140,60,.55); }
+  .card.premium { position:relative; background:linear-gradient(180deg,#FBF7FF 0%,#FFFFFF 100%); overflow:hidden; }
+  .card.premium::before { content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#7C3AED 0%,#A855F7 40%,#D4AF37 100%); }
+  .card.premium:hover { background:linear-gradient(180deg,#F6F0FF 0%,#FBF7FF 100%); }
+  .card.premium .kind { color:#6D28D9; display:inline-flex; align-items:center; gap:6px; }
+  .card.premium .kind::before { content:"◆"; font-size:9px; color:#D4AF37; }
+  .card.premium h3 { color:#1E1B2E; }
+  .card.premium .go { color:#92400E; }
 </style>
 </head>
 <body>
@@ -113,6 +125,33 @@
       <p>Law Firm</p>
       <span class="go">Visit live site</span>
     </a>
+    </div>
+
+    <div class="premium-sec">
+      <h2>Premium Tier</h2>
+      <p class="prem-sub">High-end motion sites built from our premium MotionSites prompt adaptations.</p>
+      <div class="grid premium">
+        <a class="card premium" href="https://pmb2.github.io/generated-websites/demo/premium/aegis/" target="_blank" rel="noopener">
+          <div class="kind">Premium template</div>
+          <h3>AEGIS</h3>
+          <p>Intelligent Security Systems</p>
+          <span class="go">Visit live site</span>
+        </a>
+
+        <a class="card premium" href="https://pmb2.github.io/generated-websites/demo/premium/meridian/" target="_blank" rel="noopener">
+          <div class="kind">Premium template</div>
+          <h3>MERIDIAN</h3>
+          <p>AI Web Design Agency</p>
+          <span class="go">Visit live site</span>
+        </a>
+
+        <a class="card premium" href="https://pmb2.github.io/generated-websites/demo/premium/atelier/" target="_blank" rel="noopener">
+          <div class="kind">Premium template</div>
+          <h3>ATELIER</h3>
+          <p>Premium Digital Studio</p>
+          <span class="go">Visit live site</span>
+        </a>
+      </div>
     </div>
   </main>
   <footer>&copy; 2026 The Backus Agency. All rights reserved.</footer>

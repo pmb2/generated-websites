@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERIDIAN — AI Web Design Agency</title>
+<meta name="description" content="AI-powered websites crafted for beauty, speed, and lasting performance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --background: 0 0% 0%; --foreground: 0 0% 100%;
+    --card: 0 0% 9%; --card-foreground: 0 0% 100%;
+    --primary: 262 84% 60%; --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%; --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%; --muted-foreground: 0 0% 75%;
+    --accent: 45 93% 47%; --accent-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:hsl(var(--background)); color:hsl(var(--foreground)); font-family:'Barlow',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  .font-accent { font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; }
+
+  /* ---------- Liquid Glass ---------- */
+  .liquid-glass { background:rgba(255,255,255,.01); background-blend-mode:luminosity; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); border:none; box-shadow:inset 0 1px 1px rgba(255,255,255,.1); position:relative; overflow:hidden; }
+  .liquid-glass::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1.4px; background:linear-gradient(180deg, rgba(255,255,255,.45) 0%, rgba(255,255,255,.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.15) 80%, rgba(255,255,255,.45) 100%); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+  .liquid-glass-strong { background:rgba(255,255,255,.01); background-blend-mode:luminosity; backdrop-filter:blur(50px); -webkit-backdrop-filter:blur(50px); border:none; box-shadow:4px 4px 4px rgba(0,0,0,.05), inset 0 1px 1px rgba(255,255,255,.15); position:relative; overflow:hidden; }
+  .liquid-glass-strong::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1.4px; background:linear-gradient(180deg, rgba(255,255,255,.5) 0%, rgba(255,255,255,.2) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.2) 80%, rgba(255,255,255,.5) 100%); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+
+  /* ---------- Navbar ---------- */
+  nav { position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:24px clamp(24px,6vw,64px); }
+  .logo { font-size:20px; font-weight:600; letter-spacing:-.02em; }
+  .nav-links { display:none; }
+  @media (min-width:768px) { .nav-links { display:flex; } }
+  .nav-links a { padding:8px 16px; font-size:14px; font-weight:500; border-radius:2px; transition:background .2s; }
+  .nav-links a:hover { background:rgba(255,255,255,.1); }
+  .nav-cta { display:block; border-radius:9999px; padding:10px 24px; font-size:14px; font-weight:500; background:transparent; }
+
+  /* ---------- Hero ---------- */
+  .hero { position:relative; width:100%; height:100vh; overflow:hidden; }
+  .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:bottom; }
+  @media (max-width:767px) { .hero video { transform:translateY(-100px); } }
+  .hero-fade { position:absolute; left:0; right:0; bottom:0; height:240px; background:linear-gradient(to top, hsl(var(--background)), transparent); }
+  .hero-content { position:relative; z-index:10; display:flex; flex-direction:column; justify-content:flex-end; height:100%; padding:40px clamp(24px,6vw,64px) 80px; }
+  .avatar-row { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+  .avatars { display:flex; }
+  .avatars img { width:32px; height:32px; border-radius:9999px; border:2px solid hsl(var(--background)); margin-left:-8px; }
+  .avatars img:first-child { margin-left:0; }
+  .avatar-row span { color:hsl(var(--muted-foreground)); font-size:14px; }
+  .hero h1 { font-size:clamp(30px,6vw,72px); font-weight:500; letter-spacing:-2px; line-height:1.05; }
+  .hero .sub { color:hsl(var(--muted-foreground)); font-size:clamp(14px,1.8vw,18px); margin-top:16px; }
+  .email-form { margin-top:28px; display:flex; max-width:512px; width:100%; border-radius:9999px; padding:6px 8px; align-items:center; }
+  .email-form input { flex:1; background:transparent; border:none; outline:none; color:hsl(var(--foreground)); font-family:inherit; font-size:14px; padding:0 16px; min-width:0; }
+  .email-form button { background:hsl(var(--foreground)); color:hsl(var(--background)); border:none; border-radius:9999px; padding:12px 24px; font-family:inherit; font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; transition:transform .15s; white-space:nowrap; }
+  .email-form button:hover { transform:scale(1.03); }
+  .email-form button:active { transform:scale(.98); }
+
+  /* ---------- About (scroll reveal text) ---------- */
+  .about { padding:128px clamp(24px,6vw,64px); max-width:896px; margin:0 auto; text-align:center; }
+  .about p { font-size:clamp(30px,4vw,48px); font-weight:500; letter-spacing:-1px; line-height:1.4; }
+  .about .word { display:inline-block; opacity:.15; transition:opacity .4s ease; }
+  .about .word.on { opacity:1; }
+
+  /* ---------- Work ---------- */
+  .work { padding:128px clamp(24px,6vw,64px) 64px; max-width:1152px; margin:0 auto; }
+  .work h2 { font-size:clamp(36px,4.5vw,48px); font-weight:500; letter-spacing:-2px; text-align:center; margin-bottom:16px; }
+  .work .sub { color:hsl(var(--muted-foreground)); font-size:18px; text-align:center; max-width:640px; margin:0 auto 64px; }
+  .work-grid { display:grid; grid-template-columns:1fr; gap:24px; }
+  @media (min-width:768px) { .work-grid { grid-template-columns:1fr 1fr; } }
+  .project { opacity:0; transform:translateY(40px); transition:opacity .6s ease, transform .6s ease; }
+  .project.in { opacity:1; transform:translateY(0); }
+  .project .frame { aspect-ratio:4/3; border-radius:16px; overflow:hidden; margin-bottom:16px; }
+  .project .frame img { width:100%; height:100%; object-fit:cover; }
+  .project h3 { font-size:20px; font-weight:500; }
+  .project span { display:block; color:hsl(var(--muted-foreground)); font-size:14px; margin-top:4px; }
+
+  /* ---------- Video showcase ---------- */
+  .showcase { height:650px; overflow:hidden; position:relative; margin-top:-325px; z-index:0; }
+  .showcase video { width:100%; height:100%; object-fit:cover; }
+  .showcase-fade-top { position:absolute; top:0; left:0; right:0; height:128px; background:linear-gradient(to bottom, hsl(var(--background)), transparent); z-index:10; }
+  .showcase-fade-bottom { position:absolute; bottom:0; left:0; right:0; height:128px; background:linear-gradient(to top, hsl(var(--background)), transparent); z-index:10; }
+
+  /* ---------- CTA ---------- */
+  .cta { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; z-index:10; }
+  .cta video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .cta-overlay { position:absolute; inset:0; background:rgba(0,0,0,.3); }
+  .cta-fade { position:absolute; left:0; right:0; height:160px; z-index:5; }
+  .cta-fade.top { top:0; background:linear-gradient(to bottom, hsl(var(--background)), transparent); }
+  .cta-fade.bottom { bottom:0; background:linear-gradient(to top, hsl(var(--background)), transparent); }
+  .cta-content { position:relative; z-index:10; text-align:center; max-width:768px; padding:0 24px; }
+  .cta-content h2 { font-size:clamp(36px,5vw,60px); font-weight:500; letter-spacing:-2px; margin-bottom:24px; }
+  .cta-content p { color:hsl(var(--muted-foreground)); font-size:18px; margin-bottom:40px; }
+  .cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .btn-solid { background:hsl(var(--foreground)); color:hsl(var(--background)); border:none; border-radius:9999px; padding:16px 40px; font-family:inherit; font-weight:500; font-size:14px; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; }
+  .btn-glass { border-radius:9999px; padding:16px 40px; font-family:inherit; font-weight:500; font-size:14px; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top:1px solid hsl(var(--border)); padding:64px clamp(24px,6vw,64px); }
+  .footer-grid { max-width:1152px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:40px; }
+  @media (min-width:768px) { .footer-grid { grid-template-columns:2fr 1fr 1fr 1fr; } }
+  .footer-grid h4 { font-size:14px; font-weight:600; margin-bottom:16px; }
+  .footer-grid a, .footer-grid p { display:block; color:hsl(var(--muted-foreground)); font-size:14px; line-height:2.2; transition:color .2s; }
+  .footer-grid a:hover { color:hsl(var(--foreground)); }
+  .footer-bar { max-width:1152px; margin:48px auto 0; padding-top:24px; border-top:1px solid hsla(var(--border),.5); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:hsl(var(--muted-foreground)); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">MERIDIAN</a>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#about">Services</a>
+    <a href="#about">About</a>
+    <a href="#work">Blog</a>
+    <a href="#cta">Contact</a>
+  </div>
+  <a class="nav-cta liquid-glass-strong" href="#cta">Get Started</a>
+</nav>
+
+<header class="hero">
+  <video autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260326_073936_8dd07fdb-4f6b-4220-a3f0-9dedfaab0c88.mp4" type="video/mp4">
+  </video>
+  <div class="hero-fade"></div>
+  <div class="hero-content">
+    <div class="avatar-row">
+      <div class="avatars">
+        <img src="https://i.pravatar.cc/150?img=12" alt="">
+        <img src="https://i.pravatar.cc/150?img=32" alt="">
+        <img src="https://i.pravatar.cc/150?img=47" alt="">
+      </div>
+      <span>7,000+ brands already transformed</span>
+    </div>
+    <h1>Build Stunning with <span class="font-accent">AI Magic</span></h1>
+    <p class="sub">AI-powered websites crafted for beauty, speed, and lasting performance.</p>
+    <form class="email-form liquid-glass" onsubmit="event.preventDefault(); alert('Thanks — we\'ll be in touch soon.');">
+      <input type="email" placeholder="Enter your email" required aria-label="Email">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <p id="scroll-text">
+    <span class="word">We</span> <span class="word">blend</span> <span class="word">artificial</span> <span class="word">intelligence</span> <span class="word">with</span> <span class="word">human</span> <span class="word">creativity</span> <span class="word">to</span> <span class="word">craft</span> <span class="word">digital</span> <span class="word">experiences</span> <span class="word">that</span> <span class="word">captivate,</span> <span class="word">convert,</span> <span class="word">and</span> <span class="word">scale</span> <span class="word">—</span> <span class="word">building</span> <span class="word">ambitious</span> <span class="word">brands</span> <span class="word">that</span> <span class="word">truly</span> <span class="word">thrive</span> <span class="word">and</span> <span class="word">lead</span> <span class="word">in</span> <span class="word">the</span> <span class="word">modern</span> <span class="word">web.</span>
+  </p>
+</section>
+
+<section class="work" id="work">
+  <h2>Selected <span class="font-accent">Work</span></h2>
+  <p class="sub">A curated collection of projects where bold design meets intelligent technology.</p>
+  <div class="work-grid">
+    <div class="project">
+      <div class="frame liquid-glass"><img src="https://motionsites.ai/assets/hero-grow-ai-preview-BlQ8tAQ-.gif" alt="Nova Finance"></div>
+      <h3>Nova Finance</h3>
+      <span>Brand & Web Design</span>
+    </div>
+    <div class="project" style="transition-delay:.1s">
+      <div class="frame liquid-glass"><img src="https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif" alt="Pulse Health"></div>
+      <h3>Pulse Health</h3>
+      <span>AI Web Development</span>
+    </div>
+    <div class="project" style="transition-delay:.2s">
+      <div class="frame liquid-glass"><img src="https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif" alt="Drift Studios"></div>
+      <h3>Drift Studios</h3>
+      <span>Website Optimization</span>
+    </div>
+    <div class="project" style="transition-delay:.3s">
+      <div class="frame liquid-glass"><img src="https://motionsites.ai/assets/hero-neuralyn-preview-Br4FRDQA.gif" alt="Arc Commerce"></div>
+      <h3>Arc Commerce</h3>
+      <span>Brand & Development</span>
+    </div>
+  </div>
+</section>
+
+<div class="showcase">
+  <video autoplay loop muted playsinline>
+    <source src="https://media.cleanshot.cloud/media/21620/nKosRonaEKSufJVJ4VtouFhOPkqgJ3dPoQ8ZP52S.mp4" type="video/mp4">
+  </video>
+  <div class="showcase-fade-top"></div>
+  <div class="showcase-fade-bottom"></div>
+</div>
+
+<section class="cta" id="cta">
+  <video autoplay loop muted playsinline id="cta-video">
+    <source src="https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8" type="application/x-mpegURL">
+  </video>
+  <div class="cta-overlay"></div>
+  <div class="cta-fade top"></div>
+  <div class="cta-fade bottom"></div>
+  <div class="cta-content">
+    <h2>Ready to <span class="font-accent">Transform</span> Your Brand?</h2>
+    <p>Let's build something extraordinary together.</p>
+    <div class="cta-btns">
+      <button class="btn-solid">Start a Project</button>
+      <button class="btn-glass liquid-glass-strong">Book a Call</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>MERIDIAN</h4>
+      <p>AI-powered web design agency crafting digital experiences that convert.</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <a href="#">Brand Design</a>
+      <a href="#">AI Web Design</a>
+      <a href="#">AI Web Development</a>
+      <a href="#">Optimization</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#">About</a>
+      <a href="#">Work</a>
+      <a href="#">Blog</a>
+      <a href="#">Careers</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="#">Twitter</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+      <a href="#">Dribbble</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>© 2026 MERIDIAN. All rights reserved.</span>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · Demo by The Backus Agency</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll-reveal words (about section)
+  const words = document.querySelectorAll('#scroll-text .word');
+  const wordIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+  }, { threshold: 0.4 });
+  words.forEach(w => wordIO.observe(w));
+
+  // Project cards fade-up
+  const projIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); projIO.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.project').forEach(p => projIO.observe(p));
+
+  // HLS fallback for CTA video
+  const v = document.getElementById('cta-video');
+  if (v.canPlayType('application/vnd.apple.mpegurl')) {
+    // Safari native — fine
+  } else if (window.Hls && Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource('https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8');
+    hls.attachMedia(v);
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js"></script>
+<script>
+  // Re-run HLS attach after hls.js loads
+  (function () {
+    const v = document.getElementById('cta-video');
+    if (v && !v.canPlayType('application/vnd.apple.mpegurl') && window.Hls && Hls.isSupported() && !v._hlsAttached) {
+      const hls = new Hls();
+      hls.loadSource('https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8');
+      hls.attachMedia(v);
+      v._hlsAttached = true;
+    }
+  })();
+</script>
+</body>
+</html>

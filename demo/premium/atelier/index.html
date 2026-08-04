@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATELIER — Premium Digital Studio</title>
+<meta name="description" content="Stunning design. Blazing performance. Built by AI, refined by experts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --background: 262 60% 12%; --foreground: 0 0% 100%;
+    --card: 262 50% 16%; --card-foreground: 0 0% 100%;
+    --primary: 262 84% 60%; --primary-foreground: 0 0% 100%;
+    --secondary: 45 93% 47%; --secondary-foreground: 0 0% 8%;
+    --muted: 262 35% 20%; --muted-foreground: 0 0% 100%;
+    --accent: 45 93% 52%; --accent-foreground: 0 0% 8%;
+    --border: 0 0% 100%;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:hsl(var(--background)); color:hsl(var(--foreground)); font-family:'Barlow',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  a { color:inherit; text-decoration:none; }
+  .font-heading { font-family:'Instrument Serif',serif; font-style:italic; }
+  .font-body { font-family:'Barlow',sans-serif; }
+
+  /* ---------- Liquid Glass ---------- */
+  .liquid-glass { background:rgba(255,255,255,.01); background-blend-mode:luminosity; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); border:none; box-shadow:inset 0 1px 1px rgba(255,255,255,.1); position:relative; overflow:hidden; }
+  .liquid-glass::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1.4px; background:linear-gradient(180deg, rgba(255,255,255,.45) 0%, rgba(255,255,255,.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.15) 80%, rgba(255,255,255,.45) 100%); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+  .liquid-glass-strong { background:rgba(255,255,255,.01); background-blend-mode:luminosity; backdrop-filter:blur(50px); -webkit-backdrop-filter:blur(50px); border:none; box-shadow:4px 4px 4px rgba(0,0,0,.05), inset 0 1px 1px rgba(255,255,255,.15); position:relative; overflow:hidden; }
+  .liquid-glass-strong::before { content:''; position:absolute; inset:0; border-radius:inherit; padding:1.4px; background:linear-gradient(180deg, rgba(255,255,255,.5) 0%, rgba(255,255,255,.2) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.2) 80%, rgba(255,255,255,.5) 100%); -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+
+  /* ---------- Navbar ---------- */
+  nav { position:fixed; top:16px; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:12px clamp(24px,6vw,64px); }
+  .logo { font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; }
+  .nav-pill { display:none; border-radius:9999px; padding:6px 8px; align-items:center; }
+  @media (min-width:768px) { .nav-pill { display:flex; } }
+  .nav-pill a { padding:8px 12px; font-size:14px; font-weight:500; color:hsla(var(--foreground),.9); }
+  .nav-pill .get-started { background:#fff; color:#000; border-radius:9999px; padding:6px 14px; font-size:14px; display:inline-flex; align-items:center; gap:4px; }
+  .nav-pill .get-started svg { width:14px; height:14px; }
+
+  /* ---------- Hero ---------- */
+  .hero { position:relative; height:1000px; overflow:visible; }
+  .hero video { position:absolute; left:0; width:100%; height:auto; object-fit:contain; z-index:0; top:20%; }
+  .hero-shade { position:absolute; inset:0; background:rgba(0,0,0,.05); z-index:0; }
+  .hero-fade { position:absolute; bottom:0; left:0; right:0; height:300px; background:linear-gradient(to bottom, transparent, hsl(var(--background))); z-index:1; }
+  .hero-content { position:relative; z-index:10; text-align:center; padding-top:150px; padding-left:24px; padding-right:24px; display:flex; flex-direction:column; align-items:center; }
+  .badge-pill { border-radius:9999px; padding:4px; display:inline-flex; align-items:center; margin-bottom:32px; }
+  .badge-new { background:#fff; color:#000; border-radius:9999px; padding:4px 12px; font-size:12px; font-weight:600; }
+  .badge-text { padding:4px 12px; font-size:12px; font-weight:500; white-space:nowrap; }
+  .hero h1 { font-size:clamp(56px,8vw,88px); font-family:'Instrument Serif',serif; font-style:italic; line-height:.8; letter-spacing:-4px; max-width:640px; margin:0 auto; }
+  .hero h1 .word { display:inline-block; opacity:0; filter:blur(10px); transform:translateY(50px); }
+  .hero h1 .word.in { animation:blur-in .35s ease forwards; }
+  @keyframes blur-in { 0% { filter:blur(10px); opacity:0; transform:translateY(50px); } 50% { filter:blur(5px); opacity:.5; transform:translateY(-5px); } 100% { filter:blur(0); opacity:1; transform:translateY(0); } }
+  .hero .sub { color:hsla(var(--foreground),.75); font-size:clamp(14px,1.6vw,16px); font-weight:300; margin-top:32px; max-width:560px; line-height:1.4; }
+  .hero-ctas { display:flex; gap:24px; margin-top:40px; flex-wrap:wrap; justify-content:center; }
+  .cta-glass { border-radius:9999px; padding:10px 20px; font-family:'Barlow',sans-serif; font-size:14px; font-weight:500; display:inline-flex; align-items:center; gap:8px; cursor:pointer; }
+  .cta-glass svg { width:16px; height:16px; }
+  .cta-text { display:inline-flex; align-items:center; gap:8px; font-family:'Barlow',sans-serif; font-size:14px; font-weight:500; cursor:pointer; }
+  .cta-text svg { width:14px; height:14px; fill:currentColor; }
+  .partners { margin-top:auto; padding:64px 24px 32px; text-align:center; }
+  .partners-pill { display:inline-flex; border-radius:9999px; padding:6px 16px; font-size:12px; color:hsla(var(--foreground),.7); margin-bottom:24px; }
+  .partner-names { display:flex; gap:48px; flex-wrap:wrap; justify-content:center; }
+  .partner-names span { font-family:'Instrument Serif',serif; font-style:italic; font-size:clamp(20px,2.5vw,30px); color:hsla(var(--foreground),.85); }
+
+  /* ---------- Sections ---------- */
+  .sec-badge { display:inline-flex; border-radius:9999px; padding:4px 14px; font-size:12px; font-weight:500; margin-bottom:20px; }
+  .sec-heading { font-family:'Instrument Serif',serif; font-style:italic; font-size:clamp(36px,5vw,60px); letter-spacing:-1px; line-height:.9; }
+  .sec-sub { color:hsla(var(--foreground),.6); font-weight:300; font-size:clamp(14px,1.5vw,16px); margin-top:16px; max-width:560px; }
+
+  /* How it works */
+  .how { position:relative; min-height:500px; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+  .how video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .how-fade-t, .how-fade-b { position:absolute; left:0; right:0; height:200px; z-index:2; pointer-events:none; }
+  .how-fade-t { top:0; background:linear-gradient(to bottom, hsl(var(--background)), transparent); }
+  .how-fade-b { bottom:0; background:linear-gradient(to top, hsl(var(--background)), transparent); }
+  .how-content { position:relative; z-index:10; padding:100px 24px; }
+  .how-content h2 { font-size:clamp(36px,5vw,60px); margin-top:20px; }
+  .how-content p { margin-top:16px; }
+  .how-content .cta-glass { margin-top:32px; }
+
+  /* Features chess */
+  .features { padding:128px 24px; max-width:1152px; margin:0 auto; }
+  .features-head { text-align:center; margin-bottom:96px; }
+  .chess-row { display:flex; flex-direction:column; gap:48px; align-items:center; margin-bottom:96px; }
+  @media (min-width:768px) { .chess-row { flex-direction:row; gap:64px; } .chess-row.rev { flex-direction:row-reverse; } }
+  .chess-text { flex:1; }
+  .chess-text h3 { font-family:'Instrument Serif',serif; font-style:italic; font-size:clamp(28px,3.5vw,40px); letter-spacing:-.5px; line-height:1; }
+  .chess-text p { color:hsla(var(--foreground),.6); font-weight:300; line-height:1.6; margin:16px 0 24px; max-width:440px; }
+  .chess-media { flex:1; }
+  .chess-media .frame { border-radius:16px; overflow:hidden; }
+  .chess-media img { width:100%; display:block; }
+
+  /* Features grid */
+  .feat-grid { display:grid; grid-template-columns:1fr; gap:24px; max-width:1152px; margin:0 auto; padding:0 24px 128px; }
+  @media (min-width:768px) { .feat-grid { grid-template-columns:1fr 1fr; } }
+  @media (min-width:1024px) { .feat-grid { grid-template-columns:repeat(4,1fr); } }
+  .feat-card { border-radius:16px; padding:24px; }
+  .feat-icon { width:40px; height:40px; border-radius:9999px; display:grid; place-items:center; margin-bottom:16px; }
+  .feat-icon svg { width:18px; height:18px; }
+  .feat-card h3 { font-size:20px; font-weight:500; font-family:'Barlow',sans-serif; font-style:normal; }
+  .feat-card p { color:hsla(var(--foreground),.6); font-weight:300; font-size:14px; line-height:1.6; margin-top:8px; }
+
+  /* Stats */
+  .stats { position:relative; overflow:hidden; }
+  .stats video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(0); }
+  .stats-fade-t, .stats-fade-b { position:absolute; left:0; right:0; height:200px; z-index:2; pointer-events:none; }
+  .stats-fade-t { top:0; background:linear-gradient(to bottom, hsl(var(--background)), transparent); }
+  .stats-fade-b { bottom:0; background:linear-gradient(to top, hsl(var(--background)), transparent); }
+  .stats-card { position:relative; z-index:10; margin:0 auto; max-width:1024px; border-radius:24px; padding:48px; display:grid; grid-template-columns:1fr 1fr; gap:40px; text-align:center; }
+  @media (min-width:768px) { .stats-card { grid-template-columns:repeat(4,1fr); padding:64px; } }
+  .stat .val { font-family:'Instrument Serif',serif; font-style:italic; font-size:clamp(36px,5vw,60px); }
+  .stat .val.gold { color:hsl(var(--secondary)); }
+  .stat .lbl { color:hsla(var(--foreground),.6); font-weight:300; font-size:14px; margin-top:4px; }
+
+  /* Testimonials */
+  .testi { padding:128px 24px; max-width:1152px; margin:0 auto; text-align:center; }
+  .testi-grid { display:grid; grid-template-columns:1fr; gap:24px; margin-top:64px; text-align:left; }
+  @media (min-width:768px) { .testi-grid { grid-template-columns:repeat(3,1fr); } }
+  .testi-card { border-radius:16px; padding:32px; }
+  .testi-card p { color:hsla(var(--foreground),.8); font-weight:300; font-style:italic; font-size:14px; line-height:1.6; }
+  .testi-card .who { margin-top:24px; }
+  .testi-card .who b { display:block; font-weight:500; font-size:14px; }
+  .testi-card .who span { color:hsla(var(--foreground),.5); font-weight:300; font-size:12px; }
+
+  /* CTA + footer */
+  .final-cta { position:relative; overflow:hidden; text-align:center; }
+  .final-cta video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .final-fade-t, .final-fade-b { position:absolute; left:0; right:0; height:200px; z-index:2; pointer-events:none; }
+  .final-fade-t { top:0; background:linear-gradient(to bottom, hsl(var(--background)), transparent); }
+  .final-fade-b { bottom:0; background:linear-gradient(to top, hsl(var(--background)), transparent); }
+  .final-content { position:relative; z-index:10; padding:160px 24px 64px; }
+  .final-content h2 { font-size:clamp(48px,7vw,72px); line-height:.85; }
+  .final-content p { color:hsla(var(--foreground),.6); font-weight:300; margin:24px auto 40px; max-width:480px; }
+  .final-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+  .btn-white { background:#fff; color:#000; border:none; border-radius:9999px; padding:12px 24px; font-family:'Barlow',sans-serif; font-weight:500; font-size:14px; cursor:pointer; }
+  footer.foot { position:relative; z-index:10; margin-top:128px; padding:32px 24px; border-top:1px solid rgba(255,255,255,.1); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:12px; color:hsla(var(--foreground),.4); }
+  footer.foot a { margin-left:16px; }
+
+  /* Reveal */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">ATELIER</a>
+  <div class="nav-pill liquid-glass">
+    <a href="#how">Home</a>
+    <a href="#features">Services</a>
+    <a href="#work">Work</a>
+    <a href="#how">Process</a>
+    <a href="#stats">Pricing</a>
+    <a class="get-started" href="#final">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+  </div>
+</nav>
+
+<header class="hero">
+  <video autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260307_083826_e938b29f-a43a-41ec-a153-3d4730578ab8.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade"></div>
+  <div class="hero-fade"></div>
+  <div class="hero-content">
+    <span class="badge-pill liquid-glass"><span class="badge-new">New</span><span class="badge-text">Introducing AI-powered web design.</span></span>
+    <h1 id="hero-title"></h1>
+    <p class="sub">Stunning design. Blazing performance. Built by AI, refined by experts. This is web design, wildly reimagined.</p>
+    <div class="hero-ctas">
+      <button class="cta-glass liquid-glass-strong">Get Started <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></button>
+      <button class="cta-text"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg> Watch the Film</button>
+    </div>
+  </div>
+  <div class="partners">
+    <span class="partners-pill liquid-glass">Trusted by the teams behind</span>
+    <div class="partner-names">
+      <span>Stripe</span><span>Vercel</span><span>Linear</span><span>Notion</span><span>Figma</span>
+    </div>
+  </div>
+</header>
+
+<section class="how" id="how">
+  <video autoplay loop muted playsinline id="how-video">
+    <source src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8" type="application/x-mpegURL">
+  </video>
+  <div class="how-fade-t"></div>
+  <div class="how-fade-b"></div>
+  <div class="how-content">
+    <span class="sec-badge liquid-glass">How It Works</span>
+    <h2 class="sec-heading reveal">You dream it. We ship it.</h2>
+    <p class="sec-sub reveal">Share your vision. Our AI handles the rest — wireframes, design, code, launch. All in days, not quarters.</p>
+    <button class="cta-glass liquid-glass-strong reveal">Get Started</button>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="features-head">
+    <span class="sec-badge liquid-glass">Capabilities</span>
+    <h2 class="sec-heading reveal">Pro features. Zero complexity.</h2>
+  </div>
+
+  <div class="chess-row">
+    <div class="chess-text reveal">
+      <h3>Designed to convert. Built to perform.</h3>
+      <p>Every pixel is intentional. Our AI studies what works across thousands of top sites — then builds yours to outperform them all.</p>
+      <button class="cta-glass liquid-glass-strong">Learn more</button>
+    </div>
+    <div class="chess-media reveal">
+      <div class="frame liquid-glass"><img src="https://motionsites.ai/assets/hero-finlytic-preview-CV9g0FHP.gif" alt="Conversion-focused design"></div>
+    </div>
+  </div>
+
+  <div class="chess-row rev">
+    <div class="chess-text reveal">
+      <h3>It gets smarter. Automatically.</h3>
+      <p>Your site evolves on its own. AI monitors every click, scroll, and conversion — then optimizes in real time. No manual updates. Ever.</p>
+      <button class="cta-glass liquid-glass-strong">See how it works</button>
+    </div>
+    <div class="chess-media reveal">
+      <div class="frame liquid-glass"><img src="https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif" alt="Self-optimizing sites"></div>
+    </div>
+  </div>
+</section>
+
+<div class="feat-grid">
+  <div class="feat-card liquid-glass reveal">
+    <div class="feat-icon liquid-glass-strong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <h3>Days, Not Months</h3>
+    <p>Concept to launch at a pace that redefines fast. Because waiting isn't a strategy.</p>
+  </div>
+  <div class="feat-card liquid-glass reveal" style="transition-delay:.1s">
+    <div class="feat-icon liquid-glass-strong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21a9 9 0 1 1 9-9c0 2-1 3-2 3h-2a2 2 0 0 0-2 2c0 1 1 2 1 3 0 1-1 2-2 2h-2z"/><circle cx="7.5" cy="10.5" r=".5"/><circle cx="12" cy="7.5" r=".5"/><circle cx="16.5" cy="10.5" r=".5"/></svg></div>
+    <h3>Obsessively Crafted</h3>
+    <p>Every detail considered. Every element refined. Design so precise, it feels inevitable.</p>
+  </div>
+  <div class="feat-card liquid-glass reveal" style="transition-delay:.2s">
+    <div class="feat-icon liquid-glass-strong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+    <h3>Built to Convert</h3>
+    <p>Layouts informed by data. Decisions backed by performance. Results you can measure.</p>
+  </div>
+  <div class="feat-card liquid-glass reveal" style="transition-delay:.3s">
+    <div class="feat-icon liquid-glass-strong"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+    <h3>Secure by Default</h3>
+    <p>Enterprise-grade protection comes standard. SSL, DDoS mitigation, compliance. All included.</p>
+  </div>
+</div>
+
+<section class="stats" id="stats">
+  <video autoplay loop muted playsinline id="stats-video">
+    <source src="https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8" type="application/x-mpegURL">
+  </video>
+  <div class="stats-fade-t"></div>
+  <div class="stats-fade-b"></div>
+  <div class="stats-card liquid-glass reveal">
+    <div class="stat"><div class="val">200+</div><div class="lbl">Sites launched</div></div>
+    <div class="stat"><div class="val">98%</div><div class="lbl">Client satisfaction</div></div>
+    <div class="stat"><div class="val gold">3.2x</div><div class="lbl">More conversions</div></div>
+    <div class="stat"><div class="val">5 days</div><div class="lbl">Average delivery</div></div>
+  </div>
+</section>
+
+<section class="testi" id="work">
+  <span class="sec-badge liquid-glass">What They Say</span>
+  <h2 class="sec-heading reveal">Don't take our word for it.</h2>
+  <div class="testi-grid">
+    <div class="testi-card liquid-glass reveal">
+      <p>"A complete rebuild in five days. The result outperformed everything we'd spent months building before."</p>
+      <div class="who"><b>Sarah Chen</b><span>CEO, Luminary</span></div>
+    </div>
+    <div class="testi-card liquid-glass reveal" style="transition-delay:.1s">
+      <p>"Conversions up 4x. That's not a typo. The design just works differently when it's built on real data."</p>
+      <div class="who"><b>Marcus Webb</b><span>Head of Growth, Arcline</span></div>
+    </div>
+    <div class="testi-card liquid-glass reveal" style="transition-delay:.2s">
+      <p>"They didn't just design our site. They defined our brand. World-class doesn't begin to cover it."</p>
+      <div class="who"><b>Elena Voss</b><span>Brand Director, Helix</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="final">
+  <video autoplay loop muted playsinline id="final-video">
+    <source src="https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8" type="application/x-mpegURL">
+  </video>
+  <div class="final-fade-t"></div>
+  <div class="final-fade-b"></div>
+  <div class="final-content">
+    <h2 class="reveal">Your next website starts here.</h2>
+    <p class="reveal">Book a free strategy call. See what AI-powered design can do. No commitment, no pressure. Just possibilities.</p>
+    <div class="final-btns reveal">
+      <button class="cta-glass liquid-glass-strong">Book a Call</button>
+      <button class="btn-white">View Pricing</button>
+    </div>
+    <footer class="foot">
+      <span>© 2026 ATELIER. All rights reserved. · Demo by The Backus Agency</span>
+      <span><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></span>
+    </footer>
+  </div>
+</section>
+
+<script>
+  // BlurText hero heading
+  const phrase = "The Website Your Brand Deserves";
+  const h1 = document.getElementById('hero-title');
+  phrase.split(' ').forEach((w, i) => {
+    const s = document.createElement('span');
+    s.className = 'word';
+    s.textContent = w + ' ';
+    h1.appendChild(s);
+  });
+  setTimeout(() => {
+    document.querySelectorAll('#hero-title .word').forEach((w, i) => {
+      setTimeout(() => w.classList.add('in'), 100 + i * 200);
+    });
+  }, 300);
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // HLS helper
+  const streams = {
+    'how-video': 'https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8',
+    'stats-video': 'https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8',
+    'final-video': 'https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8'
+  };
+  function attachHls(id, src) {
+    const v = document.getElementById(id);
+    if (!v) return;
+    if (!v.canPlayType('application/vnd.apple.mpegurl') && window.Hls && Hls.isSupported() && !v._hls) {
+      const hls = new Hls();
+      hls.loadSource(src);
+      hls.attachMedia(v);
+      v._hls = true;
+    }
+  }
+  attachHls('how-video', streams['how-video']);
+  attachHls('stats-video', streams['stats-video']);
+  attachHls('final-video', streams['final-video']);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js"></script>
+<script>
+  (function () {
+    const streams = {
+      'how-video': 'https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8',
+      'stats-video': 'https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8',
+      'final-video': 'https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8'
+    };
+    Object.entries(streams).forEach(([id, src]) => {
+      const v = document.getElementById(id);
+      if (v && !v.canPlayType('application/vnd.apple.mpegurl') && window.Hls && Hls.isSupported() && !v._hls) {
+        const hls = new Hls();
+        hls.loadSource(src);
+        hls.attachMedia(v);
+        v._hls = true;
+      }
+    });
+  })();
+</script>
+</body>
+</html>
