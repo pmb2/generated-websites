@@ -453,7 +453,7 @@ img { max-width: 100%; display: block; }
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>5-hour weekly savings guarantee</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>30-minute review call</li>
       </ul>
-      <a class="btn-green" href="#contact" style="width: 100%; justify-content: center;">Get Assessed</a>
+      <a class="btn-green" href="assess.html" style="width: 100%; justify-content: center;">Reserve Your Slot</a>
     </div>
     <div class="price-card featured anim">
       <div class="price-name">Bespoke Build</div>
@@ -621,7 +621,13 @@ var TBA_CONFIG = {
   // To go serverless: sign up at https://formsubmit.co, confirm the email,
   // then set:  formEndpoint: 'https://formsubmit.co/ajax/your@email.com'
   formEndpoint: '',
-  bookingUrl: 'scan.html'                    // funnel page (or a Calendly URL later)
+  bookingUrl: 'scan.html',                   // assessment request page
+  // Direct purchase path (pricing section "Get Assessed"):
+  // 1) assessmentPayUrl  = your Stripe payment link for the $999 assessment
+  // 2) assessmentCalUrl  = your Calendly URL for booking the 45-min slot
+  // Both are wired into assess.html. Leave empty to fall back to email.
+  assessmentPayUrl: '',
+  assessmentCalUrl: ''
 };
 (function () {
   var nav = document.getElementById('siteNav');
