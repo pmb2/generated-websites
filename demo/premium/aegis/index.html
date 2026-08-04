@@ -10,11 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --background: 0 0% 10%; --foreground: 0 0% 96%;
+    --background: 262 45% 8%; --foreground: 0 0% 96%;
     --primary: 262 84% 60%; --primary-foreground: 0 0% 4%;
     --gold: 45 93% 47%;
-    --muted-foreground: 0 0% 60%; --border: 0 0% 20%;
-    --hero-bg: 0 0% 8%; --nav-button: 0 0% 18%;
+    --muted-foreground: 262 12% 62%; --border: 262 20% 22%;
+    --hero-bg: 262 50% 6%; --nav-button: 262 25% 16%;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
@@ -41,8 +41,8 @@
 
   /* ---------- Hero ---------- */
   .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; background:hsl(var(--hero-bg)); overflow:hidden; }
-  .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, hsla(0,0%,8%,.92) 0%, hsla(0,0%,8%,.35) 45%, hsla(0,0%,8%,.15) 100%); }
+  .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:hue-rotate(150deg) saturate(1.15) contrast(1.05); }
+  .hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, hsla(262,60%,10%,.94) 0%, hsla(262,60%,10%,.40) 45%, hsla(262,60%,10%,.20) 100%); }
   .hero-content { position:relative; z-index:10; padding:128px clamp(24px,6vw,64px) 80px; }
   .hero h1 { font-size:clamp(44px,7vw,88px); font-weight:300; line-height:.95; letter-spacing:-.02em; }
   .hero .sub { color:hsl(var(--muted-foreground)); font-size:clamp(15px,1.6vw,18px); max-width:576px; margin:24px 0 40px; line-height:1.6; }
@@ -50,8 +50,8 @@
   .btn-primary { background:hsl(var(--primary)); color:hsl(var(--primary-foreground)); font-weight:600; border:none; border-radius:8px; padding:0 32px; height:44px; text-transform:uppercase; font-size:12px; letter-spacing:.16em; font-family:inherit; cursor:pointer; transition:background .2s; }
   .btn-primary:hover { background:hsla(var(--primary),.9); }
   .btn-primary:active { transform:scale(.97); }
-  .btn-ghost { text-transform:uppercase; font-size:12px; letter-spacing:.16em; color:hsl(var(--foreground)); border-bottom:1px solid hsl(var(--primary)); padding-bottom:4px; transition:color .2s; }
-  .btn-ghost:hover { color:hsl(var(--primary)); }
+  .btn-ghost { text-transform:uppercase; font-size:12px; letter-spacing:.16em; color:hsl(var(--foreground)); border-bottom:1px solid hsl(var(--gold)); padding-bottom:4px; transition:color .2s, border-color .2s; }
+  .btn-ghost:hover { color:hsl(var(--gold)); border-color:hsl(var(--gold)); }
   .btn-ghost:active { transform:scale(.97); }
 
   /* ---------- Sections ---------- */
@@ -72,7 +72,7 @@
   @media (min-width:640px) { .svc-row { grid-template-columns:1fr 1fr; } }
   .svc-card { padding-left:32px; border-left:1px solid hsla(var(--border),.2); padding:24px 0 24px 32px; }
   .svc-card img { width:64px; height:64px; object-fit:contain; margin-bottom:16px; }
-  .svc-num { color:hsla(var(--muted-foreground),.4); font-size:12px; margin-bottom:8px; }
+  .svc-num { color:hsl(var(--gold)); font-size:12px; margin-bottom:8px; font-weight:600; letter-spacing:.08em; }
   .svc-title { font-size:20px; font-weight:500; line-height:1.2; white-space:pre-line; }
   .svc-desc { color:hsla(var(--muted-foreground),.5); font-size:14px; line-height:1.6; margin-top:8px; }
   .svc-sep { height:1px; background:hsla(var(--muted-foreground),.15); }
@@ -81,7 +81,7 @@
   .about { background:#000; padding-top:48px; padding-bottom:96px; }
   .about-cols { display:flex; flex-direction:column; gap:48px; align-items:stretch; }
   @media (min-width:1024px) { .about-cols { flex-direction:row; gap:0; } .about-left { width:45%; } }
-  .about video { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:2px; }
+  .about video { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:2px; filter:hue-rotate(150deg) saturate(1.15) contrast(1.05); }
   .about-divider { display:none; }
   @media (min-width:1024px) { .about-divider { display:block; width:1px; background:hsla(var(--muted-foreground),.2); margin:32px 40px 0; } }
   .about-right { flex:1; display:flex; flex-direction:column; justify-content:space-between; min-height:500px; }

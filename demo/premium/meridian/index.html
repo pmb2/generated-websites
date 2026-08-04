@@ -10,19 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
-    --background: 0 0% 0%; --foreground: 0 0% 100%;
-    --card: 0 0% 9%; --card-foreground: 0 0% 100%;
+    --background: 262 45% 6%; --foreground: 0 0% 100%;
+    --card: 262 35% 10%; --card-foreground: 0 0% 100%;
     --primary: 262 84% 60%; --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 15%; --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%; --muted-foreground: 0 0% 75%;
+    --secondary: 262 25% 14%; --secondary-foreground: 0 0% 100%;
+    --muted: 262 25% 14%; --muted-foreground: 262 15% 72%;
     --accent: 45 93% 47%; --accent-foreground: 0 0% 100%;
-    --border: 0 0% 20%;
+    --border: 262 20% 22%;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior:smooth; }
   body { background:hsl(var(--background)); color:hsl(var(--foreground)); font-family:'Barlow',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
   a { color:inherit; text-decoration:none; }
-  .font-accent { font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; }
+  .font-accent { font-family:'Instrument Serif',serif; font-style:italic; font-weight:400; color:hsl(var(--accent)); }
 
   /* ---------- Liquid Glass ---------- */
   .liquid-glass { background:rgba(255,255,255,.01); background-blend-mode:luminosity; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); border:none; box-shadow:inset 0 1px 1px rgba(255,255,255,.1); position:relative; overflow:hidden; }
@@ -54,8 +54,8 @@
   .hero .sub { color:hsl(var(--muted-foreground)); font-size:clamp(14px,1.8vw,18px); margin-top:16px; }
   .email-form { margin-top:28px; display:flex; max-width:512px; width:100%; border-radius:9999px; padding:6px 8px; align-items:center; }
   .email-form input { flex:1; background:transparent; border:none; outline:none; color:hsl(var(--foreground)); font-family:inherit; font-size:14px; padding:0 16px; min-width:0; }
-  .email-form button { background:hsl(var(--foreground)); color:hsl(var(--background)); border:none; border-radius:9999px; padding:12px 24px; font-family:inherit; font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; transition:transform .15s; white-space:nowrap; }
-  .email-form button:hover { transform:scale(1.03); }
+  .email-form button { background:hsl(var(--foreground)); color:hsl(var(--background)); border:none; border-radius:9999px; padding:12px 24px; font-family:inherit; font-weight:600; font-size:13px; text-transform:uppercase; letter-spacing:.08em; cursor:pointer; transition:transform .15s, background .2s, color .2s; white-space:nowrap; }
+  .email-form button:hover { transform:scale(1.03); background:hsl(var(--primary)); color:#fff; }
   .email-form button:active { transform:scale(.98); }
 
   /* ---------- About (scroll reveal text) ---------- */
@@ -74,12 +74,13 @@
   .project.in { opacity:1; transform:translateY(0); }
   .project .frame { aspect-ratio:4/3; border-radius:16px; overflow:hidden; margin-bottom:16px; }
   .project .frame img { width:100%; height:100%; object-fit:cover; }
-  .project h3 { font-size:20px; font-weight:500; }
+  .project h3 { font-size:20px; font-weight:500; transition:color .2s; }
+  .project:hover h3 { color:hsl(var(--primary)); }
   .project span { display:block; color:hsl(var(--muted-foreground)); font-size:14px; margin-top:4px; }
 
   /* ---------- Video showcase ---------- */
   .showcase { height:650px; overflow:hidden; position:relative; margin-top:-325px; z-index:0; }
-  .showcase video { width:100%; height:100%; object-fit:cover; }
+  .showcase video { width:100%; height:100%; object-fit:cover; filter:hue-rotate(150deg) saturate(1.15); }
   .showcase-fade-top { position:absolute; top:0; left:0; right:0; height:128px; background:linear-gradient(to bottom, hsl(var(--background)), transparent); z-index:10; }
   .showcase-fade-bottom { position:absolute; bottom:0; left:0; right:0; height:128px; background:linear-gradient(to top, hsl(var(--background)), transparent); z-index:10; }
 
