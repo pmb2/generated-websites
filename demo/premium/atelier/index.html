@@ -181,8 +181,8 @@
 </header>
 
 <section class="how" id="how">
-  <video autoplay loop muted playsinline id="how-video">
-    <source src="https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8" type="application/x-mpegURL">
+  <video autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260306_115329_5e00c9c5-4d69-49b7-94c3-9c31c60bb644.mp4" type="video/mp4">
   </video>
   <div class="how-fade-t"></div>
   <div class="how-fade-b"></div>
@@ -247,8 +247,8 @@
 </div>
 
 <section class="stats" id="stats">
-  <video autoplay loop muted playsinline id="stats-video">
-    <source src="https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8" type="application/x-mpegURL">
+  <video autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4" type="video/mp4">
   </video>
   <div class="stats-fade-t"></div>
   <div class="stats-fade-b"></div>
@@ -280,8 +280,8 @@
 </section>
 
 <section class="final-cta" id="final">
-  <video autoplay loop muted playsinline id="final-video">
-    <source src="https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8" type="application/x-mpegURL">
+  <video autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260304_101127_49ce07b7-f19a-4882-b19c-1d2a27d97ac3.mp4" type="video/mp4">
   </video>
   <div class="final-fade-t"></div>
   <div class="final-fade-b"></div>
@@ -320,47 +320,6 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // HLS helper
-  const streams = {
-    'how-video': 'https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8',
-    'stats-video': 'https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8',
-    'final-video': 'https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8'
-  };
-  function attachHls(id, src) {
-    const v = document.getElementById(id);
-    if (!v) return;
-    if (!v.canPlayType('application/vnd.apple.mpegurl') && window.Hls && Hls.isSupported() && !v._hls) {
-      const hls = new Hls();
-      hls.loadSource(src);
-      hls.attachMedia(v);
-      v._hls = true;
-      v.play().catch(() => {});
-    }
-  }
-  attachHls('how-video', streams['how-video']);
-  attachHls('stats-video', streams['stats-video']);
-  attachHls('final-video', streams['final-video']);
-</script>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js"></script>
-<script>
-  (function () {
-    const streams = {
-      'how-video': 'https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8',
-      'stats-video': 'https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8',
-      'final-video': 'https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8'
-    };
-    Object.entries(streams).forEach(([id, src]) => {
-      const v = document.getElementById(id);
-      if (v && !v.canPlayType('application/vnd.apple.mpegurl') && window.Hls && Hls.isSupported() && !v._hls) {
-        const hls = new Hls();
-        hls.loadSource(src);
-        hls.attachMedia(v);
-        v._hls = true;
-        v.play().catch(() => {});
-      }
-    });
-  })();
 </script>
 </body>
 </html>

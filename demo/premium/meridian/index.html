@@ -186,8 +186,8 @@
 </div>
 
 <section class="cta" id="cta">
-  <video autoplay loop muted playsinline id="cta-video">
-    <source src="https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8" type="application/x-mpegURL">
+  <video autoplay loop muted playsinline>
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131232_feeda0b7-d00d-4bfa-a9d5-5d38648a4214.mp4" type="video/mp4">
   </video>
   <div class="cta-overlay"></div>
   <div class="cta-fade top"></div>
@@ -249,30 +249,6 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); projIO.unobserve(e.target); } });
   }, { threshold: 0.15 });
   document.querySelectorAll('.project').forEach(p => projIO.observe(p));
-
-  // HLS fallback for CTA video
-  const v = document.getElementById('cta-video');
-  if (v.canPlayType('application/vnd.apple.mpegurl')) {
-    // Safari native — fine
-  } else if (window.Hls && Hls.isSupported()) {
-    const hls = new Hls();
-    hls.loadSource('https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8');
-    hls.attachMedia(v);
-  }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15/dist/hls.min.js"></script>
-<script>
-  // Re-run HLS attach after hls.js loads
-  (function () {
-    const v = document.getElementById('cta-video');
-    if (v && !v.canPlayType('application/vnd.apple.mpegurl') && window.Hls && Hls.isSupported() && !v._hlsAttached) {
-      const hls = new Hls();
-      hls.loadSource('https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8');
-      hls.attachMedia(v);
-      v._hlsAttached = true;
-      v.play().catch(() => {});
-    }
-  })();
 </script>
 </body>
 </html>
