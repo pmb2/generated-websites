@@ -3,8 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Opportunity Scan | Demo | TBA Solutions</title>
-<meta name="description" content="Demo of the TBA Solutions 15-minute AI Opportunity Scan: book, answer a few questions, and see the deliverable every business receives." />
+<title>Free AI Opportunity Scan | TBA Solutions</title>
+<meta name="description" content="Tell us about one painful workflow. We show you one concrete way AI can help, free, with no pitch attached. Privacy-first AI operations by TBA Solutions." />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="TBA Solutions" />
+<meta property="og:title" content="Free AI Opportunity Scan | TBA Solutions" />
+<meta property="og:description" content="One painful workflow. One concrete way AI can help. Free, no pitch, your data stays yours." />
+<meta property="og:url" content="https://pmb2.github.io/generated-websites/tba-solutions/scan/" />
+<meta property="og:image" content="https://pmb2.github.io/generated-websites/tba-solutions/og-card.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Free AI Opportunity Scan | TBA Solutions" />
+<meta name="twitter:description" content="One painful workflow. One concrete way AI can help. Free, no pitch." />
+<meta name="twitter:image" content="https://pmb2.github.io/generated-websites/tba-solutions/og-card.png" />
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="%230a0a0a"/><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z" fill="none" stroke="%2338e038" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="%2338e038" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,426 +27,322 @@
   --foreground: 0 0% 96%;
   --primary: 119 99% 46%;
   --primary-foreground: 0 0% 4%;
-  --muted-foreground: 0 0% 62%;
+  --muted-foreground: 0 0% 60%;
   --border: 0 0% 20%;
   --hero-bg: 0 0% 8%;
-  --card: 0 0% 13%;
   --nav-button: 0 0% 18%;
+  --danger: 0 84% 60%;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { background: hsl(var(--background)); color: hsl(var(--foreground)); font-family: 'Sora', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.65; }
+body { background: hsl(var(--background)); color: hsl(var(--foreground)); font-family: 'Sora', system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; line-height: 1.6; }
 a { color: inherit; text-decoration: none; }
 ::selection { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); }
-.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-/* NAV */
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; background: rgba(18,18,18,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid hsl(var(--border)); }
-@media (min-width: 1024px) { .nav { padding-left: 48px; padding-right: 48px; } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.anim { opacity: 0; }
+.anim.in { animation: fade-up 600ms ease-out forwards; }
+
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 20px 32px; transition: background 0.3s ease, padding 0.3s ease; }
+@media (min-width: 1024px) { .nav { padding-left: 64px; padding-right: 64px; } }
+.nav.scrolled { background: rgba(20,20,20,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid hsl(var(--border)); padding-top: 14px; padding-bottom: 14px; }
 .nav-brand { display: flex; align-items: center; gap: 12px; }
-.nav-logo { width: 34px; height: 34px; border-radius: 9px; background: hsl(var(--primary)); display: grid; place-items: center; flex: 0 0 auto; }
-.nav-logo svg { width: 20px; height: 20px; color: hsl(var(--primary-foreground)); }
-.nav-name { font-size: 1.05rem; font-weight: 700; }
-.nav-tag { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
-main { padding-top: 84px; padding-bottom: 60px; }
-/* WIZARD */
-.wizard { background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 18px; padding: 34px; margin-top: 28px; }
-@media (min-width: 700px) { .wizard { padding: 44px; } }
-.progress { display: flex; gap: 8px; margin-bottom: 30px; }
-.progress .bar { flex: 1; height: 5px; border-radius: 3px; background: hsl(var(--border)); transition: background 0.3s ease; }
-.progress .bar.on { background: hsl(var(--primary)); }
-.step-title { font-size: 1.35rem; font-weight: 700; margin-bottom: 6px; }
-.step-sub { color: hsl(var(--muted-foreground)); font-size: 0.95rem; margin-bottom: 26px; }
+.nav-logo { width: 38px; height: 38px; border-radius: 9px; background: hsl(var(--primary)); display: grid; place-items: center; flex: 0 0 auto; }
+.nav-logo svg { width: 22px; height: 22px; color: hsl(var(--primary-foreground)); }
+.nav-name { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+.nav-name small { display: block; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: hsl(var(--muted-foreground)); margin-top: 3px; }
+.nav-links { display: none; align-items: center; gap: 28px; }
+@media (min-width: 1024px) { .nav-links { display: flex; } }
+.nav-links a { font-size: 0.78rem; color: hsl(var(--muted-foreground)); text-transform: uppercase; letter-spacing: 0.16em; transition: color 0.2s; }
+.nav-links a:hover { color: hsl(var(--foreground)); }
+.nav-cta { display: none; height: 44px; align-items: center; padding: 0 24px; background: hsl(var(--nav-button)); color: hsl(var(--foreground)); border-radius: 8px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 500; transition: background 0.2s, transform 0.1s; }
+@media (min-width: 1024px) { .nav-cta { display: inline-flex; } }
+.nav-cta:hover { background: hsl(var(--nav-button) / 0.8); }
+.nav-cta:active { transform: scale(0.97); }
+.nav-burger { display: grid; place-items: center; width: 44px; height: 44px; background: hsl(var(--nav-button)); border: none; border-radius: 8px; color: hsl(var(--foreground)); cursor: pointer; }
+@media (min-width: 1024px) { .nav-burger { display: none; } }
+.mobile-menu { position: fixed; inset: 0; z-index: 60; background: hsl(var(--hero-bg)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.mobile-menu.open { opacity: 1; pointer-events: auto; }
+.mobile-menu a { font-size: 1.15rem; font-weight: 500; color: hsl(var(--muted-foreground)); text-transform: uppercase; letter-spacing: 0.12em; }
+.mobile-menu a:hover { color: hsl(var(--foreground)); }
+.mobile-close { position: absolute; top: 26px; right: 26px; width: 44px; height: 44px; border-radius: 8px; border: none; background: hsl(var(--nav-button)); color: hsl(var(--foreground)); font-size: 1.3rem; cursor: pointer; }
+
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: hsl(var(--hero-bg)); overflow: hidden; padding: 120px 32px 72px; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(900px 500px at 85% 0%, hsla(119, 60%, 30%, 0.22), transparent 60%), radial-gradient(700px 500px at 10% 90%, rgba(0,120,255,0.14), transparent 55%), hsl(var(--hero-bg)); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 60% at 60% 20%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 60% at 60% 20%, #000 20%, transparent 75%); }
+.hero-inner { position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+@media (max-width: 1020px) { .hero-inner { grid-template-columns: 1fr; gap: 48px; } }
+.hero-copy h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 22px; }
+.hero-copy h1 .accent { color: hsl(var(--primary)); font-weight: 400; }
+.hero-copy .sub { color: hsl(var(--muted-foreground)); font-size: 1rem; max-width: 480px; margin-bottom: 34px; line-height: 1.7; }
+.deliver { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.deliver-item { display: flex; gap: 14px; align-items: flex-start; }
+.deliver-item svg { width: 20px; height: 20px; color: hsl(var(--primary)); flex: 0 0 auto; margin-top: 3px; }
+.deliver-item b { display: block; font-weight: 600; font-size: 0.98rem; margin-bottom: 2px; }
+.deliver-item span { color: hsl(var(--muted-foreground)); font-size: 0.88rem; line-height: 1.6; }
+.hero-note { font-size: 0.8rem; color: hsl(var(--muted-foreground)); display: flex; gap: 8px; align-items: flex-start; }
+.hero-note svg { width: 15px; height: 15px; flex: 0 0 auto; margin-top: 3px; color: hsl(var(--primary)); }
+.hero .anim.d1 { animation-delay: 0.15s; } .hero .anim.d2 { animation-delay: 0.35s; } .hero .anim.d3 { animation-delay: 0.55s; }
+
+.form-card { background: rgba(255,255,255,0.03); border: 1px solid hsl(var(--border)); border-radius: 12px; padding: 40px 36px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+.form-card h2 { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+.form-card .form-sub { color: hsl(var(--muted-foreground)); font-size: 0.9rem; margin-bottom: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
 .field { margin-bottom: 18px; }
-.field label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 7px; color: hsl(var(--foreground)); }
-.field label span { color: hsl(var(--muted-foreground)); font-weight: 400; }
-.field input, .field select, .field textarea { width: 100%; padding: 12px 14px; border-radius: 9px; border: 1px solid hsl(var(--border)); background: hsl(var(--hero-bg)); color: hsl(var(--foreground)); font-family: 'Sora', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.15s ease; }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: hsl(var(--primary)); }
-.field textarea { min-height: 84px; resize: vertical; }
+.field label { display: block; font-size: 0.72rem; font-weight: 500; color: hsl(var(--muted-foreground)); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 8px; }
+.field label .req { color: hsl(var(--primary)); }
+.field input, .field select, .field textarea { width: 100%; background: hsl(var(--hero-bg)); border: 1px solid hsl(var(--border)); border-radius: 6px; padding: 13px 16px; color: hsl(var(--foreground)); font-family: inherit; font-size: 0.92rem; transition: border-color 0.2s, box-shadow 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: hsl(var(--primary)); box-shadow: 0 0 0 3px hsla(119, 60%, 46%, 0.2); }
+.field textarea { resize: vertical; min-height: 100px; }
 .field select option { background: hsl(var(--hero-bg)); }
-.row2 { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
-@media (min-width: 640px) { .row2 { grid-template-columns: 1fr 1fr; } }
-.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; margin-bottom: 20px; }
-.slot { padding: 12px 8px; border-radius: 9px; border: 1px solid hsl(var(--border)); background: hsl(var(--hero-bg)); color: hsl(var(--foreground)); font-family: 'Sora', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: border-color 0.15s ease, background 0.15s ease; }
-.slot:hover { border-color: hsl(var(--primary)); }
-.slot.sel { border-color: hsl(var(--primary)); background: hsla(var(--primary), 0.14); color: hsl(var(--primary)); }
-.q-option { display: block; width: 100%; text-align: left; padding: 14px 16px; border-radius: 10px; border: 1px solid hsl(var(--border)); background: hsl(var(--hero-bg)); color: hsl(var(--foreground)); font-family: 'Sora', sans-serif; font-size: 0.93rem; cursor: pointer; margin-bottom: 10px; transition: border-color 0.15s ease, background 0.15s ease; }
-.q-option:hover { border-color: hsl(var(--primary)); }
-.q-option.sel { border-color: hsl(var(--primary)); background: hsla(var(--primary), 0.12); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: 10px; font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-.btn:hover { transform: translateY(-2px); }
-.btn-primary { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); box-shadow: 0 8px 28px hsla(var(--primary), 0.25); }
-.btn-ghost { background: transparent; color: hsl(var(--foreground)); border-color: hsl(var(--border)); }
-.btn-ghost:hover { border-color: hsl(var(--primary)); color: hsl(var(--primary)); }
-.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
-/* PROCESSING */
-#step3 { text-align: center; padding: 50px 20px; }
-.spinner { width: 54px; height: 54px; border-radius: 50%; border: 4px solid hsl(var(--border)); border-top-color: hsl(var(--primary)); margin: 0 auto 26px; animation: spin 0.9s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.proc-line { color: hsl(var(--muted-foreground)); font-size: 0.95rem; margin-bottom: 8px; }
-/* REPORT */
-#report { margin-top: 28px; }
-.report-meta { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; align-items: center; margin-bottom: 22px; }
-.report-meta .demo-badge { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: hsl(var(--primary)); border: 1px solid hsl(var(--primary)); border-radius: 999px; padding: 6px 14px; }
-.report-doc { background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 18px; padding: 34px; }
-@media (min-width: 700px) { .report-doc { padding: 48px; } }
-.r-title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
-.r-client { color: hsl(var(--muted-foreground)); font-size: 0.95rem; margin-bottom: 26px; }
-.r-section { margin-top: 30px; }
-.r-h { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: hsl(var(--primary)); margin-bottom: 12px; }
-.r-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
-.r-table th { text-align: left; color: hsl(var(--muted-foreground)); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 12px; border-bottom: 1px solid hsl(var(--border)); }
-.r-table td { padding: 12px; border-bottom: 1px solid hsla(var(--border), 0.6); vertical-align: top; }
-.r-table tr:last-child td { border-bottom: none; }
-.r-table .tick { color: hsl(var(--primary)); font-weight: 700; }
-.matrix { display: grid; grid-template-columns: 1fr; gap: 12px; }
-@media (min-width: 640px) { .matrix { grid-template-columns: 1fr 1fr; } }
-.matrix-cell { border: 1px solid hsl(var(--border)); border-radius: 12px; padding: 18px; background: hsl(var(--hero-bg)); }
-.matrix-cell h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; }
-.matrix-cell.qw { border-color: hsl(var(--primary)); }
-.matrix-cell ul { list-style: none; }
-.matrix-cell li { font-size: 0.88rem; color: hsl(var(--muted-foreground)); padding: 4px 0; display: flex; gap: 8px; }
-.matrix-cell li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: hsl(var(--primary)); margin-top: 8px; flex: 0 0 auto; }
-.roi { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; background: hsla(var(--primary), 0.1); border: 1px solid hsl(var(--primary)); border-radius: 14px; padding: 22px; }
-.roi .num { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; color: hsl(var(--primary)); }
-.roi .lbl { color: hsl(var(--muted-foreground)); font-size: 0.85rem; }
-.days { display: grid; grid-template-columns: 1fr; gap: 12px; }
-@media (min-width: 640px) { .days { grid-template-columns: 1fr 1fr; } }
-.day { border: 1px solid hsl(var(--border)); border-radius: 12px; padding: 16px 18px; background: hsl(var(--hero-bg)); }
-.day h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
-.day p { font-size: 0.88rem; color: hsl(var(--muted-foreground)); }
-.callout { border-left: 3px solid hsl(var(--primary)); background: hsla(var(--primary), 0.08); padding: 16px 18px; border-radius: 0 12px 12px 0; margin-top: 24px; font-size: 0.95rem; }
-.callout strong { color: hsl(var(--foreground)); }
-footer { border-top: 1px solid hsl(var(--border)); padding: 36px 0; text-align: center; color: hsl(var(--muted-foreground)); font-size: 0.85rem; }
-footer a { color: hsl(var(--foreground)); font-weight: 500; }
-.hide { display: none !important; }
+.btn-green { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 48px; background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); font-weight: 600; border: none; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; transition: background 0.2s, transform 0.1s; }
+.btn-green:hover { background: hsl(var(--primary) / 0.9); }
+.btn-green:active { transform: scale(0.97); }
+.form-status { display: none; margin-top: 14px; padding: 12px 16px; border-radius: 6px; font-size: 0.88rem; font-weight: 500; }
+.form-status.ok { display: block; background: hsla(119, 60%, 46%, 0.12); border: 1px solid hsla(119, 60%, 46%, 0.45); color: hsl(var(--primary)); }
+.form-status.err { display: block; background: hsla(var(--danger) / 0.12); border: 1px solid hsla(var(--danger) / 0.45); color: hsl(var(--danger)); }
+.form-privacy { font-size: 0.78rem; color: hsl(var(--muted-foreground)); margin-top: 16px; display: flex; gap: 8px; align-items: flex-start; }
+.form-privacy svg { width: 15px; height: 15px; flex: 0 0 auto; margin-top: 2px; color: hsl(var(--primary)); }
+
+.trust { padding: 56px 32px; border-top: 1px solid hsl(var(--border)); }
+.trust-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.trust-inner span { font-size: 0.78rem; color: hsl(var(--muted-foreground)); text-transform: uppercase; letter-spacing: 0.14em; display: flex; align-items: center; gap: 10px; }
+.trust-inner svg { width: 16px; height: 16px; color: hsl(var(--primary)); }
+
+.footer { border-top: 1px solid hsl(var(--border)); padding: 48px 32px 32px; }
+.footer-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: hsl(var(--muted-foreground)); font-size: 0.8rem; }
+.footer-inner a { color: hsl(var(--muted-foreground)); transition: color 0.2s; }
+.footer-inner a:hover { color: hsl(var(--foreground)); }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Free AI Opportunity Scan",
+  "url": "https://pmb2.github.io/generated-websites/tba-solutions/scan/",
+  "isPartOf": { "@type": "WebSite", "name": "TBA Solutions", "url": "https://pmb2.github.io/generated-websites/tba-solutions/" }
+}
+</script>
 </head>
 <body>
 
-<nav class="nav">
-  <a class="nav-brand" href="https://pmb2.github.io/generated-websites/tba-solutions/">
+<nav class="nav" id="siteNav">
+  <a class="nav-brand" href="index.html" aria-label="TBA Solutions home">
     <span class="nav-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/><path d="M9 12l2 2 4-4"/></svg>
     </span>
-    <span class="nav-name">TBA Solutions</span>
-    <span class="nav-tag">AI Opportunity Scan</span>
+    <span class="nav-name">TBA<small>Solutions</small></span>
   </a>
+  <div class="nav-links">
+    <a href="index.html#services">Services</a>
+    <a href="index.html#security">Security</a>
+    <a href="index.html#process">Process</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="#scanForm">Start the Scan</a>
+  <button class="nav-burger" id="menuBtn" aria-label="Open menu">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
 </nav>
 
-<main>
-  <div class="container">
-    <span style="font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:hsl(var(--primary))">Demo</span>
-    <h1 style="font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:800;letter-spacing:-0.02em;margin-top:8px;line-height:1.2">Experience the 15-minute AI Opportunity Scan</h1>
-    <p style="color:hsl(var(--muted-foreground));margin-top:10px;max-width:640px">This is an interactive demo of the scan a business owner goes through. Book a slot, answer the questions, and see the exact deliverable they receive. Sample data, real format.</p>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="closeMenu" aria-label="Close menu">×</button>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#security">Security</a>
+  <a href="index.html#process">Process</a>
+  <a href="index.html#pricing">Pricing</a>
+  <a href="index.html#faq">FAQ</a>
+  <a href="#scanForm">Start the Scan</a>
+</div>
 
-    <div class="wizard">
-      <div class="progress" id="progress">
-        <div class="bar on" id="pb1"></div>
-        <div class="bar" id="pb2"></div>
-        <div class="bar" id="pb3"></div>
-        <div class="bar" id="pb4"></div>
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h1 class="anim d1">Free AI<br /><span class="accent">Opportunity Scan.</span></h1>
+      <p class="sub anim d2">Tell us about one painful workflow. We will show you one concrete way AI can help, free, with no pitch attached.</p>
+      <div class="deliver anim d3">
+        <div class="deliver-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <div><b>One concrete recommendation</b><span>Specific to your business, not a generic pitch.</span></div>
+        </div>
+        <div class="deliver-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <div><b>Zero obligation</b><span>Keep the idea either way. We do not follow up unless you ask.</span></div>
+        </div>
+        <div class="deliver-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <div><b>Your data stays yours</b><span>Nothing you share here is ever trained on, sold, or shared.</span></div>
+        </div>
       </div>
-
-      <!-- STEP 1: BOOK -->
-      <div id="step1">
-        <div class="step-title">Book your scan</div>
-        <div class="step-sub">Pick a time. No prep needed. We handle the rest.</div>
-        <div class="row2">
+      <p class="hero-note anim d3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg>15 minutes of your time. One useful idea. That is the whole deal.</p>
+    </div>
+    <div class="form-card anim d2" id="scanForm">
+      <h2>Request your scan</h2>
+      <p class="form-sub">Takes about two minutes. We reply within one business day.</p>
+      <form id="scanFormEl" novalidate>
+        <div class="form-row">
           <div class="field">
-            <label>Your name</label>
-            <input type="text" id="qName" placeholder="Alex Rivera" />
+            <label for="fName">Name <span class="req">*</span></label>
+            <input id="fName" name="name" type="text" autocomplete="name" required placeholder="Your name" />
           </div>
           <div class="field">
-            <label>Business</label>
-            <input type="text" id="qBiz" placeholder="Northway Plumbing & Heating" />
+            <label for="fEmail">Email <span class="req">*</span></label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" required placeholder="you@company.com" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="fBiz">Business type</label>
+            <select id="fBiz" name="business">
+              <option value="">Select one</option>
+              <option>Home services</option>
+              <option>Real estate or land</option>
+              <option>Legal or accounting</option>
+              <option>Healthcare practice</option>
+              <option>Professional services</option>
+              <option>Retail or e-commerce</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fTeam">Team size</label>
+            <select id="fTeam" name="teamSize">
+              <option value="">Select one</option>
+              <option>Solo</option>
+              <option>2-10</option>
+              <option>11-50</option>
+              <option>50+</option>
+            </select>
           </div>
         </div>
         <div class="field">
-          <label>Industry <span>(what kind of business)</span></label>
-          <select id="qIndustry">
-            <option value="">Select your industry</option>
-            <option>Home services (HVAC, plumbing, electrical, roofing)</option>
-            <option>Law firm</option>
-            <option>Accounting / finance</option>
-            <option>Insurance</option>
-            <option>Real estate / land</option>
-            <option>Professional services</option>
-            <option>Other</option>
-          </select>
+          <label for="fMsg">The workflow that eats the most time <span class="req">*</span></label>
+          <textarea id="fMsg" name="message" required placeholder="For example: we answer the same customer questions by email for hours every week."></textarea>
         </div>
         <div class="field">
-          <label>Pick a time slot</label>
-          <div class="slots" id="slots"></div>
+          <label for="fData">Where does that work happen today?</label>
+          <input id="fData" name="dataLocation" type="text" placeholder="Spreadsheets, email, a CRM, pen and paper..." />
         </div>
-        <div class="btn-row">
-          <button class="btn btn-primary" id="toStep2">Continue</button>
-        </div>
-      </div>
-
-      <!-- STEP 2: QUESTIONS -->
-      <div id="step2" class="hide">
-        <div class="step-title">Five questions, fifteen minutes</div>
-        <div class="step-sub">No jargon, no pitch. Just how your business actually runs.</div>
-        <div class="field">
-          <label>1. Walk me through your typical day. Where does the work pile up?</label>
-          <textarea id="q1" placeholder="Estimates, follow-up calls, paperwork, emails..."></textarea>
-        </div>
-        <div class="field">
-          <label>2. What have you tried to automate before?</label>
-          <div id="q2opts">
-            <button class="q-option" data-v="Nothing yet">Nothing yet</button>
-            <button class="q-option" data-v="ChatGPT for writing">ChatGPT for writing</button>
-            <button class="q-option" data-v="A CRM or scheduler">A CRM or scheduler</button>
-            <button class="q-option" data-v="Tried, gave up">Tried something, gave up on it</button>
-          </div>
-        </div>
-        <div class="field">
-          <label>3. Magic wand: if you could delete one process from your business forever, what would it be?</label>
-          <textarea id="q3" placeholder="Email. Follow-ups. Paperwork. Scheduling..."></textarea>
-        </div>
-        <div class="field">
-          <label>4. How sensitive is your data? <span>(who gets nervous about where files live)</span></label>
-          <div id="q4opts">
-            <button class="q-option" data-v="Very sensitive">Very sensitive. Client files and records matter</button>
-            <button class="q-option" data-v="Somewhat">Somewhat. We are careful</button>
-            <button class="q-option" data-v="Not really">Not really. Standard tools are fine</button>
-          </div>
-        </div>
-        <div class="field">
-          <label>5. What is the biggest cost of that pile-up? <span>(lost leads, late nights, missed follow-ups)</span></label>
-          <textarea id="q5" placeholder="Leads go cold when we do not answer fast enough..."></textarea>
-        </div>
-        <div class="btn-row">
-          <button class="btn btn-ghost" id="backToStep1">Back</button>
-          <button class="btn btn-primary" id="runScan">Run the scan</button>
-        </div>
-      </div>
-
-      <!-- STEP 3: PROCESSING -->
-      <div id="step3" class="hide">
-        <div class="spinner"></div>
-        <div class="proc-line" id="pl1">Mapping your workflow...</div>
-        <div class="proc-line" id="pl2">Scoring pain points by hours lost...</div>
-        <div class="proc-line" id="pl3">Matching tools to your process...</div>
-        <div class="proc-line" id="pl4">Writing your prioritized AI win...</div>
-      </div>
-
-      <!-- STEP 4: REPORT -->
-      <div id="step4" class="hide">
-        <div class="report-meta">
-          <div>
-            <div class="step-title" style="margin-bottom:2px">Your scan is ready</div>
-            <div class="step-sub" style="margin-bottom:0">This is the deliverable every business receives within 24 hours of the call.</div>
-          </div>
-          <span class="demo-badge">Demo sample</span>
-        </div>
-        <div class="report-doc" id="reportDoc"></div>
-        <div class="callout">
-          <strong>What happens next:</strong> you review this with us, and if the full picture is worth it, we run the complete
-          <strong>$999 AI Operations Assessment</strong> (a 10-slide roadmap across every process, with a 5-hour guarantee).
-          The scan recommendation is yours either way, no strings attached.
-        </div>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="https://pmb2.github.io/generated-websites/tba-solutions/">Book the Real Scan</a>
-          <button class="btn btn-ghost" id="restartDemo">Restart demo</button>
-        </div>
-      </div>
+        <button class="btn-green" type="submit">Request My Free Scan</button>
+        <div class="form-status" id="formStatus"></div>
+        <p class="form-privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg>Your details go only to TBA Solutions. No lists, no trackers, no third parties.</p>
+      </form>
     </div>
   </div>
-</main>
+</section>
 
-<footer>
-  <div class="container">
-    <p>Demo experience | <a href="https://pmb2.github.io/generated-websites/tba-solutions/">TBA Solutions</a> | Privacy-first AI operations, nationwide</p>
+<div class="trust">
+  <div class="trust-inner">
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg> Zero third-party access</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> No training on your data</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg> Full audit trails</span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Enterprise-grade security</span>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© 2026 TBA Solutions. All rights reserved.</span>
+    <span><a href="index.html">Back to the main site</a></span>
+    <span>Glenville, NY</span>
   </div>
 </footer>
 
 <script>
+/* ============================================================
+   TBA SOLUTIONS SITE CONFIG - swap values here, one place only
+   ============================================================ */
+var TBA_CONFIG = {
+  email: 'hello@tbasolutions.co',
+  phone: '(518) 555-0142',
+  phoneHref: 'tel:+15185550142',
+  formEndpoint: '',
+  bookingUrl: 'scan.html'
+};
 (function () {
-  var slots = ['Mon 9:00 AM','Mon 10:30 AM','Mon 1:00 PM','Tue 9:00 AM','Tue 11:00 AM','Tue 2:30 PM','Wed 9:30 AM','Wed 12:00 PM','Thu 10:00 AM','Thu 1:30 PM'];
-  var slotsEl = document.getElementById('slots');
-  var selSlot = null;
-  slots.forEach(function (s) {
-    var b = document.createElement('button');
-    b.className = 'slot';
-    b.textContent = s;
-    b.addEventListener('click', function () {
-      document.querySelectorAll('.slot').forEach(function (x) { x.classList.remove('sel'); });
-      b.classList.add('sel');
-      selSlot = s;
-    });
-    slotsEl.appendChild(b);
+  var nav = document.getElementById('siteNav');
+  var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 30); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var closeMenu = document.getElementById('closeMenu');
+  menuBtn.addEventListener('click', function () { mobileMenu.classList.add('open'); });
+  closeMenu.addEventListener('click', function () { mobileMenu.classList.remove('open'); });
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { mobileMenu.classList.remove('open'); });
   });
 
-  var step = 1;
-  function show(n) {
-    step = n;
-    ['step1','step2','step3','step4'].forEach(function (id, i) {
-      document.getElementById(id).classList.toggle('hide', (i + 1) !== n);
+  var animEls = document.querySelectorAll('.anim');
+  var lastReveal = 0;
+  function revealCheck() {
+    var now = Date.now();
+    if (now - lastReveal < 80) return;
+    lastReveal = now;
+    var vh = window.innerHeight;
+    var anyLeft = false;
+    animEls.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      anyLeft = true;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.94 && r.bottom > 0) { el.classList.add('in'); }
     });
-    for (var i = 1; i <= 4; i++) {
-      document.getElementById('pb' + i).classList.toggle('on', i <= n);
+    if (!anyLeft) { window.removeEventListener('scroll', revealCheck); window.removeEventListener('resize', revealCheck); }
+  }
+  window.addEventListener('scroll', revealCheck, { passive: true });
+  window.addEventListener('resize', revealCheck, { passive: true });
+  revealCheck();
+
+  var form = document.getElementById('scanFormEl');
+  var status = document.getElementById('formStatus');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.className = 'form-status';
+    var name = document.getElementById('fName').value.trim();
+    var email = document.getElementById('fEmail').value.trim();
+    var msg = document.getElementById('fMsg').value.trim();
+    if (!name) { showStatus('err', 'Please add your name.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showStatus('err', 'Please add a valid email address.'); return; }
+    if (!msg) { showStatus('err', 'Tell us about the workflow that eats your time.'); return; }
+    var payload = {
+      name: name, email: email,
+      business: document.getElementById('fBiz').value,
+      teamSize: document.getElementById('fTeam').value,
+      message: msg,
+      dataLocation: document.getElementById('fData').value,
+      source: 'tba-solutions-scan'
+    };
+    if (TBA_CONFIG.formEndpoint) {
+      fetch(TBA_CONFIG.formEndpoint, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (res) { return res.json(); }).then(function () {
+        showStatus('ok', 'Request received. We reply within one business day.');
+        form.reset();
+      }).catch(function () { mailtoFallback(payload); });
+    } else {
+      mailtoFallback(payload);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  function mailtoFallback(payload) {
+    var subject = encodeURIComponent('Free AI scan request from ' + payload.name);
+    var body = encodeURIComponent('Name: ' + payload.name + '\nEmail: ' + payload.email + '\nBusiness: ' + payload.business + '\nTeam: ' + payload.teamSize + '\n\n' + payload.message + '\n\nWhere the work happens: ' + payload.dataLocation);
+    window.location.href = 'mailto:' + TBA_CONFIG.email + '?subject=' + subject + '&body=' + body;
+    showStatus('ok', 'Your email app should open with the request prefilled. Prefer a call? Reach us at ' + TBA_CONFIG.phone + '.');
   }
-
-  document.getElementById('toStep2').addEventListener('click', function () {
-    show(2);
-  });
-  document.getElementById('backToStep1').addEventListener('click', function () {
-    show(1);
-  });
-
-  // single-select option groups
-  [['q2opts','q2'],['q4opts','q4']].forEach(function (pair) {
-    var box = document.getElementById(pair[0]);
-    box.querySelectorAll('.q-option').forEach(function (b) {
-      b.addEventListener('click', function () {
-        box.querySelectorAll('.q-option').forEach(function (x) { x.classList.remove('sel'); });
-        b.classList.add('sel');
-        box.dataset.val = b.dataset.v;
-      });
-    });
-  });
-
-  document.getElementById('runScan').addEventListener('click', function () {
-    show(3);
-    var lines = ['pl1','pl2','pl3','pl4'];
-    lines.forEach(function (id, i) {
-      document.getElementById(id).style.opacity = i === 0 ? 1 : 0.25;
-    });
-    var i = 1;
-    var iv = setInterval(function () {
-      lines.forEach(function (id, j) { document.getElementById(id).style.opacity = j === i ? 1 : 0.25; });
-      i++;
-      if (i >= lines.length) {
-        clearInterval(iv);
-        setTimeout(function () { renderReport(); show(4); }, 700);
-      }
-    }, 650);
-  });
-
-  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-
-  function renderReport() {
-    var name = document.getElementById('qName').value.trim() || 'Alex Rivera';
-    var biz = document.getElementById('qBiz').value.trim() || 'Northway Plumbing & Heating';
-    var ind = document.getElementById('qIndustry').value || 'Home services (HVAC, plumbing, electrical, roofing)';
-    var pile = document.getElementById('q1').value.trim() || 'Estimates and follow-up calls';
-    var wand = document.getElementById('q3').value.trim() || 'Manual estimates and chasing responses';
-    var doc = document.getElementById('reportDoc');
-    doc.innerHTML = `
-      <div class="r-title">AI Opportunity Scan Report</div>
-      <div class="r-client">Prepared for <strong>${esc(biz)}</strong> &middot; ${esc(ind)} &middot; ${new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'})} &middot; TBA Solutions</div>
-
-      <div class="r-section">
-        <div class="r-h">Executive summary</div>
-        <p style="font-size:0.95rem">Two pain points drive almost everything in ${esc(biz)}: <strong>${esc(pile)}</strong> and <strong>${esc(wand)}</strong>. Together they consume an estimated <strong>6 hours per week</strong> of owner and team time. The recommendation below pulls the efficiency lever: same output, fewer hours, faster response. Estimated net value: <strong>~$2,100/month</strong> once implemented.</p>
-      </div>
-
-      <div class="r-section">
-        <div class="r-h">Effort vs impact</div>
-        <div class="matrix">
-          <div class="matrix-cell qw">
-            <h4>High impact, low effort (start here)</h4>
-            <ul>
-              <li>AI lead response (answers in seconds, day and night)</li>
-              <li>AI meeting notes (no more handwritten notes)</li>
-              <li>Email triage (inbox sorted before you wake up)</li>
-            </ul>
-          </div>
-          <div class="matrix-cell">
-            <h4>High impact, higher effort (next level)</h4>
-            <ul>
-              <li>Knowledge base: your process, policies, and past work as a searchable system</li>
-              <li>Estimate drafting workflow built on your own pricing history</li>
-              <li>Full operations assessment and roadmap</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="r-section">
-        <div class="r-h">Your prioritized AI win</div>
-        <table class="r-table">
-          <tr><th>Pain point</th><th>Tool</th><th>Cost</th><th>Setup</th><th>Time saved</th></tr>
-          <tr>
-            <td>${esc(pile)} falls through the cracks and response time is slow</td>
-            <td><strong>AI lead response assistant</strong> on your existing phone and web channels</td>
-            <td>$49/mo</td>
-            <td>60 min</td>
-            <td><strong>2.5 hrs/wk</strong></td>
-          </tr>
-          <tr>
-            <td>Notes and follow-ups eat the end of every day</td>
-            <td><strong>Fathom</strong> (AI meeting notes, free tier)</td>
-            <td>$0-19/mo</td>
-            <td>15 min</td>
-            <td><strong>1.5 hrs/wk</strong></td>
-          </tr>
-          <tr>
-            <td>Inbox and follow-up chasing</td>
-            <td><strong>SaneBox-class</strong> email triage</td>
-            <td>$15/mo</td>
-            <td>20 min</td>
-            <td><strong>2 hrs/wk</strong></td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="r-section">
-        <div class="r-h">Financial impact</div>
-        <div class="roi">
-          <div>
-            <div class="num">~$2,100</div>
-            <div class="lbl">net value per month</div>
-          </div>
-          <div>
-            <div class="num">6 hrs</div>
-            <div class="lbl">returned per week</div>
-          </div>
-          <div>
-            <div class="num">$83</div>
-            <div class="lbl">total tool cost per month</div>
-          </div>
-        </div>
-        <p style="font-size:0.88rem;color:hsl(var(--muted-foreground));margin-top:12px">6 hours/week &times; $85/hr &times; 4.33 weeks &minus; $83/mo tools. The scan recommendation pays for itself in roughly a day.</p>
-      </div>
-
-      <div class="r-section">
-        <div class="r-h">Four-day quick start</div>
-        <div class="days">
-          <div class="day"><h4>Day 1 (10 min)</h4><p>Turn on the AI lead response assistant, connect your phone and web channels, write the 3 most common answers to first-time inquiries.</p></div>
-          <div class="day"><h4>Day 2 (10 min)</h4><p>Install Fathom, record one real call, review the summary it produces.</p></div>
-          <div class="day"><h4>Day 3 (10 min)</h4><p>Set up email triage rules, let it sort one day of inbox, adjust the rules.</p></div>
-          <div class="day"><h4>Day 4 (10 min)</h4><p>Review the week: hours logged, leads answered faster, one process retired.</p></div>
-        </div>
-      </div>
-
-      <div class="r-section">
-        <div class="r-h">What comes after the quick wins</div>
-        <p style="font-size:0.95rem">The bigger lever is a <strong>knowledge system</strong> built from your own pricing history, policies, and past jobs, plus a redesigned estimate and follow-up workflow. That is where the 6 hours becomes 10, and it is what the full <strong>$999 AI Operations Assessment</strong> maps out: every process, a 10-slide roadmap, delivered in one working week with a 5-hour guarantee.</p>
-      </div>
-
-      <div class="r-section">
-        <div class="r-h">The privacy promise</div>
-        <p style="font-size:0.95rem">No third-party training. No resale. Export anytime. Self-hosted where it matters. Every recommendation above is vetted against those commitments, and the assessment ships with a written data-processing agreement.</p>
-      </div>
-    `;
+  function showStatus(kind, text) {
+    status.className = 'form-status ' + kind;
+    status.textContent = text;
+    setTimeout(function () {
+      if (status.classList.contains(kind)) { status.className = 'form-status'; }
+    }, 9000);
   }
-
-  document.getElementById('restartDemo').addEventListener('click', function () {
-    show(1);
-    document.getElementById('qName').value = '';
-    document.getElementById('qBiz').value = '';
-    document.getElementById('qIndustry').value = '';
-    document.getElementById('q1').value = '';
-    document.getElementById('q3').value = '';
-    document.getElementById('q5').value = '';
-    ['q2opts','q4opts'].forEach(function (id) { delete document.getElementById(id).dataset.val; document.getElementById(id).querySelectorAll('.q-option').forEach(function (x) { x.classList.remove('sel'); }); });
-    document.querySelectorAll('.slot').forEach(function (x) { x.classList.remove('sel'); });
-    selSlot = null;
-  });
 })();
 </script>
 </body>
