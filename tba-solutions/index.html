@@ -218,6 +218,29 @@ img { max-width: 100%; display: block; }
 .foot-col a { display: block; color: hsl(var(--muted-foreground)); font-size: 0.9rem; margin-bottom: 12px; transition: color 0.2s; }
 .foot-col a:hover { color: hsl(var(--foreground)); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid hsl(var(--border)); padding-top: 28px; color: hsl(var(--muted-foreground)); font-size: 0.8rem; }
+/* ---------- Booking modal (calendar then payment) ---------- */
+.modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 24px; }
+.modal-overlay.open { display: flex; }
+.modal { position: relative; width: 100%; max-width: 860px; max-height: 92vh; overflow-y: auto; background: hsl(var(--hero-bg)); border: 1px solid hsl(var(--border)); border-radius: 14px; box-shadow: 0 40px 120px rgba(0,0,0,0.7); padding: 40px 36px; }
+@media (max-width: 640px) { .modal { padding: 28px 20px; } }
+.modal-close { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 8px; border: none; background: hsl(var(--nav-button)); color: hsl(var(--foreground)); font-size: 1.2rem; cursor: pointer; }
+.modal-close:hover { background: hsl(var(--nav-button) / 0.8); }
+.modal-head h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+.modal-head p { color: hsl(var(--muted-foreground)); font-size: 0.9rem; margin-bottom: 22px; }
+.modal-steps { display: flex; gap: 10px; margin-bottom: 24px; }
+.mstep { flex: 1; padding: 10px 14px; border: 1px solid hsl(var(--border)); border-radius: 8px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: hsl(var(--muted-foreground)); text-align: center; transition: all 0.25s; }
+.mstep.active { border-color: hsl(var(--primary)); color: hsl(var(--primary)); background: hsla(119, 60%, 46%, 0.08); }
+.modal-phase { display: none; }
+.modal-phase.active { display: block; }
+.cal-frame { width: 100%; min-height: 440px; border: 1px solid hsl(var(--border)); border-radius: 10px; background: hsl(var(--background)); }
+.pay-frame { width: 100%; min-height: 440px; border: 1px solid hsl(var(--border)); border-radius: 10px; background: #fff; }
+.modal-fallback { border: 1px dashed hsl(var(--border)); border-radius: 10px; padding: 30px; text-align: center; color: hsl(var(--muted-foreground)); font-size: 0.9rem; }
+.modal-fallback a { color: hsl(var(--primary)); font-weight: 600; }
+.modal-cta { margin-top: 16px; }
+.modal-row { display: flex; gap: 12px; margin-top: 16px; }
+.modal-row .btn-green, .modal-row .btn-line { flex: 1; }
+.modal-hint { font-size: 0.8rem; color: hsl(var(--muted-foreground)); margin-top: 12px; display: flex; gap: 8px; align-items: flex-start; }
+.modal-hint svg { width: 14px; height: 14px; flex: 0 0 auto; margin-top: 3px; color: hsl(var(--primary)); }
 </style>
 <script type="application/ld+json">
 {
@@ -453,7 +476,7 @@ img { max-width: 100%; display: block; }
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>5-hour weekly savings guarantee</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>30-minute review call</li>
       </ul>
-      <a class="btn-green" href="assess.html" style="width: 100%; justify-content: center;">Reserve Your Slot</a>
+      <a class="btn-green" href="#" id="reserveSlotBtn" style="width: 100%; justify-content: center;">Reserve Your Slot</a>
     </div>
     <div class="price-card featured anim">
       <div class="price-name">Bespoke Build</div>
@@ -609,6 +632,41 @@ img { max-width: 100%; display: block; }
   </div>
 </footer>
 
+<!-- Booking modal: pick a slot, then pay, all in one place -->
+<div class="modal-overlay" id="bookModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
+    <button class="modal-close" id="bookClose" aria-label="Close">×</button>
+    <div class="modal-head">
+      <h3 id="bookModalTitle">Reserve your assessment</h3>
+      <p>Pick your slot, then complete your reservation with payment.</p>
+    </div>
+    <div class="modal-steps">
+      <span class="mstep active" id="ms1">01 Pick a slot</span>
+      <span class="mstep" id="ms2">02 Payment</span>
+    </div>
+    <div class="modal-body">
+      <div class="modal-phase active" id="phaseCal">
+        <iframe class="cal-frame" id="calFrame" src="" title="Pick your assessment slot" loading="lazy"></iframe>
+        <div class="modal-fallback" id="calFallback" style="display:none;">
+          Scheduling is being finalized. <a href="mailto:hello@tbasolutions.co?subject=Assessment%20slot%20request">Email us</a> with your preferred times and we will reserve one for you.
+        </div>
+        <button class="btn-green modal-cta" id="toPayBtn" type="button">I have picked my slot. Continue to payment</button>
+        <p class="modal-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg>Your slot is confirmed the moment you pick it. Payment completes your reservation.</p>
+      </div>
+      <div class="modal-phase" id="phasePay">
+        <iframe class="pay-frame" id="payFrame" src="" title="Complete your payment" loading="lazy"></iframe>
+        <div class="modal-fallback" id="payFallback" style="display:none;">
+          Payment is being finalized. <a href="mailto:hello@tbasolutions.co?subject=Assessment%20payment">Email us</a> and we will send a secure invoice.
+        </div>
+        <div class="modal-row">
+          <button class="btn-line" id="backCalBtn" type="button">Back to calendar</button>
+          <a class="btn-green" id="payOpenBtn" href="#" target="_blank" rel="noopener">Open payment in new tab</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============================================================
    TBA SOLUTIONS SITE CONFIG - swap values here, one place only
@@ -622,12 +680,11 @@ var TBA_CONFIG = {
   // then set:  formEndpoint: 'https://formsubmit.co/ajax/your@email.com'
   formEndpoint: '',
   bookingUrl: 'scan.html',                   // assessment request page
-  // Direct purchase path (pricing section "Get Assessed"):
-  // 1) assessmentPayUrl  = your Stripe payment link for the $999 assessment
-  // 2) assessmentCalUrl  = your Calendly URL for booking the 45-min slot
-  // Both are wired into assess.html. Leave empty to fall back to email.
-  assessmentPayUrl: '',
-  assessmentCalUrl: ''
+  // Direct purchase path (pricing section "Reserve Your Slot"):
+  // opens a modal on this page. 1) pick a slot on your cal.diy calendar,
+  // 2) pay with your Stripe payment link, all inside the same modal.
+  calDiyUrl: '',                             // e.g. 'https://cal.diy/yourname/ai-operations-assessment'
+  stripePayUrl: ''                           // e.g. 'https://buy.stripe.com/xxxx'  ($999 one-time)
 };
 (function () {
   var nav = document.getElementById('siteNav');
@@ -721,6 +778,77 @@ var TBA_CONFIG = {
       if (status.classList.contains(kind)) { status.className = 'form-status'; }
     }, 9000);
   }
+
+  /* ---- Booking modal: calendar first, then payment ---- */
+  var bookModal = document.getElementById('bookModal');
+  var phaseCal = document.getElementById('phaseCal');
+  var phasePay = document.getElementById('phasePay');
+  var ms1 = document.getElementById('ms1');
+  var ms2 = document.getElementById('ms2');
+  var calFrame = document.getElementById('calFrame');
+  var payFrame = document.getElementById('payFrame');
+  var calFallback = document.getElementById('calFallback');
+  var payFallback = document.getElementById('payFallback');
+  var toPayBtn = document.getElementById('toPayBtn');
+  var backCalBtn = document.getElementById('backCalBtn');
+  var payOpenBtn = document.getElementById('payOpenBtn');
+  var calLoaded = false;
+  var payLoaded = false;
+
+  function openBookModal() {
+    bookModal.classList.add('open');
+    bookModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    showPhase('cal');
+    if (!calLoaded) {
+      calLoaded = true;
+      if (TBA_CONFIG.calDiyUrl) {
+        calFrame.src = TBA_CONFIG.calDiyUrl;
+      } else {
+        calFrame.style.display = 'none';
+        toPayBtn.style.display = 'none';
+        calFallback.style.display = 'block';
+      }
+    }
+  }
+  function closeBookModal() {
+    bookModal.classList.remove('open');
+    bookModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function showPhase(which) {
+    var cal = which === 'cal';
+    phaseCal.classList.toggle('active', cal);
+    phasePay.classList.toggle('active', !cal);
+    ms1.classList.toggle('active', cal);
+    ms2.classList.toggle('active', !cal);
+    if (!cal && !payLoaded) {
+      payLoaded = true;
+      if (TBA_CONFIG.stripePayUrl) {
+        payFrame.src = TBA_CONFIG.stripePayUrl;
+        payOpenBtn.href = TBA_CONFIG.stripePayUrl;
+      } else {
+        payFrame.style.display = 'none';
+        payOpenBtn.style.display = 'none';
+        payFallback.style.display = 'block';
+      }
+    }
+  }
+
+  var reserveSlotBtn = document.getElementById('reserveSlotBtn');
+  reserveSlotBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+    openBookModal();
+  });
+  document.getElementById('bookClose').addEventListener('click', closeBookModal);
+  bookModal.addEventListener('click', function (e) {
+    if (e.target === bookModal) { closeBookModal(); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && bookModal.classList.contains('open')) { closeBookModal(); }
+  });
+  toPayBtn.addEventListener('click', function () { showPhase('pay'); });
+  backCalBtn.addEventListener('click', function () { showPhase('cal'); });
 })();
 </script>
 </body>
