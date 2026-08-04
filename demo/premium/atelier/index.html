@@ -33,7 +33,7 @@
 
   /* ---------- Navbar ---------- */
   nav { position:fixed; top:16px; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:12px clamp(24px,6vw,64px); }
-  .logo { font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; }
+  .logo { font-family:'Instrument Serif',serif; font-style:italic; font-size:24px; color:hsl(var(--secondary)); }
   .nav-pill { display:none; border-radius:9999px; padding:6px 8px; align-items:center; }
   @media (min-width:768px) { .nav-pill { display:flex; } }
   .nav-pill a { padding:8px 12px; font-size:14px; font-weight:500; color:hsla(var(--foreground),.9); }
@@ -57,6 +57,8 @@
   .hero-ctas { display:flex; gap:24px; margin-top:40px; flex-wrap:wrap; justify-content:center; }
   .cta-glass { border-radius:9999px; padding:10px 20px; font-family:'Barlow',sans-serif; font-size:14px; font-weight:500; display:inline-flex; align-items:center; gap:8px; cursor:pointer; }
   .cta-glass svg { width:16px; height:16px; }
+  .hero-ctas .cta-glass:first-child { background:hsl(var(--primary)); color:#fff; }
+  .hero-ctas .cta-glass:first-child:hover { background:hsla(var(--primary),.85); }
   .cta-text { display:inline-flex; align-items:center; gap:8px; font-family:'Barlow',sans-serif; font-size:14px; font-weight:500; cursor:pointer; }
   .cta-text svg { width:14px; height:14px; fill:currentColor; }
   .partners { margin-top:auto; padding:64px 24px 32px; text-align:center; }
