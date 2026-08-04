@@ -81,7 +81,7 @@
   .about { background:#000; padding-top:48px; padding-bottom:96px; }
   .about-cols { display:flex; flex-direction:column; gap:48px; align-items:stretch; }
   @media (min-width:1024px) { .about-cols { flex-direction:row; gap:0; } .about-left { width:45%; } }
-  .about video { width:100%; height:auto; border-radius:2px; }
+  .about video { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; border-radius:2px; }
   .about-divider { display:none; }
   @media (min-width:1024px) { .about-divider { display:block; width:1px; background:hsla(var(--muted-foreground),.2); margin:32px 40px 0; } }
   .about-right { flex:1; display:flex; flex-direction:column; justify-content:space-between; min-height:500px; }

@@ -270,6 +270,7 @@
       hls.loadSource('https://stream.mux.com/4IMYGcL01xjs7ek5ANO17JC4VQVUTsojZlnw4fXzwSxc.m3u8');
       hls.attachMedia(v);
       v._hlsAttached = true;
+      v.play().catch(() => {});
     }
   })();
 </script>
