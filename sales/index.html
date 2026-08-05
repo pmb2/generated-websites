@@ -236,30 +236,51 @@
   .field.full{grid-column:1 / -1}
   .hint{margin-top:6px; font-size:12px; color:var(--muted)}
 
-  .doc-tabs{
-    display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 10px;
+  .docs-head{
+    margin:16px 0 8px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
   }
-  .doc-tab{
-    min-height:40px; padding:0 12px; border-radius:999px; border:1px solid var(--line);
-    background:#fff; font-size:12px; font-weight:700; color:var(--muted); cursor:pointer;
+  .docs-head h4{
+    font-family:"Fraunces",Georgia,serif; font-size:18px; font-weight:600;
   }
-  .doc-tab.active{
-    background:var(--accent); color:#fff; border-color:var(--accent);
+  .docs-head p{font-size:13px; color:var(--muted)}
+  .doc-progress{
+    font-size:12px; font-weight:700; color:var(--accent);
+    background:var(--accent-soft); border:1px solid var(--line);
+    border-radius:999px; min-height:32px; padding:0 12px; display:inline-flex; align-items:center;
   }
-  .agreement{
-    max-height:260px; overflow:auto; border:1px solid var(--line);
-    border-radius:12px; background:var(--paper); padding:14px 16px;
-    font-size:12.5px; white-space:pre-wrap; color:#333;
+  .doc-list{display:grid; gap:10px; margin-top:10px}
+  .doc-item{
+    border:1px solid var(--line); border-radius:14px; background:#fff; padding:14px;
   }
-  .agreement-meta{
-    margin:8px 0 4px; font-size:12px; color:var(--muted);
+  .doc-item.done{border-color:#B9DCCB; background:var(--good-soft)}
+  .doc-item-top{
+    display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;
   }
+  .doc-item strong{display:block; font-size:14px}
+  .doc-item .sub{display:block; margin-top:3px; font-size:12.5px; color:var(--muted)}
+  .doc-actions{display:flex; gap:8px; flex-wrap:wrap}
+  .doc-actions .btn{min-height:40px; padding:0 14px; font-size:12.5px}
+  .doc-status{
+    margin-top:10px; font-size:12px; font-weight:700; color:var(--muted);
+  }
+  .doc-item.done .doc-status{color:var(--good)}
+  .doc-preview{
+    display:none; margin-top:12px; max-height:220px; overflow:auto;
+    border:1px solid var(--line); border-radius:12px; background:#fff;
+    padding:12px 14px; font-size:12.5px; white-space:pre-wrap; color:#333;
+  }
+  .doc-preview.open{display:block}
   .checks{display:grid; gap:10px; margin:14px 0}
   .check{
     display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:start;
     font-size:14px; color:var(--ink);
   }
   .check input{width:18px; height:18px; margin-top:2px}
+  .check.disabled{opacity:.55}
+  .check a{font-weight:700}
+  .gate-note{
+    margin-top:8px; font-size:13px; color:var(--muted);
+  }
 
   footer{
     border-top:1px solid var(--line); color:var(--muted);
@@ -344,42 +365,34 @@
               </div>
             </div>
 
-            <div class="agreement-meta" id="agreementMeta">Loading agreements…</div>
-            <div class="doc-tabs" id="docTabs" hidden></div>
-            <div class="agreement" id="agreementBox" aria-label="Onboarding agreements">Loading agreements…</div>
+            <div class="docs-head">
+              <div>
+                <h4>Required documents</h4>
+                <p id="agreementMeta">Open or download each document before signing.</p>
+              </div>
+              <div class="doc-progress" id="docProgress">0 / 0 reviewed</div>
+            </div>
+            <div class="doc-list" id="docList" aria-live="polite">
+              <div class="doc-item"><strong>Loading documents…</strong><span class="sub">Please wait a moment.</span></div>
+            </div>
 
-            <div class="field full" style="margin-top:14px">
+            <div class="field full" style="margin-top:16px">
               <label class="field-label" for="legalSignature">Type your full legal name to sign</label>
               <input id="legalSignature" name="legalSignature" type="text" autocomplete="off" required>
-              <div class="hint">This is your electronic signature for all documents below.</div>
+              <div class="hint">This signs every document you reviewed above.</div>
             </div>
 
             <div class="checks">
-              <label class="check">
-                <input type="checkbox" id="consentAgreement" required>
-                <span>I have read and agree to the Independent Sales Partner Commission Agreement and all related onboarding documents shown above.</span>
+              <label class="check disabled" id="consentPackageLabel">
+                <input type="checkbox" id="consentPackage" required disabled>
+                <span id="consentPackageText">Review every required document first, then check here to agree and e-sign the full package.</span>
               </label>
               <label class="check">
-                <input type="checkbox" id="consentEsign" required>
-                <span>I consent to electronic signatures and electronic records for this onboarding package.</span>
-              </label>
-              <label class="check">
-                <input type="checkbox" id="consentIndependent" required>
-                <span>I am joining as an independent contractor (1099), not an employee, and I am responsible for my own taxes.</span>
-              </label>
-              <label class="check">
-                <input type="checkbox" id="consentTaxDocs" required>
-                <span>I will complete and return tax paperwork (including Form W-9) and payout details so commissions can be paid.</span>
-              </label>
-              <label class="check">
-                <input type="checkbox" id="consentHonestSelling" required>
-                <span>I will only sell the approved $295/mo Managed Lease, will not promise website ownership, and will offer a custom quote if asked about ownership.</span>
-              </label>
-              <label class="check">
-                <input type="checkbox" id="consentAge" required>
-                <span>I am at least 18 and authorized to enter this agreement.</span>
+                <input type="checkbox" id="consentBasics" required>
+                <span>I am at least 18, joining as an independent contractor (1099), will sell only the approved $295/mo Managed Lease (ownership requests get a custom quote), and will complete/return Form W-9 plus payout details before commissions are paid.</span>
               </label>
             </div>
+            <p class="gate-note" id="gateNote">Tip: open or download each document so the sign-off unlocks.</p>
 
             <button class="btn full" id="submitBtn" type="submit">Create account &amp; sign</button>
             <div class="error-box" id="errorBox" role="alert"></div>
@@ -582,18 +595,24 @@
   const AGREEMENT_API = 'https://leads.backus.agency/public/sales-onboarding/agreement';
   const ONBOARD_API = 'https://leads.backus.agency/public/sales-onboarding';
   const LOGIN_URL = 'https://website-sales.backus.agency';
+  const W9_URL = 'https://www.irs.gov/pub/irs-pdf/fw9.pdf';
 
   const form = document.getElementById('onboardForm');
-  const agreementBox = document.getElementById('agreementBox');
+  const docList = document.getElementById('docList');
   const agreementMeta = document.getElementById('agreementMeta');
-  const docTabs = document.getElementById('docTabs');
+  const docProgress = document.getElementById('docProgress');
   const errorBox = document.getElementById('errorBox');
   const successBox = document.getElementById('successBox');
   const submitBtn = document.getElementById('submitBtn');
+  const consentPackage = document.getElementById('consentPackage');
+  const consentPackageLabel = document.getElementById('consentPackageLabel');
+  const consentPackageText = document.getElementById('consentPackageText');
+  const consentBasics = document.getElementById('consentBasics');
+  const gateNote = document.getElementById('gateNote');
 
   let packageVersion = '';
   let documents = [];
-  let activeDoc = 0;
+  let reviewed = {};
   let loadAttempts = 0;
 
   function showError(msg) {
@@ -608,40 +627,155 @@
     successBox.innerHTML = html;
   }
 
-  function renderDoc(index) {
-    activeDoc = index;
-    const doc = documents[index];
-    if (!doc) {
-      agreementBox.textContent = 'Agreements unavailable. Refresh and try again.';
-      return;
-    }
-    agreementBox.textContent = doc.text || '';
-    Array.prototype.forEach.call(docTabs.querySelectorAll('.doc-tab'), function (btn, i) {
-      btn.classList.toggle('active', i === index);
-    });
+  function requiredDocs() {
+    return documents.filter(function (d) { return d.required !== false; });
   }
 
-  function renderTabs() {
-    docTabs.innerHTML = '';
+  function allReviewed() {
+    const req = requiredDocs();
+    if (!req.length) return false;
+    return req.every(function (d) { return !!reviewed[d.id]; });
+  }
+
+  function updateGate() {
+    const req = requiredDocs();
+    const done = req.filter(function (d) { return !!reviewed[d.id]; }).length;
+    docProgress.textContent = done + ' / ' + req.length + ' reviewed';
+    const unlocked = allReviewed();
+    consentPackage.disabled = !unlocked;
+    consentPackageLabel.classList.toggle('disabled', !unlocked);
+    if (unlocked) {
+      consentPackageText.innerHTML = 'I reviewed and agree to all required documents listed above (including the commission agreement, contractor/tax terms, confidentiality terms, and electronic signature consent), and I intend this as my legally binding electronic signature.';
+      gateNote.textContent = 'All required documents reviewed. You can sign and create your account.';
+    } else {
+      consentPackage.checked = false;
+      consentPackageText.textContent = 'Review every required document first, then check here to agree and e-sign the full package.';
+      gateNote.textContent = 'Tip: open or download each document so the sign-off unlocks.';
+    }
+  }
+
+  function markReviewed(id) {
+    reviewed[id] = true;
+    const item = docList.querySelector('[data-doc-id="' + id + '"]');
+    if (item) {
+      item.classList.add('done');
+      const status = item.querySelector('.doc-status');
+      if (status) status.textContent = 'Reviewed';
+    }
+    updateGate();
+  }
+
+  function downloadText(filename, content) {
+    const blob = new Blob([content || ''], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function renderDocs() {
+    docList.innerHTML = '';
     if (!documents.length) {
-      docTabs.hidden = true;
+      docList.innerHTML = '<div class="doc-item"><strong>Documents unavailable</strong><span class="sub">Refresh the page and try again.</span></div>';
+      updateGate();
       return;
     }
-    docTabs.hidden = false;
-    documents.forEach(function (doc, i) {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'doc-tab' + (i === 0 ? ' active' : '');
-      btn.textContent = (i + 1) + '. ' + (doc.title || ('Document ' + (i + 1)));
-      btn.addEventListener('click', function () { renderDoc(i); });
-      docTabs.appendChild(btn);
+
+    documents.forEach(function (doc, index) {
+      const item = document.createElement('div');
+      item.className = 'doc-item' + (reviewed[doc.id] ? ' done' : '');
+      item.setAttribute('data-doc-id', doc.id);
+
+      const top = document.createElement('div');
+      top.className = 'doc-item-top';
+
+      const left = document.createElement('div');
+      const title = document.createElement('strong');
+      title.textContent = (index + 1) + '. ' + (doc.title || doc.id);
+      const sub = document.createElement('span');
+      sub.className = 'sub';
+      if (doc.kind === 'external') {
+        sub.textContent = 'Required tax form · open or download before signing';
+      } else {
+        sub.textContent = 'Required agreement · open or download before signing';
+      }
+      left.appendChild(title);
+      left.appendChild(sub);
+
+      const actions = document.createElement('div');
+      actions.className = 'doc-actions';
+
+      const openBtn = document.createElement(doc.kind === 'external' ? 'a' : 'button');
+      if (doc.kind === 'external') {
+        openBtn.href = doc.url;
+        openBtn.target = '_blank';
+        openBtn.rel = 'noopener';
+        openBtn.className = 'btn';
+        openBtn.textContent = 'Open';
+        openBtn.addEventListener('click', function () { markReviewed(doc.id); });
+      } else {
+        openBtn.type = 'button';
+        openBtn.className = 'btn';
+        openBtn.textContent = 'Open';
+        openBtn.addEventListener('click', function () {
+          const preview = item.querySelector('.doc-preview');
+          if (preview) {
+            preview.classList.toggle('open');
+            preview.textContent = doc.text || '';
+          }
+          markReviewed(doc.id);
+        });
+      }
+
+      const dlBtn = document.createElement(doc.kind === 'external' ? 'a' : 'button');
+      if (doc.kind === 'external') {
+        dlBtn.href = doc.url;
+        dlBtn.target = '_blank';
+        dlBtn.rel = 'noopener';
+        dlBtn.className = 'btn ghost';
+        dlBtn.textContent = 'Download';
+        dlBtn.addEventListener('click', function () { markReviewed(doc.id); });
+      } else {
+        dlBtn.type = 'button';
+        dlBtn.className = 'btn ghost';
+        dlBtn.textContent = 'Download';
+        dlBtn.addEventListener('click', function () {
+          const safe = String(doc.id || 'document').replace(/[^a-z0-9-_]+/gi, '-');
+          downloadText(safe + '.txt', doc.text || '');
+          markReviewed(doc.id);
+        });
+      }
+
+      actions.appendChild(openBtn);
+      actions.appendChild(dlBtn);
+      top.appendChild(left);
+      top.appendChild(actions);
+      item.appendChild(top);
+
+      const status = document.createElement('div');
+      status.className = 'doc-status';
+      status.textContent = reviewed[doc.id] ? 'Reviewed' : 'Not reviewed yet';
+      item.appendChild(status);
+
+      if (doc.kind !== 'external') {
+        const preview = document.createElement('div');
+        preview.className = 'doc-preview';
+        preview.setAttribute('aria-label', doc.title || 'Document preview');
+        item.appendChild(preview);
+      }
+
+      docList.appendChild(item);
     });
-    renderDoc(0);
+    updateGate();
   }
 
   async function loadAgreement() {
     loadAttempts += 1;
-    agreementMeta.textContent = 'Loading agreements…';
+    agreementMeta.textContent = 'Loading required documents…';
     try {
       const res = await fetch(AGREEMENT_API, {
         method: 'GET',
@@ -650,32 +784,53 @@
         headers: { 'Accept': 'application/json' },
         cache: 'no-store'
       });
-      if (!res.ok) throw new Error('Could not load agreements (' + res.status + ')');
+      if (!res.ok) throw new Error('Could not load documents (' + res.status + ')');
       const data = await res.json();
       packageVersion = data.packageVersion || data.agreementVersion || '';
+      const docs = [];
       if (Array.isArray(data.documents) && data.documents.length) {
-        documents = data.documents;
+        data.documents.forEach(function (d) {
+          docs.push({
+            id: d.id,
+            title: d.title,
+            version: d.version,
+            required: d.required !== false,
+            text: d.text || '',
+            kind: 'package'
+          });
+        });
       } else if (data.agreementText) {
-        documents = [{
-          id: 'package',
-          title: 'Onboarding package',
+        docs.push({
+          id: 'onboarding-package',
+          title: 'Sales Partner Onboarding Package',
           version: packageVersion,
-          text: data.agreementText
-        }];
+          required: true,
+          text: data.agreementText,
+          kind: 'package'
+        });
       } else {
-        throw new Error('Agreement package was empty');
+        throw new Error('Document package was empty');
       }
-      agreementMeta.textContent = 'Package version: ' + (packageVersion || 'current') +
-        ' · ' + documents.length + ' documents';
-      renderTabs();
+      docs.push({
+        id: 'irs-form-w9',
+        title: 'IRS Form W-9 (tax form)',
+        version: 'irs-current',
+        required: true,
+        kind: 'external',
+        url: W9_URL
+      });
+      documents = docs;
+      reviewed = {};
+      agreementMeta.textContent = 'Open or download each document, then sign. Package: ' + (packageVersion || 'current');
+      renderDocs();
       errorBox.style.display = 'none';
     } catch (err) {
-      agreementBox.textContent = 'Agreements could not be loaded.';
-      agreementMeta.textContent = 'Agreements unavailable';
+      docList.innerHTML = '<div class="doc-item"><strong>Documents could not be loaded</strong><span class="sub">Refresh and try again.</span></div>';
+      agreementMeta.textContent = 'Documents unavailable';
       if (loadAttempts < 3) {
         setTimeout(loadAgreement, 700 * loadAttempts);
       } else {
-        showError('Could not load the agreements. Refresh the page or try again in a moment.');
+        showError('Could not load the required documents. Refresh the page or try again in a moment.');
       }
     }
   }
@@ -690,39 +845,50 @@
     const password = document.getElementById('password').value;
     const phone = document.getElementById('phone').value.trim();
     const legalSignature = document.getElementById('legalSignature').value.trim();
+    const packageOk = consentPackage.checked;
+    const basicsOk = consentBasics.checked;
+    const reviewedIds = requiredDocs().filter(function (d) { return !!reviewed[d.id]; }).map(function (d) { return d.id; });
+
+    if (!fullName || !email || !password || !legalSignature) {
+      showError('Name, email, password, and signature are required.');
+      return;
+    }
+    if (legalSignature.toLowerCase().replace(/[^a-z ]/g,'').replace(/\\s+/g,' ').trim() !==
+        fullName.toLowerCase().replace(/[^a-z ]/g,'').replace(/\\s+/g,' ').trim()) {
+      showError('Signature must match your full legal name.');
+      return;
+    }
+    if (!allReviewed()) {
+      showError('Open or download every required document before signing.');
+      return;
+    }
+    if (!packageOk || !basicsOk) {
+      showError('Please complete both confirmation checkboxes.');
+      return;
+    }
+    if (!documents.length) {
+      showError('Documents are still loading. Wait a moment and try again.');
+      loadAgreement();
+      return;
+    }
+
     const payload = {
       fullName: fullName,
       email: email,
       password: password,
       phone: phone,
       legalSignature: legalSignature,
-      consentIndependent: document.getElementById('consentIndependent').checked,
-      consentAgreement: document.getElementById('consentAgreement').checked,
-      consentHonestSelling: document.getElementById('consentHonestSelling').checked,
-      consentAge: document.getElementById('consentAge').checked,
-      consentEsign: document.getElementById('consentEsign').checked,
-      consentTaxDocs: document.getElementById('consentTaxDocs').checked
+      consentPackage: true,
+      consentBasics: true,
+      reviewedDocumentIds: reviewedIds,
+      taxFormReviewed: !!reviewed['irs-form-w9'],
+      consentAgreement: true,
+      consentEsign: true,
+      consentIndependent: true,
+      consentTaxDocs: true,
+      consentHonestSelling: true,
+      consentAge: true
     };
-
-    if (!payload.fullName || !payload.email || !payload.password || !payload.legalSignature) {
-      showError('Name, email, password, and signature are required.');
-      return;
-    }
-    if (payload.legalSignature.toLowerCase().replace(/[^a-z ]/g,'').replace(/\\s+/g,' ').trim() !==
-        payload.fullName.toLowerCase().replace(/[^a-z ]/g,'').replace(/\\s+/g,' ').trim()) {
-      showError('Signature must match your full legal name.');
-      return;
-    }
-    if (!(payload.consentIndependent && payload.consentAgreement && payload.consentHonestSelling &&
-          payload.consentAge && payload.consentEsign && payload.consentTaxDocs)) {
-      showError('Please accept all required checkboxes.');
-      return;
-    }
-    if (!documents.length) {
-      showError('Agreements are still loading. Wait a moment and try again.');
-      loadAgreement();
-      return;
-    }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Creating your account…';
@@ -742,9 +908,9 @@
         throw new Error(data.error || ('Signup failed (' + res.status + ')'));
       }
       const login = data.loginUrl || LOGIN_URL;
-      let html = '<strong>You\\'re in.</strong> Your agreements were signed and your Website Sales login is ready.';
+      let html = '<strong>You\\'re in.</strong> Your documents were signed and your Website Sales login is ready.';
       if (data.docsEmailSent) {
-        html += ' Check your email for tax docs (W-9) and next steps.';
+        html += ' Check your email for the W-9 packet and next steps.';
       } else {
         html += ' If you don\\'t get the tax-docs email shortly, contact your manager.';
       }
@@ -754,11 +920,13 @@
       html += '<div style="margin-top:12px"><a class="btn" href="' + login + '" target="_blank" rel="noopener">Open Website Sales</a></div>';
       showSuccess(html);
       form.reset();
+      reviewed = {};
+      renderDocs();
     } catch (err) {
       showError(err.message || 'Signup failed. Try again.');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Create account & sign';
+      submitBtn.textContent = 'Create account \\u0026 sign';
     }
   });
 
