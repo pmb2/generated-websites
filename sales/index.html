@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sales Onboarding — TBA Solutions</title>
-<meta name="description" content="Create your TBA Solutions sales account, sign the partner agreement, and start selling.">
+<meta name="description" content="Join TBA Solutions sales. Create your login, sign the partner agreements, and start selling.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +44,7 @@
     border-bottom:1px solid var(--line);
   }
   .topbar-inner{
-    max-width:920px; margin:0 auto;
+    max-width:880px; margin:0 auto;
     padding:14px clamp(16px,4vw,28px);
     display:flex; align-items:center; justify-content:space-between; gap:16px;
   }
@@ -61,9 +61,9 @@
 
   .btn{
     display:inline-flex; align-items:center; justify-content:center;
-    min-height:44px; padding:0 16px; border-radius:999px;
+    min-height:46px; padding:0 18px; border-radius:999px;
     background:var(--accent); color:#fff; text-decoration:none;
-    font-size:13px; font-weight:700; border:1px solid transparent;
+    font-size:14px; font-weight:700; border:1px solid transparent;
     transition:background .18s ease, border-color .18s ease, color .18s ease, opacity .18s ease;
     cursor:pointer;
   }
@@ -80,60 +80,42 @@
     background:linear-gradient(180deg,#fff 0%, var(--paper) 100%);
   }
   .hero-inner{
-    max-width:920px; margin:0 auto;
-    padding:40px clamp(16px,4vw,28px) 32px;
+    max-width:880px; margin:0 auto;
+    padding:36px clamp(16px,4vw,28px) 28px;
   }
   h1{
     font-family:"Fraunces",Georgia,serif; font-weight:600;
-    font-size:clamp(30px,5vw,44px); letter-spacing:-.02em; line-height:1.08;
-    max-width:16ch;
+    font-size:clamp(30px,5vw,42px); letter-spacing:-.02em; line-height:1.08;
+    max-width:14ch;
   }
   .lede{
-    margin-top:14px; font-size:17px; color:var(--muted); max-width:48ch;
+    margin-top:12px; font-size:17px; color:var(--muted); max-width:46ch;
   }
-  .pill-row{
-    margin-top:20px; display:flex; flex-wrap:wrap; gap:8px;
+  .steps-mini{
+    margin-top:18px; display:flex; flex-wrap:wrap; gap:8px;
   }
-  .pill{
+  .chip{
     display:inline-flex; align-items:center; min-height:34px;
     padding:0 12px; border-radius:999px;
     background:#fff; border:1px solid var(--line);
     font-size:12px; font-weight:700; color:var(--ink);
   }
-  .pill strong{color:var(--accent); margin-right:6px}
-
-  .progress{
-    margin-top:24px; display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:8px;
-  }
-  .progress a{
-    display:block; text-decoration:none; color:inherit;
-    border:1px solid var(--line); border-radius:12px;
-    background:#fff; padding:12px;
-    transition:border-color .18s ease, background .18s ease;
-  }
-  .progress a:hover{border-color:var(--accent); background:var(--accent-soft)}
-  .progress .n{
-    display:block; font-size:11px; font-weight:700; letter-spacing:.08em;
-    text-transform:uppercase; color:var(--muted); margin-bottom:4px;
-  }
-  .progress .t{
-    display:block; font-size:13px; font-weight:700; color:var(--ink);
+  .chip em{
+    font-style:normal; color:var(--accent); margin-right:6px;
   }
 
   .wrap{
-    max-width:920px; margin:0 auto;
+    max-width:880px; margin:0 auto;
     padding:0 clamp(16px,4vw,28px) 72px;
   }
-  section{padding-top:36px}
+  section{padding-top:32px}
   h2{
     font-family:"Fraunces",Georgia,serif; font-weight:600;
     font-size:clamp(24px,3vw,30px); letter-spacing:-.015em;
-    margin-bottom:8px;
+    margin-bottom:6px;
   }
   .section-sub{
-    color:var(--muted); margin-bottom:18px; max-width:52ch; font-size:15px;
+    color:var(--muted); margin-bottom:16px; max-width:52ch; font-size:15px;
   }
 
   .panel{
@@ -159,7 +141,16 @@
     font-family:Inter,sans-serif; font-size:14px; font-weight:500; color:var(--muted);
   }
   .meta{margin-top:6px; font-size:13px; color:var(--muted)}
-  .two{display:grid; grid-template-columns:1.1fr .9fr; gap:12px}
+  .two{display:grid; grid-template-columns:1.05fr .95fr; gap:12px}
+
+  .flow{
+    display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:14px;
+  }
+  .flow .f{
+    border:1px solid var(--line); border-radius:14px; background:var(--paper); padding:12px 14px;
+  }
+  .flow .f strong{display:block; font-size:13px}
+  .flow .f span{display:block; margin-top:3px; font-size:12px; color:var(--muted)}
 
   .steps{display:grid; gap:10px}
   .step{
@@ -201,13 +192,9 @@
     min-height:44px; display:flex; align-items:center; justify-content:space-between; gap:12px;
   }
   .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{
-    content:"+"; color:var(--muted); font-weight:700;
-  }
+  .faq summary::after{content:"+"; color:var(--muted); font-weight:700}
   .faq details[open] summary::after{content:"–"}
-  .faq details p{
-    margin-top:10px; font-size:14px; color:var(--muted);
-  }
+  .faq details p{margin-top:10px; font-size:14px; color:var(--muted)}
 
   .links{display:grid; gap:8px}
   .link-row{
@@ -225,24 +212,21 @@
     margin-top:14px; border:1px solid var(--line); border-radius:12px;
     background:var(--paper); padding:14px 16px; font-size:14px; color:var(--muted);
   }
-  .error-box{
-    display:none; margin-top:12px; border:1px solid #E7C5C5; border-radius:12px;
-    background:var(--bad-soft); color:var(--bad); padding:12px 14px; font-size:14px;
+  .error-box,.success-box{
+    display:none; margin-top:12px; border-radius:12px; padding:12px 14px; font-size:14px;
   }
-  .success-box{
-    display:none; margin-top:12px; border:1px solid #B9DCCB; border-radius:12px;
-    background:var(--good-soft); color:var(--good); padding:14px 16px; font-size:14px;
-  }
+  .error-box{border:1px solid #E7C5C5; background:var(--bad-soft); color:var(--bad)}
+  .success-box{border:1px solid #B9DCCB; background:var(--good-soft); color:var(--good)}
 
   form .grid{
     display:grid; grid-template-columns:1fr 1fr; gap:12px;
   }
-  label{
+  label.field-label{
     display:block; font-size:12px; font-weight:700; letter-spacing:.04em;
     text-transform:uppercase; color:var(--muted); margin-bottom:6px;
   }
   input[type="text"], input[type="email"], input[type="password"], input[type="tel"]{
-    width:100%; min-height:44px; border:1px solid var(--line); border-radius:12px;
+    width:100%; min-height:46px; border:1px solid var(--line); border-radius:12px;
     padding:0 12px; font:inherit; color:var(--ink); background:#fff;
   }
   input:focus{
@@ -250,39 +234,45 @@
   }
   .field{margin-bottom:12px}
   .field.full{grid-column:1 / -1}
+  .hint{margin-top:6px; font-size:12px; color:var(--muted)}
+
+  .doc-tabs{
+    display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 10px;
+  }
+  .doc-tab{
+    min-height:40px; padding:0 12px; border-radius:999px; border:1px solid var(--line);
+    background:#fff; font-size:12px; font-weight:700; color:var(--muted); cursor:pointer;
+  }
+  .doc-tab.active{
+    background:var(--accent); color:#fff; border-color:var(--accent);
+  }
+  .agreement{
+    max-height:260px; overflow:auto; border:1px solid var(--line);
+    border-radius:12px; background:var(--paper); padding:14px 16px;
+    font-size:12.5px; white-space:pre-wrap; color:#333;
+  }
+  .agreement-meta{
+    margin:8px 0 4px; font-size:12px; color:var(--muted);
+  }
   .checks{display:grid; gap:10px; margin:14px 0}
   .check{
     display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:start;
     font-size:14px; color:var(--ink);
   }
-  .check input{
-    width:18px; height:18px; margin-top:2px;
-  }
-  .agreement{
-    max-height:240px; overflow:auto; border:1px solid var(--line);
-    border-radius:12px; background:var(--paper); padding:14px 16px;
-    font-size:12.5px; white-space:pre-wrap; color:#333;
-  }
-  .agreement-meta{
-    margin:8px 0 12px; font-size:12px; color:var(--muted);
-  }
+  .check input{width:18px; height:18px; margin-top:2px}
 
   footer{
     border-top:1px solid var(--line); color:var(--muted);
     padding:22px clamp(16px,4vw,28px); font-size:13px;
   }
-  footer .inner{max-width:920px; margin:0 auto}
+  footer .inner{max-width:880px; margin:0 auto}
 
   @media (max-width:760px){
-    .progress{grid-template-columns:1fr 1fr}
-    .two, form .grid{grid-template-columns:1fr}
-  }
-  @media (max-width:420px){
-    .progress{grid-template-columns:1fr}
+    .two, form .grid, .flow{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
-    .btn,.progress a{transition:none}
+    .btn{transition:none}
   }
 </style>
 </head>
@@ -295,126 +285,135 @@
       </div>
       <div class="top-actions">
         <a class="btn ghost" href="https://website-sales.backus.agency" target="_blank" rel="noopener">Log in</a>
-        <a class="btn" href="#create-account">Create account</a>
+        <a class="btn" href="#join">Join now</a>
       </div>
     </div>
   </div>
 
   <header class="hero">
     <div class="hero-inner">
-      <h1>Get set up. Then sell.</h1>
+      <h1>Join. Sign. Sell.</h1>
       <p class="lede">
-        Create your TBA Solutions sales login, sign the partner agreement, learn the offer, and start calling.
+        Create your TBA Solutions login, e-sign the partner paperwork, and start calling with a simple $295/month offer.
       </p>
-      <div class="pill-row">
-        <span class="pill"><strong>$295/mo</strong> only public plan</span>
-        <span class="pill"><strong>$0</strong> setup fee</span>
-        <span class="pill"><strong>30%</strong> founding commission</span>
-        <span class="pill"><strong>Email login</strong> after e-sign</span>
+      <div class="steps-mini">
+        <span class="chip"><em>1</em> Create account</span>
+        <span class="chip"><em>2</em> E-sign docs</span>
+        <span class="chip"><em>3</em> Log in &amp; sell</span>
+        <span class="chip"><em>$295/mo</em> only public plan</span>
+        <span class="chip"><em>30%</em> founding commission</span>
       </div>
-      <nav class="progress" aria-label="Onboarding sections">
-        <a href="#create-account"><span class="n">01</span><span class="t">Create account</span></a>
-        <a href="#offer"><span class="n">02</span><span class="t">What we sell</span></a>
-        <a href="#day-one"><span class="n">03</span><span class="t">Day-one workflow</span></a>
-        <a href="#script"><span class="n">04</span><span class="t">Call script</span></a>
-      </nav>
     </div>
   </header>
 
   <main class="wrap">
-    <section id="create-account">
+    <section id="join">
       <h2>Create your sales account</h2>
-      <p class="section-sub">
-        Use your real email. You will e-sign the Independent Sales Partner Agreement and receive Website Sales CRM access with that same login.
-      </p>
+      <p class="section-sub">One short form. Sign the agreements, get your login, and we’ll email the tax docs you need to get paid.</p>
+
+      <div class="flow" aria-hidden="true">
+        <div class="f"><strong>Account</strong><span>Email + password</span></div>
+        <div class="f"><strong>Agreements</strong><span>Read &amp; e-sign</span></div>
+        <div class="f"><strong>Access</strong><span>Website Sales CRM</span></div>
+      </div>
 
       <div class="panel">
         <div class="panel-head">
-          <h3>Sign up + e-sign</h3>
-          <p>One form. Agreement stored with timestamp, IP, and signature text.</p>
+          <h3>Get started</h3>
+          <p>Use your real email. You’ll sign in with the same email and password.</p>
         </div>
         <div class="panel-body">
           <form id="onboardForm" novalidate>
             <div class="grid">
               <div class="field">
-                <label for="fullName">Full legal name</label>
+                <label class="field-label" for="fullName">Full legal name</label>
                 <input id="fullName" name="fullName" type="text" autocomplete="name" required>
               </div>
               <div class="field">
-                <label for="phone">Phone (optional)</label>
+                <label class="field-label" for="phone">Phone (optional)</label>
                 <input id="phone" name="phone" type="tel" autocomplete="tel">
               </div>
               <div class="field">
-                <label for="email">Work email</label>
+                <label class="field-label" for="email">Email</label>
                 <input id="email" name="email" type="email" autocomplete="email" required>
               </div>
               <div class="field">
-                <label for="password">Create password</label>
+                <label class="field-label" for="password">Password</label>
                 <input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required>
-              </div>
-              <div class="field full">
-                <label for="legalSignature">Type your full legal name as signature</label>
-                <input id="legalSignature" name="legalSignature" type="text" autocomplete="off" required>
+                <div class="hint">At least 10 characters, with upper, lower, and a number.</div>
               </div>
             </div>
 
-            <p class="agreement-meta" id="agreementMeta">Loading agreement…</p>
-            <div class="agreement" id="agreementBox" aria-label="Sales partner agreement">Loading agreement text…</div>
+            <div class="agreement-meta" id="agreementMeta">Loading agreements…</div>
+            <div class="doc-tabs" id="docTabs" hidden></div>
+            <div class="agreement" id="agreementBox" aria-label="Onboarding agreements">Loading agreements…</div>
+
+            <div class="field full" style="margin-top:14px">
+              <label class="field-label" for="legalSignature">Type your full legal name to sign</label>
+              <input id="legalSignature" name="legalSignature" type="text" autocomplete="off" required>
+              <div class="hint">This is your electronic signature for all documents below.</div>
+            </div>
 
             <div class="checks">
               <label class="check">
-                <input type="checkbox" id="consentIndependent" required>
-                <span>I am joining as an independent contractor (1099), not an employee.</span>
+                <input type="checkbox" id="consentAgreement" required>
+                <span>I have read and agree to the Independent Sales Partner Commission Agreement and all related onboarding documents shown above.</span>
               </label>
               <label class="check">
-                <input type="checkbox" id="consentAgreement" required>
-                <span>I have read and agree to the Independent Sales Partner Commission Agreement shown above. My typed name is my electronic signature.</span>
+                <input type="checkbox" id="consentEsign" required>
+                <span>I consent to electronic signatures and electronic records for this onboarding package.</span>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="consentIndependent" required>
+                <span>I am joining as an independent contractor (1099), not an employee, and I am responsible for my own taxes.</span>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="consentTaxDocs" required>
+                <span>I will complete and return tax paperwork (including Form W-9) and payout details so commissions can be paid.</span>
               </label>
               <label class="check">
                 <input type="checkbox" id="consentHonestSelling" required>
-                <span>I will sell only the approved $295/mo Managed Lease offer and will not tell prospects they own the website. If they ask about ownership, I will offer a custom quote.</span>
+                <span>I will only sell the approved $295/mo Managed Lease, will not promise website ownership, and will offer a custom quote if asked about ownership.</span>
               </label>
               <label class="check">
                 <input type="checkbox" id="consentAge" required>
-                <span>I am at least 18 years old and authorized to enter this agreement.</span>
+                <span>I am at least 18 and authorized to enter this agreement.</span>
               </label>
             </div>
 
-            <button class="btn full" id="submitBtn" type="submit">Create account &amp; sign agreement</button>
+            <button class="btn full" id="submitBtn" type="submit">Create account &amp; sign</button>
             <div class="error-box" id="errorBox" role="alert"></div>
             <div class="success-box" id="successBox" role="status"></div>
           </form>
 
           <div class="note">
             After signup, log in at <a href="https://website-sales.backus.agency" target="_blank" rel="noopener">https://website-sales.backus.agency</a>.
-            If that host is not reachable yet, use <a href="https://crm.backus.agency" target="_blank" rel="noopener">https://crm.backus.agency</a> and open the <strong>Website Sales</strong> workspace.
+            If needed, use <a href="https://crm.backus.agency" target="_blank" rel="noopener">https://crm.backus.agency</a> and open <strong>Website Sales</strong>.
           </div>
         </div>
       </div>
     </section>
 
     <section id="offer">
-      <h2>What we sell</h2>
-      <p class="section-sub">Keep it this simple. Do not invent packages, free months, or ownership promises.</p>
+      <h2>What you sell</h2>
+      <p class="section-sub">Keep the offer simple. Don’t invent packages or promises.</p>
       <div class="panel">
         <div class="panel-head">
           <h3>Managed Lease</h3>
-          <p>The only public offer right now.</p>
+          <p>The only public plan right now.</p>
         </div>
         <div class="panel-body">
           <div class="price">$295<small>/month</small></div>
           <p class="meta">Setup fee: $0 · Cancel any time · No long-term contract</p>
           <ul>
             <li>We build, host, rank, and maintain the website</li>
-            <li>TBA Solutions owns the domain and site</li>
+            <li>We help the client get found in traditional search and AI search — Claude, Gemini, ChatGPT, Grok, and the rest</li>
+            <li>TBA Solutions owns the domain and site under the standard plan</li>
             <li>The client gets the leads and keeps their Google reviews, brand, and customer data</li>
             <li>If they cancel, we keep the domain and rankings</li>
           </ul>
           <div class="callout">
-            <strong>Say this:</strong> “For $295 a month with no setup fee, we put a real website live for your business, keep it ranked, and send you the leads.”
-          </div>
-          <div class="note">
-            <strong>If they ask “Do I own it?”</strong> Say: “The standard plan is a managed lease. If you want full ownership, we can put together a custom quote.”
+            <strong>Say this:</strong> “For $295 a month with no setup fee, we put a real website live, help customers find you in search and AI tools like ChatGPT and Gemini, and send you the leads.”
           </div>
         </div>
       </div>
@@ -435,6 +434,7 @@
               <li>Setup is currently $0, so no setup commission right now</li>
               <li>Paid net-15 after month end</li>
               <li>Residuals continue while the client stays active</li>
+              <li>W-9 / tax docs required before payouts</li>
             </ul>
           </div>
         </div>
@@ -460,7 +460,7 @@
           <div class="n">1</div>
           <div>
             <h3>Log into Website Sales</h3>
-            <p>Use the email and password you just created. You will only see leads assigned to you.</p>
+            <p>Use the email and password you just created. You’ll only see leads assigned to you.</p>
           </div>
         </div>
         <div class="step">
@@ -481,7 +481,7 @@
           <div class="n">4</div>
           <div>
             <h3>Stay on the line</h3>
-            <p>Walk them through the preview. Answer price and ownership simply. Close to checkout.</p>
+            <p>Walk them through the preview. Keep price and ownership answers simple. Close to checkout.</p>
           </div>
         </div>
         <div class="step">
@@ -502,7 +502,7 @@
           <div class="label">Phone</div>
           <p>“Hi, this is <em>[Your Name]</em> with TBA Solutions. Can I speak with the owner or manager, please?”</p>
           <p><em>When connected:</em> “Hey [Name] — we noticed [Business] doesn’t have a real website online, so we built one for you. I’m sending it over now.”</p>
-          <p>“Open the link and scroll it like a customer. If you like it, we can put it live for $295 a month with no setup fee.”</p>
+          <p>“Open the link and scroll it like a customer. If you like it, we can put it live for $295 a month with no setup fee — and help people find you in search and AI tools like ChatGPT and Gemini.”</p>
         </div>
         <div class="script">
           <div class="label">Text or email</div>
@@ -523,7 +523,7 @@
         </details>
         <details>
           <summary>If they ask “What do I get?”</summary>
-          <p>A real website built for your business, hosting, SEO, maintenance, and the leads it generates. We handle the technical work. You run the business.</p>
+          <p>A real website built for your business, hosting, SEO, maintenance, help getting found in search and AI tools (Claude, Gemini, ChatGPT, Grok, and similar), and the leads it generates. We handle the technical work. You run the business.</p>
         </details>
         <details>
           <summary>If they stall</summary>
@@ -538,7 +538,7 @@
       <div class="links">
         <div class="link-row">
           <div>
-            <strong>Website Sales CRM login</strong>
+            <strong>Website Sales login</strong>
             <span>Your assigned leads live here</span>
           </div>
           <a class="btn" href="https://website-sales.backus.agency" target="_blank" rel="noopener">Open CRM</a>
@@ -566,7 +566,7 @@
         </div>
       </div>
       <div class="callout" style="margin-top:16px">
-        You only need this page, your CRM login, and the pitch links on your leads. Nothing else.
+        You only need this page, your CRM login, and the pitch links on your leads.
       </div>
     </section>
   </main>
@@ -586,11 +586,15 @@
   const form = document.getElementById('onboardForm');
   const agreementBox = document.getElementById('agreementBox');
   const agreementMeta = document.getElementById('agreementMeta');
+  const docTabs = document.getElementById('docTabs');
   const errorBox = document.getElementById('errorBox');
   const successBox = document.getElementById('successBox');
   const submitBtn = document.getElementById('submitBtn');
 
-  let agreementVersion = '';
+  let packageVersion = '';
+  let documents = [];
+  let activeDoc = 0;
+  let loadAttempts = 0;
 
   function showError(msg) {
     successBox.style.display = 'none';
@@ -604,19 +608,75 @@
     successBox.innerHTML = html;
   }
 
+  function renderDoc(index) {
+    activeDoc = index;
+    const doc = documents[index];
+    if (!doc) {
+      agreementBox.textContent = 'Agreements unavailable. Refresh and try again.';
+      return;
+    }
+    agreementBox.textContent = doc.text || '';
+    Array.prototype.forEach.call(docTabs.querySelectorAll('.doc-tab'), function (btn, i) {
+      btn.classList.toggle('active', i === index);
+    });
+  }
+
+  function renderTabs() {
+    docTabs.innerHTML = '';
+    if (!documents.length) {
+      docTabs.hidden = true;
+      return;
+    }
+    docTabs.hidden = false;
+    documents.forEach(function (doc, i) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'doc-tab' + (i === 0 ? ' active' : '');
+      btn.textContent = (i + 1) + '. ' + (doc.title || ('Document ' + (i + 1)));
+      btn.addEventListener('click', function () { renderDoc(i); });
+      docTabs.appendChild(btn);
+    });
+    renderDoc(0);
+  }
+
   async function loadAgreement() {
+    loadAttempts += 1;
+    agreementMeta.textContent = 'Loading agreements…';
     try {
-      const res = await fetch(AGREEMENT_API, { headers: { 'Accept': 'application/json' } });
-      if (!res.ok) throw new Error('Could not load agreement');
+      const res = await fetch(AGREEMENT_API, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'omit',
+        headers: { 'Accept': 'application/json' },
+        cache: 'no-store'
+      });
+      if (!res.ok) throw new Error('Could not load agreements (' + res.status + ')');
       const data = await res.json();
-      agreementVersion = data.agreementVersion || '';
-      agreementBox.textContent = data.agreementText || 'Agreement unavailable.';
-      agreementMeta.textContent = 'Agreement version: ' + (agreementVersion || 'unknown') +
-        (data.agreementHash ? ' · hash ' + data.agreementHash.slice(0, 12) + '…' : '');
+      packageVersion = data.packageVersion || data.agreementVersion || '';
+      if (Array.isArray(data.documents) && data.documents.length) {
+        documents = data.documents;
+      } else if (data.agreementText) {
+        documents = [{
+          id: 'package',
+          title: 'Onboarding package',
+          version: packageVersion,
+          text: data.agreementText
+        }];
+      } else {
+        throw new Error('Agreement package was empty');
+      }
+      agreementMeta.textContent = 'Package version: ' + (packageVersion || 'current') +
+        ' · ' + documents.length + ' documents';
+      renderTabs();
+      errorBox.style.display = 'none';
     } catch (err) {
-      agreementBox.textContent = 'Agreement could not be loaded. Refresh the page or contact your manager.';
-      agreementMeta.textContent = 'Agreement unavailable';
-      showError('Could not load the agreement from the server. Check your connection and refresh.');
+      agreementBox.textContent = 'Agreements could not be loaded.';
+      agreementMeta.textContent = 'Agreements unavailable';
+      if (loadAttempts < 3) {
+        setTimeout(loadAgreement, 700 * loadAttempts);
+      } else {
+        showError('Could not load the agreements. Refresh the page or try again in a moment.');
+      }
     }
   }
 
@@ -639,23 +699,38 @@
       consentIndependent: document.getElementById('consentIndependent').checked,
       consentAgreement: document.getElementById('consentAgreement').checked,
       consentHonestSelling: document.getElementById('consentHonestSelling').checked,
-      consentAge: document.getElementById('consentAge').checked
+      consentAge: document.getElementById('consentAge').checked,
+      consentEsign: document.getElementById('consentEsign').checked,
+      consentTaxDocs: document.getElementById('consentTaxDocs').checked
     };
 
     if (!payload.fullName || !payload.email || !payload.password || !payload.legalSignature) {
-      showError('Name, email, password, and typed signature are required.');
+      showError('Name, email, password, and signature are required.');
       return;
     }
-    if (!(payload.consentIndependent && payload.consentAgreement && payload.consentHonestSelling && payload.consentAge)) {
+    if (payload.legalSignature.toLowerCase().replace(/[^a-z ]/g,'').replace(/\\s+/g,' ').trim() !==
+        payload.fullName.toLowerCase().replace(/[^a-z ]/g,'').replace(/\\s+/g,' ').trim()) {
+      showError('Signature must match your full legal name.');
+      return;
+    }
+    if (!(payload.consentIndependent && payload.consentAgreement && payload.consentHonestSelling &&
+          payload.consentAge && payload.consentEsign && payload.consentTaxDocs)) {
       showError('Please accept all required checkboxes.');
+      return;
+    }
+    if (!documents.length) {
+      showError('Agreements are still loading. Wait a moment and try again.');
+      loadAgreement();
       return;
     }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Creating account…';
+    submitBtn.textContent = 'Creating your account…';
     try {
       const res = await fetch(ONBOARD_API, {
         method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -667,21 +742,23 @@
         throw new Error(data.error || ('Signup failed (' + res.status + ')'));
       }
       const login = data.loginUrl || LOGIN_URL;
-      let html = '<strong>Account ready.</strong> Agreement version <code>' +
-        (data.agreementVersion || agreementVersion || '') + '</code> was recorded.';
-      if (data.provisioned === false) {
-        html += ' Your agreement is saved; CRM access is being finalized. Contact your manager if login fails.';
+      let html = '<strong>You\\'re in.</strong> Your agreements were signed and your Website Sales login is ready.';
+      if (data.docsEmailSent) {
+        html += ' Check your email for tax docs (W-9) and next steps.';
       } else {
-        html += ' You can log in now.';
+        html += ' If you don\\'t get the tax-docs email shortly, contact your manager.';
       }
-      html += '<div style="margin-top:12px"><a class="btn" href="' + login + '" target="_blank" rel="noopener">Open Website Sales CRM</a></div>';
+      if (data.provisioned === false) {
+        html += ' CRM access is still finalizing — contact your manager if login fails.';
+      }
+      html += '<div style="margin-top:12px"><a class="btn" href="' + login + '" target="_blank" rel="noopener">Open Website Sales</a></div>';
       showSuccess(html);
       form.reset();
     } catch (err) {
       showError(err.message || 'Signup failed. Try again.');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Create account & sign agreement';
+      submitBtn.textContent = 'Create account & sign';
     }
   });
 
