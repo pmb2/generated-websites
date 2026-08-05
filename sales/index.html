@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sales Onboarding — The Backus Agency</title>
-<meta name="description" content="New hire sales onboarding for Website Landlord. One plan, one script, one call flow.">
+<title>Sales Onboarding — TBA Solutions</title>
+<meta name="description" content="Create your TBA Solutions sales account, sign the partner agreement, and start selling.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,8 @@
     --accent-soft:#EAF0F7;
     --good:#14664C;
     --good-soft:#E7F4EE;
+    --bad:#8B1E1E;
+    --bad-soft:#F8EAEA;
     --focus:#1F3A5F;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -56,17 +58,13 @@
     letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
   }
   .top-actions{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-  .skip{
-    font-size:13px; font-weight:600; color:var(--muted); text-decoration:none;
-  }
-  .skip:hover{color:var(--accent)}
 
   .btn{
     display:inline-flex; align-items:center; justify-content:center;
     min-height:44px; padding:0 16px; border-radius:999px;
     background:var(--accent); color:#fff; text-decoration:none;
     font-size:13px; font-weight:700; border:1px solid transparent;
-    transition:background .18s ease, border-color .18s ease, color .18s ease;
+    transition:background .18s ease, border-color .18s ease, color .18s ease, opacity .18s ease;
     cursor:pointer;
   }
   .btn:hover{background:#162B47; color:#fff}
@@ -75,6 +73,7 @@
   }
   .btn.ghost:hover{border-color:var(--accent); background:var(--accent-soft)}
   .btn.full{width:100%}
+  .btn:disabled{opacity:.55; cursor:not-allowed}
 
   .hero{
     border-bottom:1px solid var(--line);
@@ -82,18 +81,18 @@
   }
   .hero-inner{
     max-width:920px; margin:0 auto;
-    padding:44px clamp(16px,4vw,28px) 36px;
+    padding:40px clamp(16px,4vw,28px) 32px;
   }
   h1{
     font-family:"Fraunces",Georgia,serif; font-weight:600;
-    font-size:clamp(32px,5vw,48px); letter-spacing:-.02em; line-height:1.08;
-    max-width:14ch;
+    font-size:clamp(30px,5vw,44px); letter-spacing:-.02em; line-height:1.08;
+    max-width:16ch;
   }
   .lede{
     margin-top:14px; font-size:17px; color:var(--muted); max-width:48ch;
   }
   .pill-row{
-    margin-top:22px; display:flex; flex-wrap:wrap; gap:8px;
+    margin-top:20px; display:flex; flex-wrap:wrap; gap:8px;
   }
   .pill{
     display:inline-flex; align-items:center; min-height:34px;
@@ -104,14 +103,14 @@
   .pill strong{color:var(--accent); margin-right:6px}
 
   .progress{
-    margin-top:28px; display:grid;
+    margin-top:24px; display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
     gap:8px;
   }
   .progress a{
     display:block; text-decoration:none; color:inherit;
     border:1px solid var(--line); border-radius:12px;
-    background:#fff; padding:12px 12px 11px;
+    background:#fff; padding:12px;
     transition:border-color .18s ease, background .18s ease;
   }
   .progress a:hover{border-color:var(--accent); background:var(--accent-soft)}
@@ -127,7 +126,7 @@
     max-width:920px; margin:0 auto;
     padding:0 clamp(16px,4vw,28px) 72px;
   }
-  section{padding-top:40px}
+  section{padding-top:36px}
   h2{
     font-family:"Fraunces",Georgia,serif; font-weight:600;
     font-size:clamp(24px,3vw,30px); letter-spacing:-.015em;
@@ -159,13 +158,8 @@
   .price small{
     font-family:Inter,sans-serif; font-size:14px; font-weight:500; color:var(--muted);
   }
-  .meta{
-    margin-top:6px; font-size:13px; color:var(--muted);
-  }
-
-  .two{
-    display:grid; grid-template-columns:1.1fr .9fr; gap:12px;
-  }
+  .meta{margin-top:6px; font-size:13px; color:var(--muted)}
+  .two{display:grid; grid-template-columns:1.1fr .9fr; gap:12px}
 
   .steps{display:grid; gap:10px}
   .step{
@@ -208,7 +202,7 @@
   }
   .faq summary::-webkit-details-marker{display:none}
   .faq summary::after{
-    content:"+"; float:right; color:var(--muted); font-weight:700;
+    content:"+"; color:var(--muted); font-weight:700;
   }
   .faq details[open] summary::after{content:"–"}
   .faq details p{
@@ -231,6 +225,47 @@
     margin-top:14px; border:1px solid var(--line); border-radius:12px;
     background:var(--paper); padding:14px 16px; font-size:14px; color:var(--muted);
   }
+  .error-box{
+    display:none; margin-top:12px; border:1px solid #E7C5C5; border-radius:12px;
+    background:var(--bad-soft); color:var(--bad); padding:12px 14px; font-size:14px;
+  }
+  .success-box{
+    display:none; margin-top:12px; border:1px solid #B9DCCB; border-radius:12px;
+    background:var(--good-soft); color:var(--good); padding:14px 16px; font-size:14px;
+  }
+
+  form .grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:12px;
+  }
+  label{
+    display:block; font-size:12px; font-weight:700; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--muted); margin-bottom:6px;
+  }
+  input[type="text"], input[type="email"], input[type="password"], input[type="tel"]{
+    width:100%; min-height:44px; border:1px solid var(--line); border-radius:12px;
+    padding:0 12px; font:inherit; color:var(--ink); background:#fff;
+  }
+  input:focus{
+    outline:2px solid var(--focus); outline-offset:1px; border-color:transparent;
+  }
+  .field{margin-bottom:12px}
+  .field.full{grid-column:1 / -1}
+  .checks{display:grid; gap:10px; margin:14px 0}
+  .check{
+    display:grid; grid-template-columns:22px 1fr; gap:10px; align-items:start;
+    font-size:14px; color:var(--ink);
+  }
+  .check input{
+    width:18px; height:18px; margin-top:2px;
+  }
+  .agreement{
+    max-height:240px; overflow:auto; border:1px solid var(--line);
+    border-radius:12px; background:var(--paper); padding:14px 16px;
+    font-size:12.5px; white-space:pre-wrap; color:#333;
+  }
+  .agreement-meta{
+    margin:8px 0 12px; font-size:12px; color:var(--muted);
+  }
 
   footer{
     border-top:1px solid var(--line); color:var(--muted);
@@ -240,8 +275,7 @@
 
   @media (max-width:760px){
     .progress{grid-template-columns:1fr 1fr}
-    .two{grid-template-columns:1fr}
-    .top-actions .skip{display:none}
+    .two, form .grid{grid-template-columns:1fr}
   }
   @media (max-width:420px){
     .progress{grid-template-columns:1fr}
@@ -256,43 +290,112 @@
   <div class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        The Backus Agency
-        <small>Sales onboarding</small>
+        TBA Solutions
+        <small>Sales partner onboarding</small>
       </div>
       <div class="top-actions">
-        <a class="skip" href="#day-one">Skip to day one</a>
-        <a class="btn" href="#day-one">Start here</a>
+        <a class="btn ghost" href="https://website-sales.backus.agency" target="_blank" rel="noopener">Log in</a>
+        <a class="btn" href="#create-account">Create account</a>
       </div>
     </div>
   </div>
 
   <header class="hero">
     <div class="hero-inner">
-      <h1>Your first day sales guide.</h1>
+      <h1>Get set up. Then sell.</h1>
       <p class="lede">
-        Read this once. Then make calls. One plan. One script. One job:
-        get the owner, send the pitch page, close to $295/month.
+        Create your TBA Solutions sales login, sign the partner agreement, learn the offer, and start calling.
       </p>
       <div class="pill-row">
         <span class="pill"><strong>$295/mo</strong> only public plan</span>
         <span class="pill"><strong>$0</strong> setup fee</span>
         <span class="pill"><strong>30%</strong> founding commission</span>
-        <span class="pill"><strong>787</strong> ready leads</span>
+        <span class="pill"><strong>Email login</strong> after e-sign</span>
       </div>
       <nav class="progress" aria-label="Onboarding sections">
-        <a href="#offer"><span class="n">01</span><span class="t">What we sell</span></a>
-        <a href="#pay"><span class="n">02</span><span class="t">What you earn</span></a>
+        <a href="#create-account"><span class="n">01</span><span class="t">Create account</span></a>
+        <a href="#offer"><span class="n">02</span><span class="t">What we sell</span></a>
         <a href="#day-one"><span class="n">03</span><span class="t">Day-one workflow</span></a>
-        <a href="#script"><span class="n">04</span><span class="t">Call + text script</span></a>
+        <a href="#script"><span class="n">04</span><span class="t">Call script</span></a>
       </nav>
     </div>
   </header>
 
   <main class="wrap">
+    <section id="create-account">
+      <h2>Create your sales account</h2>
+      <p class="section-sub">
+        Use your real email. You will e-sign the Independent Sales Partner Agreement and receive Website Sales CRM access with that same login.
+      </p>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Sign up + e-sign</h3>
+          <p>One form. Agreement stored with timestamp, IP, and signature text.</p>
+        </div>
+        <div class="panel-body">
+          <form id="onboardForm" novalidate>
+            <div class="grid">
+              <div class="field">
+                <label for="fullName">Full legal name</label>
+                <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone (optional)</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="password">Create password</label>
+                <input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required>
+              </div>
+              <div class="field full">
+                <label for="legalSignature">Type your full legal name as signature</label>
+                <input id="legalSignature" name="legalSignature" type="text" autocomplete="off" required>
+              </div>
+            </div>
+
+            <p class="agreement-meta" id="agreementMeta">Loading agreement…</p>
+            <div class="agreement" id="agreementBox" aria-label="Sales partner agreement">Loading agreement text…</div>
+
+            <div class="checks">
+              <label class="check">
+                <input type="checkbox" id="consentIndependent" required>
+                <span>I am joining as an independent contractor (1099), not an employee.</span>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="consentAgreement" required>
+                <span>I have read and agree to the Independent Sales Partner Commission Agreement shown above. My typed name is my electronic signature.</span>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="consentHonestSelling" required>
+                <span>I will sell only the approved $295/mo Managed Lease offer and will not tell prospects they own the website. If they ask about ownership, I will offer a custom quote.</span>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="consentAge" required>
+                <span>I am at least 18 years old and authorized to enter this agreement.</span>
+              </label>
+            </div>
+
+            <button class="btn full" id="submitBtn" type="submit">Create account &amp; sign agreement</button>
+            <div class="error-box" id="errorBox" role="alert"></div>
+            <div class="success-box" id="successBox" role="status"></div>
+          </form>
+
+          <div class="note">
+            After signup, log in at <a href="https://website-sales.backus.agency" target="_blank" rel="noopener">https://website-sales.backus.agency</a>.
+            If that host is not reachable yet, use <a href="https://crm.backus.agency" target="_blank" rel="noopener">https://crm.backus.agency</a> and open the <strong>Website Sales</strong> workspace.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="offer">
       <h2>What we sell</h2>
       <p class="section-sub">Keep it this simple. Do not invent packages, free months, or ownership promises.</p>
-
       <div class="panel">
         <div class="panel-head">
           <h3>Managed Lease</h3>
@@ -303,7 +406,7 @@
           <p class="meta">Setup fee: $0 · Cancel any time · No long-term contract</p>
           <ul>
             <li>We build, host, rank, and maintain the website</li>
-            <li>The Backus Agency owns the domain and site</li>
+            <li>TBA Solutions owns the domain and site</li>
             <li>The client gets the leads and keeps their Google reviews, brand, and customer data</li>
             <li>If they cancel, we keep the domain and rankings</li>
           </ul>
@@ -311,7 +414,7 @@
             <strong>Say this:</strong> “For $295 a month with no setup fee, we put a real website live for your business, keep it ranked, and send you the leads.”
           </div>
           <div class="note">
-            <strong>Never say:</strong> “You own the website.” Say: “You lease a lead-generating website. We own and manage the domain and site.”
+            <strong>If they ask “Do I own it?”</strong> Say: “The standard plan is a managed lease. If you want full ownership, we can put together a custom quote.”
           </div>
         </div>
       </div>
@@ -351,47 +454,43 @@
 
     <section id="day-one">
       <h2>Day-one workflow</h2>
-      <p class="section-sub">This is the whole job. Do these five steps over and over.</p>
+      <p class="section-sub">This is the whole job after your account is ready.</p>
       <div class="steps">
         <div class="step">
           <div class="n">1</div>
           <div>
-            <h3>Open your lead list</h3>
-            <p>Use the sales call list you were given. Every row has a phone number and a pitch page URL.</p>
+            <h3>Log into Website Sales</h3>
+            <p>Use the email and password you just created. You will only see leads assigned to you.</p>
           </div>
         </div>
         <div class="step">
           <div class="n">2</div>
           <div>
-            <h3>Call and ask for the owner</h3>
-            <p>Ask for the owner, manager, or decision maker. Do not pitch the front desk for five minutes.</p>
+            <h3>Open an assigned lead</h3>
+            <p>Call the business and ask for the owner, manager, or decision maker.</p>
           </div>
         </div>
         <div class="step">
           <div class="n">3</div>
           <div>
-            <h3>Send the pitch page right away</h3>
-            <p>Text or email the lead’s pitch URL. It already shows their real website and the $295/mo checkout.</p>
+            <h3>Send the pitch page</h3>
+            <p>Text or email the lead’s pitch URL. It already shows their site and the $295/mo checkout.</p>
           </div>
         </div>
         <div class="step">
           <div class="n">4</div>
           <div>
-            <h3>Stay on the line while they open it</h3>
-            <p>Walk them through the site. Let them scroll the phone preview. Answer price and ownership simply.</p>
+            <h3>Stay on the line</h3>
+            <p>Walk them through the preview. Answer price and ownership simply. Close to checkout.</p>
           </div>
         </div>
         <div class="step">
           <div class="n">5</div>
           <div>
-            <h3>Close to checkout</h3>
-            <p>Point them to the Go Live button. After they pay, operations launches the site. Log the result.</p>
+            <h3>Log the outcome</h3>
+            <p>Save notes/result in the CRM, then move to the next assigned lead.</p>
           </div>
         </div>
-      </div>
-      <div class="note">
-        Your pitch URL looks like this:<br>
-        <strong>https://pmb2.github.io/generated-websites/pitch/&lt;business-slug&gt;/</strong>
       </div>
     </section>
 
@@ -401,13 +500,13 @@
       <div class="two">
         <div class="script">
           <div class="label">Phone</div>
-          <p>“Hi, this is <em>[Your Name]</em> with The Backus Agency. Can I speak with the owner or manager, please?”</p>
+          <p>“Hi, this is <em>[Your Name]</em> with TBA Solutions. Can I speak with the owner or manager, please?”</p>
           <p><em>When connected:</em> “Hey [Name] — we noticed [Business] doesn’t have a real website online, so we built one for you. I’m sending it over now.”</p>
           <p>“Open the link and scroll it like a customer. If you like it, we can put it live for $295 a month with no setup fee.”</p>
         </div>
         <div class="script">
           <div class="label">Text or email</div>
-          <p>“Hey [Name] — [Your Name] with The Backus Agency. Here’s the website we built for [Business]:”</p>
+          <p>“Hey [Name] — [Your Name] with TBA Solutions. Here’s the website we built for [Business]:”</p>
           <span class="url">[paste pitch_url here]</span>
           <p>“Open it, tap around, and tell me if you want it live for $295/month with no setup fee.”</p>
         </div>
@@ -420,7 +519,7 @@
         </details>
         <details>
           <summary>If they ask “Do I own it?”</summary>
-          <p>You lease the lead-generating website. We own and manage the domain and build so we can keep ranking and maintaining it. You keep your Google reviews, brand, and customer data.</p>
+          <p>The standard plan is a managed lease. If you want full ownership, we can put together a custom quote.</p>
         </details>
         <details>
           <summary>If they ask “What do I get?”</summary>
@@ -433,10 +532,17 @@
       </div>
     </section>
 
-    <section id="links">
+    <section id="tools">
       <h2>Tools you need</h2>
-      <p class="section-sub">Open these. Bookmark them. Use them on every call.</p>
+      <p class="section-sub">Bookmark these. Use them on every call.</p>
       <div class="links">
+        <div class="link-row">
+          <div>
+            <strong>Website Sales CRM login</strong>
+            <span>Your assigned leads live here</span>
+          </div>
+          <a class="btn" href="https://website-sales.backus.agency" target="_blank" rel="noopener">Open CRM</a>
+        </div>
         <div class="link-row">
           <div>
             <strong>Demo directory</strong>
@@ -453,32 +559,134 @@
         </div>
         <div class="link-row">
           <div>
-            <strong>Live client pitch</strong>
-            <span>Kouray example with real site embedded</span>
-          </div>
-          <a class="btn ghost" href="https://pmb2.github.io/generated-websites/pitch/kouray-kouray/" target="_blank" rel="noopener">Open</a>
-        </div>
-        <div class="link-row">
-          <div>
             <strong>Checkout link</strong>
             <span>$295/month Managed Lease payment page</span>
           </div>
-          <a class="btn" href="https://buy.stripe.com/00wfZjakNbA2bOk9a3fEk00" target="_blank" rel="noopener">Open Stripe</a>
+          <a class="btn ghost" href="https://buy.stripe.com/00wfZjakNbA2bOk9a3fEk00" target="_blank" rel="noopener">Open Stripe</a>
         </div>
       </div>
       <div class="callout" style="margin-top:16px">
-        Your manager will give you the lead list with phone numbers and pitch URLs. You do not need the internal repo or CRM docs to sell.
-      </div>
-      <div style="margin-top:18px">
-        <a class="btn full" href="#day-one">Back to day-one workflow</a>
+        You only need this page, your CRM login, and the pitch links on your leads. Nothing else.
       </div>
     </section>
   </main>
 
   <footer>
     <div class="inner">
-      &copy; 2026 The Backus Agency · Website Landlord sales onboarding · Authorized sales partners only
+      &copy; 2026 TBA Solutions · Sales partner onboarding · Authorized partners only
     </div>
   </footer>
+
+<script>
+(function () {
+  const AGREEMENT_API = 'https://leads.backus.agency/public/sales-onboarding/agreement';
+  const ONBOARD_API = 'https://leads.backus.agency/public/sales-onboarding';
+  const LOGIN_URL = 'https://website-sales.backus.agency';
+
+  const form = document.getElementById('onboardForm');
+  const agreementBox = document.getElementById('agreementBox');
+  const agreementMeta = document.getElementById('agreementMeta');
+  const errorBox = document.getElementById('errorBox');
+  const successBox = document.getElementById('successBox');
+  const submitBtn = document.getElementById('submitBtn');
+
+  let agreementVersion = '';
+
+  function showError(msg) {
+    successBox.style.display = 'none';
+    errorBox.style.display = 'block';
+    errorBox.textContent = msg;
+  }
+
+  function showSuccess(html) {
+    errorBox.style.display = 'none';
+    successBox.style.display = 'block';
+    successBox.innerHTML = html;
+  }
+
+  async function loadAgreement() {
+    try {
+      const res = await fetch(AGREEMENT_API, { headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error('Could not load agreement');
+      const data = await res.json();
+      agreementVersion = data.agreementVersion || '';
+      agreementBox.textContent = data.agreementText || 'Agreement unavailable.';
+      agreementMeta.textContent = 'Agreement version: ' + (agreementVersion || 'unknown') +
+        (data.agreementHash ? ' · hash ' + data.agreementHash.slice(0, 12) + '…' : '');
+    } catch (err) {
+      agreementBox.textContent = 'Agreement could not be loaded. Refresh the page or contact your manager.';
+      agreementMeta.textContent = 'Agreement unavailable';
+      showError('Could not load the agreement from the server. Check your connection and refresh.');
+    }
+  }
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    errorBox.style.display = 'none';
+    successBox.style.display = 'none';
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const phone = document.getElementById('phone').value.trim();
+    const legalSignature = document.getElementById('legalSignature').value.trim();
+    const payload = {
+      fullName: fullName,
+      email: email,
+      password: password,
+      phone: phone,
+      legalSignature: legalSignature,
+      consentIndependent: document.getElementById('consentIndependent').checked,
+      consentAgreement: document.getElementById('consentAgreement').checked,
+      consentHonestSelling: document.getElementById('consentHonestSelling').checked,
+      consentAge: document.getElementById('consentAge').checked
+    };
+
+    if (!payload.fullName || !payload.email || !payload.password || !payload.legalSignature) {
+      showError('Name, email, password, and typed signature are required.');
+      return;
+    }
+    if (!(payload.consentIndependent && payload.consentAgreement && payload.consentHonestSelling && payload.consentAge)) {
+      showError('Please accept all required checkboxes.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating account…';
+    try {
+      const res = await fetch(ONBOARD_API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(function () { return {}; });
+      if (!res.ok) {
+        throw new Error(data.error || ('Signup failed (' + res.status + ')'));
+      }
+      const login = data.loginUrl || LOGIN_URL;
+      let html = '<strong>Account ready.</strong> Agreement version <code>' +
+        (data.agreementVersion || agreementVersion || '') + '</code> was recorded.';
+      if (data.provisioned === false) {
+        html += ' Your agreement is saved; CRM access is being finalized. Contact your manager if login fails.';
+      } else {
+        html += ' You can log in now.';
+      }
+      html += '<div style="margin-top:12px"><a class="btn" href="' + login + '" target="_blank" rel="noopener">Open Website Sales CRM</a></div>';
+      showSuccess(html);
+      form.reset();
+    } catch (err) {
+      showError(err.message || 'Signup failed. Try again.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Create account & sign agreement';
+    }
+  });
+
+  loadAgreement();
+})();
+</script>
 </body>
 </html>
