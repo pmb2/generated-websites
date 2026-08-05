@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Team Onboarding — The Backus Agency</title>
+<meta name="description" content="Everything a Website Landlord sales partner needs: offerings, commission, scripts, leads, and the pitch workflow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#FFFFFF; --paper:#F8F7F4; --ink:#171717; --muted:#6B6B6B;
+    --line:#E5E2DC; --accent:#1F3A5F; --accent-soft:#E8EEF5;
+    --good:#14664C; --good-soft:#E6F4EE; --warm:#8A5A00; --warm-soft:#FBF3E0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+  }
+  a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:3px}
+  a:hover{color:#162B47}
+
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(255,255,255,.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1100px; margin:0 auto;
+    padding:14px clamp(16px,4vw,32px);
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:18px}
+  .brand span{color:var(--muted); font-family:Inter,sans-serif; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-left:10px}
+  nav{display:flex; flex-wrap:wrap; gap:10px 14px}
+  nav a{font-size:13px; font-weight:600; color:var(--muted); text-decoration:none}
+  nav a:hover{color:var(--accent)}
+
+  .hero{
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fff 0%, var(--paper) 100%);
+  }
+  .hero-inner{
+    max-width:1100px; margin:0 auto;
+    padding:56px clamp(16px,4vw,32px) 48px;
+  }
+  .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); margin-bottom:14px;
+  }
+  h1{
+    font-family:"Fraunces",Georgia,serif; font-weight:600;
+    font-size:clamp(34px,5vw,52px); letter-spacing:-.02em; line-height:1.1;
+    max-width:16ch;
+  }
+  .lede{margin-top:18px; font-size:17px; color:var(--muted); max-width:58ch}
+
+  .stats{
+    margin-top:32px; display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1px;
+    background:var(--line); border:1px solid var(--line); max-width:820px;
+  }
+  .stat{background:#fff; padding:18px 16px}
+  .stat b{display:block; font-family:"Fraunces",Georgia,serif; font-size:28px; font-weight:600}
+  .stat span{display:block; margin-top:4px; font-size:12px; color:var(--muted); letter-spacing:.04em; text-transform:uppercase}
+
+  .wrap{max-width:1100px; margin:0 auto; padding:0 clamp(16px,4vw,32px) 80px}
+  section{padding-top:56px}
+  h2{
+    font-family:"Fraunces",Georgia,serif; font-weight:600;
+    font-size:clamp(26px,3.4vw,34px); letter-spacing:-.015em;
+    margin-bottom:10px;
+  }
+  .section-sub{color:var(--muted); margin-bottom:24px; max-width:60ch}
+
+  .grid-2{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
+  .grid-3{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
+
+  .card{
+    background:#fff; border:1px solid var(--line); border-radius:14px;
+    padding:22px 20px;
+  }
+  .card h3{
+    font-family:"Fraunces",Georgia,serif; font-size:20px; font-weight:600;
+    margin-bottom:8px;
+  }
+  .card p, .card li{font-size:14.5px; color:#333}
+  .card ul{margin:10px 0 0 18px}
+  .card li{margin:6px 0}
+  .price{font-family:"Fraunces",Georgia,serif; font-size:30px; font-weight:600; color:var(--accent)}
+  .price small{font-family:Inter,sans-serif; font-size:13px; color:var(--muted); font-weight:500}
+  .badge{
+    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.1em;
+    text-transform:uppercase; padding:5px 8px; border-radius:999px; margin-bottom:10px;
+  }
+  .badge.lease{background:var(--accent-soft); color:var(--accent)}
+  .badge.own{background:var(--warm-soft); color:var(--warm)}
+  .badge.money{background:var(--good-soft); color:var(--good)}
+
+  .table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:12px}
+  table{width:100%; border-collapse:collapse; font-size:14px}
+  th,td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+  th{background:var(--paper); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+  tr:last-child td{border-bottom:0}
+
+  .steps{display:grid; gap:12px}
+  .step{
+    display:grid; grid-template-columns:48px 1fr; gap:14px; align-items:start;
+    border:1px solid var(--line); border-radius:14px; padding:16px 18px; background:#fff;
+  }
+  .step .n{
+    width:48px; height:48px; border-radius:12px; background:var(--accent);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:"Fraunces",Georgia,serif; font-size:20px; font-weight:600;
+  }
+  .step h3{font-size:16px; margin-bottom:4px}
+  .step p{font-size:14px; color:var(--muted)}
+
+  .script{
+    background:#0F141A; color:#ECEDEE; border-radius:16px; padding:22px 20px;
+    font-size:15px; line-height:1.65;
+  }
+  .script .label{
+    font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:#8FB3E0; margin-bottom:10px;
+  }
+  .script p{margin:0 0 12px}
+  .script p:last-child{margin:0}
+  .script em{color:#B8C7D8; font-style:normal}
+
+  .links{display:grid; gap:10px}
+  .link-row{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;
+    border:1px solid var(--line); border-radius:12px; padding:14px 16px; background:#fff;
+  }
+  .link-row strong{font-size:14px}
+  .link-row span{font-size:13px; color:var(--muted)}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    min-height:40px; padding:0 14px; border-radius:999px;
+    background:var(--accent); color:#fff; text-decoration:none; font-size:13px; font-weight:700;
+  }
+  .btn:hover{background:#162B47; color:#fff}
+  .btn.ghost{background:#fff; color:var(--accent); border:1px solid var(--line)}
+
+  .callout{
+    border-left:3px solid var(--accent); background:var(--paper);
+    padding:14px 16px; border-radius:0 12px 12px 0; margin-top:16px;
+    font-size:14px;
+  }
+
+  footer{
+    border-top:1px solid var(--line); color:var(--muted);
+    padding:24px clamp(16px,4vw,32px); font-size:13px;
+  }
+  footer .inner{max-width:1100px; margin:0 auto}
+
+  @media (max-width:720px){
+    nav{display:none}
+    .step{grid-template-columns:40px 1fr}
+    .step .n{width:40px; height:40px; font-size:18px}
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">The Backus Agency <span>Sales Kit</span></div>
+      <nav>
+        <a href="#offerings">Offerings</a>
+        <a href="#your-part">Your Part</a>
+        <a href="#script">Script</a>
+        <a href="#leads">Leads</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#links">Links</a>
+      </nav>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Day-one sales partner kit</div>
+      <h1>Everything you need to sell Website Landlord.</h1>
+      <p class="lede">
+        We sell managed local-service websites to businesses that do not have a real site.
+        You call, send the pitch page we already built for them, and close.
+        Commission starts at <strong>30% of every sale</strong> for founding partners.
+      </p>
+      <div class="stats">
+        <div class="stat"><b>787</b><span>Phone-ready leads</span></div>
+        <div class="stat"><b>787</b><span>Pitch pages live</span></div>
+        <div class="stat"><b>30%</b><span>Founding commission</span></div>
+        <div class="stat"><b>$295/m</b><span>Primary plan</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="offerings">
+      <h2>What we sell</h2>
+      <p class="section-sub">Two plans only. No lease-to-own. Clients lease a lead-generating website — they do not buy the code unless they choose the premium domain plan.</p>
+      <div class="grid-2">
+        <article class="card">
+          <div class="badge lease">Most popular</div>
+          <h3>Managed Lease</h3>
+          <div class="price">$295<small>/month</small></div>
+          <p style="margin-top:6px;color:var(--muted);font-size:13px">Setup: $500 · first 3 months free · cancel any time</p>
+          <ul>
+            <li>We build, host, rank, and maintain the site</li>
+            <li>Domain is registered and owned by The Backus Agency</li>
+            <li>Client keeps GBP, reviews, brand, and customer data</li>
+            <li>If they cancel, we keep the domain + rankings and can rebrand the site</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="badge own">Premium</div>
+          <h3>Client-Owned Domain</h3>
+          <div class="price">$695<small>/month</small></div>
+          <p style="margin-top:6px;color:var(--muted);font-size:13px">Setup: $1,500 · first 3 months free · cancel any time</p>
+          <ul>
+            <li>Same managed site, hosting, SEO, and support</li>
+            <li>Client owns the domain from day one</li>
+            <li>If they leave, SEO equity goes with them</li>
+            <li>Use this when the client insists on owning the domain</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout">
+        <strong>Ownership language matters.</strong> Never say “you own the website.”
+        Say: “You lease a professionally built, locally ranked website that generates leads. We own and manage the domain and site.”
+      </div>
+    </section>
+
+    <section id="your-part">
+      <h2>What your part is</h2>
+      <p class="section-sub">You are an independent sales partner, not an employee. Your job is outreach, pitch delivery, and closing.</p>
+      <div class="grid-3">
+        <article class="card">
+          <div class="badge money">Founding partners</div>
+          <h3>30% of every sale</h3>
+          <p>Commission on collected revenue: setup fee + every monthly payment for the life of the client account. Paid monthly, net-15. No quota. No cap.</p>
+        </article>
+        <article class="card">
+          <h3>Example earnings</h3>
+          <p><strong>Managed Lease:</strong> $500 setup + 12 × $295 = $4,040 collected → <strong>$1,212</strong> commission.</p>
+          <p style="margin-top:10px"><strong>Client-Owned:</strong> $1,500 + 12 × $695 = $9,840 collected → <strong>$2,952</strong> commission.</p>
+        </article>
+        <article class="card">
+          <h3>Rules that protect everyone</h3>
+          <ul>
+            <li>Sell only approved pricing</li>
+            <li>No invented discounts or guarantees</li>
+            <li>No ownership claims that contradict the contract</li>
+            <li>No fake reviews or fabricated results</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="script">
+      <h2>Easy loose script</h2>
+      <p class="section-sub">Use this as a guide, not a robot read. Goal: get the decision maker, send the pitch page, let the site sell itself.</p>
+      <div class="grid-2">
+        <div class="script">
+          <div class="label">Cold call opener</div>
+          <p>“Hi, this is <em>[Your Name]</em> with The Backus Agency. Can I speak with the owner or manager, please?”</p>
+          <p><em>When connected:</em> “Hey [Name] — we noticed [Business] doesn’t have a real website online, so we went ahead and built one for you. I’m sending it over now.”</p>
+          <p>“It’s live in a phone preview so you can scroll it like a customer. Take a look and tell me if you want it live for real.”</p>
+        </div>
+        <div class="script">
+          <div class="label">Text / email to send with the pitch URL</div>
+          <p>“Hey [Name] — [Your Name] with The Backus Agency. Here’s the website we built for [Business]:</p>
+          <p><em>[paste pitch_url here]</em></p>
+          <p>Open it, tap around, and you’ll see the live site. Go-live is $295/month after a $500 setup (first 3 months free). Want me to walk you through it?”</p>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3>If they ask “Do I own it?”</h3>
+        <p>Managed Lease: “You lease the lead-generating website. We own and manage the domain and the build so we can keep ranking it and maintaining it. You keep your Google reviews, brand, and customer data. If you ever want to own the domain from day one, we have a premium Client-Owned Domain plan.”</p>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <h3>If they ask “How much?”</h3>
+        <div class="table-wrap" style="margin-top:10px">
+          <table>
+            <thead><tr><th>Plan</th><th>Setup</th><th>Monthly</th><th>Who owns domain</th></tr></thead>
+            <tbody>
+              <tr><td>Managed Lease</td><td>$500</td><td>$295</td><td>Us</td></tr>
+              <tr><td>Client-Owned Domain</td><td>$1,500</td><td>$695</td><td>Them</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="leads">
+      <h2>Leads + CRM workflow</h2>
+      <p class="section-sub">Every lead already has a phone number, a deployed website, and a pitch page URL. You call the phone, then send the pitch page.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <div>
+            <h3>Open the sales call list</h3>
+            <p>Use <code>data/leads/final_lists/sales_call_list.csv</code> (787 rows). Columns include business name, phone, niche, location, rating, deployed site URL, and <strong>pitch_url</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <div>
+            <h3>Call the number on file</h3>
+            <p>Ask for the owner, manager, or decision maker. Do not pitch the receptionist for 5 minutes — get transfer first.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <div>
+            <h3>Send the pitch page immediately</h3>
+            <p>Each lead has a unique pitch page like <code>https://pmb2.github.io/generated-websites/pitch/&lt;business-slug&gt;/</code>. That page embeds their real website in a phone mockup and has the $295/m CTA.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">4</div>
+          <div>
+            <h3>Stay on the line while they open it</h3>
+            <p>Walk them through the hero, services, reviews, and contact. The pitch page is designed for the call: “Open in new tab” + CTA banner after 3 seconds.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="n">5</div>
+          <div>
+            <h3>Close to checkout</h3>
+            <p>CTA goes to Stripe Payment Link. After payment, operations launches the site (domain, DNS, hosting). Log outcome in the CRM / call sheet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h2>How we got good leads</h2>
+      <p class="section-sub">Short version of the machine behind the list, so you trust the data you’re calling.</p>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Source</h3>
+          <ul>
+            <li>Google Maps / local business discovery for home-service niches</li>
+            <li>Filter for no website, broken site, outdated site, or social-only</li>
+            <li>Score by rating + review count + independence (not a big chain)</li>
+            <li>Require a real phone number</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Why these convert better</h3>
+          <ul>
+            <li>They already get customers offline — they just lack a modern web presence</li>
+            <li>We already built their site, so the call is a reveal, not a theory</li>
+            <li>Pitch page shows the real site, not a generic mockup</li>
+            <li>Pricing is simple and far below typical SEO/PPC spend</li>
+          </ul>
+        </article>
+      </div>
+      <div class="callout">
+        Demo directory of live templates: <a href="https://pmb2.github.io/generated-websites/demo/" target="_blank" rel="noopener">pmb2.github.io/generated-websites/demo/</a>
+      </div>
+    </section>
+
+    <section id="links">
+      <h2>Bookmark these</h2>
+      <p class="section-sub">All live resources for the sales team.</p>
+      <div class="links">
+        <div class="link-row">
+          <div>
+            <strong>Demo directory</strong>
+            <span>All flagship + leads-driven demo sites</span>
+          </div>
+          <a class="btn" href="https://pmb2.github.io/generated-websites/demo/" target="_blank" rel="noopener">Open</a>
+        </div>
+        <div class="link-row">
+          <div>
+            <strong>Base pitch page</strong>
+            <span>Generic phone-preview pitch template</span>
+          </div>
+          <a class="btn" href="https://pmb2.github.io/generated-websites/pitch/" target="_blank" rel="noopener">Open</a>
+        </div>
+        <div class="link-row">
+          <div>
+            <strong>Example lead pitch (Kouray)</strong>
+            <span>Live client pitch with real site embedded</span>
+          </div>
+          <a class="btn" href="https://pmb2.github.io/generated-websites/pitch/kouray-kouray/" target="_blank" rel="noopener">Open</a>
+        </div>
+        <div class="link-row">
+          <div>
+            <strong>Example lead pitch (Northern Roots)</strong>
+            <span>From the 787-lead batch</span>
+          </div>
+          <a class="btn" href="https://pmb2.github.io/generated-websites/pitch/northern-roots-landscape-llc/" target="_blank" rel="noopener">Open</a>
+        </div>
+        <div class="link-row">
+          <div>
+            <strong>Stripe payment link</strong>
+            <span>Managed Lease checkout ($295/m)</span>
+          </div>
+          <a class="btn" href="https://buy.stripe.com/00wfZjakNbA2bOk9a3fEk00" target="_blank" rel="noopener">Open</a>
+        </div>
+        <div class="link-row">
+          <div>
+            <strong>This onboarding page</strong>
+            <span>Share with every new sales partner</span>
+          </div>
+          <a class="btn ghost" href="https://pmb2.github.io/generated-websites/sales/" target="_blank" rel="noopener">Sales home</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs">
+      <h2>Internal docs (for owners / managers)</h2>
+      <p class="section-sub">These live in the Website Landlord repo. Sales partners get the pages above; managers use these for contracts.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>docs/SALES_COMMISSION_AGREEMENT.md</td><td>Founding 30% commission contract</td></tr>
+            <tr><td>docs/WEBSITE_LICENSE_SERVICE_AGREEMENT.md</td><td>Client license + ownership terms</td></tr>
+            <tr><td>docs/CLIENT_OWNERSHIP_EXPLAINER.md</td><td>Plain-English ownership handout</td></tr>
+            <tr><td>docs/pricing-and-offerings.md</td><td>Full 2-plan economics</td></tr>
+            <tr><td>data/leads/final_lists/sales_call_list.csv</td><td>787-lead call sheet with pitch_url</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      &copy; 2026 The Backus Agency · Website Landlord Sales Onboarding ·
+      Share only with authorized sales partners.
+    </div>
+  </footer>
+</body>
+</html>
