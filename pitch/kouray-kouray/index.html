@@ -34,7 +34,7 @@
     -webkit-font-smoothing:antialiased; overflow-x:hidden;
     transition:background .2s ease, color .2s ease;
   }
-  .wrap{min-height:100vh;display:flex;flex-direction:column}
+  .wrap{min-height:100vh;display:flex;flex-direction:column;position:relative;z-index:1}
 
   /* ===== TIMER BANNER ===== */
   #timer-banner{
@@ -60,6 +60,29 @@
   #timer-banner .timer-digits .sep{font-size:16px;opacity:.6}
   #timer-banner.urgent{background:#E01010;color:#FFFFFF;animation:pulse-urgent .7s ease infinite alternate}
   @keyframes pulse-urgent{from{opacity:1}to{opacity:.75}}
+  #timer-banner .timer-digits .num.pulse{
+    animation:tick-pop .3s ease;
+  }
+  @keyframes tick-pop{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.25);color:var(--accent)}
+    100%{transform:scale(1)}
+  }
+
+  /* ===== PARTICLE CANVAS ===== */
+  #particleCanvas{
+    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4;
+  }
+  html[data-theme="light"] #particleCanvas{opacity:.25}
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal{
+    opacity:0;transform:translateY(30px);
+    transition:opacity .7s ease,transform .7s ease;
+  }
+  .reveal.visible{
+    opacity:1;transform:translateY(0);
+  }
 
   /* ===== STICKY CTA BANNER ===== */
   #cta-banner{
@@ -281,6 +304,7 @@
 </style>
 </head>
 <body>
+  <canvas id="particleCanvas"></canvas>
   <div class="wrap">
 
     <!-- Timer banner -->
@@ -321,12 +345,14 @@
     </header>
 
     <main class="hero">
+      <div class="reveal">
       <span class="eyebrow">Built for Law Firm</span>
       <h1>Kouray &amp; Kouray just got a <span class="accent uline">website that actually works.</span></h1>
       <p class="sub">Every day without a working site is another call your competitor gets. <span class="g" style="color:var(--accent);font-weight:700">Let's fix that.</span></p>
+      </div>
 
       <!-- Social proof bar -->
-      <div class="stat-bar">
+      <div class="stat-bar reveal">
         <div class="stat">
           <span class="stat-num">40%+</span>
           <span class="stat-label script">more calls, on average</span>
@@ -346,7 +372,7 @@
         <span style="font-size:13px;color:var(--muted)">limited-time launch rate</span>
       </div>
 
-      <div class="phone-stage">
+      <div class="phone-stage reveal">
         <div class="phone-label"><span class="dot"></span> Live demo, fully interactive</div>
         <div class="phone">
           <div class="phone-screen">
@@ -361,7 +387,7 @@
         </div>
       </div>
 
-      <section class="benefits" aria-labelledby="benefits-title">
+      <section class="benefits reveal" aria-labelledby="benefits-title">
         <span class="scratch" id="benefits-title">Here's what you get:</span>
         <ul class="benefit-list">
           <li>
@@ -387,7 +413,7 @@
         </ul>
       </section>
 
-      <div class="cta-block">
+      <div class="cta-block reveal">
         <h2>Go live this week.</h2>
         <span class="handwritten-note">don't overpay for what you can get right now</span>
         <div class="price-wrap">
@@ -435,6 +461,68 @@
       });
     }
 
+    /* --- particle canvas --- */
+    var canvas = document.getElementById('particleCanvas');
+    if (canvas) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var PARTICLE_COUNT = 60;
+      var accentRGB = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? '56,224,56' : '18,168,18';
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      for (var i = 0; i < PARTICLE_COUNT; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - .5) * .4,
+          vy: (Math.random() - .5) * .4 - .1,
+          r: Math.random() * 2 + .5,
+          o: Math.random() * .6 + .2
+        });
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(' + accentRGB + ',' + p.o + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(drawParticles);
+      }
+      drawParticles();
+    }
+
+    /* --- scroll reveal --- */
+    var reveals = document.querySelectorAll('.reveal');
+    if (reveals.length && 'IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+      reveals.forEach(function(el) { observer.observe(el); });
+    } else {
+      // Fallback: show all
+      reveals.forEach(function(el) { el.classList.add('visible'); });
+    }
+
     /* --- 6-hour countdown timer --- */
     var OFFER_HOURS = 6;
     var STORAGE_KEY = 'tba_pitch_offer_ends';
@@ -466,7 +554,15 @@
 
       if (TH) TH.textContent = pad(h);
       if (TM) TM.textContent = pad(m);
-      if (TS) TS.textContent = pad(s);
+      if (TS) {
+        var oldVal = TS.textContent;
+        TS.textContent = pad(s);
+        if (oldVal !== TS.textContent) {
+          TS.classList.remove('pulse');
+          void TS.offsetWidth;
+          TS.classList.add('pulse');
+        }
+      }
 
       if (TShort) {
         if (h > 0) TShort.textContent = h + 'h ' + m + 'm';
