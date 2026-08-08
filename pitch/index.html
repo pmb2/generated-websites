@@ -13,14 +13,14 @@
 <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="%230a0a0a"/><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z" fill="none" stroke="%2338e038" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="%2338e038" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'>
 <style>
   :root {
-    --bg:#FFFFFF; --paper:#F3F7F3; --ink:#0A0A0A; --muted:#5C665C; --line:#D9E2D9;
+    --bg:#FFFFFF; --paper:#ECF2EC; --ink:#0A0A0A; --muted:#5C665C; --line:#D9E2D9;
     --accent:#12A812; --accent-hover:#0E8A0E; --accent-soft:rgba(18,168,18,.10);
     --on-accent:#0A0A0A; --phone-shell:#111; --phone-bezel:#E6EBE6;
     --banner-ink:#0A0A0A; --shadow:0 30px 70px rgba(10,10,10,.18);
     --glow:rgba(18,168,18,.08); --highlight:rgba(18,168,18,.14);
   }
   html[data-theme="dark"] {
-    --bg:#0A0A0A; --paper:#141414; --ink:#F4F4F4; --muted:#999999; --line:#2A2A2A;
+    --bg:#0A0A0A; --paper:#181818; --ink:#F4F4F4; --muted:#999999; --line:#2A2A2A;
     --accent:#38E038; --accent-hover:#2FC92F; --accent-soft:rgba(56,224,56,.12);
     --on-accent:#0A0A0A; --phone-shell:#000; --phone-bezel:#1C1C1C;
     --banner-ink:#0A0A0A; --shadow:0 30px 70px rgba(0,0,0,.55);
@@ -39,9 +39,13 @@
   /* ===== TIMER BANNER ===== */
   #timer-banner{
     display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
-    padding:11px 20px;background:var(--accent);color:var(--on-accent);
+    padding:11px 20px;background:#0A0A0A;color:#FFFFFF;
     font-size:13px;font-weight:600;letter-spacing:-.01em;
     text-align:center;position:sticky;top:0;z-index:101;
+    border-bottom:1px solid var(--line);
+  }
+  html[data-theme="dark"] #timer-banner{
+    background:#0A0A0A;color:#FFFFFF;border-bottom:1px solid #2A2A2A;
   }
   #timer-banner .timer-digits{
     display:inline-flex;align-items:center;gap:10px;font-weight:800;font-variant-numeric:tabular-nums;
@@ -54,7 +58,7 @@
   }
   #timer-banner .timer-digits .label{font-size:10px;text-transform:uppercase;opacity:.8}
   #timer-banner .timer-digits .sep{font-size:16px;opacity:.6}
-  #timer-banner.urgent{background:#E01010;animation:pulse-urgent .7s ease infinite alternate}
+  #timer-banner.urgent{background:#E01010;color:#FFFFFF;animation:pulse-urgent .7s ease infinite alternate}
   @keyframes pulse-urgent{from{opacity:1}to{opacity:.75}}
 
   /* ===== STICKY CTA BANNER ===== */
@@ -127,8 +131,9 @@
   }
   .hero p.sub{font-size:clamp(15px,2vw,17px);color:var(--muted);max-width:600px;line-height:1.65;margin-top:16px}
   .hero .offer-line{
-    margin-top:20px;font-size:16px;font-weight:600;color:var(--ink);
+    margin-top:20px;font-size:18px;font-weight:700;color:var(--ink);
     display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+    line-height:1.5;
   }
   .hero .offer-line .old{text-decoration:line-through;color:var(--muted);font-weight:400}
   .hero .offer-line .new{color:var(--accent);font-weight:800;font-size:20px}
@@ -142,6 +147,11 @@
     position:relative;width:340px;height:690px;
     background:var(--phone-bezel);border:10px solid var(--phone-shell);border-radius:54px;
     box-shadow:var(--shadow);
+    transition:transform .5s ease;
+    transform:perspective(1200px) rotateY(-2deg) rotateX(3deg);
+  }
+  .phone:hover{
+    transform:perspective(1200px) rotateY(0deg) rotateX(0deg);
   }
   .phone::before{
     content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
@@ -182,18 +192,22 @@
     font-size:12px;color:var(--muted);letter-spacing:.02em;
     line-height:1.4;max-width:180px;
   }
+  .stat-label.script{
+    font-family:"Caveat","Comic Sans MS",cursive;
+    font-size:15px;letter-spacing:.01em;color:var(--accent);
+  }
 
   /* ===== HANDWRITTEN BENEFITS ===== */
   .benefits{
     width:100%;max-width:760px;margin:40px auto 0;text-align:left;
-    background:var(--paper);border:2px solid var(--line);padding:34px clamp(22px,4vw,40px);
+    background:var(--paper);border-left:3px solid var(--accent);padding:34px clamp(22px,4vw,40px);
     position:relative;
   }
   .benefits .scratch{
     font-family:"Caveat","Comic Sans MS",cursive;
-    color:var(--accent);font-size:22px;text-align:center;
-    display:block;margin-bottom:20px;letter-spacing:.01em;
-    line-height:1.2;
+    color:var(--accent);font-size:32px;text-align:center;
+    display:block;margin-bottom:24px;letter-spacing:.01em;
+    line-height:1.15;transform:rotate(-1deg);
   }
   .benefit-list{list-style:none;display:flex;flex-direction:column;gap:14px}
   .benefit-list li{
@@ -218,8 +232,7 @@
   /* ===== CTA ===== */
   .cta-block{
     width:100%;max-width:760px;margin:40px auto 0;text-align:center;
-    background:var(--bg);border:2px solid var(--line);
-    padding:44px 40px;
+    background:var(--accent-soft);padding:44px 40px;
   }
   .cta-block h2{font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.015em}
   .cta-block .price-wrap{
@@ -229,6 +242,11 @@
   .cta-block .price-wrap .new{color:var(--accent);font-size:34px;font-weight:800}
   .cta-block .price-wrap .slash{font-size:13px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.1em}
   .cta-block .urgent{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .cta-block .handwritten-note{
+    font-family:"Caveat","Comic Sans MS",cursive;
+    font-size:20px;color:var(--accent);margin-bottom:8px;display:block;
+    line-height:1.2;transform:rotate(-1.5deg);
+  }
   .cta-block p{color:var(--muted);font-size:14.5px;max-width:540px;margin:0 auto 24px;line-height:1.65}
   .cta-btn{
     display:inline-flex;align-items:center;min-height:52px;
@@ -280,7 +298,7 @@
     <!-- Sticky CTA banner (slides in after 3s) -->
     <div id="cta-banner" role="region" aria-label="Limited offer">
       <span>Your new website is ready. Claim the $295/m rate before it goes back to $349.</span>
-      <a class="banner-cta" href="https://buy.stripe.com/00wfZjakNbA2bOk9a3fEk00">Claim It Now</a>
+      <a class="banner-cta" href="https://buy.stripe.com/00wfZj...">Claim It Now</a>
     </div>
 
     <header>
@@ -298,28 +316,28 @@
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         </button>
-        <a class="header-cta" href="https://buy.stripe.com/00wfZjakNbA2bOk9a3fEk00">Get Started</a>
+        <a class="header-cta" href="https://buy.stripe.com/00wfZj...">Get Started</a>
       </div>
     </header>
 
     <main class="hero">
-      <span class="eyebrow">Built for Local Service Business</span>
+      <span class="eyebrow">Built for local service businesses</span>
       <h1>Your Business just got a <span class="accent uline">website that actually works.</span></h1>
-      <p class="sub">This is the real site, live right now. <span class="g" style="color:var(--accent);font-weight:700">Your customers are already searching</span> on Google, ChatGPT, and Perplexity. If they can't find you, they call the guy who shows up first.</p>
+      <p class="sub">Every day without a working site is another call your competitor gets. <span class="g" style="color:var(--accent);font-weight:700">Let's fix that.</span></p>
 
       <!-- Social proof bar -->
       <div class="stat-bar">
         <div class="stat">
           <span class="stat-num">40%+</span>
-          <span class="stat-label">avg increase in customer calls</span>
+          <span class="stat-label script">more calls, on average</span>
         </div>
         <div class="stat">
           <span class="stat-num">AI-ready</span>
-          <span class="stat-label">found by ChatGPT, Perplexity, Siri</span>
+          <span class="stat-label script">found on ChatGPT & Siri</span>
         </div>
         <div class="stat">
           <span class="stat-num">Days</span>
-          <span class="stat-label">not months. Site is live this week.</span>
+          <span class="stat-label script">not months. live this week.</span>
         </div>
       </div>
       <div class="offer-line">
@@ -334,7 +352,6 @@
           <div class="phone-screen">
             <iframe id="siteFrame" src="https://pmb2.github.io/generated-websites/demo/" title="Live website preview" loading="eager" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
           </div>
-          <div class="phone-note">https://pmb2.github.io/generated-websites/demo/</div>
         </div>
         <div class="stage-actions">
           <button class="open-tab-btn" id="openTabBtn">
@@ -353,7 +370,7 @@
           </li>
           <li>
             <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
-            <span class="text">Customers find you on <span class="g">ChatGPT, Perplexity, and Siri</span> <span class="u">not just Google</span></span>
+            <span class="text">When someone asks their phone <span class="g">"best plumber near me"</span> <span class="u">your business shows up</span> even if they never open Google</span>
           </li>
           <li>
             <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
@@ -372,14 +389,15 @@
 
       <div class="cta-block">
         <h2>Go live this week.</h2>
+        <span class="handwritten-note">don't overpay for what you can get right now</span>
         <div class="price-wrap">
           <span class="old">$349/m</span>
           <span class="slash">now</span>
           <span class="new">$295/m</span>
         </div>
         <div class="urgent" id="timerUrgent">This offer resets in <span id="timerShort">5h 59m</span></div>
-        <p>No setup fees. No contracts. Just a site that brings work in while you handle the rest.</p>
-        <a class="cta-btn" href="https://buy.stripe.com/00wfZjakNbA2bOk9a3fEk00">Claim This Price</a>
+        <p>No setup fees. No contracts. If you don't get more calls in your first 30 days, we'll build you a new site free.</p>
+        <a class="cta-btn" href="https://buy.stripe.com/00wfZj...">Claim This Price</a>
       </div>
     </main>
 
@@ -388,7 +406,7 @@
       <div class="f-links">
         <a href="https://pmb2.github.io/generated-websites/demo/" target="_blank" rel="noopener">Our Work</a>
         <a href="https://pmb2.github.io/generated-websites/tba-solutions/" target="_blank" rel="noopener">About</a>
-        <a href="https://buy.stripe.com/00wfZjakNbA2bOk9a3fEk00">Get Started</a>
+        <a href="https://buy.stripe.com/00wfZj...">Get Started</a>
       </div>
     </footer>
 
