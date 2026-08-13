@@ -1,8 +1,7 @@
-# robots.txt — welcome all crawlers, classic + AI answer engines.
+# robots.txt — classic search + AI answer engines welcome
 User-agent: *
 Allow: /
 
-# AI answer-engine crawlers — explicitly invited so the business gets cited.
 User-agent: GPTBot
 Allow: /
 
@@ -42,4 +41,10 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: /sitemap-index.xml
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://pmb2.github.io/generated-websites/auto repair shop/bonesteel-auto-truck-center/sitemap-index.xml
