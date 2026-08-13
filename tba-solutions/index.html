@@ -263,7 +263,6 @@ img { max-width: 100%; display: block; }
     "addressCountry": "US"
   },
   "areaServed": "US",
-  "priceRange": "$7,999 - $40,000+",
   "openingHours": "Mo-Fr 09:00-17:00",
   "sameAs": []
 }
@@ -284,7 +283,7 @@ img { max-width: 100%; display: block; }
     <a href="#privacy">Privacy</a>
     <a href="#process">Process</a>
     <a href="#security">Security</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#pricing">Engagement</a>
     <a href="#faq">FAQ</a>
   </div>
   <a class="nav-cta" href="scan.html">Request Assessment</a>
@@ -299,7 +298,7 @@ img { max-width: 100%; display: block; }
   <a href="#privacy">Privacy</a>
   <a href="#process">Process</a>
   <a href="#security">Security</a>
-  <a href="#pricing">Pricing</a>
+  <a href="#pricing">Engagement</a>
   <a href="#faq">FAQ</a>
   <a href="scan.html">Request Assessment</a>
 </div>
@@ -464,14 +463,13 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- Section 7: Pricing (black) -->
+<!-- Section 7: Engagement (black) -->
 <section class="section-black sec-pad" id="pricing">
-  <div class="sec-label anim">Pricing</div>
+  <div class="sec-label anim">Engagement</div>
   <div class="sec-divider"></div>
   <div class="pricing-grid">
     <div class="price-card anim">
       <div class="price-name">AI Operations &amp; Risk Assessment</div>
-      <div class="price-amount">$7,999</div>
       <p class="price-desc">A 1-2 week engagement. Your AI opportunity and your exposure, mapped and prioritized.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Two working sessions (executive + operations)</li>
@@ -484,7 +482,6 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="price-card featured anim">
       <div class="price-name">Secure Implementation</div>
-      <div class="price-amount">Inquire</div>
       <p class="price-desc">Custom builds on infrastructure you control, with complete data and administrative handover.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Custom workflows, knowledge systems, and skills</li>
@@ -497,7 +494,6 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="price-card anim">
       <div class="price-name">Enterprise AI Concierge</div>
-      <div class="price-amount">$3,500<small>/mo</small></div>
       <p class="price-desc">Ongoing done-with-you AI operations and governance. Limited slots.</p>
       <ul>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Two working sessions per month</li>
@@ -620,7 +616,7 @@ img { max-width: 100%; display: block; }
       <a href="#privacy">The TBA Difference</a>
       <a href="#process">Our Process</a>
       <a href="#security">Security</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#pricing">Engagement</a>
       <a href="#faq">FAQ</a>
     </div>
     <div class="foot-col">
@@ -636,45 +632,6 @@ img { max-width: 100%; display: block; }
   </div>
 </footer>
 
-<!-- Booking modal: pick a slot, then pay, all in one place -->
-<div class="modal-overlay" id="bookModal" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
-    <button class="modal-close" id="bookClose" aria-label="Close">×</button>
-    <div class="modal-head">
-      <h3 id="bookModalTitle">Reserve your assessment</h3>
-      <p>Pick your slot, then complete your reservation with payment.</p>
-    </div>
-    <div class="modal-steps">
-      <span class="mstep active" id="ms1">01 Pick a slot</span>
-      <span class="mstep" id="ms2">02 Payment</span>
-    </div>
-    <div class="modal-body">
-      <div class="modal-phase active" id="phaseCal">
-        <iframe class="cal-frame" id="calFrame" src="" title="Pick your assessment slot" loading="lazy"></iframe>
-        <div class="modal-fallback" id="calFallback" style="display:none;">
-          Scheduling is being finalized. <a href="mailto:hello@tbasolutions.co?subject=Assessment%20slot%20request">Email us</a> with your preferred times and we will reserve one for you.
-        </div>
-        <button class="btn-green modal-cta" id="toPayBtn" type="button">I have picked my slot. Continue to payment</button>
-        <p class="modal-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg>Your slot is confirmed the moment you pick it. Payment completes your reservation.</p>
-      </div>
-      <div class="modal-phase" id="phasePay">
-        <div class="pay-price">
-          <span class="pay-amount">$7,999</span>
-          <span class="pay-unit">one-time, all-inclusive</span>
-        </div>
-        <a class="btn-green pay-main" id="payOpenBtn" href="#" target="_blank" rel="noopener">Pay $7,999 with Stripe</a>
-        <div class="modal-fallback" id="payFallback" style="display:none;">
-          Payment is being finalized. <a href="mailto:hello@tbasolutions.co?subject=Assessment%20payment">Email us</a> and we will send a secure invoice.
-        </div>
-        <p class="modal-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l7 4v6c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-4z"/></svg>Stripe opens in a new tab. Complete payment there, then return to this page. Your slot stays reserved.</p>
-        <div class="modal-row">
-          <button class="btn-line" id="backCalBtn" type="button">Back to calendar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 /* ============================================================
    TBA SOLUTIONS SITE CONFIG - swap values here, one place only
@@ -682,17 +639,12 @@ img { max-width: 100%; display: block; }
 var TBA_CONFIG = {
   email: 'hello@tbasolutions.co',            // real email goes here
   phone: '(518) 555-0142',                   // real phone goes here
-  phoneHref: 'tel:+15185550142',             // real tel: href goes here
+  phoneHref: 'tel:+151****0142',             // real tel: href goes here
   // Form delivery. Default: mailto fallback (works with zero setup).
   // To go serverless: sign up at https://formsubmit.co, confirm the email,
   // then set:  formEndpoint: 'https://formsubmit.co/ajax/your@email.com'
   formEndpoint: '',
-  bookingUrl: 'scan.html',                   // assessment request page
-  // Direct purchase path (pricing section "Reserve Your Slot"):
-  // opens a modal on this page. 1) pick a slot on your cal.diy calendar,
-  // 2) pay with your Stripe payment link, all inside the same modal.
-  calDiyUrl: 'https://cal.backus.agency/paul/assessment',   // cal.diy booking page
-  stripePayUrl: 'https://buy.stripe.com/4gM8wR9gJcE605C85ZfEk01'  // $7,999 assessment
+  bookingUrl: 'scan.html'                    // assessment request page
 };
 (function () {
   var nav = document.getElementById('siteNav');
@@ -786,74 +738,6 @@ var TBA_CONFIG = {
       if (status.classList.contains(kind)) { status.className = 'form-status'; }
     }, 9000);
   }
-
-  /* ---- Booking modal: calendar first, then payment ---- */
-  var bookModal = document.getElementById('bookModal');
-  var phaseCal = document.getElementById('phaseCal');
-  var phasePay = document.getElementById('phasePay');
-  var ms1 = document.getElementById('ms1');
-  var ms2 = document.getElementById('ms2');
-  var calFrame = document.getElementById('calFrame');
-  var calFallback = document.getElementById('calFallback');
-  var payFallback = document.getElementById('payFallback');
-  var toPayBtn = document.getElementById('toPayBtn');
-  var backCalBtn = document.getElementById('backCalBtn');
-  var payOpenBtn = document.getElementById('payOpenBtn');
-  var calLoaded = false;
-  var payLoaded = false;
-
-  function openBookModal() {
-    bookModal.classList.add('open');
-    bookModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    showPhase('cal');
-    if (!calLoaded) {
-      calLoaded = true;
-      if (TBA_CONFIG.calDiyUrl) {
-        calFrame.src = TBA_CONFIG.calDiyUrl;
-      } else {
-        calFrame.style.display = 'none';
-        toPayBtn.style.display = 'none';
-        calFallback.style.display = 'block';
-      }
-    }
-  }
-  function closeBookModal() {
-    bookModal.classList.remove('open');
-    bookModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-  function showPhase(which) {
-    var cal = which === 'cal';
-    phaseCal.classList.toggle('active', cal);
-    phasePay.classList.toggle('active', !cal);
-    ms1.classList.toggle('active', cal);
-    ms2.classList.toggle('active', !cal);
-    if (!cal && !payLoaded) {
-      payLoaded = true;
-      if (TBA_CONFIG.stripePayUrl) {
-        payOpenBtn.href = TBA_CONFIG.stripePayUrl;
-      } else {
-        payOpenBtn.style.display = 'none';
-        payFallback.style.display = 'block';
-      }
-    }
-  }
-
-  var reserveSlotBtn = document.getElementById('reserveSlotBtn');
-  reserveSlotBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    openBookModal();
-  });
-  document.getElementById('bookClose').addEventListener('click', closeBookModal);
-  bookModal.addEventListener('click', function (e) {
-    if (e.target === bookModal) { closeBookModal(); }
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && bookModal.classList.contains('open')) { closeBookModal(); }
-  });
-  toPayBtn.addEventListener('click', function () { showPhase('pay'); });
-  backCalBtn.addEventListener('click', function () { showPhase('cal'); });
 })();
 </script>
 </body>
