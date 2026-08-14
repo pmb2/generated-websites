@@ -3,12 +3,12 @@
 > Landscaper serving Albany, Schenectady, Troy, Saratoga Springs, Rensselaer, Latham, Clifton Park, NY.
 
 ## Services
-- [Lawn Care](https://pmb2.github.io/generated-websites/landscaper/disantos-contracting/services/lawn-care/): Regular mowing, edging, fertilizing, and lawn health programs.
-- [Garden Design](https://pmb2.github.io/generated-websites/landscaper/disantos-contracting/services/garden-design/): Custom garden design, planting, and seasonal flower installations.
-- [Tree Service](https://pmb2.github.io/generated-websites/landscaper/disantos-contracting/services/tree-service/): Tree trimming, pruning, removal, and health assessments.
-- [Hardscaping](https://pmb2.github.io/generated-websites/landscaper/disantos-contracting/services/hardscaping/): Patios, walkways, retaining walls, and outdoor living spaces.
-- [Irrigation](https://pmb2.github.io/generated-websites/landscaper/disantos-contracting/services/irrigation/): Sprinkler system installation, repair, and seasonal tune-ups.
-- [Seasonal Cleanup](https://pmb2.github.io/generated-websites/landscaper/disantos-contracting/services/seasonal/): Spring and fall property cleanup, leaf removal, and bed mulching.
+- [Lawn Care](https://pmb2.github.io/generated-websites/landscaper/disanto-s-contracting/services/lawn-care/): Regular mowing, edging, fertilizing, and lawn health programs.
+- [Garden Design](https://pmb2.github.io/generated-websites/landscaper/disanto-s-contracting/services/garden-design/): Custom garden design, planting, and seasonal flower installations.
+- [Tree Service](https://pmb2.github.io/generated-websites/landscaper/disanto-s-contracting/services/tree-service/): Tree trimming, pruning, removal, and health assessments.
+- [Hardscaping](https://pmb2.github.io/generated-websites/landscaper/disanto-s-contracting/services/hardscaping/): Patios, walkways, retaining walls, and outdoor living spaces.
+- [Irrigation](https://pmb2.github.io/generated-websites/landscaper/disanto-s-contracting/services/irrigation/): Sprinkler system installation, repair, and seasonal tune-ups.
+- [Seasonal Cleanup](https://pmb2.github.io/generated-websites/landscaper/disanto-s-contracting/services/seasonal/): Spring and fall property cleanup, leaf removal, and bed mulching.
 
 ## Areas
 - Albany
@@ -22,4 +22,4 @@
 ## Contact
 - Phone: (518) 344-9084
 - Email: 
-- Website: https://pmb2.github.io/generated-websites/landscaper/disantos-contracting/
+- Website: https://pmb2.github.io/generated-websites/landscaper/disanto-s-contracting/
