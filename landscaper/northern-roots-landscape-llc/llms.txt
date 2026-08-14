@@ -1,0 +1,25 @@
+# Northern Roots Landscape, LLC
+
+> Landscaper serving Albany, Schenectady, Troy, Saratoga Springs, Rensselaer, Latham, Clifton Park, NY.
+
+## Services
+- [Lawn Care](https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/services/lawn-care/): Regular mowing, edging, fertilizing, and lawn health programs.
+- [Garden Design](https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/services/garden-design/): Custom garden design, planting, and seasonal flower installations.
+- [Tree Service](https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/services/tree-service/): Tree trimming, pruning, removal, and health assessments.
+- [Hardscaping](https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/services/hardscaping/): Patios, walkways, retaining walls, and outdoor living spaces.
+- [Irrigation](https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/services/irrigation/): Sprinkler system installation, repair, and seasonal tune-ups.
+- [Seasonal Cleanup](https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/services/seasonal/): Spring and fall property cleanup, leaf removal, and bed mulching.
+
+## Areas
+- Albany
+- Schenectady
+- Troy
+- Saratoga Springs
+- Rensselaer
+- Latham
+- Clifton Park
+
+## Contact
+- Phone: (518) 522-2203
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/landscaper/northern-roots-landscape-llc/
