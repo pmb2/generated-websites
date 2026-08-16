@@ -1,0 +1,19 @@
+# KJ Electric Co. Inc.
+
+> Electrician serving San, TX.
+
+## Services
+- [Wiring](https://pmb2.github.io/generated-websites/electrician/kj-electric-co-inc/services/wiring/): Electrical wiring and rewiring for renovations, additions, and repairs.
+- [Panel Upgrade](https://pmb2.github.io/generated-websites/electrician/kj-electric-co-inc/services/panel/): Electrical panel upgrades, replacements, and safety improvements.
+- [Lighting](https://pmb2.github.io/generated-websites/electrician/kj-electric-co-inc/services/lighting/): Interior and exterior lighting installation, repair, and upgrades.
+- [Outlets & Switches](https://pmb2.github.io/generated-websites/electrician/kj-electric-co-inc/services/outlets/): Outlet and switch installation, repair, and GFCI upgrades.
+- [Safety Inspection](https://pmb2.github.io/generated-websites/electrician/kj-electric-co-inc/services/inspection/): Electrical safety inspections and code correction services.
+- [Emergency Electrical](https://pmb2.github.io/generated-websites/electrician/kj-electric-co-inc/services/emergency-electrician/): 24/7 emergency electrical service for urgent issues.
+
+## Areas
+- San
+
+## Contact
+- Phone: (210) 736-6155
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/electrician/kj-electric-co-inc/
