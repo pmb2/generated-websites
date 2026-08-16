@@ -1,0 +1,19 @@
+# A1 Electricians Fort Worth
+
+> Electrician serving Fort, TX.
+
+## Services
+- [Wiring](https://pmb2.github.io/generated-websites/electrician/a1-electricians-fort-worth/services/wiring/): Electrical wiring and rewiring for renovations, additions, and repairs.
+- [Panel Upgrade](https://pmb2.github.io/generated-websites/electrician/a1-electricians-fort-worth/services/panel/): Electrical panel upgrades, replacements, and safety improvements.
+- [Lighting](https://pmb2.github.io/generated-websites/electrician/a1-electricians-fort-worth/services/lighting/): Interior and exterior lighting installation, repair, and upgrades.
+- [Outlets & Switches](https://pmb2.github.io/generated-websites/electrician/a1-electricians-fort-worth/services/outlets/): Outlet and switch installation, repair, and GFCI upgrades.
+- [Safety Inspection](https://pmb2.github.io/generated-websites/electrician/a1-electricians-fort-worth/services/inspection/): Electrical safety inspections and code correction services.
+- [Emergency Electrical](https://pmb2.github.io/generated-websites/electrician/a1-electricians-fort-worth/services/emergency-electrician/): 24/7 emergency electrical service for urgent issues.
+
+## Areas
+- Fort
+
+## Contact
+- Phone: (817) 242-0395
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/electrician/a1-electricians-fort-worth/
