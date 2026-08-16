@@ -1,0 +1,19 @@
+# LA PAINTERS.
+
+> Painter serving Los, CA.
+
+## Services
+- [Interior Painting](https://pmb2.github.io/generated-websites/painter/la-painters/services/interior/): Professional interior painting for homes and businesses.
+- [Exterior Painting](https://pmb2.github.io/generated-websites/painter/la-painters/services/exterior/): Exterior house painting and staining.
+- [Cabinet Painting](https://pmb2.github.io/generated-websites/painter/la-painters/services/cabinet/): Cabinet refinishing and painting.
+- [Drywall](https://pmb2.github.io/generated-websites/painter/la-painters/services/drywall/): Drywall repair and installation.
+- [Wallpaper](https://pmb2.github.io/generated-websites/painter/la-painters/services/wallpaper/): Wallpaper removal and installation.
+- [Deck Staining](https://pmb2.github.io/generated-websites/painter/la-painters/services/deck/): Deck and fence staining.
+
+## Areas
+- Los
+
+## Contact
+- Phone: (628) 877-5863
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/painter/la-painters/
