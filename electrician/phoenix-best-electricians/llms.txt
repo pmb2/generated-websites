@@ -1,0 +1,25 @@
+# Phoenix Best Electricians
+
+> Electrician serving Phoenix, Scottsdale, Tempe, Mesa, Chandler, Gilbert, Glendale, AZ.
+
+## Services
+- [Wiring](https://pmb2.github.io/generated-websites/electrician/phoenix-best-electricians/services/wiring/): Electrical wiring and rewiring for renovations, additions, and repairs.
+- [Panel Upgrade](https://pmb2.github.io/generated-websites/electrician/phoenix-best-electricians/services/panel/): Electrical panel upgrades, replacements, and safety improvements.
+- [Lighting](https://pmb2.github.io/generated-websites/electrician/phoenix-best-electricians/services/lighting/): Interior and exterior lighting installation, repair, and upgrades.
+- [Outlets & Switches](https://pmb2.github.io/generated-websites/electrician/phoenix-best-electricians/services/outlets/): Outlet and switch installation, repair, and GFCI upgrades.
+- [Safety Inspection](https://pmb2.github.io/generated-websites/electrician/phoenix-best-electricians/services/inspection/): Electrical safety inspections and code correction services.
+- [Emergency Electrical](https://pmb2.github.io/generated-websites/electrician/phoenix-best-electricians/services/emergency-electrician/): 24/7 emergency electrical service for urgent issues.
+
+## Areas
+- Phoenix
+- Scottsdale
+- Tempe
+- Mesa
+- Chandler
+- Gilbert
+- Glendale
+
+## Contact
+- Phone: (602) 780-1140
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/electrician/phoenix-best-electricians/
