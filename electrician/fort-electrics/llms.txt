@@ -1,0 +1,19 @@
+# Fort Electrics
+
+> Electrician serving Fort, TX.
+
+## Services
+- [Wiring](https://pmb2.github.io/generated-websites/electrician/fort-electrics/services/wiring/): Electrical wiring and rewiring for renovations, additions, and repairs.
+- [Panel Upgrade](https://pmb2.github.io/generated-websites/electrician/fort-electrics/services/panel/): Electrical panel upgrades, replacements, and safety improvements.
+- [Lighting](https://pmb2.github.io/generated-websites/electrician/fort-electrics/services/lighting/): Interior and exterior lighting installation, repair, and upgrades.
+- [Outlets & Switches](https://pmb2.github.io/generated-websites/electrician/fort-electrics/services/outlets/): Outlet and switch installation, repair, and GFCI upgrades.
+- [Safety Inspection](https://pmb2.github.io/generated-websites/electrician/fort-electrics/services/inspection/): Electrical safety inspections and code correction services.
+- [Emergency Electrical](https://pmb2.github.io/generated-websites/electrician/fort-electrics/services/emergency-electrician/): 24/7 emergency electrical service for urgent issues.
+
+## Areas
+- Fort
+
+## Contact
+- Phone: (469) 751-4898
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/electrician/fort-electrics/
