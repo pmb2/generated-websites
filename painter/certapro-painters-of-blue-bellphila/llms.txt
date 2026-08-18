@@ -1,0 +1,19 @@
+# CertaPro Painters of Blue Bell/Phila
+
+> Painter serving Philadelphia, PA.
+
+## Services
+- [Interior Painting](https://pmb2.github.io/generated-websites/painter/certapro-painters-of-blue-bellphila/services/interior/): Professional interior painting for homes and businesses.
+- [Exterior Painting](https://pmb2.github.io/generated-websites/painter/certapro-painters-of-blue-bellphila/services/exterior/): Exterior house painting and staining.
+- [Cabinet Painting](https://pmb2.github.io/generated-websites/painter/certapro-painters-of-blue-bellphila/services/cabinet/): Cabinet refinishing and painting.
+- [Drywall](https://pmb2.github.io/generated-websites/painter/certapro-painters-of-blue-bellphila/services/drywall/): Drywall repair and installation.
+- [Wallpaper](https://pmb2.github.io/generated-websites/painter/certapro-painters-of-blue-bellphila/services/wallpaper/): Wallpaper removal and installation.
+- [Deck Staining](https://pmb2.github.io/generated-websites/painter/certapro-painters-of-blue-bellphila/services/deck/): Deck and fence staining.
+
+## Areas
+- Philadelphia
+
+## Contact
+- Phone: (215) 657-5383
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/painter/certapro-painters-of-blue-bellphila/
