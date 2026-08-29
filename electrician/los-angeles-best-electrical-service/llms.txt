@@ -1,0 +1,19 @@
+# Los Angeles Best Electrical Service
+
+> Electrician serving Los, CA.
+
+## Services
+- [Wiring](https://pmb2.github.io/generated-websites/electrician/los-angeles-best-electrical-service/services/wiring/): Electrical wiring and rewiring for renovations, additions, and repairs.
+- [Panel Upgrade](https://pmb2.github.io/generated-websites/electrician/los-angeles-best-electrical-service/services/panel/): Electrical panel upgrades, replacements, and safety improvements.
+- [Lighting](https://pmb2.github.io/generated-websites/electrician/los-angeles-best-electrical-service/services/lighting/): Interior and exterior lighting installation, repair, and upgrades.
+- [Outlets & Switches](https://pmb2.github.io/generated-websites/electrician/los-angeles-best-electrical-service/services/outlets/): Outlet and switch installation, repair, and GFCI upgrades.
+- [Safety Inspection](https://pmb2.github.io/generated-websites/electrician/los-angeles-best-electrical-service/services/inspection/): Electrical safety inspections and code correction services.
+- [Emergency Electrical](https://pmb2.github.io/generated-websites/electrician/los-angeles-best-electrical-service/services/emergency-electrician/): 24/7 emergency electrical service for urgent issues.
+
+## Areas
+- Los
+
+## Contact
+- Phone: (424) 320-6182
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/electrician/los-angeles-best-electrical-service/
