@@ -1,0 +1,19 @@
+# Bob Davis Fences
+
+> Landscaper serving Fort, TX.
+
+## Services
+- [Lawn Care](https://pmb2.github.io/generated-websites/landscaper/bob-davis-fences/services/lawn-care/): Regular mowing, edging, fertilizing, and lawn health programs.
+- [Garden Design](https://pmb2.github.io/generated-websites/landscaper/bob-davis-fences/services/garden-design/): Custom garden design, planting, and seasonal flower installations.
+- [Tree Service](https://pmb2.github.io/generated-websites/landscaper/bob-davis-fences/services/tree-service/): Tree trimming, pruning, removal, and health assessments.
+- [Hardscaping](https://pmb2.github.io/generated-websites/landscaper/bob-davis-fences/services/hardscaping/): Patios, walkways, retaining walls, and outdoor living spaces.
+- [Irrigation](https://pmb2.github.io/generated-websites/landscaper/bob-davis-fences/services/irrigation/): Sprinkler system installation, repair, and seasonal tune-ups.
+- [Seasonal Cleanup](https://pmb2.github.io/generated-websites/landscaper/bob-davis-fences/services/seasonal/): Spring and fall property cleanup, leaf removal, and bed mulching.
+
+## Areas
+- Fort
+
+## Contact
+- Phone: (817) 732-5541
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/landscaper/bob-davis-fences/
