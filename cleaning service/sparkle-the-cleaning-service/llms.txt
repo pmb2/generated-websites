@@ -1,0 +1,26 @@
+# Sparkle The Cleaning Service
+
+> Cleaning Service serving Dallas, Plano, Frisco, Garland, Irving, Arlington, Richardson, Carrollton, TX.
+
+## Services
+- [Home Cleaning](https://pmb2.github.io/generated-websites/cleaning%20service/sparkle-the-cleaning-service/services/home-cleaning/): Residential cleaning services.
+- [Deep Cleaning](https://pmb2.github.io/generated-websites/cleaning%20service/sparkle-the-cleaning-service/services/deep-clean/): Thorough deep cleaning service.
+- [Office Cleaning](https://pmb2.github.io/generated-websites/cleaning%20service/sparkle-the-cleaning-service/services/office/): Commercial office cleaning.
+- [Move In/Out](https://pmb2.github.io/generated-websites/cleaning%20service/sparkle-the-cleaning-service/services/move-cleaning/): Move-in and move-out cleaning.
+- [Carpet Cleaning](https://pmb2.github.io/generated-websites/cleaning%20service/sparkle-the-cleaning-service/services/carpet/): Professional carpet cleaning.
+- [Window Cleaning](https://pmb2.github.io/generated-websites/cleaning%20service/sparkle-the-cleaning-service/services/window/): Interior and exterior window cleaning.
+
+## Areas
+- Dallas
+- Plano
+- Frisco
+- Garland
+- Irving
+- Arlington
+- Richardson
+- Carrollton
+
+## Contact
+- Phone: (214) 282-4366
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/cleaning%20service/sparkle-the-cleaning-service/
