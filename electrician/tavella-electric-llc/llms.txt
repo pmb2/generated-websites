@@ -1,0 +1,19 @@
+# Tavella Electric LLC
+
+> Electrician serving Philadelphia, PA.
+
+## Services
+- [Wiring](https://pmb2.github.io/generated-websites/electrician/tavella-electric-llc/services/wiring/): Electrical wiring and rewiring for renovations, additions, and repairs.
+- [Panel Upgrade](https://pmb2.github.io/generated-websites/electrician/tavella-electric-llc/services/panel/): Electrical panel upgrades, replacements, and safety improvements.
+- [Lighting](https://pmb2.github.io/generated-websites/electrician/tavella-electric-llc/services/lighting/): Interior and exterior lighting installation, repair, and upgrades.
+- [Outlets & Switches](https://pmb2.github.io/generated-websites/electrician/tavella-electric-llc/services/outlets/): Outlet and switch installation, repair, and GFCI upgrades.
+- [Safety Inspection](https://pmb2.github.io/generated-websites/electrician/tavella-electric-llc/services/inspection/): Electrical safety inspections and code correction services.
+- [Emergency Electrical](https://pmb2.github.io/generated-websites/electrician/tavella-electric-llc/services/emergency-electrician/): 24/7 emergency electrical service for urgent issues.
+
+## Areas
+- Philadelphia
+
+## Contact
+- Phone: (267) 243-1806
+- Email: 
+- Website: https://pmb2.github.io/generated-websites/electrician/tavella-electric-llc/
