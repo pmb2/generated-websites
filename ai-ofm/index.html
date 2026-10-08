@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI OFM OS — Command Center</title>
+<style>
+  :root {
+    --bg: #07080c;
+    --bg2: #0d1017;
+    --panel: rgba(18, 22, 32, 0.85);
+    --panel2: rgba(24, 30, 44, 0.92);
+    --border: rgba(255,255,255,0.08);
+    --text: #e8ecf5;
+    --muted: #8b93a7;
+    --accent: #ff66ad;
+    --accent2: #7aa2ff;
+    --good: #3ddc97;
+    --warn: #ffcc66;
+    --bad: #ff6b7a;
+    --shadow: 0 10px 40px rgba(0,0,0,0.45);
+    --radius: 16px;
+    --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--text);
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(255,102,173,0.16), transparent 55%),
+      radial-gradient(900px 500px at 100% 0%, rgba(122,162,255,0.12), transparent 50%),
+      var(--bg);
+  }
+  a { color: var(--accent2); text-decoration: none; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  .app { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+  .sidebar {
+    position: sticky; top: 0; height: 100vh; overflow: auto;
+    border-right: 1px solid var(--border);
+    background: rgba(8,10,16,0.92);
+    backdrop-filter: blur(12px);
+    padding: 20px 14px;
+  }
+  .brand { padding: 8px 10px 18px; }
+  .brand h1 { margin: 0; font-size: 18px; letter-spacing: 0.04em; }
+  .brand p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.4; }
+  .nav button {
+    width: 100%; text-align: left; background: transparent; border: 0;
+    color: var(--muted); padding: 10px 12px; border-radius: 10px; cursor: pointer;
+    display: flex; gap: 10px; align-items: center;
+  }
+  .nav button:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+  .nav button.active { background: linear-gradient(90deg, rgba(255,102,173,0.18), transparent); color: var(--text); border: 1px solid rgba(255,102,173,0.25); }
+  .main { padding: 24px; max-width: 1200px; }
+  .topbar { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 18px; flex-wrap: wrap; }
+  .topbar h2 { margin: 0; font-size: 28px; }
+  .topbar .sub { color: var(--muted); margin-top: 6px; }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn {
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 999px;
+    padding: 8px 14px; cursor: pointer;
+  }
+  .btn:hover { border-color: rgba(255,102,173,0.4); }
+  .btn.primary { background: linear-gradient(135deg, rgba(255,102,173,0.9), rgba(255,102,173,0.55)); color: #120812; border: 0; font-weight: 650; }
+  .grid { display: grid; gap: 14px; }
+  .grid.cols-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .grid.cols-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  @media (max-width: 980px) {
+    .app { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; }
+    .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 16px;
+  }
+  .card h3 { margin: 0 0 10px; font-size: 15px; letter-spacing: 0.02em; }
+  .muted { color: var(--muted); }
+  .stat { font-size: 28px; font-weight: 700; }
+  .bar { height: 8px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden; }
+  .bar > span { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+  .rules { display: grid; gap: 8px; }
+  .rule { padding: 10px 12px; border-radius: 12px; background: rgba(255,102,173,0.06); border: 1px solid rgba(255,102,173,0.15); font-size: 13px; }
+  .task { display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .task:last-child { border-bottom: 0; }
+  .task input { margin-top: 3px; }
+  .pill { font-size: 11px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+  .pill.p0 { color: var(--bad); border-color: rgba(255,107,122,0.35); }
+  .pill.p1 { color: var(--warn); border-color: rgba(255,204,102,0.35); }
+  .pill.p2 { color: var(--good); border-color: rgba(61,220,151,0.35); }
+  details.sop { border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; background: rgba(255,255,255,0.02); }
+  details.sop + details.sop { margin-top: 8px; }
+  summary { cursor: pointer; font-weight: 600; }
+  pre, code { font-family: var(--mono); }
+  pre { white-space: pre-wrap; background: #05070b; border: 1px solid var(--border); padding: 12px; border-radius: 12px; overflow: auto; font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  textarea, input[type=text], input[type=number], input[type=date] {
+    width: 100%; background: #05070b; border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px;
+  }
+  .hidden { display: none !important; }
+  .phase { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 0; }
+  .phase .chip { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); font-size: 12px; color: var(--muted); }
+  .phase .chip.on { color: var(--text); border-color: rgba(255,102,173,0.4); background: rgba(255,102,173,0.12); }
+  .footer-note { margin-top: 24px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>AI OFM OS</h1>
+      <p>90-Day Operating System, SOP &amp; Automation Roadmap</p>
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h2 id="pageTitle">Command Center</h2>
+        <div class="sub" id="pageSub">Current phase, today's actions, progress, blockers</div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="exportBtn">Export JSON</button>
+        <button class="btn" id="importBtn">Import JSON</button>
+        <button class="btn" id="resetBtn">Reset local state</button>
+        <input id="importFile" type="file" accept="application/json" class="hidden" />
+      </div>
+    </div>
+    <div id="view"></div>
+    <div class="footer-note">State persists in localStorage key <code>ai-ofm-os-v1</code>. Trello is execution later; this panel is the knowledge / SOP source of truth.</div>
+  </main>
+</div>
+<script>
+const STORAGE_KEY = 'ai-ofm-os-v1';
+const RULES = [
+  'RULE 01: Do not build infrastructure before validating the bottleneck.',
+  'RULE 02: Do not create 5 independent models before proving one.',
+  'RULE 03: Measure cost per approved/monetizable asset, not generation cost.',
+  'RULE 04: RAG + evaluator before fine-tuning the Chatter Brain.',
+  'RULE 05: Automate production before automating publishing.',
+  'RULE 06: Every manual process performed twice becomes an SOP candidate.',
+  'RULE 07: Every SOP performed repeatedly becomes an automation candidate.',
+  'RULE 08: Every automation must have a failure state and human escalation path.'
+];
+const PHASES = [
+  {id:'p0', name:'0 Foundation'},
+  {id:'p1', name:'1 First AI creator'},
+  {id:'p2', name:'2 Content production'},
+  {id:'p3', name:'3 Distribution'},
+  {id:'p4', name:'4 Fanvue funnel'},
+  {id:'p5', name:'5 Chatter intelligence'},
+  {id:'p6', name:'6 Automation'},
+  {id:'p7', name:'7 Measurement'},
+  {id:'p8', name:'8 SOP transfer'},
+  {id:'p9', name:'9 Scale'},
+  {id:'p10', name:'10 Brand / IP'}
+];
+const TASKS = [
+  {id:'t1', phase:'p0', priority:0, title:'Read docs/AGENT_README.md + COMPLIANCE.md', est:'30m', why:'Doctrine before tooling', how:'Open repo docs and confirm non-negotiables', dod:'Operator can recite 8 operating rules'},
+  {id:'t2', phase:'p0', priority:0, title:'Create local folder tree + expense tracker', est:'45m', why:'Company shape from day 1', how:'Use README repo map; log every $', dod:'Folders exist; first expense row logged'},
+  {id:'t3', phase:'p1', priority:0, title:'Write Character Bible (fictional, 21+)', est:'2h', why:'Identity before mass generation', how:'SOP-001 identity + visual + pillars', dod:'Bible checked into research/characters/'},
+  {id:'t4', phase:'p1', priority:0, title:'Generate 20–30 anchor images', est:'3h', why:'Consistency dataset', how:'ComfyUI identity workflow; cover angles/expressions', dod:'≥20 approved anchors'},
+  {id:'t5', phase:'p1', priority:1, title:'Start Fanvue KYC + AI disclosure plan', est:'1h', why:'Cannot monetize without it', how:'Register, verify, draft disclosure text', dod:'KYC initiated; disclosure text saved'},
+  {id:'t6', phase:'p2', priority:0, title:'Produce content packages (not random images)', est:'4h', why:'Measurable units of work', how:'SOP-002 concept→image→video→caption→CTA', dod:'Package inventory started'},
+  {id:'t7', phase:'p2', priority:0, title:'Define QA checklist + reject queue', est:'1h', why:'Beat VA slop failure mode', how:'Identity/anatomy/compliance rubric', dod:'QA form used on every asset'},
+  {id:'t8', phase:'p2', priority:1, title:'Hit 50+ usable images / 15+ shorts target path', est:'ongoing', why:'Week inventory', how:'Batch sessions; track usable rate', dod:'Counts visible in Analytics'},
+  {id:'t9', phase:'p3', priority:0, title:'Launch ONE primary social account', est:'2h', why:'Signal before matrix', how:'Warm gradually; tag every post', dod:'Account live with tagged posts'},
+  {id:'t10', phase:'p3', priority:1, title:'Test 5 content angles on one account', est:'3d', why:'Data chooses niche pages', how:'Fitness/lifestyle/gaming/personality/fashion tags', dod:'Angle leaderboard exists'},
+  {id:'t11', phase:'p4', priority:0, title:'Complete Fanvue profile + ≥10 assets', est:'2h', why:'Platform readiness', how:'Avatar/banner/bio/intro/welcome/pricing', dod:'Profile ready before traffic push'},
+  {id:'t12', phase:'p4', priority:0, title:'Wire social CTA → Fanvue path', est:'1h', why:'Traffic must convert', how:'Stories + bio link + tracked clicks', dod:'Click → sub path observable'},
+  {id:'t13', phase:'p5', priority:2, title:'Design chatter label schema (no auto-send)', est:'2h', why:'Decision dataset > witty bot', how:'See docs/CHATTER_BRAIN.md', dod:'Label fields agreed'},
+  {id:'t14', phase:'p6', priority:1, title:'n8n: generate → store → QA queue', est:'4h', why:'Automate production first', how:'ComfyUI API job; no publish yet', dod:'Job runs end-to-end'},
+  {id:'t15', phase:'p7', priority:0, title:'Instrument unit economics fields', est:'2h', why:'Cost/approved asset truth', how:'expenses + performance tables', dod:'Dashboard numbers update'},
+  {id:'t16', phase:'p8', priority:1, title:'Publish SOP-001/002/003 usable by someone else', est:'2h', why:'Replication engine', how:'Dry-run with fresh operator', dod:'External person can follow SOPs'},
+  {id:'t17', phase:'p9', priority:2, title:'Only then plan Character #2', est:'—', why:'Prove one machine first', how:'Require Model #1 signal thresholds', dod:'Decision Log entry approving #2'}
+];
+const SOPS = [
+  {id:'s1', title:'SOP-001 Create Character', body:'Define niche → Character Bible → 20–30 anchors → QA → lock ComfyUI identity → initial packages → Fanvue + disclosure → log costs.'},
+  {id:'s2', title:'SOP-002 Create Content', body:'Concept/hook → generate → QA → I2V if needed → caption/CTA → tag → approve → schedule → capture metrics.'},
+  {id:'s3', title:'SOP-003 Launch Niche Page', body:'Choose angle from data → create page → warm → publish tagged packages → measure funnel → scale or kill.'}
+];
+const STACK = [
+  ['ComfyUI','Visual generation + workflows','CORE'],
+  ['n8n','Business automation glue','CORE'],
+  ['Postiz','Social scheduling','CORE'],
+  ['Supabase/Postgres','DB/auth/storage','CORE'],
+  ['LiteLLM','LLM gateway / routing','CORE'],
+  ['Langfuse','Traces / evals','CORE'],
+  ['Label Studio','Chatter/content labeling','WHEN NEEDED'],
+  ['Qdrant','Vector memory','LATER'],
+  ['MinIO','Object storage','LATER'],
+  ['Temporal','Durable workflows','LATER']
+];
+const NAV = [
+  ['command','Command Center'],
+  ['timeline','90-Day Timeline'],
+  ['checklist','Build Checklist'],
+  ['sops','SOPs'],
+  ['architecture','Architecture'],
+  ['creator','AI Creator'],
+  ['chatter','Chatter Brain'],
+  ['infra','Infrastructure'],
+  ['analytics','Analytics'],
+  ['research','Research Vault'],
+  ['resources','Resources'],
+  ['budget','Budget'],
+  ['decisions','Decision Log'],
+  ['trello','Trello']
+];
+
+function defaultState(){
+  return {
+    currentPhase: 'p0',
+    tasks: Object.fromEntries(TASKS.map(t => [t.id, {done:false, notes:'', status:'todo'}])),
+    notesToday: '',
+    blockers: '',
+    budget: {bootstrap:400, rows:[]},
+    decisions: [],
+    expenses: [],
+    research: 'Client playbook extracted. Focus: cost, QA, SOPs, one fictional character first.',
+    updatedAt: new Date().toISOString()
+  };
+}
+function loadState(){
+  try { return Object.assign(defaultState(), JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')); }
+  catch { return defaultState(); }
+}
+function saveState(){
+  state.updatedAt = new Date().toISOString();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  render();
+}
+let state = loadState();
+let view = 'command';
+
+function pct(){
+  const ids = TASKS.map(t=>t.id);
+  const done = ids.filter(id => state.tasks[id]?.done).length;
+  return {done, total: ids.length, pct: ids.length? Math.round(100*done/ids.length):0};
+}
+function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstChild; }
+
+function renderNav(){
+  const nav = document.getElementById('nav');
+  nav.innerHTML = '';
+  NAV.forEach(([id,label]) => {
+    const b = document.createElement('button');
+    b.textContent = label;
+    b.className = view===id ? 'active':'';
+    b.onclick = () => { view=id; render(); };
+    nav.appendChild(b);
+  });
+}
+
+function renderCommand(){
+  const p = pct();
+  return `
+  <div class="grid cols-3">
+    <div class="card"><h3>Progress</h3><div class="stat">${p.pct}%</div><div class="muted">${p.done}/${p.total} checklist items</div><div class="bar" style="margin-top:10px"><span style="width:${p.pct}%"></span></div></div>
+    <div class="card"><h3>Current phase</h3><div class="stat" style="font-size:20px">${PHASES.find(x=>x.id===state.currentPhase)?.name||state.currentPhase}</div>
+      <div class="phase">${PHASES.map(ph=>`<button class="chip ${state.currentPhase===ph.id?'on':''}" data-phase="${ph.id}">${ph.name}</button>`).join('')}</div>
+    </div>
+    <div class="card"><h3>Today</h3><textarea id="notesToday" rows="4" placeholder="Today's actions...">${escapeHtml(state.notesToday||'')}</textarea></div>
+  </div>
+  <div class="grid cols-2" style="margin-top:14px">
+    <div class="card"><h3>Operating Rules</h3><div class="rules">${RULES.map(r=>`<div class="rule">${r}</div>`).join('')}</div></div>
+    <div class="card"><h3>Blockers</h3><textarea id="blockers" rows="8" placeholder="What is stuck?">${escapeHtml(state.blockers||'')}</textarea>
+      <div style="margin-top:12px"><h3>Top open tasks</h3>${TASKS.filter(t=>!state.tasks[t.id]?.done).slice(0,6).map(taskRow).join('')||'<div class="muted">All clear.</div>'}</div>
+    </div>
+  </div>`;
+}
+
+function taskRow(t){
+  const st = state.tasks[t.id] || {done:false};
+  return `<div class="task">
+    <input type="checkbox" data-task="${t.id}" ${st.done?'checked':''} />
+    <div>
+      <div><strong>${escapeHtml(t.title)}</strong> <span class="pill"> ${t.phase} · ${t.est}</span></div>
+      <div class="muted" style="font-size:12px;margin-top:4px">${escapeHtml(t.why)}</div>
+    </div>
+    <span class="pill p${t.priority}">P${t.priority}</span>
+  </div>`;
+}
+
+function renderTimeline(){
+  return `<div class="card"><h3>Phase timeline</h3>
+    <table><tr><th>Phase</th><th>Intent</th><th>Open tasks</th></tr>
+    ${PHASES.map(ph=>{
+      const tasks=TASKS.filter(t=>t.phase===ph.id);
+      const open=tasks.filter(t=>!state.tasks[t.id]?.done).length;
+      return `<tr><td>${ph.name}</td><td class="muted">${phaseIntent(ph.id)}</td><td>${open}/${tasks.length||0}</td></tr>`;
+    }).join('')}
+    </table></div>`;
+}
+function phaseIntent(id){
+  return ({
+    p0:'Repo, compliance, expense hygiene',
+    p1:'One fictional character + anchors',
+    p2:'Packages + QA gate',
+    p3:'One social account + angle tests',
+    p4:'Fanvue live funnel',
+    p5:'Labeling / RAG design',
+    p6:'n8n production automation',
+    p7:'Unit economics',
+    p8:'Someone else can reproduce',
+    p9:'Character #2 only after signal',
+    p10:'Brand deals / IP expansion'
+  })[id]||'';
+}
+
+function renderChecklist(){
+  return `<div class="card"><h3>Build checklist</h3>${TASKS.map(t=>{
+    const st=state.tasks[t.id]||{done:false,notes:''};
+    return `<div class="task">
+      <input type="checkbox" data-task="${t.id}" ${st.done?'checked':''}/>
+      <div>
+        <div><strong>${escapeHtml(t.title)}</strong></div>
+        <div class="muted" style="font-size:12px;margin-top:4px"><b>Why:</b> ${escapeHtml(t.why)} · <b>How:</b> ${escapeHtml(t.how)} · <b>DoD:</b> ${escapeHtml(t.dod)}</div>
+        <textarea style="margin-top:8px" rows="2" data-task-notes="${t.id}" placeholder="Notes">${escapeHtml(st.notes||'')}</textarea>
+      </div>
+      <span class="pill p${t.priority}">${t.phase}</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function renderSops(){
+  return `<div class="card"><h3>SOPs</h3>${SOPS.map(s=>`<details class="sop"><summary>${s.title}</summary><p class="muted">${escapeHtml(s.body)}</p><p>Full markdown: <code>sops/${s.id==='s1'?'SOP-001-create-character.md':s.id==='s2'?'SOP-002-create-content.md':'SOP-003-launch-niche-page.md'}</code></p></details>`).join('')}
+  <h3 style="margin-top:16px">Detail layers</h3>
+  <ol class="muted">
+    <li><b>Operator:</b> Create character → anchors → QA → package → publish → measure</li>
+    <li><b>SOP:</b> Exact sequence, inputs, outputs, acceptance</li>
+    <li><b>Technical:</b> APIs, env vars, DB fields, n8n + ComfyUI logic</li>
+  </ol></div>`;
+}
+
+function renderArchitecture(){
+  return `<div class="grid cols-2">
+    <div class="card"><h3>System map</h3><pre>CHARACTER DB + CONTENT ENGINE + DATA
+        → QA/APPROVAL
+        → DISTRIBUTION (IG/TikTok/X/Reddit)
+        → FANVUE
+        → CHAT/MONETIZATION
+        → REVENUE → METRICS ↺</pre></div>
+    <div class="card"><h3>Generation router</h3><pre>generate_image/video()
+  ├── Local ComfyUI (3090 R&D)
+  ├── Cloud ComfyUI
+  ├── Nano Banana (benchmark)
+  ├── Wan / Kling / FLUX / Luma
+  └── Future provider
+
+Optimize: cost / approved asset</pre></div>
+  </div>
+  <div class="card" style="margin-top:14px"><h3>Content package</h3><pre>CONCEPT → HOOK → IMAGE → VIDEO → CAPTION → CTA → PLATFORM TAGS</pre></div>`;
+}
+
+function renderCreator(){
+  return `<div class="card"><h3>AI Creator pipeline</h3>
+  <pre>Character Bible
+  → Anchor set (20–30)
+  → Identity-locked ComfyUI workflow
+  → Content packages
+  → QA
+  → Social tests (1 account, 5 angles)
+  → Fanvue library
+  → Measure conversion
+  → Scale winners only</pre>
+  <p class="muted">Core identity + five angles. Do not spawn five independent models first.</p></div>`;
+}
+
+function renderChatter(){
+  return `<div class="card"><h3>Chatter Brain order</h3>
+  <pre>Authorized chats → anonymize → label → dataset → RAG → generator → evaluator → human approval → outcomes → fine-tune later</pre>
+  <p class="muted">No scraped private third-party DMs. No unattended auto-send on day 1.</p>
+  <table><tr><th>State</th><th>Action bias</th></tr>
+  <tr><td>NEW</td><td>Welcome + discovery</td></tr>
+  <tr><td>WARMING</td><td>Rapport</td></tr>
+  <tr><td>INTERESTED</td><td>Tease → soft offer</td></tr>
+  <tr><td>PRICE_OBJECTION</td><td>Reframe / smaller offer</td></tr>
+  <tr><td>READY_TO_BUY</td><td>Clear PPV</td></tr>
+  <tr><td>WHALE</td><td>Personalized customs</td></tr>
+  <tr><td>TIME_WASTER</td><td>Cheap hurdle / disengage</td></tr>
+  <tr><td>RISK</td><td>Escalate / block</td></tr>
+  </table></div>`;
+}
+
+function renderInfra(){
+  return `<div class="card"><h3>Infrastructure registry</h3>
+  <table><tr><th>Component</th><th>Role</th><th>Priority</th></tr>
+  ${STACK.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}
+  </table>
+  <p class="muted">OSS rule: use if it saves &gt;10–20h; defer if it adds &gt;~4h complexity before needed.</p>
+  <h3>Install notes (expand later into runbooks)</h3>
+  <details class="sop"><summary>ComfyUI</summary><pre>Install official ComfyUI → enable API → load identity nodes (PuLID/IP-Adapter/InstantID) → save workflow JSON under workflows/generation/</pre></details>
+  <details class="sop"><summary>n8n</summary><pre>Docker compose with Postgres → webhook/schedule trigger → call ComfyUI → write asset metadata → create QA task</pre></details>
+  <details class="sop"><summary>Supabase / Postgres</summary><pre>Apply data/schemas/001_init.sql → create service role for workers → never commit keys</pre></details>
+  <details class="sop"><summary>LiteLLM + Langfuse</summary><pre>Point app/chatter at LiteLLM proxy; send traces to Langfuse; route cheap vs premium models by task</pre></details>
+  <details class="sop"><summary>Postiz</summary><pre>Create CONTENT_PACKAGE → approval → Postiz schedule. App owns packages; Postiz owns calendar.</pre></details>
+  </div>`;
+}
+
+function renderAnalytics(){
+  const done = pct();
+  return `<div class="grid cols-2">
+    <div class="card"><h3>Checklist completion</h3><div class="stat">${done.pct}%</div></div>
+    <div class="card"><h3>North-star metrics</h3>
+      <pre>Views → profile visits → Fanvue clicks → subs → buyers → revenue
+cost/usable image · cost/post · cost/sub · revenue/1k views · contribution margin</pre>
+    </div>
+  </div>`;
+}
+
+function renderResearch(){
+  return `<div class="card"><h3>Research vault</h3>
+  <textarea id="research" rows="12">${escapeHtml(state.research||'')}</textarea>
+  <p class="muted">Canonical extracts live in <code>research/playbooks/CLIENT_PLAYBOOK.md</code> and <code>docs/CONVERSATION.md</code>.</p></div>`;
+}
+
+function renderResources(){
+  return `<div class="card"><h3>Resources</h3>
+  <ul>
+    <li><a href="https://github.com/Comfy-Org/ComfyUI" target="_blank">ComfyUI</a></li>
+    <li><a href="https://github.com/n8n-io/n8n" target="_blank">n8n</a></li>
+    <li><a href="https://github.com/proom-ai/postiz" target="_blank">Postiz</a></li>
+    <li><a href="https://github.com/supabase/supabase" target="_blank">Supabase</a></li>
+    <li><a href="https://github.com/BerriAI/litellm" target="_blank">LiteLLM</a></li>
+    <li><a href="https://github.com/langfuse/langfuse" target="_blank">Langfuse</a></li>
+    <li>Repo docs: AGENT_README, ARCHITECTURE, TECH_STACK, BUILD_PLAN, COMPLIANCE</li>
+  </ul></div>`;
+}
+
+function renderBudget(){
+  const rows = state.budget.rows||[];
+  const spent = rows.reduce((a,r)=>a+(+r.cost||0),0);
+  return `<div class="card"><h3>Budget tracker</h3>
+    <div class="grid cols-3">
+      <div><div class="muted">Bootstrap</div><div class="stat" style="font-size:22px">$${state.budget.bootstrap}</div></div>
+      <div><div class="muted">Spent</div><div class="stat" style="font-size:22px">$${spent.toFixed(2)}</div></div>
+      <div><div class="muted">Remaining</div><div class="stat" style="font-size:22px">$${(state.budget.bootstrap-spent).toFixed(2)}</div></div>
+    </div>
+    <div class="grid cols-2" style="margin-top:12px">
+      <input id="bProvider" type="text" placeholder="Provider" />
+      <input id="bService" type="text" placeholder="Service" />
+      <input id="bCost" type="number" step="0.01" placeholder="Cost USD" />
+      <button class="btn primary" id="addBudget">Add expense</button>
+    </div>
+    <table style="margin-top:12px"><tr><th>Provider</th><th>Service</th><th>Cost</th><th></th></tr>
+    ${rows.map((r,i)=>`<tr><td>${escapeHtml(r.provider)}</td><td>${escapeHtml(r.service)}</td><td>$${(+r.cost).toFixed(2)}</td><td><button class="btn" data-del-budget="${i}">x</button></td></tr>`).join('')||'<tr><td colspan="4" class="muted">No expenses yet</td></tr>'}
+    </table>
+    <p class="muted">Default allocation idea: keep ≥$150 reserve; spend first on proving generation quality, not vanity tools.</p>
+  </div>`;
+}
+
+function renderDecisions(){
+  return `<div class="card"><h3>Decision Log</h3>
+    <div class="grid">
+      <input id="dDecision" type="text" placeholder="Decision" />
+      <input id="dReason" type="text" placeholder="Reason" />
+      <input id="dAlt" type="text" placeholder="Alternatives rejected" />
+      <input id="dRevisit" type="text" placeholder="Revisit condition" />
+      <button class="btn primary" id="addDecision">Add decision</button>
+    </div>
+    <table style="margin-top:12px"><tr><th>When</th><th>Decision</th><th>Reason</th><th>Rejected</th><th>Revisit</th></tr>
+    ${(state.decisions||[]).map(d=>`<tr><td>${escapeHtml(d.at||'')}</td><td>${escapeHtml(d.decision)}</td><td>${escapeHtml(d.reason)}</td><td>${escapeHtml(d.alt||'')}</td><td>${escapeHtml(d.revisit||'')}</td></tr>`).join('')||'<tr><td colspan="5" class="muted">No decisions logged</td></tr>'}
+    </table>
+  </div>`;
+}
+
+function renderTrello(){
+  return `<div class="card"><h3>Trello integration points</h3>
+  <p>This OS is the <b>knowledge/SOP layer</b>. Trello is the <b>execution layer</b>.</p>
+  <pre>AI OFM OS task
+  → "Execute in Trello"
+  → board/card URL
+  → status sync later</pre>
+  <p class="muted">No board connected yet. Add board URL in Decision Log when ready. Do not make Trello the source of truth.</p></div>`;
+}
+
+function escapeHtml(s){
+  return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function setTitle(){
+  const map = Object.fromEntries(NAV);
+  document.getElementById('pageTitle').textContent = map[view]||view;
+  document.getElementById('pageSub').textContent = ({
+    command:'Current phase, today\'s actions, progress, blockers',
+    timeline:'Week 0 → Week 12 phase map',
+    checklist:'Granular tasks with why / how / definition of done',
+    sops:'Expandable procedures',
+    architecture:'Visual system map',
+    creator:'Character → content → distribution → monetization',
+    chatter:'Data → labeling → RAG → evaluator → automation',
+    infra:'Components, why, install notes',
+    analytics:'KPIs and economics',
+    research:'Findings, benchmarks, notes',
+    resources:'GitHub / docs links',
+    budget:'Bootstrap budget vs spend',
+    decisions:'Decision → reason → rejected → revisit',
+    trello:'Execution handoff points'
+  })[view]||'';
+}
+
+function render(){
+  renderNav(); setTitle();
+  const root = document.getElementById('view');
+  const fn = {
+    command: renderCommand,
+    timeline: renderTimeline,
+    checklist: renderChecklist,
+    sops: renderSops,
+    architecture: renderArchitecture,
+    creator: renderCreator,
+    chatter: renderChatter,
+    infra: renderInfra,
+    analytics: renderAnalytics,
+    research: renderResearch,
+    resources: renderResources,
+    budget: renderBudget,
+    decisions: renderDecisions,
+    trello: renderTrello
+  }[view];
+  root.innerHTML = fn();
+  bind();
+}
+
+function bind(){
+  document.querySelectorAll('[data-phase]').forEach(b => b.onclick = () => { state.currentPhase=b.dataset.phase; saveState(); });
+  document.querySelectorAll('[data-task]').forEach(cb => cb.onchange = () => { state.tasks[cb.dataset.task].done = cb.checked; saveState(); });
+  document.querySelectorAll('[data-task-notes]').forEach(t => t.onchange = () => { state.tasks[t.dataset.taskNotes].notes = t.value; saveState(); });
+  const nt = document.getElementById('notesToday'); if (nt) nt.onchange = () => { state.notesToday = nt.value; saveState(); };
+  const bl = document.getElementById('blockers'); if (bl) bl.onchange = () => { state.blockers = bl.value; saveState(); };
+  const rs = document.getElementById('research'); if (rs) rs.onchange = () => { state.research = rs.value; saveState(); };
+  const ab = document.getElementById('addBudget');
+  if (ab) ab.onclick = () => {
+    const provider = document.getElementById('bProvider').value.trim();
+    const service = document.getElementById('bService').value.trim();
+    const cost = parseFloat(document.getElementById('bCost').value||'0');
+    if (!provider || !service) return;
+    state.budget.rows.push({provider, service, cost});
+    saveState();
+  };
+  document.querySelectorAll('[data-del-budget]').forEach(b => b.onclick = () => { state.budget.rows.splice(+b.dataset.delBudget,1); saveState(); });
+  const ad = document.getElementById('addDecision');
+  if (ad) ad.onclick = () => {
+    state.decisions.unshift({
+      at: new Date().toISOString().slice(0,10),
+      decision: document.getElementById('dDecision').value.trim(),
+      reason: document.getElementById('dReason').value.trim(),
+      alt: document.getElementById('dAlt').value.trim(),
+      revisit: document.getElementById('dRevisit').value.trim()
+    });
+    saveState();
+  };
+}
+
+document.getElementById('exportBtn').onclick = () => {
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'ai-ofm-os-state.json';
+  a.click();
+};
+document.getElementById('importBtn').onclick = () => document.getElementById('importFile').click();
+document.getElementById('importFile').onchange = async (e) => {
+  const f = e.target.files?.[0]; if (!f) return;
+  state = Object.assign(defaultState(), JSON.parse(await f.text()));
+  saveState();
+};
+document.getElementById('resetBtn').onclick = () => {
+  if (confirm('Reset all local AI OFM OS state?')) { state = defaultState(); saveState(); }
+};
+
+render();
+</script>
+</body>
+</html>
